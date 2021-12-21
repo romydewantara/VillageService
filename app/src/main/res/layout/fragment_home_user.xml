@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.HomeUserFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Halo, anda masuk sebagai USER"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/tvSignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Keluar"
+        android:textStyle="bold"
+        android:textColor="@color/light_blue"
+        android:layout_below="@id/content"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

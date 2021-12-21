@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/titleAlert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:paddingTop="25dp"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/messageAlert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Message"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_below="@id/titleAlert"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:visibility="visible"
+            android:layout_below="@id/messageAlert">
+
+            <TextView
+                android:id="@+id/negativeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_cad_negative_button"
+                android:layout_weight="50"
+                android:gravity="center"
+                android:text="Cancel"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/positiveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_cad_positive_button"
+                android:layout_weight="50"
+                android:gravity="center"
+                android:clickable="true"
+                android:text="OK"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
