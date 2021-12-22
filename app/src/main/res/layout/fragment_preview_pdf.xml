@@ -7,6 +7,32 @@
     android:background="@color/dark_blue"
     tools:context=".fragment.PdfViewerFragment">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayoutPdf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="90dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
+        <include layout="@layout/layout_pdf" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/downloadButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_button_disabled"
+        android:maxLines="1"
+        android:text="Download"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

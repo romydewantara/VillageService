@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String mail = getIntent().getStringExtra("EMAIL");
+        if (mail == null) {
+            mail = "admin@test.com";
+        }
         if (mail.equalsIgnoreCase("user@test.com")) {
             goToHomeUser();
         } else if (mail.equalsIgnoreCase("admin@test.com")) {
