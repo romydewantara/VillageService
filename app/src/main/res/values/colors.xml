@@ -7,6 +7,11 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="dark_grey">#A9A9A9</color>
-    <color name="light_blue">#7499E7</color>
-    <color name="light_blue_50">#807499E7</color>
+    <color name="light_blue">#B1D0E0</color>
+    <color name="light_blue_50">#80B1D0E0</color>
+    <color name="medium_blue">#6998AB</color>
+    <color name="medium_blue_50">#806998AB</color>
+    <color name="blue">#406882</color>
+    <color name="dark_blue">#1A374D</color>
+    
 </resources>

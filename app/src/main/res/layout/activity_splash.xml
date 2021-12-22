@@ -5,13 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activity.SplashActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieSplash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_fileName="lottie/maintanance.json"
+        app:lottie_fileName="lottie/help_centre.json"
         app:lottie_autoPlay="true"/>
 
     <FrameLayout
@@ -22,12 +23,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <TextView
-            android:id="@+id/tvBawah"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCopyright"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Powered by\nBACODELABS"
-            android:gravity="center"/>
+            android:layout_height="26dp"
+            android:gravity="center"
+            android:text="Powered by\nBACODELABS" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

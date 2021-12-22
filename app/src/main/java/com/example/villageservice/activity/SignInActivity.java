@@ -1,6 +1,8 @@
 package com.example.villageservice.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
@@ -8,6 +10,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,11 +27,11 @@ public class SignInActivity extends AppCompatActivity {
     Fonts fonts;
 
     // 6 TextView
-    private TextView tvAplName;
-    private TextView tvInfo;
-    private TextView tvQuestion;
-    private TextView tvRegister;
-    private TextView tvGuide;
+    private AppCompatTextView tvAplName;
+    private AppCompatTextView tvInfo;
+    private AppCompatTextView tvQuestion;
+    private AppCompatTextView tvRegister;
+    private AppCompatTextView tvGuide;
 
     // 2 EditText
     private EditText etEmail;
@@ -151,9 +154,17 @@ public class SignInActivity extends AppCompatActivity {
         etEmail.setTypeface(fonts.rMedium());
         etPassword.setTypeface(fonts.rMedium());
         signInButton.setTypeface(fonts.rBold());
-        tvGuide.setTypeface(fonts.rRegular());
-        tvQuestion.setTypeface(fonts.rMedium());
-        tvRegister.setTypeface(fonts.rRegular());
+        tvGuide.setTypeface(fonts.rMedium());
+        tvQuestion.setTypeface(fonts.rRegular());
+        tvRegister.setTypeface(fonts.rMedium());
+
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvAplName, 1, 20, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfo, 1, 18, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvGuide, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvQuestion, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvRegister, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
+        etEmail.setTextSize(16f);
+        etPassword.setTextSize(16f);
     }
 
     private void showCAD(String title, String message, String pButton, String nButton) {

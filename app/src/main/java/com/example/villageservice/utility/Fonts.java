@@ -46,6 +46,10 @@ public class Fonts {
         return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-Bold.ttf");
     }
 
+    public Typeface rBoldExtra() {
+        return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-BoldExtra.ttf");
+    }
+
     public Typeface rLight() {
         return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-Light.ttf");
     }

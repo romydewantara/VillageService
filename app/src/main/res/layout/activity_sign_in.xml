@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient_color"
+    android:background="@drawable/background"
     tools:context=".activity.SignInActivity">
 
     <com.airbnb.lottie.LottieAnimationView
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAplName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@id/lottieLayer"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,8 +67,8 @@
             android:maxLines="1"
             android:hint="Email"
             android:textColorHint="@color/black"
-            android:gravity="center"
-            android:padding="5dp" />
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"/>
 
         <EditText
             android:id="@+id/etPassword"
@@ -81,8 +81,8 @@
             android:maxLines="1"
             android:hint="Kata Sandi"
             android:textColorHint="@color/black"
-            android:gravity="center"
-            android:padding="5dp" />
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"/>
 
         <Button
             android:id="@+id/signInButton"
@@ -90,19 +90,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Masuk"
-            android:textSize="18dp"
-            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:maxLines="1"
             android:textAllCaps="false"
+            android:textColor="@color/white"
             android:background="@drawable/bg_button_enabled"/>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvGuide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Panduan"
             android:textSize="16dp"
             android:layout_gravity="center"
-            android:textColor="@color/light_blue"
+            android:textColor="@color/dark_blue"
             android:layout_marginTop="8dp"/>
 
     </LinearLayout>
@@ -117,7 +118,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -126,14 +127,14 @@
             android:textColor="@color/black"
             android:gravity="center"/>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Daftar disini"
             android:textSize="16dp"
             android:gravity="center"
-            android:textColor="@color/light_blue"/>
+            android:textColor="@color/dark_blue"/>
 
     </LinearLayout>
 
