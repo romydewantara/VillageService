@@ -1,0 +1,24 @@
+{
+  "user_list": [
+    {
+      "id_ktp": 3173033014890004,
+      "id_kartu_keluarga": 5113033014890055,
+      "nama_lengkap": "Arial",
+      "jenis_kelamin": "Laki-laki",
+      "tempat_lahir": "Bandung",
+      "tanggal_lahir": {
+        "tanggal": 10,
+        "bulan": 10,
+        "tahun": 2010
+      },
+      "agama": "Islam",
+      "pendidikan": "Strata-1",
+      "jenis_pekerjaan": "Wiraswasta",
+      "status_pernikahan": "Belum Kawin",
+      "status_hubungan_dalam_keluarga": "Ayah",
+      "kewarganegaraan": "WNI",
+      "nama_ayah": "Zeus",
+      "nama_ibu": "Helena"
+    }
+  ]
+}

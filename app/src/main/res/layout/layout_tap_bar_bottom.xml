@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_blue"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <ImageView
+        android:layout_weight="50"
+        android:id="@+id/homeBar"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:src="@mipmap/ic_bar_home_off" />
+
+    <ImageView
+        android:layout_weight="50"
+        android:id="@+id/userBar"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:src="@mipmap/ic_bar_user_off" />
+
+    <ImageView
+        android:layout_weight="50"
+        android:id="@+id/notificationBar"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:src="@mipmap/ic_bar_notification_off" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

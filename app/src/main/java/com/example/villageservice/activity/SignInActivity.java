@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,7 +15,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.villageservice.R;
@@ -71,7 +71,7 @@ public class SignInActivity extends AppCompatActivity {
         tvRegister = findViewById(R.id.tvRegister);
         lottieLayer = findViewById(R.id.lottieLayer);
 
-        signInButton.setEnabled(false);
+        //signInButton.setEnabled(false);
         signInButton.setBackgroundResource(R.drawable.bg_button_disabled);
     }
 
@@ -79,24 +79,8 @@ public class SignInActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = etEmail.getText().toString();
-                String password = etPassword.getText().toString();
-                Log.d("SignIn", "onClick - email: " + email);
-                if (!email.isEmpty()) {
-                    if ((email.equalsIgnoreCase(userMail) && password.equalsIgnoreCase("123pass"))
-                            || (email.equalsIgnoreCase(adminMail) && password.equalsIgnoreCase("pass123"))) {
-                        lottieLayer.cancelAnimation();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                        intent.putExtra("EMAIL", email);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        showCAD(
-                                "Gagal masuk",
-                                "Oops… Email atau password yang anda masukkan salah\nSilakan membaca Panduan terlebih dahulu",
-                                "Setuju", "");
-                    }
-                }
+                skipLogin();
+                //credentialCheck();
             }
         });
         tvGuide.setOnClickListener(new View.OnClickListener() {
@@ -189,5 +173,32 @@ public class SignInActivity extends AppCompatActivity {
             signInButton.setEnabled(false);
             signInButton.setBackgroundResource(R.drawable.bg_button_disabled);
         }
+    }
+
+    private void credentialCheck() {
+        String email = etEmail.getText().toString();
+        String password = etPassword.getText().toString();
+        if (!email.isEmpty()) {
+            if (email.equalsIgnoreCase(userMail) && password.equalsIgnoreCase("123pass")) {
+                login(UserActivity.class);
+            } else if (email.equalsIgnoreCase(adminMail) && password.equalsIgnoreCase("pass123")) {
+                login(AdminActivity.class);
+            } else  {
+                showCAD(
+                        "Gagal masuk",
+                        "Oops… Email atau password yang anda masukkan salah\nSilakan membaca Panduan terlebih dahulu",
+                        "Setuju", "");
+            }
+        }
+    }
+
+    private void login(Class destination) {
+        lottieLayer.cancelAnimation();
+        startActivity(new Intent(getApplicationContext(), destination).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
+        finish();
+    }
+
+    private void skipLogin() {
+        login(AdminActivity.class);
     }
 }
