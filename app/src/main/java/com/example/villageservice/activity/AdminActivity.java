@@ -1,13 +1,19 @@
 package com.example.villageservice.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.villageservice.R;
+import com.example.villageservice.fragment.CitizensFragment;
+import com.example.villageservice.fragment.HomeAdminFragment;
+import com.example.villageservice.fragment.NotificationsFragment;
 import com.example.villageservice.model.User;
 import com.example.villageservice.model.UserList;
 import com.example.villageservice.utility.AppUtil;
@@ -20,18 +26,70 @@ import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity {
 
-    private Context context;
     private AppUtil appUtil;
     private UserList userList;
     private ArrayList<User> users;
     private ArrayList<Object> objListUser;
 
+    private ImageView homeBar;
+    private ImageView userBar;
+    private ImageView notificationBar;
+
+    private Fragment fragment;
+
+    public static final String TAG_FRAGMENT_HOME_ADMIN = "home_admin_fragment";
+    public static final String TAG_FRAGMENT_CITIZENS = "citizens_fragment";
+    public static final String TAG_FRAGMENT_NOTIFICATIONS = "notifications_fragment";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_admin);
-        appUtil = new AppUtil();
+
+        initMandatory();
+        initListener();
+        goToHome();
         fetchUsers();
+    }
+
+    private void initMandatory() {
+        appUtil = new AppUtil();
+        homeBar = findViewById(R.id.homeBar);
+        userBar = findViewById(R.id.userBar);
+        notificationBar = findViewById(R.id.notificationBar);
+    }
+
+    @SuppressLint("NewApi")
+    private void goToHome() {
+        fragment = new HomeAdminFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_ADMIN)
+                .commit();
+        homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_on));
+        userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
+        notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_off));
+    }
+
+    @SuppressLint("NewApi")
+    private void goToCitizens() {
+        fragment = new CitizensFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, TAG_FRAGMENT_CITIZENS)
+                .commit();
+        homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_off));
+        userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_on));
+        notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_off));
+    }
+
+    @SuppressLint("NewApi")
+    private void goToNotifications() {
+        fragment = new NotificationsFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, TAG_FRAGMENT_NOTIFICATIONS)
+                .commit();
+        homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_off));
+        userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
+        notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_on));
     }
 
     private void fetchUsers() {
@@ -52,6 +110,23 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-
+        homeBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToHome();
+            }
+        });
+        userBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToCitizens();
+            }
+        });
+        notificationBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNotifications();
+            }
+        });
     }
 }

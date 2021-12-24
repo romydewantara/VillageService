@@ -15,19 +15,26 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.UserActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/VillageServiceScreen" />
         <activity
-            android:name=".activity.AdminActivity">
-        </activity>
-        <activity android:name=".activity.SplashActivity" >
+            android:name=".activity.AdminActivity"
+            android:theme="@style/VillageServiceScreen" />
+        <activity
+            android:name=".activity.SplashActivity"
+            android:theme="@style/VillageServiceScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SignUpActivity" />
-        <activity android:name=".activity.SignInActivity" />
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:theme="@style/VillageServiceScreen" />
+        <activity
+            android:name=".activity.SignInActivity"
+            android:theme="@style/VillageServiceScreen"/>
     </application>
 
 </manifest>

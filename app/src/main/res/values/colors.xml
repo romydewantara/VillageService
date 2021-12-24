@@ -13,5 +13,6 @@
     <color name="medium_blue_50">#806998AB</color>
     <color name="blue">#406882</color>
     <color name="dark_blue">#1A374D</color>
-    
+    <color name="dark_blue_max">#122635</color>
+
 </resources>

@@ -1,0 +1,244 @@
+package com.example.villageservice.fragment;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.Toast;
+import android.widget.ViewSwitcher;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.cardview.widget.CardView;
+import androidx.core.widget.TextViewCompat;
+import androidx.fragment.app.Fragment;
+
+import com.example.villageservice.R;
+import com.example.villageservice.utility.Fonts;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link HomeAdminFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class HomeAdminFragment extends Fragment {
+
+    private Context context;
+    private View view;
+    private AppCompatTextView tvHeader;
+    private AppCompatTextView tvContentHeader;
+    private AppCompatTextView tvInfoTitle1;
+    private AppCompatTextView tvInfoTitle2;
+    private AppCompatTextView tvInfoTitle3;
+    private AppCompatTextView tvInfoTitle4;
+    private AppCompatTextView tvInfoTitle5;
+    private AppCompatTextView tvInfoTitle6;
+    private CardView cvInfo1;
+    private CardView cvInfo2;
+    private CardView cvInfo3;
+    private CardView cvInfo4;
+    private CardView cvInfo5;
+    private CardView cvInfo6;
+    private ImageSwitcher imageSwitcher;
+
+    private final int[] images = {
+            R.drawable.banner_one,
+            R.drawable.banner_two,
+            R.drawable.banner_three,
+            R.drawable.banner_four
+    };
+    private Handler imageSwitcherHandler;
+    private Runnable imageSwitcherRunnable;
+    private Fonts fonts;
+
+    private Animation imgAnimationIn;
+    private Animation imgAnimationOut;
+
+    private int currentIndex = -1;
+
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    private String mParam1;
+    private String mParam2;
+
+    public HomeAdminFragment() {
+        // Required empty public constructor
+    }
+
+    // TODO: Rename and change types and number of parameters
+    public static HomeAdminFragment newInstance(String param1, String param2) {
+        HomeAdminFragment fragment = new HomeAdminFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+        iniMandatory();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_home_admin, container, false);
+
+        tvHeader = view.findViewById(R.id.tvHeader);
+        tvContentHeader = view.findViewById(R.id.tvContentHeader);
+        tvInfoTitle1 = view.findViewById(R.id.tvInfoTitle1);
+        tvInfoTitle2 = view.findViewById(R.id.tvInfoTitle2);
+        tvInfoTitle3 = view.findViewById(R.id.tvInfoTitle3);
+        tvInfoTitle4 = view.findViewById(R.id.tvInfoTitle4);
+        tvInfoTitle5 = view.findViewById(R.id.tvInfoTitle5);
+        tvInfoTitle6 = view.findViewById(R.id.tvInfoTitle6);
+        cvInfo1 = view.findViewById(R.id.cvInfo1);
+        cvInfo2 = view.findViewById(R.id.cvInfo2);
+        cvInfo3 = view.findViewById(R.id.cvInfo3);
+        cvInfo4 = view.findViewById(R.id.cvInfo4);
+        cvInfo5 = view.findViewById(R.id.cvInfo5);
+        cvInfo6 = view.findViewById(R.id.cvInfo6);
+        imageSwitcher = view.findViewById(R.id.imageSwitcher);
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        setFonts();
+        initListener();
+        imageSwitcher.setInAnimation(imgAnimationIn);
+        imageSwitcher.setOutAnimation(imgAnimationOut);
+        imageSwitcher.setVisibility(View.VISIBLE);
+        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                ImageView imageView = new ImageView(context);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                return imageView;
+            }
+        });
+
+        imageSwitcherHandler = new Handler();
+        imageSwitcherRunnable = getDurationRunnable();
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                imageSwitcherHandler.post(imageSwitcherRunnable);
+            }
+        };
+        timer.scheduleAtFixedRate(timerTask, 0, 4500);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+    private void iniMandatory() {
+        fonts = new Fonts(context);
+        imgAnimationIn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+        imgAnimationIn.setDuration(1200);
+        imgAnimationOut = AnimationUtils.loadAnimation(context, android.R.anim.slide_out_right);
+        imgAnimationOut.setDuration(1200);
+    }
+
+    private void initListener() {
+        cvInfo1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Nikah", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cvInfo2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar UMKM", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cvInfo3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Permintaan Persetujuan Formulir Pindah Rumah", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cvInfo4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Pembuatan Kartu Keluarga", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cvInfo5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Pembuatan Akta Lahir", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cvInfo6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Permintaan Persetujuan Pembuatan Surat Kematian", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setFonts() {
+        tvHeader.setTypeface(fonts.rBoldExtra());
+        tvContentHeader.setTypeface(fonts.rRegular());
+        tvInfoTitle1.setTypeface(fonts.rBold());
+        tvInfoTitle2.setTypeface(fonts.rBold());
+        tvInfoTitle3.setTypeface(fonts.rBold());
+        tvInfoTitle4.setTypeface(fonts.rBold());
+        tvInfoTitle5.setTypeface(fonts.rBold());
+        tvInfoTitle6.setTypeface(fonts.rBold());
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvHeader, 1, 24, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvContentHeader, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfoTitle1, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfoTitle2, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfoTitle3, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfoTitle4, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfoTitle5, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfoTitle6, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
+    }
+
+    private Runnable getDurationRunnable() {
+        return new Runnable() {
+            @Override
+            public void run() {
+                currentIndex++;
+                if (currentIndex == images.length) currentIndex = 0;
+                imageSwitcher.setImageResource(images[currentIndex]);
+            }
+        };
+    }
+
+    private void stopImageSwitcher() {
+        imageSwitcherHandler.removeCallbacks(imageSwitcherRunnable);
+    }
+}
