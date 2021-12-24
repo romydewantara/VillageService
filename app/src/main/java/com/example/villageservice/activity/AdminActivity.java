@@ -8,12 +8,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.example.villageservice.R;
 import com.example.villageservice.fragment.CitizensFragment;
+import com.example.villageservice.fragment.FormListFragment;
 import com.example.villageservice.fragment.HomeAdminFragment;
 import com.example.villageservice.fragment.NotificationsFragment;
+import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.User;
 import com.example.villageservice.model.UserList;
 import com.example.villageservice.utility.AppUtil;
@@ -24,18 +27,21 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class AdminActivity extends AppCompatActivity {
+public class AdminActivity extends AppCompatActivity implements FragmentListener {
 
     private AppUtil appUtil;
     private UserList userList;
     private ArrayList<User> users;
     private ArrayList<Object> objListUser;
 
+    private FrameLayout bottomBar;
     private ImageView homeBar;
     private ImageView userBar;
     private ImageView notificationBar;
 
     private Fragment fragment;
+
+    public static final int FRAGMENT_FINISH_GOTO_FORM_LIST = 1;
 
     public static final String TAG_FRAGMENT_HOME_ADMIN = "home_admin_fragment";
     public static final String TAG_FRAGMENT_CITIZENS = "citizens_fragment";
@@ -54,6 +60,7 @@ public class AdminActivity extends AppCompatActivity {
 
     private void initMandatory() {
         appUtil = new AppUtil();
+        bottomBar = findViewById(R.id.bottomBar);
         homeBar = findViewById(R.id.homeBar);
         userBar = findViewById(R.id.userBar);
         notificationBar = findViewById(R.id.notificationBar);
@@ -128,5 +135,29 @@ public class AdminActivity extends AppCompatActivity {
                 goToNotifications();
             }
         });
+    }
+
+    @Override
+    public void onFragmentFinish(Fragment currentFragment, int destination, boolean isForward) {
+        fragment = new FormListFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_ADMIN)
+                .commit();
+        bottomBar.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onFragmentPaused() {
+
+    }
+
+    @Override
+    public void onActivityFinish() {
+
+    }
+
+    @Override
+    public void onActivityBackPressed() {
+
     }
 }

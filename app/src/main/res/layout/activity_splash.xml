@@ -12,7 +12,7 @@
         android:id="@+id/lottieSplash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_fileName="lottie/help_centre.json"
+        app:lottie_fileName="lottie/lottie_splash.json"
         app:lottie_autoPlay="true"/>
 
     <FrameLayout

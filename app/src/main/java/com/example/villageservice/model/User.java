@@ -20,7 +20,10 @@ public class User {
     private String tempatLahir;
 
     @SerializedName("tanggal_lahir")
-    private TanggalLahir tanggalLahir;
+    private TanggalDetail tanggalLahir;
+
+    @SerializedName("tanggal_bergabung")
+    private TanggalDetail tanggalBergabung;
 
     @SerializedName("agama")
     private String agama;
@@ -86,12 +89,20 @@ public class User {
         this.tempatLahir = tempatLahir;
     }
 
-    public TanggalLahir getTanggalLahir() {
+    public TanggalDetail getTanggalLahir() {
         return tanggalLahir;
     }
 
-    public void setTanggalLahir(TanggalLahir tanggalLahir) {
-        this.tanggalLahir = tanggalLahir;
+    public void setTanggalLahir(TanggalDetail tanggalDetail) {
+        this.tanggalLahir = tanggalDetail;
+    }
+
+    public TanggalDetail getTanggalBergabung() {
+        return tanggalBergabung;
+    }
+
+    public void setTanggalBergabung(TanggalDetail tanggalBergabung) {
+        this.tanggalBergabung = tanggalBergabung;
     }
 
     public String getAgama() {
@@ -158,7 +169,7 @@ public class User {
         this.namaIbu = namaIbu;
     }
 
-    class TanggalLahir {
+    class TanggalDetail {
 
         @SerializedName("tanggal")
         private int tanggal;

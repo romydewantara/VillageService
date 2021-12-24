@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Pelayanan Masyarakat"
+        android:text="Layanan Masyarakat"
         android:textSize="28dp"
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -104,7 +104,8 @@
             android:textSize="16dp"
             android:layout_gravity="center"
             android:textColor="@color/dark_blue"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
@@ -124,7 +125,7 @@
             android:layout_height="wrap_content"
             android:text="Belum memiliki akun?"
             android:textSize="16dp"
-            android:textColor="@color/black"
+            android:textColor="@color/dark_blue_max"
             android:gravity="center"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -134,7 +135,7 @@
             android:text="Daftar disini"
             android:textSize="16dp"
             android:gravity="center"
-            android:textColor="@color/dark_blue"/>
+            android:textColor="@color/medium_blue"/>
 
     </LinearLayout>
 

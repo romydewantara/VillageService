@@ -16,7 +16,7 @@ import com.example.villageservice.utility.Fonts;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final int SPLASH_DELAY = 1500;
+    private static final int SPLASH_DELAY = 2500;
 
     private LottieAnimationView lottieSplash;
     private AppCompatTextView tvCopyright;

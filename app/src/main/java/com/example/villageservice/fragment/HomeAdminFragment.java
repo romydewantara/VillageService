@@ -22,6 +22,8 @@ import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
+import com.example.villageservice.activity.AdminActivity;
+import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.utility.Fonts;
 
 import java.util.Timer;
@@ -32,9 +34,10 @@ import java.util.TimerTask;
  * Use the {@link HomeAdminFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeAdminFragment extends Fragment {
+public class HomeAdminFragment extends Fragment implements FragmentListener {
 
     private Context context;
+
     private View view;
     private AppCompatTextView tvHeader;
     private AppCompatTextView tvContentHeader;
@@ -51,6 +54,8 @@ public class HomeAdminFragment extends Fragment {
     private CardView cvInfo5;
     private CardView cvInfo6;
     private ImageSwitcher imageSwitcher;
+
+    private FragmentListener fragmentListener;
 
     private final int[] images = {
             R.drawable.banner_one,
@@ -154,6 +159,12 @@ public class HomeAdminFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+        if (context instanceof FragmentListener) {
+            fragmentListener = (FragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
@@ -173,6 +184,7 @@ public class HomeAdminFragment extends Fragment {
         cvInfo1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fragmentListener.onFragmentFinish(HomeAdminFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_FORM_LIST, true);
                 Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Nikah", Toast.LENGTH_SHORT).show();
             }
         });
@@ -210,7 +222,7 @@ public class HomeAdminFragment extends Fragment {
 
     private void setFonts() {
         tvHeader.setTypeface(fonts.rBoldExtra());
-        tvContentHeader.setTypeface(fonts.rRegular());
+        tvContentHeader.setTypeface(fonts.rMedium());
         tvInfoTitle1.setTypeface(fonts.rBold());
         tvInfoTitle2.setTypeface(fonts.rBold());
         tvInfoTitle3.setTypeface(fonts.rBold());
@@ -240,5 +252,25 @@ public class HomeAdminFragment extends Fragment {
 
     private void stopImageSwitcher() {
         imageSwitcherHandler.removeCallbacks(imageSwitcherRunnable);
+    }
+
+    @Override
+    public void onFragmentFinish(Fragment currentFragment, int destination, boolean isForward) {
+
+    }
+
+    @Override
+    public void onFragmentPaused() {
+
+    }
+
+    @Override
+    public void onActivityFinish() {
+
+    }
+
+    @Override
+    public void onActivityBackPressed() {
+
     }
 }
