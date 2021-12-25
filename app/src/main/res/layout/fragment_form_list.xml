@@ -16,10 +16,11 @@
 
         <ImageView
             android:id="@+id/buttonLeft"
-            android:layout_width="80dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:padding="10dp"
-            android:src="@drawable/jakarta"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:src="@mipmap/ic_back_white"
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -34,7 +35,7 @@
 
         <ImageView
             android:id="@+id/buttonRight"
-            android:layout_width="80dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
             android:padding="10dp"
             android:src="@drawable/jakarta"

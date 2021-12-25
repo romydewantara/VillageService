@@ -8,5 +8,13 @@
     <string name="content_header">Rukun Tetangga (RT) adalah lembaga kemasyarakatan yang dibentuk Pemerintah Kalurahan sebagai bagian wilayah administrasi kalurahan untuk memelihara dan melestarikan nilai-nilai kehidupan yang berdasarkan kegotongroyongan kekeluargaan, membantu meningkatkan kelancaran tugas pemerintah, pembangunan dan kemasyarakatan di desa/Kalurahan serta meningkatkan peran serta masyarakat dalam pembangunan.</string>
     <string name="subtitle">Dokumentasi Kegiatan RT (2021)</string>
 
-    <string name="form_list">Daftar Persetujuan Formulir</string>
+    <!-- Admin Menu -->
+    <string name="menu_one">Surat Keterangan\nLayak Nikah</string>
+    <string name="menu_two">Surat Keterangan\nUsaha (UMKM)</string>
+    <string name="menu_three">Surat Pindah\nDomisili KTP</string>
+    <string name="menu_four">Surat Pengantar\nKK Baru</string>
+    <string name="menu_five">Surat Pengantar\nAkta Kelahiran</string>
+    <string name="menu_six">Surat Pengantar\nAkta Kematian</string>
+
+    <string name="form_list">Formulir Persetujuan</string>
 </resources>

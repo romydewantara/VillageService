@@ -4,12 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
-import com.example.villageservice.model.UserList;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 
 public class VSPreference {
 
@@ -17,11 +18,6 @@ public class VSPreference {
     private final static String prefName = "VSPrefs";
     private static VSPreference instance = null;
     private static SharedPreferences preferences;
-
-    public final static String KEY_LOGGED_IN = "";
-    public final static String KEY_KARTU_KELUARGA = "";
-    public final static String KEY_USER = "";
-    public final static String KEY_USER_LIST = "";
 
     public static VSPreference getInstance(Context context) {
         if (instance == null) {
@@ -32,15 +28,97 @@ public class VSPreference {
         return instance;
     }
 
-    public void saveUserList(String key, ArrayList<Object> users) {
-        putListObject(key, users);
+    public boolean isSignIn() {
+        return getBoolean(ConstantVariable.KEY_SIGNED_IN);
+    }
+
+    public void setSignIn(boolean isSignedIn) {
+        putBoolean(ConstantVariable.KEY_SIGNED_IN, isSignedIn);
+    }
+
+    public void setRole(String role) {
+        putString(ConstantVariable.KEY_ROLE, role);
+    }
+
+    public String getRole() {
+        return getString(ConstantVariable.KEY_ROLE);
+    }
+
+    public void insertUser(User user) {
+        putObject(ConstantVariable.KEY_USER, user);
+    }
+
+    public User getUser() {
+        return (User) getObject(ConstantVariable.KEY_USER, User.class);
+    }
+
+    public void insertKK(KartuKeluarga kartuKeluarga) {
+        putObject(ConstantVariable.KEY_KARTU_KELUARGA, kartuKeluarga);
+    }
+
+    public KartuKeluarga getKK() {
+        return (KartuKeluarga) getObject(ConstantVariable.KEY_KARTU_KELUARGA, KartuKeluarga.class);
+    }
+
+    public void deleteUser() {
+
+    }
+
+    public void saveUserList(ArrayList<Object> users) {
+        putListObject(ConstantVariable.KEY_USER_LIST, users);
     }
 
     public ArrayList<Object> loadUserList() {
-        return getListObject(KEY_USER_LIST, User.class);
+        return getListObject(ConstantVariable.KEY_USER_LIST, User.class);
     }
 
-    /** method for storing something more detailed  */
+    public void logout() {
+        setRole("");
+        setSignIn(false);
+        //Delete all sharedpref except checksum values
+        Map<String, ?> map = getAll();
+        for (Map.Entry<String, ?> entry : map.entrySet()) {
+            String key = entry.getKey();
+            if (!key.contains(ConstantVariable.KEY_USER)){
+                remove(key);
+            }
+        }
+    }
+
+    /** method for storing something more detailed */
+
+    public void putObject(String key, Object obj) {
+        keyNullChecker(key);
+        Gson gson = new Gson();
+        putString(key, gson.toJson(obj));
+    }
+
+    public Object getObject(String key, Class<?> classOfT) {
+
+        String json = getString(key);
+        Object value = new Gson().fromJson(json, classOfT);
+
+        return value;
+    }
+
+    public void putString(String key, String value) {
+        keyNullChecker(key);
+        valueNullChecker(value);
+        preferences.edit().putString(key, value).apply();
+    }
+
+    public String getString(String key) {
+        return preferences.getString(key, "");
+    }
+
+    public boolean getBoolean(String key) {
+        return preferences.getBoolean(key, false);
+    }
+
+    public void putBoolean(String key, boolean value) {
+        keyNullChecker(key);
+        preferences.edit().putBoolean(key, value).apply();
+    }
 
     public void putListObject(String key, ArrayList<Object> objArrayList) {
         keyNullChecker(key);
@@ -52,14 +130,14 @@ public class VSPreference {
         putListString(key, objString);
     }
 
-    public ArrayList<Object> getListObject(String key, Class<?> mClass){
+    public ArrayList<Object> getListObject(String key, Class<?> mClass) {
         Gson gson = new Gson();
 
         ArrayList<String> objStrings = getListString(key);
-        ArrayList<Object> objects =  new ArrayList<Object>();
+        ArrayList<Object> objects = new ArrayList<Object>();
 
-        for(String jObjString : objStrings){
-            Object value  = gson.fromJson(jObjString,  mClass);
+        for (String jObjString : objStrings) {
+            Object value = gson.fromJson(jObjString, mClass);
             objects.add(value);
         }
         return objects;
@@ -74,8 +152,22 @@ public class VSPreference {
         return new ArrayList<>(Arrays.asList(TextUtils.split(preferences.getString(key, ""), "‚‗‚")));
     }
 
+    public Map<String, ?> getAll() {
+        return preferences.getAll();
+    }
+
+    public void remove(String key) {
+        preferences.edit().remove(key).apply();
+    }
+
     private void keyNullChecker(String key) {
         if (key == null) {
+            throw new NullPointerException();
+        }
+    }
+
+    public void valueNullChecker(String value) {
+        if (value == null) {
             throw new NullPointerException();
         }
     }

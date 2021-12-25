@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,7 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.villageservice.R;
+import com.example.villageservice.activity.AdminActivity;
+import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.PortableDocumentFormat;
+import com.example.villageservice.utility.VSPreference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +30,8 @@ public class PdfViewerFragment extends Fragment {
     private View pdfFile;
     private Button downloadButton;
     private PortableDocumentFormat portableDocumentFormat;
+
+    FragmentListener fragmentListener;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,6 +63,7 @@ public class PdfViewerFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        fragmentListener.onFragmentCreated(PdfViewerFragment.this);
         portableDocumentFormat = new PortableDocumentFormat(context);
     }
 
@@ -68,19 +75,38 @@ public class PdfViewerFragment extends Fragment {
         pdfFile = view.findViewById(R.id.relativeLayoutPdf);
         downloadButton = view.findViewById(R.id.downloadButton);
 
-        downloadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                portableDocumentFormat.generatePdf(pdfFile, "GanjarPranowo", "This is the PDF trial");
-            }
-        });
-
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (VSPreference.getInstance(context).getRole().equalsIgnoreCase("admin")) {
+            downloadButton.setText("Setuju");
+        } else {
+            downloadButton.setText("Download");
+        }
+        initListener();
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
+        if (context instanceof FragmentListener) {
+            fragmentListener = (FragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    private void initListener() {
+        downloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                portableDocumentFormat.generatePdf(pdfFile, "GanjarPranowo", "This is the PDF trial");
+            }
+        });
     }
 }

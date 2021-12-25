@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -15,12 +16,15 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.villageservice.R;
 import com.example.villageservice.library.CustomAlertDialog;
+import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.utility.Fonts;
+import com.example.villageservice.utility.VSPreference;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -43,6 +47,10 @@ public class SignInActivity extends AppCompatActivity {
     // 1 Lottie
     private LottieAnimationView lottieLayer;
 
+    private CustomLoadingDialog customLoadingDialog;
+
+    private RelativeLayout overlay;
+
     // TEMPORARY MAIL
     private String userMail = "user@test.com";
     private String adminMail = "admin@test.com";
@@ -61,6 +69,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void initMandatory() {
         fonts = new Fonts(getApplicationContext());
+        customLoadingDialog = new CustomLoadingDialog(this);
         tvAplName = findViewById(R.id.tvAplName);
         tvInfo = findViewById(R.id.tvInfo);
         etEmail = findViewById(R.id.etEmail);
@@ -70,6 +79,7 @@ public class SignInActivity extends AppCompatActivity {
         tvQuestion = findViewById(R.id.tvQuestion);
         tvRegister = findViewById(R.id.tvRegister);
         lottieLayer = findViewById(R.id.lottieLayer);
+        overlay = findViewById(R.id.overlay);
 
         //signInButton.setEnabled(false);
         signInButton.setBackgroundResource(R.drawable.bg_button_disabled);
@@ -192,10 +202,20 @@ public class SignInActivity extends AppCompatActivity {
         }
     }
 
-    private void login(Class destination) {
-        lottieLayer.cancelAnimation();
-        startActivity(new Intent(getApplicationContext(), destination).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
-        finish();
+    private void login(final Class destination) {
+        overlay.setVisibility(View.VISIBLE);
+        customLoadingDialog.show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                VSPreference.getInstance(getApplicationContext()).setSignIn(true);
+                customLoadingDialog.dismiss();
+                overlay.setVisibility(View.INVISIBLE);
+                lottieLayer.cancelAnimation();
+                startActivity(new Intent(getApplicationContext(), destination).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
+                finish();
+            }
+        }, 3000);
     }
 
     private void skipLogin() {

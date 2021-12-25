@@ -5,21 +5,27 @@ import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.villageservice.R;
 import com.example.villageservice.fragment.CitizensFragment;
 import com.example.villageservice.fragment.FormListFragment;
 import com.example.villageservice.fragment.HomeAdminFragment;
 import com.example.villageservice.fragment.NotificationsFragment;
+import com.example.villageservice.fragment.PdfViewerFragment;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.User;
 import com.example.villageservice.model.UserList;
 import com.example.villageservice.utility.AppUtil;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -41,9 +47,13 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
 
     private Fragment fragment;
 
+    public static final int FRAGMENT_FINISH_GOTO_HOME_ADMIN = 0;
     public static final int FRAGMENT_FINISH_GOTO_FORM_LIST = 1;
+    public static final int FRAGMENT_FINISH_GOTO_PDF_VIEWER = 2;
 
     public static final String TAG_FRAGMENT_HOME_ADMIN = "home_admin_fragment";
+    public static final String TAG_FRAGMENT_FORM_LIST = "form_list_fragment";
+    public static final String TAG_FRAGMENT_PDF_VIEWER = "pdf_viewer_fragment";
     public static final String TAG_FRAGMENT_CITIZENS = "citizens_fragment";
     public static final String TAG_FRAGMENT_NOTIFICATIONS = "notifications_fragment";
 
@@ -109,7 +119,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         }
         objListUser = VSPreference.getInstance(getApplicationContext()).loadUserList();
         if (objListUser.isEmpty()) {
-            appUtil.importUserData(getApplicationContext(), VSPreference.KEY_USER_LIST, users);
+            appUtil.importUserData(getApplicationContext(), users);
         } else {
             //TODO: show list of users to recyclerView and check if exists then hide import button
         }
@@ -139,11 +149,49 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
 
     @Override
     public void onFragmentFinish(Fragment currentFragment, int destination, boolean isForward) {
-        fragment = new FormListFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_ADMIN)
-                .commit();
-        bottomBar.setVisibility(View.INVISIBLE);
+        int enter = R.anim.enter_from_right;
+        int exit = R.anim.exit_to_left;
+
+        if (!isForward){
+            enter = R.anim.enter_from_left;
+            exit = R.anim.exit_to_right;
+        }
+        switch (destination) {
+            case FRAGMENT_FINISH_GOTO_HOME_ADMIN:
+                fragment = new HomeAdminFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_ADMIN)
+                        .commit();
+                break;
+            case FRAGMENT_FINISH_GOTO_FORM_LIST:
+                fragment = new FormListFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_FORM_LIST)
+                        .commit();
+                break;
+            case FRAGMENT_FINISH_GOTO_PDF_VIEWER:
+                fragment = new PdfViewerFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_PDF_VIEWER)
+                        .commit();
+                break;
+        }
+    }
+
+    @Override
+    public void onFragmentCreated(Fragment currentFragment) {
+        if (currentFragment instanceof HomeAdminFragment) {
+            Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+            bottomBar.startAnimation(fadeIn);
+            bottomBar.setVisibility(View.VISIBLE);
+        } else {
+            Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+            bottomBar.startAnimation(fadeOut);
+            bottomBar.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -153,11 +201,24 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
 
     @Override
     public void onActivityFinish() {
-
+        finish();
     }
 
     @Override
     public void onActivityBackPressed() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (fragment instanceof HomeAdminFragment) {
+            finish();
+        } else if (fragment instanceof FormListFragment){
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
+        } else if (fragment instanceof PdfViewerFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_FORM_LIST, false);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

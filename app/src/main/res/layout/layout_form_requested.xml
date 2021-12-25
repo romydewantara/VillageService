@@ -4,20 +4,14 @@
     android:id="@+id/userRequest"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
     android:background="@android:color/transparent">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:padding="10dp"
-        app:cardCornerRadius="15dp"
-        app:cardMaxElevation="10dp">
+        app:cardCornerRadius="12dp"
+        app:cardMaxElevation="1dp"
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutItems"
@@ -79,7 +73,7 @@
                 android:gravity="end"
                 android:paddingRight="15dp"
                 android:text="10/10/2021"
-                android:textColor="@color/dark_blue_max"
+                android:textColor="@color/dark_blue"
                 android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

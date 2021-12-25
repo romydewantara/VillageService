@@ -27,7 +27,7 @@ public class AppUtil {
         }
     }
 
-    public void importUserData(Context context, String key, List<User> userList) {
+    public void importUserData(Context context, List<User> userList) {
         ArrayList<Object> objUserList = new ArrayList<>();
         for (int i = 0; i < userList.size(); i++) {
             User user = new User();
@@ -47,7 +47,7 @@ public class AppUtil {
             user.setNamaIbu(userList.get(i).getNamaIbu());
             objUserList.add(user);
         }
-        VSPreference.getInstance(context).saveUserList(key, objUserList);
+        VSPreference.getInstance(context).saveUserList(objUserList);
     }
 
     public void updateUserData(Context context, String key) {

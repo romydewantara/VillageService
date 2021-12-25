@@ -1,6 +1,7 @@
 package com.example.villageservice.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.TypedValue;
@@ -11,20 +12,27 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.villageservice.R;
 import com.example.villageservice.activity.AdminActivity;
+import com.example.villageservice.activity.SignInActivity;
+import com.example.villageservice.library.CustomAlertDialog;
+import com.example.villageservice.library.CustomLoadingDialog;
+import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.utility.Fonts;
+import com.example.villageservice.utility.VSPreference;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,11 +42,16 @@ import java.util.TimerTask;
  * Use the {@link HomeAdminFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeAdminFragment extends Fragment implements FragmentListener {
+public class HomeAdminFragment extends Fragment {
 
     private Context context;
+    private CustomLoadingDialog customLoadingDialog;
 
+    private RelativeLayout overlay;
+    private ConstraintLayout constraintContainer;
+    private ConstraintLayout constraintHeader;
     private View view;
+    private ImageView signOutButton;
     private AppCompatTextView tvHeader;
     private AppCompatTextView tvContentHeader;
     private AppCompatTextView tvInfoTitle1;
@@ -53,6 +66,7 @@ public class HomeAdminFragment extends Fragment implements FragmentListener {
     private CardView cvInfo4;
     private CardView cvInfo5;
     private CardView cvInfo6;
+    private CardView cvBanner;
     private ImageSwitcher imageSwitcher;
 
     private FragmentListener fragmentListener;
@@ -105,7 +119,10 @@ public class HomeAdminFragment extends Fragment implements FragmentListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home_admin, container, false);
-
+        fragmentListener.onFragmentCreated(this);
+        constraintContainer = view.findViewById(R.id.constraintContainer);
+        constraintHeader = view.findViewById(R.id.constraintHeader);
+        signOutButton = view.findViewById(R.id.signOutButton);
         tvHeader = view.findViewById(R.id.tvHeader);
         tvContentHeader = view.findViewById(R.id.tvContentHeader);
         tvInfoTitle1 = view.findViewById(R.id.tvInfoTitle1);
@@ -120,7 +137,9 @@ public class HomeAdminFragment extends Fragment implements FragmentListener {
         cvInfo4 = view.findViewById(R.id.cvInfo4);
         cvInfo5 = view.findViewById(R.id.cvInfo5);
         cvInfo6 = view.findViewById(R.id.cvInfo6);
+        cvBanner = view.findViewById(R.id.cvBanner);
         imageSwitcher = view.findViewById(R.id.imageSwitcher);
+        overlay = view.findViewById(R.id.overlay);
 
         return view;
     }
@@ -131,6 +150,7 @@ public class HomeAdminFragment extends Fragment implements FragmentListener {
 
         setFonts();
         initListener();
+        prepareLayout();
         imageSwitcher.setInAnimation(imgAnimationIn);
         imageSwitcher.setOutAnimation(imgAnimationOut);
         imageSwitcher.setVisibility(View.VISIBLE);
@@ -174,6 +194,7 @@ public class HomeAdminFragment extends Fragment implements FragmentListener {
 
     private void iniMandatory() {
         fonts = new Fonts(context);
+        customLoadingDialog = new CustomLoadingDialog(context);
         imgAnimationIn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
         imgAnimationIn.setDuration(1200);
         imgAnimationOut = AnimationUtils.loadAnimation(context, android.R.anim.slide_out_right);
@@ -184,38 +205,49 @@ public class HomeAdminFragment extends Fragment implements FragmentListener {
         cvInfo1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentListener.onFragmentFinish(HomeAdminFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_FORM_LIST, true);
-                Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Nikah", Toast.LENGTH_SHORT).show();
+                goToNextFragment(1);
+                //Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Nikah", Toast.LENGTH_SHORT).show();
             }
         });
         cvInfo2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar UMKM", Toast.LENGTH_SHORT).show();
+                goToNextFragment(1);
+                //Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar UMKM", Toast.LENGTH_SHORT).show();
             }
         });
         cvInfo3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Permintaan Persetujuan Formulir Pindah Rumah", Toast.LENGTH_SHORT).show();
+                goToNextFragment(1);
+                //Toast.makeText(context, "Permintaan Persetujuan Formulir Pindah Rumah", Toast.LENGTH_SHORT).show();
             }
         });
         cvInfo4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Pembuatan Kartu Keluarga", Toast.LENGTH_SHORT).show();
+                goToNextFragment(1);
+                //Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Pembuatan Kartu Keluarga", Toast.LENGTH_SHORT).show();
             }
         });
         cvInfo5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Pembuatan Akta Lahir", Toast.LENGTH_SHORT).show();
+                goToNextFragment(1);
+                //Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Pembuatan Akta Lahir", Toast.LENGTH_SHORT).show();
             }
         });
         cvInfo6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Permintaan Persetujuan Pembuatan Surat Kematian", Toast.LENGTH_SHORT).show();
+                goToNextFragment(1);
+                //Toast.makeText(context, "Permintaan Persetujuan Pembuatan Surat Kematian", Toast.LENGTH_SHORT).show();
+            }
+        });
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomDialog("", "Apakah anda yakin anda ingin keluar?", "Ya", "Batal");
             }
         });
     }
@@ -250,27 +282,55 @@ public class HomeAdminFragment extends Fragment implements FragmentListener {
         };
     }
 
+    private void prepareLayout() {
+        showOverlay(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.bounched_show);
+                constraintHeader.setVisibility(View.VISIBLE);
+                cvBanner.startAnimation(slideUp);
+                cvBanner.setVisibility(View.VISIBLE);
+                tvContentHeader.setVisibility(View.VISIBLE);
+                constraintContainer.setVisibility(View.VISIBLE);
+                showOverlay(false);
+            }
+        }, 1800);
+    }
+
     private void stopImageSwitcher() {
         imageSwitcherHandler.removeCallbacks(imageSwitcherRunnable);
     }
 
-    @Override
-    public void onFragmentFinish(Fragment currentFragment, int destination, boolean isForward) {
-
+    private void goToNextFragment(int nextFragment) {
+        fragmentListener.onFragmentFinish(HomeAdminFragment.this, nextFragment, true);
     }
 
-    @Override
-    public void onFragmentPaused() {
-
+    public void showOverlay(boolean isShow) {
+        if (isShow) {
+            overlay.setVisibility(View.VISIBLE);
+            customLoadingDialog.show();
+        } else {
+            customLoadingDialog.dismiss();
+            overlay.setVisibility(View.INVISIBLE);
+        }
     }
 
-    @Override
-    public void onActivityFinish() {
-
-    }
-
-    @Override
-    public void onActivityBackPressed() {
-
+    private void showCustomDialog(String title, String message, String pButton, String nButton) {
+        FragmentManager fm = getFragmentManager();
+        CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, title, message)
+                .setButton(pButton, nButton, new CustomAlertDialogListener() {
+                    @Override
+                    public void onNegativePressed() {}
+                    @Override
+                    public void onPositivePressed() {
+                        VSPreference.getInstance(context).logout();
+                        startActivity(new Intent(context, SignInActivity.class));
+                        fragmentListener.onActivityFinish();
+                    }
+                });
+        if (fm != null) {
+            customAlertDialog.show(fm, "custom_alert_dialog");
+        }
     }
 }
