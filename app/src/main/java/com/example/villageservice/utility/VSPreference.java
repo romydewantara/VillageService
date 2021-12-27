@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public class VSPreference {
@@ -52,12 +53,20 @@ public class VSPreference {
         return (User) getObject(ConstantVariable.KEY_USER, User.class);
     }
 
-    public void insertKK(KartuKeluarga kartuKeluarga) {
+    public void inputKK(String key, KartuKeluarga kartuKeluarga) {
+        putObject(key, kartuKeluarga);
+    }
+
+    public KartuKeluarga getKK(String key) {
+        return (KartuKeluarga) getObject(key, KartuKeluarga.class);
+    }
+
+    public void saveKKList(KartuKeluarga kartuKeluarga) {
         putObject(ConstantVariable.KEY_KARTU_KELUARGA, kartuKeluarga);
     }
 
-    public KartuKeluarga getKK() {
-        return (KartuKeluarga) getObject(ConstantVariable.KEY_KARTU_KELUARGA, KartuKeluarga.class);
+    public List<Object> getKKList() {
+        return getListObject(ConstantVariable.KEY_KARTU_KELUARGA, KartuKeluarga.class);
     }
 
     public void deleteUser() {

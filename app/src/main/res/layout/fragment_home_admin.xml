@@ -10,7 +10,7 @@
         android:id="@+id/lottieBackground"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/ic_bg_home"
+        android:background="@drawable/ic_bg_home_by_stwn"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.43"

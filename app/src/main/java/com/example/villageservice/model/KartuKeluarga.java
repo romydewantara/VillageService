@@ -2,6 +2,7 @@ package com.example.villageservice.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class KartuKeluarga {
@@ -10,10 +11,10 @@ public class KartuKeluarga {
     private long idKartuKeluarga;
 
     @SerializedName("nama_kepala_keluarga")
-    private String namaKepalaKeluarga;
+    private String namaKepalaKeluarga = "";
 
     @SerializedName("alamat")
-    private String alamat;
+    private String alamat = "";
 
     @SerializedName("nomor_rt")
     private int nomorRt;
@@ -22,22 +23,22 @@ public class KartuKeluarga {
     private int nomorRw;
 
     @SerializedName("kelurahan")
-    private String kelurahan;
+    private String kelurahan = "";
 
     @SerializedName("kecamatan")
-    private String kecamatan;
+    private String kecamatan = "";
 
     @SerializedName("kota")
-    private String kota;
+    private String kota = "";
 
     @SerializedName("kode_pos")
     private int kodePos;
 
     @SerializedName("provinsi")
-    private String provinsi;
+    private String provinsi = "";
 
     @SerializedName("anggota_keluarga")
-    private List<User> anggotaKeluarga;
+    private List<User> anggotaKeluarga = new ArrayList<>();
 
     public long getIdKartuKeluarga() {
         return idKartuKeluarga;

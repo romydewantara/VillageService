@@ -17,5 +17,8 @@
     <string name="menu_five">Surat Pengantar\nAkta Kelahiran</string>
     <string name="menu_six">Surat Pengantar\nAkta Kematian</string>
 
+    <string name="menu_citizen_one">Kartu Keluarga\nTerdaftar</string>
+    <string name="menu_citizen_two">Kartu Tanda Penduduk\nTerdaftar</string>
+
     <string name="form_list">Formulir Persetujuan</string>
 </resources>

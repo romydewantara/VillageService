@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,19 +11,18 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.example.villageservice.R;
-import com.example.villageservice.fragment.CitizensFragment;
 import com.example.villageservice.fragment.FormListFragment;
 import com.example.villageservice.fragment.HomeAdminFragment;
+import com.example.villageservice.fragment.CitizenFragment;
+import com.example.villageservice.fragment.InputNewUsersFragment;
 import com.example.villageservice.fragment.NotificationsFragment;
 import com.example.villageservice.fragment.PdfViewerFragment;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.User;
 import com.example.villageservice.model.UserList;
 import com.example.villageservice.utility.AppUtil;
-import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -50,11 +47,14 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     public static final int FRAGMENT_FINISH_GOTO_HOME_ADMIN = 0;
     public static final int FRAGMENT_FINISH_GOTO_FORM_LIST = 1;
     public static final int FRAGMENT_FINISH_GOTO_PDF_VIEWER = 2;
+    public static final int FRAGMENT_FINISH_GOTO_CITIZENS = 3;
+    public static final int FRAGMENT_FINISH_GOTO_INPUT_USER = 4;
 
     public static final String TAG_FRAGMENT_HOME_ADMIN = "home_admin_fragment";
     public static final String TAG_FRAGMENT_FORM_LIST = "form_list_fragment";
     public static final String TAG_FRAGMENT_PDF_VIEWER = "pdf_viewer_fragment";
     public static final String TAG_FRAGMENT_CITIZENS = "citizens_fragment";
+    public static final String TAG_FRAGMENT_INPUT_USER = "input_user_fragment";
     public static final String TAG_FRAGMENT_NOTIFICATIONS = "notifications_fragment";
 
     @Override
@@ -89,7 +89,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
 
     @SuppressLint("NewApi")
     private void goToCitizens() {
-        fragment = new CitizensFragment();
+        fragment = new CitizenFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment, TAG_FRAGMENT_CITIZENS)
                 .commit();
@@ -176,6 +176,20 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_PDF_VIEWER)
+                        .commit();
+                break;
+            case FRAGMENT_FINISH_GOTO_CITIZENS:
+                fragment = new CitizenFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_CITIZENS)
+                        .commit();
+                break;
+            case FRAGMENT_FINISH_GOTO_INPUT_USER:
+                fragment = new InputNewUsersFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_INPUT_USER)
                         .commit();
                 break;
         }
