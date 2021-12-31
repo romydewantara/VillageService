@@ -1,18 +1,16 @@
 package com.example.villageservice.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.widget.TextViewCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.TypedValue;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.TextViewCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.villageservice.R;
-import com.example.villageservice.fragment.HomeAdminFragment;
 import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
 

@@ -2,18 +2,23 @@ package com.example.villageservice.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
 import com.example.villageservice.activity.AdminActivity;
+import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.utility.VSPreference;
 
@@ -27,9 +32,15 @@ import java.util.List;
 public class CitizenFragment extends Fragment {
 
     private Context context;
+    private CustomLoadingDialog customLoadingDialog;
     private FragmentListener fragmentListener;
 
+    private ConstraintLayout constraintHeader;
+    private LinearLayout linearMainMenu;
+    private RelativeLayout overlay;
     private View view;
+    private CardView cvInfoLeader;
+    private CardView cvInfoWargaBaru;
     private Button addUserButton;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -62,6 +73,7 @@ public class CitizenFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        initMandatory();
     }
 
     @Override
@@ -69,19 +81,21 @@ public class CitizenFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_citizen, container, false);
+        constraintHeader = view.findViewById(R.id.constraintHeader);
+        linearMainMenu = view.findViewById(R.id.linearMainMenu);
         addUserButton = view.findViewById(R.id.addUserButton);
+        cvInfoLeader = view.findViewById(R.id.cvInfoLeader);
+        cvInfoWargaBaru = view.findViewById(R.id.cvInfoWargaBaru);
+        overlay = view.findViewById(R.id.overlay);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        addUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_INPUT_USER, true);
-            }
-        });
+
+        initListener();
+        prepareLayout();
     }
 
     @Override
@@ -102,11 +116,17 @@ public class CitizenFragment extends Fragment {
     }
 
     private void initMandatory() {
-
+        fragmentListener.onFragmentCreated(CitizenFragment.this);
+        customLoadingDialog = new CustomLoadingDialog(context);
     }
 
     private void initListener() {
-
+        addUserButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_INPUT_USER, true);
+            }
+        });
     }
 
     private void setFonts() {
@@ -117,4 +137,28 @@ public class CitizenFragment extends Fragment {
         return VSPreference.getInstance(context).getKKList();
     }
 
+    private void prepareLayout() {
+        showOverlay(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                constraintHeader.setVisibility(View.VISIBLE);
+                linearMainMenu.setVisibility(View.VISIBLE);
+                addUserButton.setVisibility(View.VISIBLE);
+                cvInfoLeader.setVisibility(View.VISIBLE);
+                cvInfoWargaBaru.setVisibility(View.VISIBLE);
+                showOverlay(false);
+            }
+        }, 1400);
+    }
+
+    public void showOverlay(boolean isShow) {
+        if (isShow) {
+            overlay.setVisibility(View.VISIBLE);
+            customLoadingDialog.show();
+        } else {
+            customLoadingDialog.dismiss();
+            overlay.setVisibility(View.INVISIBLE);
+        }
+    }
 }

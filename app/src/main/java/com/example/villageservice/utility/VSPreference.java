@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
 import com.google.gson.Gson;
@@ -45,12 +46,20 @@ public class VSPreference {
         return getString(ConstantVariable.KEY_ROLE);
     }
 
-    public void insertUser(User user) {
+    public void setUser(User user) {
         putObject(ConstantVariable.KEY_USER, user);
     }
 
-    public User getUser() {
-        return (User) getObject(ConstantVariable.KEY_USER, User.class);
+    public Object getUser() {
+        return getObject(ConstantVariable.KEY_USER, User.class);
+    }
+
+    public void insertUser(String key, User user) {
+        putObject(key, user);
+    }
+
+    public User getDataUser(String key) {
+        return (User) getObject(key, User.class);
     }
 
     public void inputKK(String key, KartuKeluarga kartuKeluarga) {
@@ -81,8 +90,17 @@ public class VSPreference {
         return getListObject(ConstantVariable.KEY_USER_LIST, User.class);
     }
 
+    public void setCoveringLetter(String key, CoveringLetter coveringLetter) {
+        putObject(key, coveringLetter);
+    }
+
+    public CoveringLetter getCoveringLetter(String key) {
+        return (CoveringLetter) getObject(key, CoveringLetter.class);
+    }
+
     public void logout() {
         setRole("");
+        setUser(null);
         setSignIn(false);
         //Delete all sharedpref except checksum values
         Map<String, ?> map = getAll();

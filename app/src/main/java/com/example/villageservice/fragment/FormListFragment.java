@@ -21,6 +21,7 @@ import com.example.villageservice.activity.AdminActivity;
 import com.example.villageservice.adapter.FormListAdapter;
 import com.example.villageservice.listener.FormUserRequestedListener;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.User;
 import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
@@ -76,6 +77,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        fragmentListener.onFragmentCreated(FormListFragment.this);
         users = new ArrayList<>();
         users = getUserRequestList();
     }
@@ -145,6 +147,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     @Override
     public void onSelectedUserRequest(long ktp, String name) {
         User user = new User();
+        CoveringLetter coveringLetter = new CoveringLetter();
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getIdKtp() == ktp && users.get(i).getNamaLengkap().equalsIgnoreCase(name)) {
                 user.setIdKtp(ktp);
@@ -164,6 +167,16 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                 user.setNamaIbu(users.get(i).getNamaIbu());
             }
         }
+        appliedCoveringLetter(user);
+        VSPreference.getInstance(context).setUser(user);
         fragmentListener.onFragmentFinish(FormListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_PDF_VIEWER, true);
+    }
+
+    private void appliedCoveringLetter(User user) {
+        CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05", "Nomor" + "132912830918230912",
+                user.getNamaLengkap(), user.getJenisKelamin(), "20-12-1995", user.getJenisPekerjaan(),
+                String.valueOf(user.getIdKtp()), user.getKewarganegaraan(), user.getPendidikan(), user.getAgama(), "", "keperluan",
+                "NomorFooter", "tanggalRW", "namaRW", "tanggalRT", "namaRT");
+        VSPreference.getInstance(context).setCoveringLetter(String.valueOf(user.getIdKtp()), coveringLetter);
     }
 }

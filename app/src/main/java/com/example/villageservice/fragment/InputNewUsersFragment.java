@@ -2,23 +2,31 @@ package com.example.villageservice.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.villageservice.R;
+import com.example.villageservice.library.CustomLoadingDialog;
+import com.example.villageservice.library.InputUserDialog;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.listener.InputUserDialogListener;
 import com.example.villageservice.model.KartuKeluarga;
+import com.example.villageservice.model.User;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,9 +37,16 @@ public class InputNewUsersFragment extends Fragment {
 
     private Context context;
     private FragmentListener fragmentListener;
+    private CustomLoadingDialog customLoadingDialog;
+
+    private List<User> temporaryUserAdded;
 
     private View view;
-    private EditText et1;
+    private ImageView addMemberButton;
+    private EditText etIdKK;
+    private EditText etNamaLengkap;
+    private EditText etKewarganegaraan;
+    private EditText etPekerjaan;
     private Button btn1;
 
     KartuKeluarga kartuKeluarga = new KartuKeluarga();
@@ -74,14 +89,19 @@ public class InputNewUsersFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        fragmentListener.onFragmentCreated(InputNewUsersFragment.this);
+        initMandatory();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_input_new_users, container, false);
-        et1 = view.findViewById(R.id.et1);
-        btn1 = view.findViewById(R.id.btn1);
+        addMemberButton = view.findViewById(R.id.addMemberButton);
+        etIdKK = view.findViewById(R.id.etIdKK);
+        etNamaLengkap = view.findViewById(R.id.etKepKK);
+        etPekerjaan = view.findViewById(R.id.etAddress);
+        etKewarganegaraan = view.findViewById(R.id.etKel);
 
         return view;
     }
@@ -89,15 +109,24 @@ public class InputNewUsersFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        btn1.setOnClickListener(new View.OnClickListener() {
+        addMemberButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String key = et1.getText().toString();
-                long id = Long.parseLong(et1.getText().toString());
-                kartuKeluarga.setIdKartuKeluarga(id);
+                //saveDataKK();
+                //showInputUserDialog();
+                long idKtp = Long.parseLong(etIdKK.getText().toString());
+                String namaLengkap = etNamaLengkap.getText().toString();
+                String pekerjaan = etPekerjaan.getText().toString();
+                String kewarganegaraan = etKewarganegaraan.getText().toString();
 
-                VSPreference.getInstance(context).inputKK(key, kartuKeluarga);
-                Log.d("KartuKeluarga", "onViewCreated - data: " + new Gson().toJson(kartuKeluarga));
+                User user = new User();
+                user.setIdKtp(idKtp);
+                user.setNamaLengkap(namaLengkap);
+                user.setJenisPekerjaan(pekerjaan);
+                user.setKewarganegaraan(kewarganegaraan);
+                VSPreference.getInstance(context).setUser(user);
+                Log.d("USERS", "onClick - data: " + VSPreference.getInstance(context).getUser());
+
             }
         });
     }
@@ -118,4 +147,47 @@ public class InputNewUsersFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
+    private void initMandatory() {
+        temporaryUserAdded = new ArrayList<>();
+    }
+
+    private void showInputUserDialog() {
+        FragmentManager fm = getFragmentManager();
+        InputUserDialog inputUserDialog = InputUserDialog.newInstance(context, "Anggota Keluarga")
+                .setButton("Tambah", "Batal", new InputUserDialogListener() {
+                    @Override
+                    public void onAddButtonPressed(User user) {
+                        temporaryUserAdded.add(user);
+                    }
+                    @Override
+                    public void onCancelButtonPressed() {}
+                });
+        if (fm != null) {
+            inputUserDialog.show(fm, "input_user_dialog");
+        }
+    }
+    private void saveDataKK() {
+        String key = etIdKK.getText().toString();
+        long id = Long.parseLong(etIdKK.getText().toString());
+        kartuKeluarga.setIdKartuKeluarga(id);
+        kartuKeluarga.setAnggotaKeluarga(temporaryUserAdded);
+
+        VSPreference.getInstance(context).inputKK(key, kartuKeluarga);
+        Log.d("KartuKeluarga", "onViewCreated - data: " + new Gson().toJson(VSPreference.getInstance(context).getKK(key)));
+    }
+
+    private void insertKTP(User user) {
+        String key = String.valueOf(user.getIdKtp());
+        VSPreference.getInstance(context).insertUser(key, user);
+    }
+
+    private void updateFamilyMember() {
+
+    }
+
+    private void deleteFamilyMember() {
+
+    }
+
 }

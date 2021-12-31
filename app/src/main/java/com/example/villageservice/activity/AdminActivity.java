@@ -1,21 +1,19 @@
 package com.example.villageservice.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.example.villageservice.R;
+import com.example.villageservice.fragment.CitizenFragment;
 import com.example.villageservice.fragment.FormListFragment;
 import com.example.villageservice.fragment.HomeAdminFragment;
-import com.example.villageservice.fragment.CitizenFragment;
 import com.example.villageservice.fragment.InputNewUsersFragment;
 import com.example.villageservice.fragment.NotificationsFragment;
 import com.example.villageservice.fragment.PdfViewerFragment;
@@ -49,6 +47,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     public static final int FRAGMENT_FINISH_GOTO_PDF_VIEWER = 2;
     public static final int FRAGMENT_FINISH_GOTO_CITIZENS = 3;
     public static final int FRAGMENT_FINISH_GOTO_INPUT_USER = 4;
+    public static final int FRAGMENT_FINISH_GOTO_NOTIFICATION = 6;
 
     public static final String TAG_FRAGMENT_HOME_ADMIN = "home_admin_fragment";
     public static final String TAG_FRAGMENT_FORM_LIST = "form_list_fragment";
@@ -111,7 +110,8 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
 
     private void fetchUsers() {
         String jsonFile = appUtil.readTextFileFromAssets(getApplicationContext(), "json/users.json");
-        Type listData = new TypeToken<UserList>() {}.getType();
+        Type listData = new TypeToken<UserList>() {
+        }.getType();
         userList = new Gson().fromJson(jsonFile, listData);
         users = new ArrayList<>();
         if (!userList.getUserList().isEmpty()) {
@@ -130,19 +130,25 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         homeBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToHome();
+                if (fragment.getTag() != null && !fragment.getTag().equalsIgnoreCase(TAG_FRAGMENT_HOME_ADMIN)) {
+                    goToHome();
+                }
             }
         });
         userBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToCitizens();
+                if (fragment.getTag() != null && !fragment.getTag().equalsIgnoreCase(TAG_FRAGMENT_CITIZENS)) {
+                    goToCitizens();
+                }
             }
         });
         notificationBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNotifications();
+                if (fragment.getTag() != null && !fragment.getTag().equalsIgnoreCase(TAG_FRAGMENT_NOTIFICATIONS)) {
+                    goToNotifications();
+                }
             }
         });
     }
@@ -152,7 +158,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         int enter = R.anim.enter_from_right;
         int exit = R.anim.exit_to_left;
 
-        if (!isForward){
+        if (!isForward) {
             enter = R.anim.enter_from_left;
             exit = R.anim.exit_to_right;
         }
@@ -192,18 +198,37 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                         .replace(R.id.container, fragment, TAG_FRAGMENT_INPUT_USER)
                         .commit();
                 break;
+
+            case FRAGMENT_FINISH_GOTO_NOTIFICATION:
+                fragment = new NotificationsFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_INPUT_USER)
+                        .commit();
+
+                break;
         }
     }
 
+    @SuppressLint("NewApi")
     @Override
     public void onFragmentCreated(Fragment currentFragment) {
         if (currentFragment instanceof HomeAdminFragment) {
-            Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
-            bottomBar.startAnimation(fadeIn);
+            homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_on));
+            userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
+            notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_off));
+            bottomBar.setVisibility(View.VISIBLE);
+        } else if (currentFragment instanceof CitizenFragment) {
+            homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_off));
+            userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_on));
+            notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_off));
+            bottomBar.setVisibility(View.VISIBLE);
+        } else if (currentFragment instanceof NotificationsFragment) {
+            homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_off));
+            userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
+            notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_on));
             bottomBar.setVisibility(View.VISIBLE);
         } else {
-            Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
-            bottomBar.startAnimation(fadeOut);
             bottomBar.setVisibility(View.GONE);
         }
     }
@@ -227,10 +252,16 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     public void onBackPressed() {
         if (fragment instanceof HomeAdminFragment) {
             finish();
-        } else if (fragment instanceof FormListFragment){
+        } else if (fragment instanceof FormListFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
         } else if (fragment instanceof PdfViewerFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_FORM_LIST, false);
+        } else if (fragment instanceof CitizenFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
+        } else if (fragment instanceof InputNewUsersFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_CITIZENS, false);
+        } else if (fragment instanceof NotificationsFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
         } else {
             super.onBackPressed();
         }

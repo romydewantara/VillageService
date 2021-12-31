@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameL1"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nama"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".35" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameR1"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": Hero"
+            app:layout_constraintLeft_toRightOf="@id/tvNameL1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".65" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameL2"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Jenis Kelamin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR1"
+            app:layout_constraintWidth_percent=".35" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameR2"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": Laki-laki"
+            app:layout_constraintLeft_toRightOf="@id/tvNameL2"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR1"
+            app:layout_constraintWidth_percent=".65" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameL3"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Tempat/Tgl. Lahir"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR2"
+            app:layout_constraintWidth_percent=".35" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameR3"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": 20.12.21"
+            app:layout_constraintLeft_toRightOf="@id/tvNameL3"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR2"
+            app:layout_constraintWidth_percent=".65" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameL4"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Pekerjaan"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR3"
+            app:layout_constraintWidth_percent=".35" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameR4"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": Karyawan"
+            app:layout_constraintLeft_toRightOf="@id/tvNameL4"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR3"
+            app:layout_constraintWidth_percent=".65" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameL5"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="No. KTP/KK"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR4"
+            app:layout_constraintWidth_percent=".35" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameR5"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": 12401920391023"
+            app:layout_constraintLeft_toRightOf="@id/tvNameL5"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR4"
+            app:layout_constraintWidth_percent=".65" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameL6"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Kewarganegaraan"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR5"
+            app:layout_constraintWidth_percent=".35" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameR6"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": WNI"
+            app:layout_constraintLeft_toRightOf="@id/tvNameL6"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR5"
+            app:layout_constraintWidth_percent=".65" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameL7"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Pendidikan"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR6"
+            app:layout_constraintWidth_percent=".35" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameR7"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": SD"
+            app:layout_constraintLeft_toRightOf="@id/tvNameL7"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR6"
+            app:layout_constraintWidth_percent=".65" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameL8"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Agama"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR7"
+            app:layout_constraintWidth_percent=".35" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameR8"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": Islam"
+            app:layout_constraintLeft_toRightOf="@id/tvNameL8"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR7"
+            app:layout_constraintWidth_percent=".65" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameL9"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR8"
+            app:layout_constraintWidth_percent=".35" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameR9"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": Kampung Jembatan RT. 007/RW. 014\nKel. Penggilingan Kec. Cakung Jakarta Timur"
+            app:layout_constraintLeft_toRightOf="@id/tvNameL9"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR8"
+            app:layout_constraintWidth_percent=".65" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameL10"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Maksud/Keperluan"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR9"
+            app:layout_constraintWidth_percent=".35" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameR10"
+            style="@style/TextBlackRegularStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=": Membuat surat pengantar layak nikah"
+            app:layout_constraintLeft_toRightOf="@id/tvNameL10"
+            app:layout_constraintTop_toBottomOf="@id/tvNameR9"
+            app:layout_constraintWidth_percent=".65" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

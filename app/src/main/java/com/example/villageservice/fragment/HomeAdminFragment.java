@@ -25,7 +25,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.villageservice.R;
-import com.example.villageservice.activity.AdminActivity;
 import com.example.villageservice.activity.SignInActivity;
 import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
