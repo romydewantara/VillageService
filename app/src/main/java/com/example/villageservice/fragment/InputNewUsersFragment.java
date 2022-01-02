@@ -2,6 +2,7 @@ package com.example.villageservice.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,15 +20,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.villageservice.R;
 import com.example.villageservice.adapter.MembersAdapter;
+import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.library.CustomMembershipDialog;
 import com.example.villageservice.library.InputUserDialog;
+import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.CustomMembershipDialogListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.listener.InputUserDialogListener;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
 import com.example.villageservice.utility.VSPreference;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +64,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private EditText etKota;
     private EditText etPostal;
     private EditText etProvinsi;
+    private EditText etPassword;
 
     private Button saveButton;
 
@@ -124,6 +129,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         etKota = view.findViewById(R.id.etKota);
         etPostal = view.findViewById(R.id.etPostal);
         etProvinsi = view.findViewById(R.id.etProvinsi);
+        etPassword = view.findViewById(R.id.etPassword);
         addMemberButton = view.findViewById(R.id.addMemberButton);
         tvEmpty = view.findViewById(R.id.tvEmpty);
         saveButton = view.findViewById(R.id.saveButton);
@@ -170,7 +176,26 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveDataKK();
+                if (!etIdKK.getText().toString().isEmpty() && !etKepKK.getText().toString().isEmpty() &&
+                        !etAddress.getText().toString().isEmpty() && !etRT.getText().toString().isEmpty() &&
+                        !etRW.getText().toString().isEmpty() && !etKel.getText().toString().isEmpty() &&
+                        !etKec.getText().toString().isEmpty() && !etKota.getText().toString().isEmpty() &&
+                        !etPostal.getText().toString().isEmpty() && !etProvinsi.getText().toString().isEmpty()) {
+                    saveDataKK();
+                } else {
+                    FragmentManager fm = getFragmentManager();
+                    CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context,
+                            "Informasi", "Silakan melengkapi seluruh data\nKartu Keluarga terlebih dahulu")
+                            .setButton("Tutup", "", new CustomAlertDialogListener() {
+                                @Override
+                                public void onNegativePressed() {}
+                                @Override
+                                public void onPositivePressed() {}
+                            });
+                    if (fm != null) {
+                        customAlertDialog.show(fm, "custom_alert_dialog");
+                    }
+                }
             }
         });
     }
@@ -218,6 +243,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         tempKKObj.setKodePos(Integer.parseInt(etPostal.getText().toString()));
         tempKKObj.setProvinsi(etProvinsi.getText().toString());
         tempKKObj.setKeluargaList(temporaryUserAdded);
+        tempKKObj.setPassword(etPassword.getText().toString());
 
         ArrayList<Object> kkObjList = VSPreference.getInstance(context).getKKList(); //get KK List from Pref
         ArrayList<Object> kartuKeluargaList = new ArrayList<>(); //create new temporary KK obj List
@@ -228,6 +254,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
             }
         }
         kartuKeluargaList.add(tempKKObj);
+        Log.d("XXXLOG", "saveDataKK - KK List: " + new Gson().toJson(kartuKeluargaList));
         VSPreference.getInstance(context).saveKKList(kartuKeluargaList);
 
     }

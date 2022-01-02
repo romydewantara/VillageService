@@ -43,6 +43,9 @@ public class KartuKeluarga {
     @SerializedName("anggota_keluarga")
     private List<User> anggotaKeluarga = new ArrayList<>();
 
+    @SerializedName("password")
+    private String password = "";
+
     public String getIdKartuKeluarga() {
         return idKartuKeluarga;
     }
@@ -137,5 +140,13 @@ public class KartuKeluarga {
 
     public void setKeluargaList(List<User> anggotaKeluarga) {
         this.anggotaKeluarga = anggotaKeluarga;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

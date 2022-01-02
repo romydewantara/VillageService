@@ -35,18 +35,21 @@
         <item name="android:textSize">10sp</item>
     </style>
 
+    <!-- RALEWAY BOLD BLACK -->
     <style name="TextBlackBoldRalewayStyle1">
         <item name="android:fontFamily">@font/raleway_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">14sp</item>
     </style>
 
+    <!-- RALEWAY BOLD GREY -->
     <style name="TextGreyBoldRalewayStyle1">
         <item name="android:fontFamily">@font/raleway_bold</item>
         <item name="android:textColor">@color/dark_grey</item>
         <item name="android:textSize">14sp</item>
     </style>
 
+    <!-- RALEWAY MEDIUM BLACK -->
     <style name="TextBlackMediumRalewayStyle1">
         <item name="android:fontFamily">@font/raleway_medium</item>
         <item name="android:textColor">@color/black</item>
@@ -65,6 +68,7 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!-- RALEWAY REGULAR BLACK -->
     <style name="TextBlackRegularRalewayStyle1">
         <item name="android:fontFamily">@font/raleway_regular</item>
         <item name="android:textColor">@color/black</item>
@@ -89,6 +93,14 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <!-- RALEWAY MEDIUM-ITALIC GREY -->
+    <style name="TextBlackItalicRalewayStyle2">
+        <item name="android:fontFamily">@font/raleway_medium_italic</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- RALEWAY BOLD BLUE -->
     <style name="TextBlueBoldRalewayStyle1">
         <item name="android:fontFamily">@font/raleway_bold</item>
         <item name="android:textColor">@color/blue</item>

@@ -48,7 +48,6 @@
                     android:id="@+id/ktpChooser"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:entries="@array/ktpExampleItems"
                     android:popupBackground="@drawable/background_edit_text_rounded" />
             </RelativeLayout>
 

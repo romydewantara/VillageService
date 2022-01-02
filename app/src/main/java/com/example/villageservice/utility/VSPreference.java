@@ -63,12 +63,12 @@ public class VSPreference {
         return (User) getObject(key, User.class);
     }
 
-    public void inputKK(String key, KartuKeluarga kartuKeluarga) {
-        putObject(key, kartuKeluarga);
+    public void setKK(KartuKeluarga kartuKeluarga) {
+        putObject(ConstantVariable.KEY_KARTU_KELUARGA, kartuKeluarga);
     }
 
-    public KartuKeluarga getKK(String key) {
-        return (KartuKeluarga) getObject(key, KartuKeluarga.class);
+    public KartuKeluarga getKK() {
+        return (KartuKeluarga) getObject(ConstantVariable.KEY_KARTU_KELUARGA, KartuKeluarga.class);
     }
 
     public void saveKKList(ArrayList<Object> kartuKeluargaList) {
@@ -116,7 +116,7 @@ public class VSPreference {
         for (Map.Entry<String, ?> entry : map.entrySet()) {
             String key = entry.getKey();
             if (!key.contains(ConstantVariable.KEY_USER)){
-                remove(key);
+                //remove(key);
             }
         }
     }

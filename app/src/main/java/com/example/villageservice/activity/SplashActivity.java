@@ -11,6 +11,7 @@ import androidx.core.widget.TextViewCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.villageservice.R;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
 
@@ -32,7 +33,6 @@ public class SplashActivity extends AppCompatActivity {
         tvCopyright.setTextColor(R.color.light_blue);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvCopyright, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
 
-        VSPreference.getInstance(getApplicationContext()).setRole("admin");
         /*lottieSplash.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {}
@@ -52,9 +52,9 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(getApplicationContext(), SignInActivity.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 if (VSPreference.getInstance(getApplicationContext()).isSignIn()) {
-                    if (VSPreference.getInstance(getApplicationContext()).getRole().equalsIgnoreCase("admin")) {
+                    if (VSPreference.getInstance(getApplicationContext()).getRole().equalsIgnoreCase(ConstantVariable.ADMIN)) {
                         intent = new Intent(getApplicationContext(), AdminActivity.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    } else if (VSPreference.getInstance(getApplicationContext()).getRole().equalsIgnoreCase("user")) {
+                    } else if (VSPreference.getInstance(getApplicationContext()).getRole().equalsIgnoreCase(ConstantVariable.USER)) {
                         intent = new Intent(getApplicationContext(), UserActivity.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     }
                 }

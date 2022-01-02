@@ -22,8 +22,13 @@ import com.example.villageservice.R;
 import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
+import com.example.villageservice.model.KartuKeluarga;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -88,8 +93,8 @@ public class SignInActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                skipLogin();
-                //credentialCheck();
+                //skipLogin();
+                credentialCheck();
             }
         });
         tvGuide.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +122,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 Log.d("EMAIL", "afterTextChanged - s: " + s);
-                if (s.toString().contains("@test.com"))
+                if (s.toString().length() >= 6)
                     isMailFilled = true;
                 else
                     isMailFilled = false;
@@ -188,7 +193,31 @@ public class SignInActivity extends AppCompatActivity {
         String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();
         if (!email.isEmpty()) {
-            if (email.equalsIgnoreCase(userMail) && password.equalsIgnoreCase("123pass")) {
+            ArrayList<Object> kartuKeluargaArrayList = VSPreference.getInstance(getApplicationContext()).getKKList();
+            Log.d("XXXLOG", "credentialCheck - kk: " + new Gson().toJson(kartuKeluargaArrayList));
+            if (!kartuKeluargaArrayList.isEmpty()) {
+                for (int i = 0; i < kartuKeluargaArrayList.size(); i++) {
+                    KartuKeluarga kkObj = (KartuKeluarga) kartuKeluargaArrayList.get(i);
+                    if (email.equalsIgnoreCase(kkObj.getIdKartuKeluarga())) {
+                        if (password.equalsIgnoreCase(kkObj.getPassword())) {
+                            VSPreference.getInstance(getApplicationContext()).setKK(kkObj);
+                            VSPreference.getInstance(getApplicationContext()).setRole(ConstantVariable.USER);
+                            login(UserActivity.class);
+                        } else {
+                            showCAD("Gagal masuk",
+                                    "Maaf… Password yang anda masukkan salah",
+                                    "Coba Lagi", "");
+                        }
+                        break;
+                    } else {
+                        showCAD("Gagal masuk",
+                                "Maaf… Nomor Kartu Keluarga yang anda masukkan salah\nSilakan masukkan nomor Kartu Keluarga yang telah terdaftar",
+                                "Coba Lagi", "");
+                    }
+                }
+
+            }
+            /*if (email.equalsIgnoreCase(userMail) && password.equalsIgnoreCase("123pass")) {
                 login(UserActivity.class);
             } else if (email.equalsIgnoreCase(adminMail) && password.equalsIgnoreCase("pass123")) {
                 login(AdminActivity.class);
@@ -197,7 +226,7 @@ public class SignInActivity extends AppCompatActivity {
                         "Gagal masuk",
                         "Oops… Email atau password yang anda masukkan salah\nSilakan membaca Panduan terlebih dahulu",
                         "Setuju", "");
-            }
+            }*/
         }
     }
 

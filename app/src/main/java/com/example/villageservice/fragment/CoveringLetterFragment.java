@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.example.villageservice.R;
@@ -22,6 +24,7 @@ import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
+import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 
@@ -37,9 +40,10 @@ public class CoveringLetterFragment extends Fragment {
     private Context context;
     private FragmentListener fragmentListener;
     private CustomLoadingDialog customLoadingDialog;
+    private ArrayList<String> ktpArrayList;
 
     private View view;
-
+    private RelativeLayout spinnerIdKTP;
     private EditText etIdNama;
     private EditText etTempatLahir;
     private EditText etTanggal;
@@ -99,6 +103,15 @@ public class CoveringLetterFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        KartuKeluarga kartuKeluarga = VSPreference.getInstance(context).getKK();
+        ktpArrayList = new ArrayList<>();
+        for (int i = 0; i < kartuKeluarga.getKeluargaList().size(); i++) {
+            ktpArrayList.add(kartuKeluarga.getKeluargaList().get(i).getIdKtp());
+        }
+
+        final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(context, R.id.spinnerIdKTP, ktpArrayList);
+        spinnerAdapter.setDropDownViewResource(R.id.spinnerIdKTP);
+        ktpChooser.setAdapter(spinnerAdapter);
     }
 
     @Override
@@ -170,6 +183,7 @@ public class CoveringLetterFragment extends Fragment {
         genderChooser = view.findViewById(R.id.genderChooser);
         monthChooser = view.findViewById(R.id.monthChooser);
         kewarganegaraanChooser = view.findViewById(R.id.kewarganegaraanChooser);
+        spinnerIdKTP = view.findViewById(R.id.spinnerIdKTP);
     }
 
     private void send() {
