@@ -3,6 +3,7 @@ package com.example.villageservice.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.example.villageservice.activity.AdminActivity;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.utility.VSPreference;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -96,6 +98,8 @@ public class CitizenFragment extends Fragment {
 
         initListener();
         prepareLayout();
+        List<Object> kkObjList = retrieveDataKK();
+        Log.d("XXXLOG", "onViewCreated - list: " + new Gson().toJson(kkObjList));
     }
 
     @Override

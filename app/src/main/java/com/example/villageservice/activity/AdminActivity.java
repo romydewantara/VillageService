@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
 import com.example.villageservice.fragment.CitizenFragment;
+import com.example.villageservice.fragment.CoveringLetterFragment;
 import com.example.villageservice.fragment.FormListFragment;
 import com.example.villageservice.fragment.HomeAdminFragment;
 import com.example.villageservice.fragment.InputNewUsersFragment;
@@ -48,6 +49,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     public static final int FRAGMENT_FINISH_GOTO_CITIZENS = 3;
     public static final int FRAGMENT_FINISH_GOTO_INPUT_USER = 4;
     public static final int FRAGMENT_FINISH_GOTO_NOTIFICATION = 6;
+    public static final int FRAGMENT_FINISH_GOTO_CL = 7;
 
     public static final String TAG_FRAGMENT_HOME_ADMIN = "home_admin_fragment";
     public static final String TAG_FRAGMENT_FORM_LIST = "form_list_fragment";
@@ -55,6 +57,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     public static final String TAG_FRAGMENT_CITIZENS = "citizens_fragment";
     public static final String TAG_FRAGMENT_INPUT_USER = "input_user_fragment";
     public static final String TAG_FRAGMENT_NOTIFICATIONS = "notifications_fragment";
+    public static final String TAG_FRAGMENT_CL = "cl_fragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         initMandatory();
         initListener();
         goToHome();
+//        goToCL();
         fetchUsers();
     }
 
@@ -106,6 +110,17 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_off));
         userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
         notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_on));
+    }
+
+    @SuppressLint("NewApi")
+    private void goToCL() {
+        fragment = new CoveringLetterFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_ADMIN)
+                .commit();
+        homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_on));
+        userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
+        notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_off));
     }
 
     private void fetchUsers() {
@@ -204,6 +219,15 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_INPUT_USER)
+                        .commit();
+
+                break;
+
+            case FRAGMENT_FINISH_GOTO_CL:
+                fragment = new CoveringLetterFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_CL)
                         .commit();
 
                 break;

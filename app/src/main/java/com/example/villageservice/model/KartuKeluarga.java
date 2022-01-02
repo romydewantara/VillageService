@@ -8,13 +8,16 @@ import java.util.List;
 public class KartuKeluarga {
 
     @SerializedName("id_kartu_keluarga")
-    private long idKartuKeluarga;
+    private String idKartuKeluarga;
 
     @SerializedName("nama_kepala_keluarga")
     private String namaKepalaKeluarga = "";
 
-    @SerializedName("alamat")
-    private String alamat = "";
+    @SerializedName("alamat_lengkap")
+    private String alamatLengkap = "";
+
+    @SerializedName("alamat_rumah")
+    private String alamatRumah = "";
 
     @SerializedName("nomor_rt")
     private int nomorRt;
@@ -40,11 +43,11 @@ public class KartuKeluarga {
     @SerializedName("anggota_keluarga")
     private List<User> anggotaKeluarga = new ArrayList<>();
 
-    public long getIdKartuKeluarga() {
+    public String getIdKartuKeluarga() {
         return idKartuKeluarga;
     }
 
-    public void setIdKartuKeluarga(long idKartuKeluarga) {
+    public void setIdKartuKeluarga(String idKartuKeluarga) {
         this.idKartuKeluarga = idKartuKeluarga;
     }
 
@@ -56,12 +59,20 @@ public class KartuKeluarga {
         this.namaKepalaKeluarga = namaKepalaKeluarga;
     }
 
-    public String getAlamat() {
-        return alamat;
+    public String getAlamatLengkap() {
+        return alamatLengkap;
     }
 
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
+    public void setAlamatLengkap(String alamatLengkap) {
+        this.alamatLengkap = alamatLengkap;
+    }
+
+    public String getAlamatRumah() {
+        return alamatRumah;
+    }
+
+    public void setAlamatRumah(String alamatRumah) {
+        this.alamatRumah = alamatRumah;
     }
 
     public int getNomorRt() {

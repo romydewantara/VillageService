@@ -246,6 +246,7 @@
                         android:id="@+id/imageStamp"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
+                        android:scaleType="fitCenter"
                         android:src="@mipmap/ic_stamp_example"
                         android:visibility="invisible"
                         app:layout_constraintTop_toBottomOf="@id/tvRT" />
@@ -254,6 +255,7 @@
                         android:id="@+id/imageSignature"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:scaleType="fitCenter"
                         android:src="@mipmap/ic_signature"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toTopOf="@id/tvRTName"

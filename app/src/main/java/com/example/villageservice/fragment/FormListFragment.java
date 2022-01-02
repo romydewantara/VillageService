@@ -145,11 +145,11 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     }
 
     @Override
-    public void onSelectedUserRequest(long ktp, String name) {
+    public void onSelectedUserRequest(String ktp, String name) {
         User user = new User();
         CoveringLetter coveringLetter = new CoveringLetter();
         for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getIdKtp() == ktp && users.get(i).getNamaLengkap().equalsIgnoreCase(name)) {
+            if (users.get(i).getIdKtp().equalsIgnoreCase(ktp) && users.get(i).getNamaLengkap().equalsIgnoreCase(name)) {
                 user.setIdKtp(ktp);
                 user.setIdKartuKeluarga(users.get(i).getIdKartuKeluarga());
                 user.setNamaLengkap(users.get(i).getNamaLengkap());

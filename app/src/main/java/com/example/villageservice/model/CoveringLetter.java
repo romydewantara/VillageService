@@ -58,6 +58,12 @@ public class CoveringLetter {
     @SerializedName("cl_is_approved")
     boolean isApproved;
 
+    @SerializedName("cl_is_opened")
+    boolean isOpened;
+
+    @SerializedName("cl_type")
+    String clType;
+
     public CoveringLetter() {
 
     }
@@ -228,4 +234,21 @@ public class CoveringLetter {
     public void setApproved(boolean approved) {
         isApproved = approved;
     }
+
+    public boolean isOpened() {
+        return isOpened;
+    }
+
+    public void setOpened(boolean opened) {
+        isOpened = opened;
+    }
+
+    public String getClType() {
+        return clType;
+    }
+
+    public void setClType(String clType) {
+        this.clType = clType;
+    }
+
 }

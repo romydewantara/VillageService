@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="genderItems">
+        <item>@string/male</item>
+        <item>@string/female</item>
+    </string-array>
+
+    <string-array name="kewarganegaraanItems">
+        <item>@string/wni</item>
+        <item>@string/wna</item>
+    </string-array>
+
+    <string-array name="ktpExampleItems">
+        <item>12341092409182</item>
+        <item>92101209481022</item>
+    </string-array>
+
+    <string-array name="monthItems">
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+    </string-array>
+
+</resources>

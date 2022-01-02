@@ -70,8 +70,8 @@ public class VSPreference {
         return (KartuKeluarga) getObject(key, KartuKeluarga.class);
     }
 
-    public void saveKKList(KartuKeluarga kartuKeluarga) {
-        putObject(ConstantVariable.KEY_KARTU_KELUARGA, kartuKeluarga);
+    public void saveKKList(List<KartuKeluarga> kartuKeluargaList) {
+        putObject(ConstantVariable.KEY_KARTU_KELUARGA, kartuKeluargaList);
     }
 
     public List<Object> getKKList() {

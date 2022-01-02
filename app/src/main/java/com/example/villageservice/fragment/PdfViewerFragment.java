@@ -2,6 +2,7 @@ package com.example.villageservice.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.villageservice.R;
+import com.example.villageservice.library.CustomAlertDialog;
+import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.PortableDocumentFormat;
 import com.example.villageservice.model.User;
 import com.example.villageservice.utility.VSPreference;
+import com.google.gson.Gson;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,11 +33,13 @@ import com.example.villageservice.utility.VSPreference;
 public class PdfViewerFragment extends Fragment {
 
     private Context context;
+    private PortableDocumentFormat portableDocumentFormat;
+    private User user;
+    private CoveringLetter coveringLetter;
+
     private View view;
     private View pdfFile;
-    private Button downloadButton;
-    private PortableDocumentFormat portableDocumentFormat;
-
+    private Button pdfViewerButton;
     private AppCompatTextView tvLampiran;
     private AppCompatTextView tvNumber;
     private AppCompatTextView tvNumberFooterR;
@@ -103,7 +110,7 @@ public class PdfViewerFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_preview_pdf, container, false);
         pdfFile = view.findViewById(R.id.relativeLayoutPdf);
-        downloadButton = view.findViewById(R.id.downloadButton);
+        pdfViewerButton = view.findViewById(R.id.pdfViewerButton);
         initView();
         return view;
     }
@@ -113,9 +120,9 @@ public class PdfViewerFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         if (VSPreference.getInstance(context).getRole().equalsIgnoreCase("admin")) {
             isAdmin = true;
-            downloadButton.setText("Setuju");
+            pdfViewerButton.setText("Setuju");
         } else {
-            downloadButton.setText("Download");
+            pdfViewerButton.setText("Download");
         }
         loadData();
         initListener();
@@ -156,10 +163,14 @@ public class PdfViewerFragment extends Fragment {
     }
 
     private void loadData() {
-        User user = (User) VSPreference.getInstance(context).getUser();
-        key = String.valueOf(user.getIdKtp());
+        user = (User) VSPreference.getInstance(context).getUser();
+        Log.d("XXXUSER", "loadData - user: " + new Gson().toJson(user));
 
-        CoveringLetter coveringLetter = VSPreference.getInstance(context).getCoveringLetter(key);
+        //key = String.valueOf(user.getIdKtp());
+        key = "12341092409182";
+
+        coveringLetter = VSPreference.getInstance(context).getCoveringLetter(key);
+        Log.d("XXXCL", "loadData - data: " + new Gson().toJson(coveringLetter));
         tvLampiran.setText(coveringLetter.getClLampiran());
         tvNumber.setText(coveringLetter.getClNomorHeader());
         tvNumberFooterR.setText(coveringLetter.getClNomorFooter());
@@ -180,18 +191,42 @@ public class PdfViewerFragment extends Fragment {
     }
 
     private void initListener() {
-        downloadButton.setOnClickListener(new View.OnClickListener() {
+        pdfViewerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isAdmin) {
-                    //TODO: show dialog first
-                    imageStamp.setVisibility(View.VISIBLE);
-                    imageSignature.setVisibility(View.VISIBLE);
+                    showCAD("Peringatan", "Apakah Anda yakin akan menyetujui surat pengantar ini?", "Ya", "Tunda");
                 } else {
-
+                    showCAD("Informasi", "Apakah Anda yakin akan mengunduh surat pengantar ini?", "Ya", "Batal");
                 }
-                portableDocumentFormat.generatePdf(pdfFile, "GanjarPranowo", "This is the PDF trial");
+                portableDocumentFormat.generatePdf(pdfFile, "GanjarPranowo");
             }
         });
+    }
+
+    private void showCAD(String title, String message, String pButton, String nButton) {
+        FragmentManager fm = getFragmentManager();
+        CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, title, message)
+                .setButton(pButton, nButton, new CustomAlertDialogListener() {
+                    @Override
+                    public void onNegativePressed() {}
+                    @Override
+                    public void onPositivePressed() {
+                        if (isAdmin && !coveringLetter.isApproved()) {
+                            imageStamp.setVisibility(View.VISIBLE);
+                            imageSignature.setVisibility(View.VISIBLE);
+                            coveringLetter.setApproved(true);
+                        } else {
+                            if (coveringLetter.isApproved()) {
+                                imageStamp.setVisibility(View.VISIBLE);
+                                imageSignature.setVisibility(View.VISIBLE);
+                                portableDocumentFormat.generatePdf(pdfFile, user.getNamaLengkap().trim() + "_");
+                            }
+                        }
+                    }
+                });
+        if (fm != null) {
+            customAlertDialog.show(fm, "custom_alert_dialog");
+        }
     }
 }

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/titleAlert"
+            style="@style/TextBlackRegularRalewayStyle3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="25dp"
+            android:text="Judul"
+            android:visibility="visible" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/relativeMembership"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center"
+            android:visibility="visible"
+            android:layout_below="@id/titleAlert">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                style="@style/TextBlackRegularRalewayStyle4"
+                android:text="1"
+                android:gravity="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/minButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:padding="10dp"
+                android:src="@mipmap/ic_minus"
+                app:layout_constraintRight_toLeftOf="@id/tvTotal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/plusButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:padding="10dp"
+                android:src="@mipmap/ic_plus"
+                app:layout_constraintLeft_toRightOf="@id/tvTotal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:visibility="visible"
+            android:layout_below="@id/relativeMembership">
+
+            <TextView
+                android:id="@+id/negativeButton"
+                style="@style/TextGreyBoldRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_cad_negative_button"
+                android:layout_weight="50"
+                android:gravity="center"
+                android:text="Batal"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/positiveButton"
+                style="@style/TextBlueBoldRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_cad_positive_button"
+                android:layout_weight="50"
+                android:gravity="center"
+                android:clickable="true"
+                android:text="Tambah"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

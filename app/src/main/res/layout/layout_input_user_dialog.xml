@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -12,120 +11,254 @@
 
         <TextView
             android:id="@+id/titleAlert"
+            style="@style/TextBlackMediumRalewayStyle3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Title"
-            android:paddingTop="25dp"
             android:gravity="center"
-            android:visibility="visible"/>
+            android:paddingTop="25dp"
+            android:paddingBottom="10dp"
+            android:text="Title"
+            android:visibility="visible" />
 
         <LinearLayout
             android:id="@+id/linearContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/titleAlert"
             android:orientation="vertical"
-            android:layout_below="@id/titleAlert">
+            android:padding="5dp">
 
             <EditText
                 android:id="@+id/et1"
+                style="@style/TextBlackRegularRalewayStyle2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="No. Kartu Keluarga"
-                android:inputType="number"/>
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:hint="No. KTP"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
 
             <EditText
                 android:id="@+id/et2"
+                style="@style/TextBlackRegularRalewayStyle2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nama Kep. Keluarga"/>
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Nama Lengkap"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
 
             <EditText
                 android:id="@+id/et3"
+                style="@style/TextBlackRegularRalewayStyle2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Daftar Anggota Keluarga"/>
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Jenis Kelamin"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
 
             <EditText
                 android:id="@+id/et4"
+                style="@style/TextBlackRegularRalewayStyle2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Alamat"/>
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Tempat Lahir"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
 
-            <EditText
-                android:id="@+id/et5"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTanggalLahir"
+                style="@style/TextBlackRegularRalewayStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nomor RT"
-                android:inputType="numberPassword"/>
+                android:layout_marginTop="5dp"
+                android:text="Tanggal Lahir"
+                app:layout_constraintTop_toBottomOf="@id/etTempatLahir" />
 
-            <EditText
-                android:id="@+id/et6"
+            <LinearLayout
+                android:id="@+id/relativeTanggalLahir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nomor RW"
-                android:inputType="numberPassword"/>
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et5"
+                    style="@style/TextBlackRegularRalewayStyle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_edit_text_rounded"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeTanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_edit_text_rounded">
+
+                    <Spinner
+                        android:id="@+id/monthChooser"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/monthItems"
+                        android:popupBackground="@drawable/background_edit_text_rounded" />
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/et6"
+                    style="@style/TextBlackRegularRalewayStyle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_edit_text_rounded"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/et7"
+                style="@style/TextBlackRegularRalewayStyle2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Kelurahan"/>
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Agama"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
 
             <EditText
                 android:id="@+id/et8"
+                style="@style/TextBlackRegularRalewayStyle2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Kecamatan"/>
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Pendidikan"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
 
             <EditText
                 android:id="@+id/et9"
+                style="@style/TextBlackRegularRalewayStyle2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Kota"/>
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Pekerjaan"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
 
             <EditText
                 android:id="@+id/et10"
+                style="@style/TextBlackRegularRalewayStyle2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Kode Pos"
-                android:inputType="numberPassword"/>
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Status Pernikahan"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <EditText
+                android:id="@+id/et11"
+                style="@style/TextBlackRegularRalewayStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Status Hubungan Dalam Keluarga"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <EditText
+                android:id="@+id/et12"
+                style="@style/TextBlackRegularRalewayStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Kewarganegaraan"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <EditText
+                android:id="@+id/et13"
+                style="@style/TextBlackRegularRalewayStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Nama Ayah"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <EditText
+                android:id="@+id/et14"
+                style="@style/TextBlackRegularRalewayStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:layout_marginTop="5dp"
+                android:hint="Nama Ibu"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_below="@id/linearContainer"
             android:orientation="horizontal"
-            android:weightSum="100"
             android:visibility="visible"
-            android:layout_below="@id/linearContainer">
+            android:weightSum="100"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
             <TextView
                 android:id="@+id/negativeButton"
+                style="@style/TextGreyBoldRalewayStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_cad_negative_button"
                 android:layout_weight="50"
+                android:background="@drawable/bg_cad_negative_button"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:text="Batal"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/positiveButton"
+                style="@style/TextBlueBoldRalewayStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_cad_positive_button"
                 android:layout_weight="50"
-                android:gravity="center"
+                android:background="@drawable/bg_cad_positive_button"
                 android:clickable="true"
-                android:text="Tambah"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:visibility="visible"/>
+                android:gravity="center"
+                android:text="Simpan"
+                android:visibility="visible" />
         </LinearLayout>
 
     </RelativeLayout>
 
-</FrameLayout>
+</ScrollView>

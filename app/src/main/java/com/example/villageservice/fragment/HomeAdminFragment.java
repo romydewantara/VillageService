@@ -211,7 +211,7 @@ public class HomeAdminFragment extends Fragment {
         cvInfo2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNextFragment(1);
+                goToNextFragment(7);
                 //Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar UMKM", Toast.LENGTH_SHORT).show();
             }
         });

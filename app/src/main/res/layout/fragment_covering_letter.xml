@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.CoveringLetterFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/sendButton">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/titleForm"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Formulir Surat Pengantar"
+                android:textSize="24dp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIdKTP"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Nomor Kartu Tanda Penduduk (KTP)"
+                app:layout_constraintTop_toBottomOf="@id/titleForm" />
+
+            <RelativeLayout
+                android:id="@+id/spinnerIdKTP"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:padding="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tvIdKTP">
+
+                <Spinner
+                    android:id="@+id/ktpChooser"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/ktpExampleItems"
+                    android:popupBackground="@drawable/background_edit_text_rounded" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIdNama"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Nama Lengkap"
+                app:layout_constraintTop_toBottomOf="@id/spinnerIdKTP" />
+
+            <EditText
+                android:id="@+id/etIdNama"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvIdNama" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvJenisKelamin"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Jenis Kelamin"
+                app:layout_constraintTop_toBottomOf="@id/etIdNama" />
+
+            <RelativeLayout
+                android:id="@+id/relativeGender"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:padding="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tvJenisKelamin">
+
+                <Spinner
+                    android:id="@+id/genderChooser"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/genderItems"
+                    android:popupBackground="@drawable/background_edit_text_rounded" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTempatLahir"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Tempat Lahir"
+                app:layout_constraintTop_toBottomOf="@id/relativeGender" />
+
+            <EditText
+                android:id="@+id/etTempatLahir"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvTempatLahir" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTanggalLahir"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Tanggal Lahir"
+                app:layout_constraintTop_toBottomOf="@id/etTempatLahir" />
+
+            <LinearLayout
+                android:id="@+id/relativeTanggalLahir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tvTanggalLahir">
+
+                <EditText
+                    android:id="@+id/etTanggal"
+                    style="@style/TextBlackRegularRalewayStyle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_edit_text_rounded"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeTanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_edit_text_rounded">
+
+                    <Spinner
+                        android:id="@+id/monthChooser"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/monthItems"
+                        android:popupBackground="@drawable/background_edit_text_rounded" />
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/etTahun"
+                    style="@style/TextBlackRegularRalewayStyle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_edit_text_rounded"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPekerjaan"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Pekerjaan"
+                app:layout_constraintTop_toBottomOf="@id/relativeTanggalLahir" />
+
+            <EditText
+                android:id="@+id/etPekerjaan"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvPekerjaan" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvKewarganegaraan"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Kewarganegaraan"
+                app:layout_constraintTop_toBottomOf="@id/etPekerjaan" />
+
+            <RelativeLayout
+                android:id="@+id/relativeKewarganegaraan"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:padding="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tvKewarganegaraan">
+
+                <Spinner
+                    android:id="@+id/kewarganegaraanChooser"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/kewarganegaraanItems"
+                    android:popupBackground="@drawable/background_edit_text_rounded" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPendidikan"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Pendidikan"
+                app:layout_constraintTop_toBottomOf="@id/relativeKewarganegaraan" />
+
+            <EditText
+                android:id="@+id/etPendidikan"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvPendidikan" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAgama"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Agama"
+                app:layout_constraintTop_toBottomOf="@id/etPendidikan" />
+
+            <EditText
+                android:id="@+id/etAgama"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvAgama" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAddress"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Alamat"
+                app:layout_constraintTop_toBottomOf="@id/etAgama" />
+
+            <EditText
+                android:id="@+id/etAddress"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRT"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginRight="3dp"
+                android:text="Nomor. RT"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tvRW"
+                app:layout_constraintTop_toBottomOf="@id/etAddress" />
+
+            <EditText
+                android:id="@+id/etRT"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="number"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/etRW"
+                app:layout_constraintTop_toBottomOf="@id/tvRT" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRW"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="6dp"
+                android:text="Nomor. RW"
+                app:layout_constraintLeft_toRightOf="@id/tvRT"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etAddress" />
+
+            <EditText
+                android:id="@+id/etRW"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="number"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintLeft_toRightOf="@id/etRT"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRW" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvKel"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Kelurahan"
+                app:layout_constraintTop_toBottomOf="@id/etRT" />
+
+            <EditText
+                android:id="@+id/etKel"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvKel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvKec"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Kecamatan"
+                app:layout_constraintTop_toBottomOf="@id/etKel" />
+
+            <EditText
+                android:id="@+id/etKec"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvKec" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvKota"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Kota"
+                app:layout_constraintTop_toBottomOf="@id/etKec" />
+
+            <EditText
+                android:id="@+id/etKota"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvKota" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPostal"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Kode Pos"
+                app:layout_constraintTop_toBottomOf="@id/etKota" />
+
+            <EditText
+                android:id="@+id/etPostal"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="number"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvPostal" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMaksud"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Maksud/Keperluan"
+                app:layout_constraintTop_toBottomOf="@id/etKec" />
+
+            <EditText
+                android:id="@+id/etMaksud"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/background_edit_text_rounded"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvMaksud" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/sendButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
+        android:maxLines="1"
+        android:text="Kirim"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

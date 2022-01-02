@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 public class User {
 
     @SerializedName("id_ktp")
-    private long idKtp;
+    private String idKtp;
 
     @SerializedName("id_kartu_keluarga")
-    private long idKartuKeluarga;
+    private String idKartuKeluarga;
 
     @SerializedName("nama_lengkap")
     private String namaLengkap;
@@ -49,19 +49,19 @@ public class User {
     @SerializedName("nama_ibu")
     private String namaIbu;
 
-    public long getIdKtp() {
+    public String getIdKtp() {
         return idKtp;
     }
 
-    public void setIdKtp(long idKtp) {
+    public void setIdKtp(String idKtp) {
         this.idKtp = idKtp;
     }
 
-    public long getIdKartuKeluarga() {
+    public String getIdKartuKeluarga() {
         return idKartuKeluarga;
     }
 
-    public void setIdKartuKeluarga(long idKartuKeluarga) {
+    public void setIdKartuKeluarga(String idKartuKeluarga) {
         this.idKartuKeluarga = idKartuKeluarga;
     }
 
@@ -169,13 +169,13 @@ public class User {
         this.namaIbu = namaIbu;
     }
 
-    class TanggalDetail {
+    public static class TanggalDetail {
 
         @SerializedName("tanggal")
         private int tanggal;
 
         @SerializedName("bulan")
-        private int bulan;
+        private String bulan;
 
         @SerializedName("tahun")
         private int tahun;
@@ -188,11 +188,11 @@ public class User {
             this.tanggal = tanggal;
         }
 
-        public int getBulan() {
+        public String getBulan() {
             return bulan;
         }
 
-        public void setBulan(int bulan) {
+        public void setBulan(String bulan) {
             this.bulan = bulan;
         }
 

@@ -21,4 +21,10 @@
     <string name="menu_citizen_two">Kartu Tanda Penduduk\nTerdaftar</string>
 
     <string name="form_list">Formulir Persetujuan</string>
+
+    <!-- Gender Menu -->
+    <string name="male">Laki-laki</string>
+    <string name="female">Perempuan</string>
+    <string name="wni">WNI (Warga Negara Indonesia)</string>
+    <string name="wna">WNA (Warga Negara Asing)</string>
 </resources>

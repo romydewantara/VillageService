@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.InputNewUsersFragment">
 
     <ScrollView
+        android:id="@+id/scrollContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,126 +22,143 @@
                 android:id="@+id/constraintKK"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
                 android:padding="8dp">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/titleKK"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Data Kartu Keluarga"
                     android:textSize="24dp"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvIdKK"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nomor Kartu Keluarga"
                     android:layout_marginTop="3dp"
+                    android:text="Nomor Kartu Keluarga"
                     app:layout_constraintTop_toBottomOf="@id/titleKK" />
 
                 <EditText
                     android:id="@+id/etIdKK"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:layout_marginTop="3dp"
+                    android:hint="Contoh: 317509921321000051"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     app:layout_constraintTop_toBottomOf="@id/tvIdKK" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvKepKK"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nama Kepala Keluarga"
                     android:layout_marginTop="6dp"
+                    android:text="Nama Kepala Keluarga"
                     app:layout_constraintTop_toBottomOf="@id/etIdKK" />
 
                 <EditText
                     android:id="@+id/etKepKK"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
                     android:inputType="textEmailAddress"
+                    android:hint="Contoh: Radjiman"
                     android:maxLines="1"
-                    android:layout_marginTop="3dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     app:layout_constraintTop_toBottomOf="@id/tvKepKK" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvAddress"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Alamat"
                     android:layout_marginTop="6dp"
+                    android:text="Alamat"
                     app:layout_constraintTop_toBottomOf="@id/etKepKK" />
 
                 <EditText
                     android:id="@+id/etAddress"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
+                    android:hint="Contoh: Jl. Mawar No. 29"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:layout_marginTop="3dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     app:layout_constraintTop_toBottomOf="@id/tvAddress" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRT"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Nomor. RT"
                     android:layout_marginTop="6dp"
-                    android:layout_marginRight="3dp"
                     android:layout_marginEnd="3dp"
+                    android:layout_marginRight="3dp"
+                    android:text="Nomor. RT"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/tvRW"
                     app:layout_constraintTop_toBottomOf="@id/etAddress" />
 
                 <EditText
                     android:id="@+id/etRT"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginRight="3dp"
                     android:background="@drawable/background_edit_text_rounded"
+                    android:hint="Contoh: 007"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_marginEnd="3dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
-                    app:layout_constraintRight_toLeftOf="@id/etRW"
                     app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/etRW"
                     app:layout_constraintTop_toBottomOf="@id/tvRT" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRW"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Nomor. RT"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginLeft="3dp"
                     android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="6dp"
+                    android:text="Nomor. RW"
                     app:layout_constraintLeft_toRightOf="@id/tvRT"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etAddress" />
 
                 <EditText
                     android:id="@+id/etRW"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
+                    android:hint="Contoh: 014"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginStart="3dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     app:layout_constraintLeft_toRightOf="@id/etRT"
@@ -147,111 +167,147 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvKel"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Kelurahan"
                     android:layout_marginTop="6dp"
+                    android:text="Kelurahan"
                     app:layout_constraintTop_toBottomOf="@id/etRT" />
 
                 <EditText
                     android:id="@+id/etKel"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
+                    android:hint="Contoh: Pondok Kelapa"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:layout_marginTop="3dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     app:layout_constraintTop_toBottomOf="@id/tvKel" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvKec"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Kecamatan"
                     android:layout_marginTop="6dp"
+                    android:text="Kecamatan"
                     app:layout_constraintTop_toBottomOf="@id/etKel" />
 
                 <EditText
                     android:id="@+id/etKec"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
+                    android:hint="Contoh: Duren Sawit"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:layout_marginTop="3dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     app:layout_constraintTop_toBottomOf="@id/tvKec" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvKota"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Kota"
                     android:layout_marginTop="6dp"
+                    android:text="Kota"
                     app:layout_constraintTop_toBottomOf="@id/etKec" />
 
                 <EditText
                     android:id="@+id/etKota"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
                     android:inputType="textEmailAddress"
+                    android:hint="Contoh: Jakarta Timur"
                     android:maxLines="1"
-                    android:layout_marginTop="3dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     app:layout_constraintTop_toBottomOf="@id/tvKota" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvPostal"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Kode Pos"
                     android:layout_marginTop="6dp"
+                    android:text="Kode Pos"
                     app:layout_constraintTop_toBottomOf="@id/etKota" />
 
                 <EditText
                     android:id="@+id/etPostal"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
+                    android:hint="Contoh: 13490"
                     android:background="@drawable/background_edit_text_rounded"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:layout_marginTop="3dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     app:layout_constraintTop_toBottomOf="@id/tvPostal" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvProvinsi"
+                    style="@style/TextBlackRegularRalewayStyle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Provinsi"
+                    app:layout_constraintTop_toBottomOf="@id/etPostal" />
+
+                <EditText
+                    android:id="@+id/etProvinsi"
+                    style="@style/TextBlackRegularRalewayStyle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/background_edit_text_rounded"
+                    android:hint="Contoh: DKI Jakarta"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvProvinsi" />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintKTP"
+                    style="@style/TextBlackRegularRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/etPostal">
+                    app:layout_constraintTop_toBottomOf="@id/etProvinsi">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/titleKTP"
+                        style="@style/TextBlackBoldRalewayStyle1"
                         android:layout_width="wrap_content"
-                        android:layout_height="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Data Anggota Keluarga"
                         android:textSize="24dp"
-                        android:gravity="center"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/addMemberButton"
                         android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@mipmap/ic_add"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_height="0dp"
+                        android:src="@mipmap/ic_add_user"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -259,20 +315,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/constraintKTP"
-                    app:layout_constraintBottom_toBottomOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/constraintKTP">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvEmpty"
+                        style="@style/TextBlackRegularRalewayStyle1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Data Anggota Keluarga Kosong"
-                        android:visibility="visible"/>
+                        android:visibility="visible" />
 
-                    <ListView
-                        android:id="@+id/listFamilyMember"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewMember"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -280,23 +337,21 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
-                android:id="@+id/saveButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_button_enabled"
-                android:layout_gravity="end"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:maxLines="1"
-                android:text="Tambah"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="16dp" />
-
         </LinearLayout>
 
     </ScrollView>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/saveButton"
+        style="@style/TextBlackBoldRalewayStyle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/dark_blue"
+        android:maxLines="1"
+        android:text="Simpan"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

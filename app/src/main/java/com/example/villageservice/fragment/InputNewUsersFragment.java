@@ -2,7 +2,6 @@ package com.example.villageservice.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +11,23 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.villageservice.R;
+import com.example.villageservice.adapter.MembersAdapter;
 import com.example.villageservice.library.CustomLoadingDialog;
+import com.example.villageservice.library.CustomMembershipDialog;
 import com.example.villageservice.library.InputUserDialog;
+import com.example.villageservice.listener.CustomMembershipDialogListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.listener.InputUserDialogListener;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
 import com.example.villageservice.utility.VSPreference;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +37,7 @@ import java.util.List;
  * Use the {@link InputNewUsersFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InputNewUsersFragment extends Fragment {
+public class InputNewUsersFragment extends Fragment implements MembersAdapter.ItemClickListener {
 
     private Context context;
     private FragmentListener fragmentListener;
@@ -41,13 +45,25 @@ public class InputNewUsersFragment extends Fragment {
 
     private List<User> temporaryUserAdded;
 
+    private RecyclerView recyclerViewMember;
     private View view;
     private ImageView addMemberButton;
+    private AppCompatTextView tvEmpty;
+
     private EditText etIdKK;
-    private EditText etNamaLengkap;
-    private EditText etKewarganegaraan;
-    private EditText etPekerjaan;
-    private Button btn1;
+    private EditText etKepKK;
+    private EditText etAddress;
+    private EditText etRT;
+    private EditText etRW;
+    private EditText etKel;
+    private EditText etKec;
+    private EditText etKota;
+    private EditText etPostal;
+    private EditText etProvinsi;
+
+    private Button saveButton;
+
+    private MembersAdapter membersAdapter;
 
     KartuKeluarga kartuKeluarga = new KartuKeluarga();
 
@@ -97,11 +113,20 @@ public class InputNewUsersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_input_new_users, container, false);
-        addMemberButton = view.findViewById(R.id.addMemberButton);
+        recyclerViewMember = view.findViewById(R.id.recyclerViewMember);
         etIdKK = view.findViewById(R.id.etIdKK);
-        etNamaLengkap = view.findViewById(R.id.etKepKK);
-        etPekerjaan = view.findViewById(R.id.etAddress);
-        etKewarganegaraan = view.findViewById(R.id.etKel);
+        etKepKK = view.findViewById(R.id.etKepKK);
+        etAddress = view.findViewById(R.id.etAddress);
+        etRT = view.findViewById(R.id.etRT);
+        etRW = view.findViewById(R.id.etRW);
+        etKel = view.findViewById(R.id.etKel);
+        etKec = view.findViewById(R.id.etKec);
+        etKota = view.findViewById(R.id.etKota);
+        etPostal = view.findViewById(R.id.etPostal);
+        etProvinsi = view.findViewById(R.id.etProvinsi);
+        addMemberButton = view.findViewById(R.id.addMemberButton);
+        tvEmpty = view.findViewById(R.id.tvEmpty);
+        saveButton = view.findViewById(R.id.saveButton);
 
         return view;
     }
@@ -112,21 +137,40 @@ public class InputNewUsersFragment extends Fragment {
         addMemberButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //saveDataKK();
-                //showInputUserDialog();
-                long idKtp = Long.parseLong(etIdKK.getText().toString());
-                String namaLengkap = etNamaLengkap.getText().toString();
-                String pekerjaan = etPekerjaan.getText().toString();
-                String kewarganegaraan = etKewarganegaraan.getText().toString();
+                FragmentManager fm = getFragmentManager();
+                CustomMembershipDialog customMembershipDialog = CustomMembershipDialog.newInstance(context, "Jumlah Anggota Keluarga")
+                        .setButton("Tambah", "Batal", new CustomMembershipDialogListener() {
+                            @Override
+                            public void onButtonPositivePressed(int total) {
+                                User user = new User();
+                                user.setNamaLengkap("Unknown data");
+                                user.setIdKtp("0123456xxxxxx");
+                                ArrayList<User> arrayList = new ArrayList<>();
+                                for (int i = 0; i <= total; i++) {
+                                    arrayList.add(user);
+                                }
+                                membersAdapter = new MembersAdapter(context, arrayList);
+                                membersAdapter.setClickListener(InputNewUsersFragment.this);
+                                LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                                recyclerViewMember.setLayoutManager(layoutManager);
+                                recyclerViewMember.setAdapter(membersAdapter);
+                                tvEmpty.setVisibility(View.INVISIBLE);
+                            }
 
-                User user = new User();
-                user.setIdKtp(idKtp);
-                user.setNamaLengkap(namaLengkap);
-                user.setJenisPekerjaan(pekerjaan);
-                user.setKewarganegaraan(kewarganegaraan);
-                VSPreference.getInstance(context).setUser(user);
-                Log.d("USERS", "onClick - data: " + VSPreference.getInstance(context).getUser());
+                            @Override
+                            public void onButtonNegativePressed() {
 
+                            }
+                        });
+                if (fm != null) {
+                    customMembershipDialog.show(fm, "custom_membership_dialog");
+                }
+            }
+        });
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveDataKK();
             }
         });
     }
@@ -152,29 +196,39 @@ public class InputNewUsersFragment extends Fragment {
         temporaryUserAdded = new ArrayList<>();
     }
 
-    private void showInputUserDialog() {
-        FragmentManager fm = getFragmentManager();
-        InputUserDialog inputUserDialog = InputUserDialog.newInstance(context, "Anggota Keluarga")
-                .setButton("Tambah", "Batal", new InputUserDialogListener() {
-                    @Override
-                    public void onAddButtonPressed(User user) {
-                        temporaryUserAdded.add(user);
-                    }
-                    @Override
-                    public void onCancelButtonPressed() {}
-                });
-        if (fm != null) {
-            inputUserDialog.show(fm, "input_user_dialog");
-        }
-    }
     private void saveDataKK() {
-        String key = etIdKK.getText().toString();
-        long id = Long.parseLong(etIdKK.getText().toString());
-        kartuKeluarga.setIdKartuKeluarga(id);
+        KartuKeluarga kartuKeluarga = new KartuKeluarga();
+        String detailAddress = etAddress.getText().toString() + ", RT. " +
+                etRT.getText().toString() + ", RW. " +
+                etRW.getText().toString() + ", Kel. " +
+                etKel.getText().toString() + ", Kec. " +
+                etKec.getText().toString() + ", Kota " +
+                etKota.getText().toString() + ", Kode Pos: " +
+                etPostal.getText().toString();
+        kartuKeluarga.setIdKartuKeluarga(etIdKK.getText().toString());
+        kartuKeluarga.setNamaKepalaKeluarga(etKepKK.getText().toString());
+        kartuKeluarga.setAlamatLengkap(detailAddress);
+        kartuKeluarga.setAlamatRumah(etAddress.getText().toString());
+        kartuKeluarga.setNomorRt(Integer.parseInt(etRT.getText().toString()));
+        kartuKeluarga.setNomorRw(Integer.parseInt(etRW.getText().toString()));
+        kartuKeluarga.setKelurahan(etKel.getText().toString());
+        kartuKeluarga.setKecamatan(etKec.getText().toString());
+        kartuKeluarga.setKota(etKota.getText().toString());
+        kartuKeluarga.setKodePos(Integer.parseInt(etPostal.getText().toString()));
+        kartuKeluarga.setProvinsi(etProvinsi.getText().toString());
         kartuKeluarga.setAnggotaKeluarga(temporaryUserAdded);
 
-        VSPreference.getInstance(context).inputKK(key, kartuKeluarga);
-        Log.d("KartuKeluarga", "onViewCreated - data: " + new Gson().toJson(VSPreference.getInstance(context).getKK(key)));
+        List<Object> kkObjList = VSPreference.getInstance(context).getKKList(); //get KK List from Pref
+        List<KartuKeluarga> kartuKeluargaList = new ArrayList<>(); //create new temporary KK obj List
+        if (kkObjList.size() > 0) {
+            for (int i = 0; i < kkObjList.size(); i++) {
+                KartuKeluarga kkObj = (KartuKeluarga) kkObjList.get(i);
+                kartuKeluargaList.add(kkObj);
+            }
+        }
+        kartuKeluargaList.add(kartuKeluarga);
+        VSPreference.getInstance(context).saveKKList(kartuKeluargaList);
+
     }
 
     private void insertKTP(User user) {
@@ -188,6 +242,29 @@ public class InputNewUsersFragment extends Fragment {
 
     private void deleteFamilyMember() {
 
+    }
+
+    private void showAddMemberDialog(int position, String ktp) {
+        FragmentManager fm = getFragmentManager();
+        InputUserDialog inputUserDialog = InputUserDialog.newInstance(context, "Anggota Keluarga", ktp)
+                .setButton("Tambah", "Batal", new InputUserDialogListener() {
+                    @Override
+                    public void onAddButtonPressed(User user) {
+                        //TODO: Update Name AND KTP from selected item
+
+                        temporaryUserAdded.add(user);
+                    }
+                    @Override
+                    public void onCancelButtonPressed() {}
+                });
+        if (fm != null) {
+            inputUserDialog.show(fm, "input_user_dialog");
+        }
+    }
+
+    @Override
+    public void onItemClick(View view, int position, String ktp) {
+        showAddMemberDialog(position, ktp);
     }
 
 }

@@ -9,8 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,19 +19,18 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.villageservice.R;
-import com.example.villageservice.listener.InputUserDialogListener;
+import com.example.villageservice.listener.CustomMembershipDialogListener;
 import com.example.villageservice.model.User;
 import com.example.villageservice.utility.VSPreference;
-import com.google.gson.Gson;
 
-public class InputUserDialog extends DialogFragment {
+public class CustomMembershipDialog extends DialogFragment {
 
     private TextView titleAlert;
     private TextView positiveButton;
     private TextView negativeButton;
-
-    private EditText et1, et2, et3, et4, et5, et6, et7, et8, et9, et10, et11, et12, et13, et14;
-    private Spinner monthChooser;
+    private ImageView minButton;
+    private ImageView plusButton;
+    private TextView tvTotal;
 
     private CharSequence pButtonText = "";
     private CharSequence nButtonText = "";
@@ -41,20 +39,19 @@ public class InputUserDialog extends DialogFragment {
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
     private static String textTitle;
-    private static String textKtp;
 
-    private InputUserDialogListener inputUserDialogListener;
+    private int total = 1;
+    private CustomMembershipDialogListener customMembershipDialogListener;
 
-    public InputUserDialog() {
+    public CustomMembershipDialog() {
 
     }
 
-    public static InputUserDialog newInstance(Context context, String title, String ktp) {
-        InputUserDialog fragment = new InputUserDialog();
+    public static CustomMembershipDialog newInstance(Context context, String title) {
+        CustomMembershipDialog fragment = new CustomMembershipDialog();
         Bundle arguments = new Bundle();
         mContext = context;
         textTitle = title;
-        textKtp = ktp;
 
         arguments.putString("title", title);
         fragment.setArguments(arguments);
@@ -72,7 +69,7 @@ public class InputUserDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.layout_input_user_dialog, container, false);
+        return inflater.inflate(R.layout.layout_membership_dialog, container, false);
     }
 
     @Override
@@ -86,21 +83,9 @@ public class InputUserDialog extends DialogFragment {
         titleAlert = view.findViewById(R.id.titleAlert);
         negativeButton = view.findViewById(R.id.negativeButton);
         positiveButton = view.findViewById(R.id.positiveButton);
-        et1 = view.findViewById(R.id.et1);
-        et2 = view.findViewById(R.id.et2);
-        et3 = view.findViewById(R.id.et3);
-        et4 = view.findViewById(R.id.et4);
-        et5 = view.findViewById(R.id.et5);
-        et6 = view.findViewById(R.id.et6);
-        et7 = view.findViewById(R.id.et7);
-        et8 = view.findViewById(R.id.et8);
-        et9 = view.findViewById(R.id.et9);
-        et10 = view.findViewById(R.id.et10);
-        et11 = view.findViewById(R.id.et11);
-        et12 = view.findViewById(R.id.et12);
-        et13 = view.findViewById(R.id.et13);
-        et14 = view.findViewById(R.id.et14);
-        monthChooser = view.findViewById(R.id.monthChooser);
+        minButton = view.findViewById(R.id.minButton);
+        plusButton = view.findViewById(R.id.plusButton);
+        tvTotal = view.findViewById(R.id.tvTotal);
 
         titleAlert.setText(textTitle);
 
@@ -110,11 +95,9 @@ public class InputUserDialog extends DialogFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Log.d("Xnull", "onAttach - context: " + mContext);
-        if (mContext.getApplicationContext() instanceof InputUserDialogListener) {
-            inputUserDialogListener = (InputUserDialogListener) mContext;
+        if (mContext.getApplicationContext() instanceof CustomMembershipDialogListener) {
+            customMembershipDialogListener = (CustomMembershipDialogListener) mContext;
         }
-        Log.d("Xnull", "onAttach - inputUserDialogListener: " + inputUserDialogListener);
     }
 
     @Override
@@ -128,7 +111,6 @@ public class InputUserDialog extends DialogFragment {
         } catch (IllegalStateException e) {
             Log.d("InputUserDialog", "Exception: ", e);
         }
-        populateData();
     }
 
     @Override
@@ -141,54 +123,44 @@ public class InputUserDialog extends DialogFragment {
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User user = new User();
-
-                User.TanggalDetail tanggalDetail = new User.TanggalDetail();
-                tanggalDetail.setTanggal(Integer.parseInt(et5.getText().toString()));
-                tanggalDetail.setBulan(String.valueOf(monthChooser.getSelectedItem()));
-                tanggalDetail.setTahun(Integer.parseInt(et6.getText().toString()));
-
-                user.setIdKtp(et1.getText().toString());
-                user.setNamaLengkap(et2.getText().toString());
-                user.setJenisKelamin(et3.getText().toString());
-                user.setTempatLahir(et4.getText().toString());
-                user.setTanggalLahir(tanggalDetail);
-                user.setAgama(et7.getText().toString());
-                user.setPendidikan(et8.getText().toString());
-                user.setJenisPekerjaan(et4.getText().toString());
-                user.setStatusPernikahan(et4.getText().toString());
-                user.setStatusHubunganDalamKeluarga(et4.getText().toString());
-                user.setKewarganegaraan(et4.getText().toString());
-                user.setNamaAyah(et4.getText().toString());
-                user.setNamaIbu(et4.getText().toString());
-                inputUserDialogListener.onAddButtonPressed(user);
-
+                Log.d("TOTAL", "onClick total: " + total);
+                customMembershipDialogListener.onButtonPositivePressed(total);
                 dismiss();
             }
         });
         negativeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                inputUserDialogListener.onCancelButtonPressed();
+                customMembershipDialogListener.onButtonNegativePressed();
                 dismiss();
+            }
+        });
+        minButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                total--;
+                if (total <= 0) {
+                    total = 0;
+                }
+                tvTotal.setText(String.valueOf(total));
+            }
+        });
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                total++;
+                if (total >= 15) {
+                    total = 15;
+                }
+                tvTotal.setText(String.valueOf(total));
             }
         });
     }
 
-    private void populateData() {
-        User user = VSPreference.getInstance(mContext).getDataUser(textKtp);
-        Log.d("XXXPOP", "populateData - ktp: " + textKtp);
-        if (user != null) {
-            Log.d("XXXPOP", "populateData not null - user: " + new Gson().toJson(user));
-        } else {
-            Log.d("XXXPOP", "populateData null");
-        }
-    }
-
-    public InputUserDialog setButton(CharSequence positiveText, CharSequence negativeText, InputUserDialogListener listener) {
+    public CustomMembershipDialog setButton(CharSequence positiveText, CharSequence negativeText, CustomMembershipDialogListener listener) {
         pButtonText = positiveText;
         nButtonText = negativeText;
-        this.inputUserDialogListener = listener;
+        this.customMembershipDialogListener = listener;
         return this;
     }
 }

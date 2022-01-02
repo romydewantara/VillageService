@@ -31,7 +31,7 @@ public class PortableDocumentFormat {
     }
 
     @SuppressLint("NewApi")
-    public void generatePdf(View view, String docName, String content) {
+    public void generatePdf(View view, String docName) {
         bitmap = loadBitmap(view, view.getWidth(), view.getHeight());
         drawFile();
 

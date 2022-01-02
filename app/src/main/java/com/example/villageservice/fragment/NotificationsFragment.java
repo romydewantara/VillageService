@@ -16,6 +16,12 @@ import android.widget.RelativeLayout;
 import com.example.villageservice.R;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.model.CoveringLetter;
+import com.example.villageservice.model.KartuKeluarga;
+import com.example.villageservice.utility.VSPreference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +35,7 @@ public class NotificationsFragment extends Fragment {
     private FragmentListener fragmentListener;
     private View view;
     private RelativeLayout overlay;
+    private List<CoveringLetter> coveringLetterList;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -99,6 +106,7 @@ public class NotificationsFragment extends Fragment {
     private void initMandatory() {
         fragmentListener.onFragmentCreated(NotificationsFragment.this);
         customLoadingDialog = new CustomLoadingDialog(context);
+        coveringLetterList = new ArrayList<>();
     }
 
     private void initListener() {
@@ -123,6 +131,15 @@ public class NotificationsFragment extends Fragment {
         } else {
             customLoadingDialog.dismiss();
             overlay.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void populateData() {
+        List<Object> kartuKeluargaObjList = VSPreference.getInstance(context).getKKList();
+
+        for (int i = 0; i < kartuKeluargaObjList.size(); i++) {
+            KartuKeluarga kartuKeluarga = (KartuKeluarga) kartuKeluargaObjList.get(i);
+
         }
     }
 
