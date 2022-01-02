@@ -11,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.villageservice.R;
 import com.example.villageservice.listener.FormUserRequestedListener;
+import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.User;
 import com.example.villageservice.utility.Fonts;
 
@@ -19,25 +20,25 @@ import java.util.List;
 public class FormListAdapter extends BaseAdapter {
 
     private Context context;
-    private List<User> user;
+    private List<CoveringLetter> coveringLetterList;
     private Fonts fonts;
     private FormUserRequestedListener mListener;
 
-    public FormListAdapter(Context context, List<User> user, FormUserRequestedListener mListener) {
+    public FormListAdapter(Context context, List<CoveringLetter> coveringLetterList, FormUserRequestedListener mListener) {
         this.context = context;
-        this.user = user;
+        this.coveringLetterList = coveringLetterList;
         this.mListener = mListener;
         fonts = new Fonts(context);
     }
 
     @Override
     public int getCount() {
-        return user.size();
+        return coveringLetterList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return user.get(position);
+        return coveringLetterList.get(position);
     }
 
     @Override
@@ -57,14 +58,14 @@ public class FormListAdapter extends BaseAdapter {
         tvStatus.setTypeface(fonts.rRegular());
         tvName.setTypeface(fonts.rRegular());
 
-        tvName.setText(user.get(position).getNamaLengkap());
-        tvStatus.setText(user.get(position).getStatusPernikahan());
-        tvDate.setText(user.get(position).getJenisKelamin());
+        tvName.setText(coveringLetterList.get(position).getClNama());
+        tvStatus.setText(coveringLetterList.get(position).getClKtp());
+        tvDate.setText(coveringLetterList.get(position).getClKeperluan());
 
         userRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onSelectedUserRequest(user.get(position).getIdKtp(), user.get(position).getNamaLengkap());
+                mListener.onSelectedUserRequest(coveringLetterList.get(position).getClKtp(), coveringLetterList.get(position).getClNama());
                 //Toast.makeText(context, user.get(position).getNamaLengkap(), Toast.LENGTH_SHORT).show();
             }
         });

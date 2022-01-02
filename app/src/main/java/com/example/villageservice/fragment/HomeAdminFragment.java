@@ -25,11 +25,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.villageservice.R;
+import com.example.villageservice.activity.AdminActivity;
 import com.example.villageservice.activity.SignInActivity;
 import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
 
@@ -84,6 +86,7 @@ public class HomeAdminFragment extends Fragment {
     private Animation imgAnimationOut;
 
     private int currentIndex = -1;
+    private String menuSelected = "";
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -204,8 +207,8 @@ public class HomeAdminFragment extends Fragment {
         cvInfo1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                menuSelected = ConstantVariable.KEY_CL_NIKAH;
                 goToNextFragment(1);
-                //Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Nikah", Toast.LENGTH_SHORT).show();
             }
         });
         cvInfo2.setOnClickListener(new View.OnClickListener() {
@@ -302,6 +305,7 @@ public class HomeAdminFragment extends Fragment {
     }
 
     private void goToNextFragment(int nextFragment) {
+        fragmentListener.onFragmentPassingData(menuSelected);
         fragmentListener.onFragmentFinish(HomeAdminFragment.this, nextFragment, true);
     }
 

@@ -22,7 +22,10 @@ import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,6 +58,7 @@ public class CoveringLetterFragment extends Fragment {
     private Button sendButton;
     private Spinner ktpChooser;
     private Spinner genderChooser;
+    private Spinner monthChooser;
     private Spinner kewarganegaraanChooser;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -164,11 +168,11 @@ public class CoveringLetterFragment extends Fragment {
         sendButton = view.findViewById(R.id.sendButton);
         ktpChooser = view.findViewById(R.id.ktpChooser);
         genderChooser = view.findViewById(R.id.genderChooser);
+        monthChooser = view.findViewById(R.id.monthChooser);
         kewarganegaraanChooser = view.findViewById(R.id.kewarganegaraanChooser);
     }
 
     private void send() {
-        String idKtp = String.valueOf(ktpChooser.getSelectedItem());
         String address = etAddress.getText().toString() + ", RT. " +
                 etRT.getText().toString() + ", RW. " +
                 etRW.getText().toString() + ", Kel. " +
@@ -176,12 +180,24 @@ public class CoveringLetterFragment extends Fragment {
                 etKec.getText().toString() + ", Kota " +
                 etKota.getText().toString() + ", Kode Pos: " +
                 etPostal.getText().toString();
-        Log.d("XXXCL", "send - id selected: " + idKtp);
-        CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05", "Nomor" + " 132912830918230912",
-                etIdNama.getText().toString(), String.valueOf(genderChooser.getSelectedItem()), etTempatLahir.getText().toString() + ", 20-12-1995", etPekerjaan.getText().toString(),
-                "12931029310293102", String.valueOf(kewarganegaraanChooser.getSelectedItem()), etPendidikan.getText().toString(), etAgama.getText().toString(), address, etMaksud.getText().toString(),
-                "NomorFooter", "tanggalRW", "namaRW", "tanggalRT", "namaRT");
+        String tanggalLahir = etTanggal.getText().toString() + " " + monthChooser.getSelectedItem() + " " + etTahun.getText().toString();
+        CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05",
+                "Nomor: " + " 12345678910111213", etIdNama.getText().toString(),
+                String.valueOf(genderChooser.getSelectedItem()), etTempatLahir.getText().toString() + tanggalLahir, etPekerjaan.getText().toString(),
+                String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
+                etPendidikan.getText().toString(), etAgama.getText().toString(), address, etMaksud.getText().toString(),
+                "…/JT/VI/3/014/…/2022", "05/02/2022", "Rudi", "05/02/2022", "Sukina");
         coveringLetter.setOpened(false);
-        VSPreference.getInstance(context).setCoveringLetter(idKtp, coveringLetter);
+
+        ArrayList<Object> coveringLetterArrayList = new ArrayList<>();
+        ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterList(ConstantVariable.KEY_CL_NIKAH);
+        if (tempObj.size() > 0) {
+            for (int i = 0; i < tempObj.size(); i++) {
+                CoveringLetter clTempObj = (CoveringLetter) tempObj.get(i);
+                coveringLetterArrayList.add(clTempObj);
+            }
+        }
+        coveringLetterArrayList.add(coveringLetter);
+        VSPreference.getInstance(context).setCoveringLetterList(ConstantVariable.KEY_CL_NIKAH, coveringLetterArrayList);
     }
 }

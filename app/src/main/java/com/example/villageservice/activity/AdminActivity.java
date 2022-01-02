@@ -43,6 +43,8 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
 
     private Fragment fragment;
 
+    private String menuSelected = "";
+
     public static final int FRAGMENT_FINISH_GOTO_HOME_ADMIN = 0;
     public static final int FRAGMENT_FINISH_GOTO_FORM_LIST = 1;
     public static final int FRAGMENT_FINISH_GOTO_PDF_VIEWER = 2;
@@ -187,6 +189,9 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_FORM_LIST:
                 fragment = new FormListFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("menu", menuSelected);
+                fragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_FORM_LIST)
@@ -255,6 +260,11 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         } else {
             bottomBar.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onFragmentPassingData(String coveringLetter) {
+        menuSelected = coveringLetter;
     }
 
     @Override

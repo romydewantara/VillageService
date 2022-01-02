@@ -98,6 +98,14 @@ public class VSPreference {
         return (CoveringLetter) getObject(key, CoveringLetter.class);
     }
 
+    public void setCoveringLetterList(String key, ArrayList<Object> coveringLetterList) {
+        putListObject(key, coveringLetterList);
+    }
+
+    public ArrayList<Object> getCoveringLetterList(String key) {
+        return getListObject(key, CoveringLetter.class);
+    }
+
     public void logout() {
         setRole("");
         setUser(null);

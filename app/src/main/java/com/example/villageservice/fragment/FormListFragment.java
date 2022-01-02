@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,8 +41,11 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     private View view;
     private ListView listForm;
     private FragmentListener fragmentListener;
+    private String previousFragment;
+    private String menuSelected;
 
-    private List<User> users;
+    private List<CoveringLetter> coveringLetters;
+    private ArrayList<Object> coveringLetterArrayList;
 
     private ImageView buttonLeft;
     private ImageView buttonRight;
@@ -55,6 +59,11 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public void addPreviousFragmentTag(String previousFragment) {
+        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
+        this.previousFragment = previousFragment;
+    }
 
     public FormListFragment() {
         // Required empty public constructor
@@ -77,9 +86,8 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        menuSelected = getArguments().getString("menu");
         fragmentListener.onFragmentCreated(FormListFragment.this);
-        users = new ArrayList<>();
-        users = getUserRequestList();
     }
 
     @Override
@@ -89,12 +97,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         tvPageTitle = view.findViewById(R.id.tvTitlePage);
         buttonLeft = view.findViewById(R.id.buttonLeft);
         buttonRight = view.findViewById(R.id.buttonRight);
-
-        FormListAdapter formListAdapter = new FormListAdapter(context, users, this);
         listForm = view.findViewById(R.id.listForm);
-        listForm.setDivider(null);
-        listForm.setDividerHeight(0);
-        listForm.setAdapter(formListAdapter);
 
         return view;
     }
@@ -105,6 +108,17 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         tvPageTitle.setTypeface(new Fonts(context).rBoldExtra());
         tvPageTitle.setTextColor(context.getResources().getColor(R.color.white));
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvPageTitle, 14, 24, 1, TypedValue.COMPLEX_UNIT_SP);
+        coveringLetterArrayList = VSPreference.getInstance(context).getCoveringLetterList(menuSelected);
+
+        coveringLetters = new ArrayList<>();
+        for (int i = 0; i < coveringLetterArrayList.size(); i++) {
+            CoveringLetter coveringLetter = (CoveringLetter) coveringLetterArrayList.get(i);
+            coveringLetters.add(coveringLetter);
+        }
+        FormListAdapter formListAdapter = new FormListAdapter(context, coveringLetters, this);
+        listForm.setDivider(null);
+        listForm.setDividerHeight(0);
+        listForm.setAdapter(formListAdapter);
 
         initListener();
     }
@@ -126,15 +140,6 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         super.onDetach();
     }
 
-    private List<User> getUserRequestList() {
-        List<Object> objListUser = VSPreference.getInstance(context).loadUserList();
-        for (int i = 0; i < objListUser.size(); i++) {
-            User user = (User) objListUser.get(i);
-            users.add(user);
-        }
-        return users;
-    }
-
     private void initListener() {
         buttonLeft.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,37 +151,29 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
 
     @Override
     public void onSelectedUserRequest(String ktp, String name) {
-        User user = new User();
         CoveringLetter coveringLetter = new CoveringLetter();
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getIdKtp().equalsIgnoreCase(ktp) && users.get(i).getNamaLengkap().equalsIgnoreCase(name)) {
-                user.setIdKtp(ktp);
-                user.setIdKartuKeluarga(users.get(i).getIdKartuKeluarga());
-                user.setNamaLengkap(users.get(i).getNamaLengkap());
-                user.setJenisKelamin(users.get(i).getJenisKelamin());
-                user.setTempatLahir(users.get(i).getTempatLahir());
-                user.setTanggalLahir(users.get(i).getTanggalLahir());
-                user.setTanggalBergabung(users.get(i).getTanggalBergabung());
-                user.setAgama(users.get(i).getAgama());
-                user.setPendidikan(users.get(i).getPendidikan());
-                user.setJenisPekerjaan(users.get(i).getJenisPekerjaan());
-                user.setStatusPernikahan(users.get(i).getStatusPernikahan());
-                user.setStatusHubunganDalamKeluarga(users.get(i).getStatusHubunganDalamKeluarga());
-                user.setKewarganegaraan(users.get(i).getKewarganegaraan());
-                user.setNamaAyah(users.get(i).getNamaAyah());
-                user.setNamaIbu(users.get(i).getNamaIbu());
+        for (int i = 0; i < coveringLetters.size(); i++) {
+            if (coveringLetters.get(i).getClKtp().equalsIgnoreCase(ktp) && coveringLetters.get(i).getClNama().equalsIgnoreCase(name)) {
+                coveringLetter.setClNama(coveringLetters.get(i).getClNama());
+                coveringLetter.setClKtp(coveringLetters.get(i).getClKtp());
+                coveringLetter.setClJenisKelamin(coveringLetters.get(i).getClJenisKelamin());
+                coveringLetter.setClTempatLahir(coveringLetters.get(i).getClTempatLahir());
+                coveringLetter.setClTanggalLahir(coveringLetters.get(i).getClTanggalLahir());
+                coveringLetter.setClAgama(coveringLetters.get(i).getClAgama());
+                coveringLetter.setClPendidikan(coveringLetters.get(i).getClPendidikan());
+                coveringLetter.setClKewarganegaraan(coveringLetters.get(i).getClKewarganegaraan());
             }
         }
-        appliedCoveringLetter(user);
-        VSPreference.getInstance(context).setUser(user);
+        appliedCoveringLetter(coveringLetter);
         fragmentListener.onFragmentFinish(FormListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_PDF_VIEWER, true);
     }
 
-    private void appliedCoveringLetter(User user) {
-        CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05", "Nomor" + "132912830918230912",
-                user.getNamaLengkap(), user.getJenisKelamin(), "20-12-1995", user.getJenisPekerjaan(),
-                String.valueOf(user.getIdKtp()), user.getKewarganegaraan(), user.getPendidikan(), user.getAgama(), "", "keperluan",
-                "NomorFooter", "tanggalRW", "namaRW", "tanggalRT", "namaRT");
-        VSPreference.getInstance(context).setCoveringLetter(String.valueOf(user.getIdKtp()), coveringLetter);
+    private void appliedCoveringLetter(CoveringLetter cl) {
+        CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05",
+                "Nomor: " + "12345678910111213",
+                cl.getClNama(), cl.getClJenisKelamin(), cl.getClTanggalLahir(), cl.getClPekerjaan(),
+                String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(), cl.getClAgama(), "", cl.getClKeperluan(),
+                "…/JT/VI/3/014/…/2022", "05/02/2022", "Rudi", "05/02/2022", "Sukina");
+        VSPreference.getInstance(context).setCoveringLetter(coveringLetter.getClKtp(), coveringLetter);
     }
 }

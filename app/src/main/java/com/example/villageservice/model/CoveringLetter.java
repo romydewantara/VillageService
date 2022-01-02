@@ -16,6 +16,9 @@ public class CoveringLetter {
     @SerializedName("cl_jenis_kelamin")
     String clJenisKelamin;
 
+    @SerializedName("cl_tempat_lahir")
+    String clTempatLahir;
+
     @SerializedName("cl_tanggal_lahir")
     String clTanggalLahir;
 
@@ -121,6 +124,14 @@ public class CoveringLetter {
 
     public void setClJenisKelamin(String clJenisKelamin) {
         this.clJenisKelamin = clJenisKelamin;
+    }
+
+    public String getClTempatLahir() {
+        return clTempatLahir;
+    }
+
+    public void setClTempatLahir(String clTempatLahir) {
+        this.clTempatLahir = clTempatLahir;
     }
 
     public String getClTanggalLahir() {
