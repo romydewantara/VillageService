@@ -155,12 +155,12 @@ public class InputUserDialog extends DialogFragment {
                 user.setTanggalLahir(tanggalDetail);
                 user.setAgama(et7.getText().toString());
                 user.setPendidikan(et8.getText().toString());
-                user.setJenisPekerjaan(et4.getText().toString());
-                user.setStatusPernikahan(et4.getText().toString());
-                user.setStatusHubunganDalamKeluarga(et4.getText().toString());
-                user.setKewarganegaraan(et4.getText().toString());
-                user.setNamaAyah(et4.getText().toString());
-                user.setNamaIbu(et4.getText().toString());
+                user.setJenisPekerjaan(et9.getText().toString());
+                user.setStatusPernikahan(et10.getText().toString());
+                user.setStatusHubunganDalamKeluarga(et11.getText().toString());
+                user.setKewarganegaraan(et12.getText().toString());
+                user.setNamaAyah(et13.getText().toString());
+                user.setNamaIbu(et14.getText().toString());
                 inputUserDialogListener.onAddButtonPressed(user);
 
                 dismiss();

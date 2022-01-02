@@ -1,34 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraintMembership"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@android:color/transparent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMemberName"
-        style="@style/TextBlackRegularRalewayStyle1"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nama belum terdaftar"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_height="match_parent"
+        app:cardCornerRadius="12dp"
+        app:cardMaxElevation="1dp"
+        app:cardUseCompatPadding="true">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMemberKTP"
-        style="@style/TextBlackRegularRalewayStyle1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="00000000xxxxx"
-        app:layout_constraintTop_toBottomOf="@id/tvMemberName"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_blue_50"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/editButton"
-        style="@style/TextBlueBoldRalewayStyle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMemberName"
+                style="@style/TextBlackRegularRalewayStyle2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="--Nama wajib diisi--"
+                android:textColor="@color/dark_blue_max"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMemberKTP"
+                style="@style/TextBlackRegularRalewayStyle1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="--KTP wajib diisi--"
+                android:textColor="@color/dark_blue_max"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMemberName"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <TextView
+                android:id="@+id/editButton"
+                style="@style/TextBlueBoldRalewayStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="Edit"
+                android:textColor="@color/dark_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

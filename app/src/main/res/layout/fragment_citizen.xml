@@ -76,7 +76,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Juki Waringin (Ketua RT. 09)"
+                android:text="Sukina (Ketua RT. 09)"
                 android:textColor="@color/white"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -214,7 +214,7 @@
                     android:id="@+id/tvWT2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Daftar Warga\nTetap"
+                    android:text="Daftar Warga\nTidak Tetap"
                     android:gravity="center"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/viewWT2"/>

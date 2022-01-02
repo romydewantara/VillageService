@@ -131,11 +131,11 @@ public class KartuKeluarga {
         this.provinsi = provinsi;
     }
 
-    public List<User> getAnggotaKeluarga() {
+    public List<User> getKeluargaList() {
         return anggotaKeluarga;
     }
 
-    public void setAnggotaKeluarga(List<User> anggotaKeluarga) {
+    public void setKeluargaList(List<User> anggotaKeluarga) {
         this.anggotaKeluarga = anggotaKeluarga;
     }
 }

@@ -45,7 +45,7 @@
 
                 <EditText
                     android:id="@+id/etIdKK"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -68,7 +68,7 @@
 
                 <EditText
                     android:id="@+id/etKepKK"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -91,7 +91,7 @@
 
                 <EditText
                     android:id="@+id/etAddress"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -118,7 +118,7 @@
 
                 <EditText
                     android:id="@+id/etRT"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -149,7 +149,7 @@
 
                 <EditText
                     android:id="@+id/etRW"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="3dp"
@@ -176,7 +176,7 @@
 
                 <EditText
                     android:id="@+id/etKel"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -199,7 +199,7 @@
 
                 <EditText
                     android:id="@+id/etKec"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -222,7 +222,7 @@
 
                 <EditText
                     android:id="@+id/etKota"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -245,7 +245,7 @@
 
                 <EditText
                     android:id="@+id/etPostal"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -268,7 +268,7 @@
 
                 <EditText
                     android:id="@+id/etProvinsi"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"

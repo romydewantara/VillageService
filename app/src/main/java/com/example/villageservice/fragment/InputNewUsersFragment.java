@@ -143,10 +143,10 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                             @Override
                             public void onButtonPositivePressed(int total) {
                                 User user = new User();
-                                user.setNamaLengkap("Unknown data");
-                                user.setIdKtp("0123456xxxxxx");
+                                user.setNamaLengkap("-- Nama wajib diisi --");
+                                user.setIdKtp("-- KTP wajib diisi --");
                                 ArrayList<User> arrayList = new ArrayList<>();
-                                for (int i = 0; i <= total; i++) {
+                                for (int i = 1; i <= total; i++) {
                                     arrayList.add(user);
                                 }
                                 membersAdapter = new MembersAdapter(context, arrayList);
@@ -197,7 +197,6 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     }
 
     private void saveDataKK() {
-        KartuKeluarga kartuKeluarga = new KartuKeluarga();
         String detailAddress = etAddress.getText().toString() + ", RT. " +
                 etRT.getText().toString() + ", RW. " +
                 etRW.getText().toString() + ", Kel. " +
@@ -205,28 +204,30 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                 etKec.getText().toString() + ", Kota " +
                 etKota.getText().toString() + ", Kode Pos: " +
                 etPostal.getText().toString();
-        kartuKeluarga.setIdKartuKeluarga(etIdKK.getText().toString());
-        kartuKeluarga.setNamaKepalaKeluarga(etKepKK.getText().toString());
-        kartuKeluarga.setAlamatLengkap(detailAddress);
-        kartuKeluarga.setAlamatRumah(etAddress.getText().toString());
-        kartuKeluarga.setNomorRt(Integer.parseInt(etRT.getText().toString()));
-        kartuKeluarga.setNomorRw(Integer.parseInt(etRW.getText().toString()));
-        kartuKeluarga.setKelurahan(etKel.getText().toString());
-        kartuKeluarga.setKecamatan(etKec.getText().toString());
-        kartuKeluarga.setKota(etKota.getText().toString());
-        kartuKeluarga.setKodePos(Integer.parseInt(etPostal.getText().toString()));
-        kartuKeluarga.setProvinsi(etProvinsi.getText().toString());
-        kartuKeluarga.setAnggotaKeluarga(temporaryUserAdded);
 
-        List<Object> kkObjList = VSPreference.getInstance(context).getKKList(); //get KK List from Pref
-        List<KartuKeluarga> kartuKeluargaList = new ArrayList<>(); //create new temporary KK obj List
+        KartuKeluarga tempKKObj = new KartuKeluarga();
+        tempKKObj.setIdKartuKeluarga(etIdKK.getText().toString());
+        tempKKObj.setNamaKepalaKeluarga(etKepKK.getText().toString());
+        tempKKObj.setAlamatLengkap(detailAddress);
+        tempKKObj.setAlamatRumah(etAddress.getText().toString());
+        tempKKObj.setNomorRt(Integer.parseInt(etRT.getText().toString()));
+        tempKKObj.setNomorRw(Integer.parseInt(etRW.getText().toString()));
+        tempKKObj.setKelurahan(etKel.getText().toString());
+        tempKKObj.setKecamatan(etKec.getText().toString());
+        tempKKObj.setKota(etKota.getText().toString());
+        tempKKObj.setKodePos(Integer.parseInt(etPostal.getText().toString()));
+        tempKKObj.setProvinsi(etProvinsi.getText().toString());
+        tempKKObj.setKeluargaList(temporaryUserAdded);
+
+        ArrayList<Object> kkObjList = VSPreference.getInstance(context).getKKList(); //get KK List from Pref
+        ArrayList<Object> kartuKeluargaList = new ArrayList<>(); //create new temporary KK obj List
         if (kkObjList.size() > 0) {
             for (int i = 0; i < kkObjList.size(); i++) {
                 KartuKeluarga kkObj = (KartuKeluarga) kkObjList.get(i);
                 kartuKeluargaList.add(kkObj);
             }
         }
-        kartuKeluargaList.add(kartuKeluarga);
+        kartuKeluargaList.add(tempKKObj);
         VSPreference.getInstance(context).saveKKList(kartuKeluargaList);
 
     }

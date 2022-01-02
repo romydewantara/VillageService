@@ -24,7 +24,7 @@ import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,7 +98,7 @@ public class CitizenFragment extends Fragment {
 
         initListener();
         prepareLayout();
-        List<Object> kkObjList = retrieveDataKK();
+        ArrayList<Object> kkObjList = retrieveDataKK();
         Log.d("XXXLOG", "onViewCreated - list: " + new Gson().toJson(kkObjList));
     }
 
@@ -137,7 +137,7 @@ public class CitizenFragment extends Fragment {
 
     }
 
-    private List<Object> retrieveDataKK() {
+    private ArrayList<Object> retrieveDataKK() {
         return VSPreference.getInstance(context).getKKList();
     }
 
