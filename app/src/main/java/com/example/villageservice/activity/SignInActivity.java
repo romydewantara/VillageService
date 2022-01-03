@@ -56,8 +56,6 @@ public class SignInActivity extends AppCompatActivity {
     private RelativeLayout overlay;
 
     // TEMPORARY MAIL
-    private String userMail = "user@test.com";
-    private String adminMail = "admin@test.com";
     private boolean isMailFilled = false;
     private boolean isPasswordFilled = false;
 
@@ -122,7 +120,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 Log.d("EMAIL", "afterTextChanged - s: " + s);
-                if (s.toString().length() >= 6)
+                if (s.toString().length() >= 6 || s.toString().equalsIgnoreCase(ConstantVariable.ADMIN_USERNAME))
                     isMailFilled = true;
                 else
                     isMailFilled = false;
@@ -193,31 +191,41 @@ public class SignInActivity extends AppCompatActivity {
         String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();
         if (!email.isEmpty()) {
-            ArrayList<Object> kartuKeluargaArrayList = VSPreference.getInstance(getApplicationContext()).getKKList();
-            Log.d("XXXLOG", "credentialCheck - kk: " + new Gson().toJson(kartuKeluargaArrayList));
-            if (!kartuKeluargaArrayList.isEmpty()) {
-                for (int i = 0; i < kartuKeluargaArrayList.size(); i++) {
-                    KartuKeluarga kkObj = (KartuKeluarga) kartuKeluargaArrayList.get(i);
-                    if (email.equalsIgnoreCase(kkObj.getIdKartuKeluarga())) {
-                        if (password.equalsIgnoreCase(kkObj.getPassword())) {
-                            VSPreference.getInstance(getApplicationContext()).setKK(kkObj);
-                            VSPreference.getInstance(getApplicationContext()).setRole(ConstantVariable.USER);
-                            login(UserActivity.class);
+            if (email.equalsIgnoreCase(ConstantVariable.ADMIN_USERNAME)) {
+                if (password.equalsIgnoreCase(ConstantVariable.ADMIN_PASSWORD)) {
+                    login(AdminActivity.class);
+                } else {
+                    showCAD("Gagal masuk", "Maaf… Password yang anda masukkan salah",
+                            "Coba Lagi", "");
+                }
+            } else {
+                ArrayList<Object> kartuKeluargaArrayList = VSPreference.getInstance(getApplicationContext()).getKKList();
+                Log.d("XXXLOG", "credentialCheck - kk: " + new Gson().toJson(kartuKeluargaArrayList));
+                if (!kartuKeluargaArrayList.isEmpty()) {
+                    for (int i = 0; i < kartuKeluargaArrayList.size(); i++) {
+                        KartuKeluarga kkObj = (KartuKeluarga) kartuKeluargaArrayList.get(i);
+                        if (email.equalsIgnoreCase(kkObj.getIdKartuKeluarga())) {
+                            if (password.equalsIgnoreCase(kkObj.getPassword())) {
+                                VSPreference.getInstance(getApplicationContext()).setKK(kkObj);
+                                VSPreference.getInstance(getApplicationContext()).setRole(ConstantVariable.USER);
+                                login(UserActivity.class);
+                                break;
+                            } else {
+                                showCAD("Gagal masuk",
+                                        "Maaf… Password yang anda masukkan salah",
+                                        "Coba Lagi", "");
+                            }
                             break;
                         } else {
                             showCAD("Gagal masuk",
-                                    "Maaf… Password yang anda masukkan salah",
+                                    "Maaf… Nomor Kartu Keluarga yang anda masukkan salah\nSilakan masukkan nomor Kartu Keluarga yang telah terdaftar",
                                     "Coba Lagi", "");
                         }
-                        break;
-                    } else {
-                        showCAD("Gagal masuk",
-                                "Maaf… Nomor Kartu Keluarga yang anda masukkan salah\nSilakan masukkan nomor Kartu Keluarga yang telah terdaftar",
-                                "Coba Lagi", "");
                     }
-                }
 
+                }
             }
+
             /*if (email.equalsIgnoreCase(userMail) && password.equalsIgnoreCase("123pass")) {
                 login(UserActivity.class);
             } else if (email.equalsIgnoreCase(adminMail) && password.equalsIgnoreCase("pass123")) {

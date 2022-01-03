@@ -3,6 +3,7 @@ package com.example.villageservice.activity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -12,9 +13,13 @@ import androidx.fragment.app.Fragment;
 import com.example.villageservice.R;
 import com.example.villageservice.fragment.CitizenFragment;
 import com.example.villageservice.fragment.CoveringLetterFragment;
+import com.example.villageservice.fragment.FormListFragment;
 import com.example.villageservice.fragment.HomeAdminFragment;
 import com.example.villageservice.fragment.HomeUserFragment;
+import com.example.villageservice.fragment.InputNewUsersFragment;
 import com.example.villageservice.fragment.NotificationsFragment;
+import com.example.villageservice.fragment.PdfViewerFragment;
+import com.example.villageservice.fragment.ProfileFragment;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.utility.VSPreference;
@@ -28,11 +33,10 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     public static final int FRAGMENT_FINISH_GOTO_HOME = 1;
     public static final int FRAGMENT_FINISH_GOTO_PROFILE = 2;
     public static final int FRAGMENT_FINISH_GOTO_NOTIFICATION = 3;
-
     public static final int FRAGMENT_FINISH_GOTO_CL = 4;
 
 
-    public static final String TAG_FRAGMENT_HOME = "home_fragment";
+    public static final String TAG_FRAGMENT_HOME_USER = "home_user_fragment";
     public static final String TAG_FRAGMENT_PROFILE = "profile_fragment";
     public static final String TAG_FRAGMENT_NOTIFICATIONS = "notifications_fragment";
 
@@ -48,13 +52,41 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        kartuKeluarga = VSPreference.getInstance(getApplicationContext()).getKK();
-        Log.d("XXXLOG", "onCreate - KK logged in: " + new Gson().toJson(kartuKeluarga));
+        initMandatory();
+        initListener();
+        goToHome();
+    }
+
+    private void initMandatory() {
         homeIcon = findViewById(R.id.homeIcon);
         profileIcon = findViewById(R.id.citizenIcon);
         notificationIcon = findViewById(R.id.notificationIcon);
-        goToHome();
+        bottomBar = findViewById(R.id.bottomBar);
 
+        //fetch family registered
+        kartuKeluarga = VSPreference.getInstance(getApplicationContext()).getKK();
+        Log.d("XXXLOG", "onCreate - KK logged in: " + new Gson().toJson(kartuKeluarga));
+    }
+
+    private void initListener() {
+        homeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToHome();
+            }
+        });
+        profileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToProfile();
+            }
+        });
+        notificationIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNotifications();
+            }
+        });
     }
 
     @SuppressLint("NewApi")
@@ -101,6 +133,27 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
             exit = R.anim.exit_to_right;
         }
         switch (destination) {
+            case FRAGMENT_FINISH_GOTO_HOME:
+                fragment = new HomeUserFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_USER)
+                        .commit();
+                break;
+            case FRAGMENT_FINISH_GOTO_PROFILE:
+                fragment = new ProfileFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_PROFILE)
+                        .commit();
+                break;
+            case FRAGMENT_FINISH_GOTO_NOTIFICATION:
+                fragment = new NotificationsFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_NOTIFICATIONS)
+                        .commit();
+                break;
             case FRAGMENT_FINISH_GOTO_CL:
                 fragment = new CoveringLetterFragment();
                 getSupportFragmentManager().beginTransaction()
@@ -111,9 +164,27 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         }
     }
 
+    @SuppressLint("NewApi")
     @Override
     public void onFragmentCreated(Fragment currentFragment) {
-
+        if (currentFragment instanceof HomeUserFragment) {
+            homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_on));
+            profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_profile_off));
+            notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
+            bottomBar.setVisibility(View.VISIBLE);
+        } else if (currentFragment instanceof ProfileFragment) {
+            homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
+            profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_profile_on));
+            notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
+            bottomBar.setVisibility(View.VISIBLE);
+        } else if (currentFragment instanceof NotificationsFragment) {
+            homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
+            profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_profile_off));
+            notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_on));
+            bottomBar.setVisibility(View.VISIBLE);
+        } else {
+            bottomBar.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -128,11 +199,28 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
 
     @Override
     public void onActivityFinish() {
-
+        finish();
     }
 
     @Override
     public void onActivityBackPressed() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (fragment instanceof HomeAdminFragment) {
+            finish();
+        } else if (fragment instanceof FormListFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+        } else if (fragment instanceof ProfileFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+        } else if (fragment instanceof NotificationsFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+        } else if (fragment instanceof PdfViewerFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

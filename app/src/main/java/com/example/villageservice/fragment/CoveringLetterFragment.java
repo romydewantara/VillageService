@@ -135,11 +135,11 @@ public class CoveringLetterFragment extends Fragment {
             }
         });
 
-        KartuKeluarga kartuKeluarga = VSPreference.getInstance(context).getKK();
+        /*KartuKeluarga kartuKeluarga = VSPreference.getInstance(context).getKK();
         ktpArrayList = new ArrayList<>();
         for (int i = 0; i < kartuKeluarga.getKeluargaList().size(); i++) {
             ktpArrayList.add(kartuKeluarga.getKeluargaList().get(i).getIdKtp());
-        }
+        }*/
 
         /*final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(context, R.id.spinnerIdKTP, ktpArrayList);
         spinnerAdapter.setDropDownViewResource(R.id.spinnerIdKTP);

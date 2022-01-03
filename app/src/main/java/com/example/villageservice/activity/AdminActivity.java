@@ -73,8 +73,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         initMandatory();
         initListener();
         goToHome();
-//        goToCL();
-        fetchUsers();
+        //fetchUsers();
     }
 
     private void initMandatory() {

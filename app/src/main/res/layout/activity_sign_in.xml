@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/background_edit_text_rounded"
-            android:hint="Nomor KTP"
+            android:hint="Nomor Kartu Keluarga"
             android:inputType="number"
             android:maxLines="1"
             android:paddingLeft="15dp"

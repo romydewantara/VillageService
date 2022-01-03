@@ -21,4 +21,8 @@ public class ConstantVariable {
     public final static String KEY_CL_AKTA_LAHIR = "KEY_CL_AKTA_LAHIR";
     public final static String KEY_CL_AKTA_KEMATIAN = "KEY_CL_AKTA_KEMATIAN";
 
+    //account
+    public final static String ADMIN_USERNAME = "007";
+    public final static String ADMIN_PASSWORD = "password123";
+
 }
