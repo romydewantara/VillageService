@@ -92,6 +92,7 @@ public class CitizenFragment extends Fragment {
         cvInfoLeader = view.findViewById(R.id.cvInfoLeader);
         cvInfoWargaBaru = view.findViewById(R.id.cvInfoWargaBaru);
         overlay = view.findViewById(R.id.overlay);
+        backButton = view.findViewById(R.id.backButton);
         return view;
     }
 

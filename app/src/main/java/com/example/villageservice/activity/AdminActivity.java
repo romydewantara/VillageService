@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -37,9 +38,14 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     private ArrayList<Object> objListUser;
 
     private FrameLayout bottomBar;
-    private ImageView homeBar;
-    private ImageView userBar;
-    private ImageView notificationBar;
+
+    private LinearLayout homeMenu;
+    private LinearLayout citizenMenu;
+    private LinearLayout notificationMenu;
+
+    private ImageView homeIcon;
+    private ImageView citizenIcon;
+    private ImageView notificationIcon;
 
     private Fragment fragment;
 
@@ -74,9 +80,13 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     private void initMandatory() {
         appUtil = new AppUtil();
         bottomBar = findViewById(R.id.bottomBar);
-        homeBar = findViewById(R.id.homeBar);
-        userBar = findViewById(R.id.userBar);
-        notificationBar = findViewById(R.id.notificationBar);
+        homeIcon = findViewById(R.id.homeIcon);
+        citizenIcon = findViewById(R.id.citizenIcon);
+        notificationIcon = findViewById(R.id.notificationIcon);
+
+        homeMenu = findViewById(R.id.homeMenu);
+        citizenMenu = findViewById(R.id.citizenMenu);
+        notificationMenu = findViewById(R.id.notificationMenu);
     }
 
     @SuppressLint("NewApi")
@@ -85,9 +95,9 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_ADMIN)
                 .commit();
-        homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_on));
-        userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
-        notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_off));
+        homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_on));
+        citizenIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_off));
+        notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
     }
 
     @SuppressLint("NewApi")
@@ -96,9 +106,9 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment, TAG_FRAGMENT_CITIZENS)
                 .commit();
-        homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_off));
-        userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_on));
-        notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_off));
+        homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
+        citizenIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_on));
+        notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
     }
 
     @SuppressLint("NewApi")
@@ -107,20 +117,9 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment, TAG_FRAGMENT_NOTIFICATIONS)
                 .commit();
-        homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_off));
-        userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
-        notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_on));
-    }
-
-    @SuppressLint("NewApi")
-    private void goToCL() {
-        fragment = new CoveringLetterFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_ADMIN)
-                .commit();
-        homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_on));
-        userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
-        notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_off));
+        homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
+        citizenIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_off));
+        notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_on));
     }
 
     private void fetchUsers() {
@@ -142,7 +141,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     }
 
     private void initListener() {
-        homeBar.setOnClickListener(new View.OnClickListener() {
+        homeMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (fragment.getTag() != null && !fragment.getTag().equalsIgnoreCase(TAG_FRAGMENT_HOME_ADMIN)) {
@@ -150,7 +149,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 }
             }
         });
-        userBar.setOnClickListener(new View.OnClickListener() {
+        citizenMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (fragment.getTag() != null && !fragment.getTag().equalsIgnoreCase(TAG_FRAGMENT_CITIZENS)) {
@@ -158,7 +157,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 }
             }
         });
-        notificationBar.setOnClickListener(new View.OnClickListener() {
+        notificationMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (fragment.getTag() != null && !fragment.getTag().equalsIgnoreCase(TAG_FRAGMENT_NOTIFICATIONS)) {
@@ -221,7 +220,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 fragment = new NotificationsFragment();
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
-                        .replace(R.id.container, fragment, TAG_FRAGMENT_INPUT_USER)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_NOTIFICATIONS)
                         .commit();
 
                 break;
@@ -232,19 +231,19 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     @Override
     public void onFragmentCreated(Fragment currentFragment) {
         if (currentFragment instanceof HomeAdminFragment) {
-            homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_on));
-            userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
-            notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_off));
+            homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_on));
+            citizenIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_off));
+            notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
             bottomBar.setVisibility(View.VISIBLE);
         } else if (currentFragment instanceof CitizenFragment) {
-            homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_off));
-            userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_on));
-            notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_off));
+            homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
+            citizenIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_on));
+            notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
             bottomBar.setVisibility(View.VISIBLE);
         } else if (currentFragment instanceof NotificationsFragment) {
-            homeBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_home_off));
-            userBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_user_off));
-            notificationBar.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_bar_notification_on));
+            homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
+            citizenIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_off));
+            notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_on));
             bottomBar.setVisibility(View.VISIBLE);
         } else {
             bottomBar.setVisibility(View.GONE);

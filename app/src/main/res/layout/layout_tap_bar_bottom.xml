@@ -1,30 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/light_blue"
-    android:orientation="horizontal"
-    android:padding="8dp">
+    android:background="@color/white">
 
-    <ImageView
-        android:layout_weight="50"
-        android:id="@+id/homeBar"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:src="@mipmap/ic_bar_home_off" />
+    <LinearLayout
+        android:id="@+id/homeMenu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".3">
 
-    <ImageView
-        android:layout_weight="50"
-        android:id="@+id/userBar"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:src="@mipmap/ic_bar_user_off" />
+        <ImageView
+            android:id="@+id/homeIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/ic_home_off" />
 
-    <ImageView
-        android:layout_weight="50"
-        android:id="@+id/notificationBar"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:src="@mipmap/ic_bar_notification_off" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/homeIcon"
+            android:layout_centerInParent="true"
+            android:text="Beranda" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/citizenMenu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/homeMenu"
+        app:layout_constraintRight_toLeftOf="@id/notificationMenu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".3">
+
+        <ImageView
+            android:id="@+id/citizenIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/ic_citizen_off" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCitizen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Warga" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/notificationMenu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".3">
+
+        <ImageView
+            android:id="@+id/notificationIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/ic_notification_off" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notifikasi" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

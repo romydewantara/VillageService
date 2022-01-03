@@ -141,9 +141,9 @@ public class CoveringLetterFragment extends Fragment {
             ktpArrayList.add(kartuKeluarga.getKeluargaList().get(i).getIdKtp());
         }
 
-        final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(context, R.id.spinnerIdKTP, ktpArrayList);
+        /*final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(context, R.id.spinnerIdKTP, ktpArrayList);
         spinnerAdapter.setDropDownViewResource(R.id.spinnerIdKTP);
-        ktpChooser.setAdapter(spinnerAdapter);
+        ktpChooser.setAdapter(spinnerAdapter);*/
     }
 
     @Override
