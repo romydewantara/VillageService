@@ -203,6 +203,7 @@ public class SignInActivity extends AppCompatActivity {
                             VSPreference.getInstance(getApplicationContext()).setKK(kkObj);
                             VSPreference.getInstance(getApplicationContext()).setRole(ConstantVariable.USER);
                             login(UserActivity.class);
+                            break;
                         } else {
                             showCAD("Gagal masuk",
                                     "Maaf… Password yang anda masukkan salah",

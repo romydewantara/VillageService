@@ -272,14 +272,14 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
 
     }
 
-    private void showAddMemberDialog(int position, String ktp) {
+    private void showAddMemberDialog(final MembersAdapter.MemberHolder memberHolder, final View view, int position, String ktp) {
         FragmentManager fm = getFragmentManager();
         InputUserDialog inputUserDialog = InputUserDialog.newInstance(context, "Anggota Keluarga", ktp)
                 .setButton("Tambah", "Batal", new InputUserDialogListener() {
                     @Override
                     public void onAddButtonPressed(User user) {
                         //TODO: Update Name AND KTP from selected item
-
+                        memberHolder.setUpdateData(user.getNamaLengkap(), user.getIdKtp());
                         temporaryUserAdded.add(user);
                     }
                     @Override
@@ -291,8 +291,8 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     }
 
     @Override
-    public void onItemClick(View view, int position, String ktp) {
-        showAddMemberDialog(position, ktp);
+    public void onItemClick(MembersAdapter.MemberHolder memberHolder, View view, int position, String ktp) {
+        showAddMemberDialog(memberHolder, view, position, ktp);
     }
 
 }

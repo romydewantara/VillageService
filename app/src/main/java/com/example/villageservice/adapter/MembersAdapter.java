@@ -69,7 +69,7 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MemberHo
 
         @Override
         public void onClick(View v) {
-            if (itemClickListener != null) itemClickListener.onItemClick(v, getAdapterPosition(), tvMemberKTP.getText().toString());
+            if (itemClickListener != null) itemClickListener.onItemClick(this, v, getAdapterPosition(), tvMemberKTP.getText().toString());
         }
 
         public void setUpdateData(String name, String ktp) {
@@ -80,6 +80,6 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MemberHo
     }
 
     public interface ItemClickListener {
-        void onItemClick(View view, int position, String ktp);
+        void onItemClick(MemberHolder memberHolder, View view, int position, String ktp);
     }
 }
