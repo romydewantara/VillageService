@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HomeUserFragment">
 
     <com.airbnb.lottie.LottieAnimationView
@@ -13,8 +13,18 @@
         android:background="@drawable/ic_bg_home_by_stwn"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.43"
+        app:layout_constraintHeight_percent="0.3"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/signOutButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:padding="10dp"
+        android:visibility="invisible"
+        android:src="@mipmap/ic_sign_out"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,53 +33,20 @@
         android:layout_height="0dp"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
-        app:layout_constraintHeight_percent="0.35"
+        android:visibility="invisible"
+        app:layout_constraintHeight_percent="0.21"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="Warga RT. 19"
-                android:textColor="@color/dark_blue"
-                android:textSize="24dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
-
-            <ImageView
-                android:id="@+id/signOutButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="8dp"
-                android:src="@mipmap/ic_sign_out"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RelativeLayout
             android:id="@+id/profile"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            app:layout_constraintBottom_toTopOf="@id/tvContentHeader"
+            app:layout_constraintBottom_toTopOf="@id/tvKKNumber"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintHeader">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvProfile"
@@ -102,16 +79,16 @@
         </RelativeLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvContentHeader"
+            android:id="@+id/tvKKNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="5dp"
             android:text="Nomor Kartu Keluarga:\n012345678910"
             android:textColor="@color/white"
             android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -119,11 +96,11 @@
         android:id="@+id/constraintContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
+        android:paddingTop="25dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        app:layout_constraintHeight_percent=".6"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutSpace">
@@ -137,7 +114,7 @@
             app:cardMaxElevation="10dp"
             app:cardPreventCornerOverlap="false"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_percent=".30"
+            app:layout_constraintHeight_percent=".28"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/cvInfo2"
             app:layout_constraintTop_toTopOf="parent">
@@ -155,9 +132,9 @@
                     android:layout_height="0dp"
                     android:src="@mipmap/ic_menu_wedding"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHeight_percent=".45"
+                    app:layout_constraintHeight_percent=".35"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias=".25" />
+                    app:layout_constraintVertical_bias=".15" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle1"
@@ -182,7 +159,7 @@
             app:cardMaxElevation="10dp"
             app:cardPreventCornerOverlap="false"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_percent=".30"
+            app:layout_constraintHeight_percent=".28"
             app:layout_constraintLeft_toRightOf="@id/cvInfo1"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -200,9 +177,9 @@
                     android:layout_height="0dp"
                     android:src="@mipmap/ic_menu_umkm"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHeight_percent=".45"
+                    app:layout_constraintHeight_percent=".35"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias=".25" />
+                    app:layout_constraintVertical_bias=".15" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle2"
@@ -228,7 +205,7 @@
             app:cardMaxElevation="10dp"
             app:cardPreventCornerOverlap="false"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_percent=".30"
+            app:layout_constraintHeight_percent=".28"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/cvInfo4"
             app:layout_constraintTop_toBottomOf="@id/cvInfo1">
@@ -246,9 +223,9 @@
                     android:layout_height="0dp"
                     android:src="@mipmap/ic_menu_move"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHeight_percent=".45"
+                    app:layout_constraintHeight_percent=".35"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias=".25" />
+                    app:layout_constraintVertical_bias=".15" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle3"
@@ -274,7 +251,7 @@
             app:cardMaxElevation="10dp"
             app:cardPreventCornerOverlap="false"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_percent=".30"
+            app:layout_constraintHeight_percent=".28"
             app:layout_constraintLeft_toRightOf="@id/cvInfo3"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cvInfo2">
@@ -292,9 +269,9 @@
                     android:layout_height="0dp"
                     android:src="@mipmap/ic_menu_kk"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHeight_percent=".45"
+                    app:layout_constraintHeight_percent=".35"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias=".25" />
+                    app:layout_constraintVertical_bias=".15" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle4"
@@ -320,7 +297,7 @@
             app:cardMaxElevation="10dp"
             app:cardPreventCornerOverlap="false"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_percent=".30"
+            app:layout_constraintHeight_percent=".28"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/cvInfo6"
             app:layout_constraintTop_toBottomOf="@id/cvInfo3">
@@ -338,9 +315,9 @@
                     android:layout_height="0dp"
                     android:src="@mipmap/ic_menu_akta"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHeight_percent=".45"
+                    app:layout_constraintHeight_percent=".35"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias=".25" />
+                    app:layout_constraintVertical_bias=".15" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle5"
@@ -366,7 +343,7 @@
             app:cardMaxElevation="10dp"
             app:cardPreventCornerOverlap="false"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_percent=".30"
+            app:layout_constraintHeight_percent=".28"
             app:layout_constraintLeft_toRightOf="@id/cvInfo5"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cvInfo4">
@@ -384,9 +361,9 @@
                     android:layout_height="0dp"
                     android:src="@mipmap/ic_menu_cemetery"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHeight_percent=".45"
+                    app:layout_constraintHeight_percent=".35"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias=".25" />
+                    app:layout_constraintVertical_bias=".15" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle6"
@@ -404,11 +381,34 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvBanner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintHeight_percent=".18"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintContainer"
+        app:layout_constraintWidth_percent=".65">
+
+        <ImageSwitcher
+            android:id="@+id/imageSwitcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_blue_max"
+            android:visibility="visible" />
+
+    </androidx.cardview.widget.CardView>
+
     <RelativeLayout
         android:id="@+id/overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white_50"
-        android:visibility="gone" />
+        android:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,16 +5,28 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.villageservice.R;
 import com.example.villageservice.activity.UserActivity;
+import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.model.KartuKeluarga;
+import com.example.villageservice.utility.VSPreference;
+import com.google.gson.Gson;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,10 +36,24 @@ import com.example.villageservice.listener.FragmentListener;
 public class HomeUserFragment extends Fragment {
 
     private Context context;
+    private CustomLoadingDialog customLoadingDialog;
     private FragmentListener fragmentListener;
+    private KartuKeluarga kartuKeluarga;
     private View view;
 
+    private RelativeLayout overlay;
+    private AppCompatTextView tvKKNumber;
     private CardView cvInfo1;
+    private CardView cvInfo2;
+    private CardView cvInfo3;
+    private CardView cvInfo4;
+    private CardView cvInfo5;
+    private CardView cvInfo6;
+
+    private ImageView signOutButton;
+    private ConstraintLayout layoutSpace;
+    private ConstraintLayout constraintContainer;
+    private CardView cvBanner;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,7 +93,7 @@ public class HomeUserFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        fragmentListener.onFragmentCreated(HomeUserFragment.this);
+        initMandatory();
     }
 
     @Override
@@ -75,7 +101,20 @@ public class HomeUserFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home_user, container, false);
+        tvKKNumber = view.findViewById(R.id.tvKKNumber);
         cvInfo1 = view.findViewById(R.id.cvInfo1);
+        cvInfo2 = view.findViewById(R.id.cvInfo2);
+        cvInfo3 = view.findViewById(R.id.cvInfo3);
+        cvInfo4 = view.findViewById(R.id.cvInfo4);
+        cvInfo5 = view.findViewById(R.id.cvInfo5);
+        cvInfo6 = view.findViewById(R.id.cvInfo6);
+        overlay = view.findViewById(R.id.overlay);
+
+        signOutButton = view.findViewById(R.id.signOutButton);
+        layoutSpace = view.findViewById(R.id.layoutSpace);
+        constraintContainer = view.findViewById(R.id.constraintContainer);
+        cvBanner = view.findViewById(R.id.cvBanner);
+
         return view;
     }
 
@@ -83,6 +122,9 @@ public class HomeUserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        prepareLayout();
+        String textKK = "Nomor Kartu Keluarga:\n" + kartuKeluarga.getIdKartuKeluarga();
+        tvKKNumber.setText(textKK);
         cvInfo1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,5 +149,39 @@ public class HomeUserFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    private void initMandatory() {
+        fragmentListener.onFragmentCreated(HomeUserFragment.this);
+        customLoadingDialog = new CustomLoadingDialog(context);
+        //fetch family registered
+        kartuKeluarga = VSPreference.getInstance(context).getKK();
+        Log.d("XXXLOG", "onCreate - KK logged in: " + new Gson().toJson(kartuKeluarga));
+    }
+
+    public void showOverlay(boolean isShow) {
+        if (isShow) {
+            overlay.setVisibility(View.VISIBLE);
+            customLoadingDialog.show();
+        } else {
+            customLoadingDialog.dismiss();
+            overlay.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void prepareLayout() {
+        showOverlay(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.bounched_show);
+                signOutButton.setVisibility(View.VISIBLE);
+                layoutSpace.setVisibility(View.VISIBLE);
+                constraintContainer.setVisibility(View.VISIBLE);
+                cvBanner.setVisibility(View.VISIBLE);
+                cvBanner.startAnimation(slideUp);
+                showOverlay(false);
+            }
+        }, 1800);
     }
 }

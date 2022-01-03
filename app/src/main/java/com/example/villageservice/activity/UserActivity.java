@@ -2,32 +2,26 @@ package com.example.villageservice.activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
-import com.example.villageservice.fragment.CitizenFragment;
 import com.example.villageservice.fragment.CoveringLetterFragment;
 import com.example.villageservice.fragment.FormListFragment;
 import com.example.villageservice.fragment.HomeAdminFragment;
 import com.example.villageservice.fragment.HomeUserFragment;
-import com.example.villageservice.fragment.InputNewUsersFragment;
 import com.example.villageservice.fragment.NotificationsFragment;
 import com.example.villageservice.fragment.PdfViewerFragment;
 import com.example.villageservice.fragment.ProfileFragment;
 import com.example.villageservice.listener.FragmentListener;
-import com.example.villageservice.model.KartuKeluarga;
-import com.example.villageservice.utility.VSPreference;
-import com.google.gson.Gson;
 
 public class UserActivity extends AppCompatActivity implements FragmentListener {
 
-    private KartuKeluarga kartuKeluarga;
     private Fragment fragment;
 
     public static final int FRAGMENT_FINISH_GOTO_HOME = 1;
@@ -43,9 +37,14 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     public static final String TAG_FRAGMENT_CL = "cl_fragment";
 
     private FrameLayout bottomBar;
+    private LinearLayout homeMenu;
+    private LinearLayout profileMenu;
+    private LinearLayout notificationMenu;
     private ImageView homeIcon;
     private ImageView profileIcon;
     private ImageView notificationIcon;
+
+    private String menuSelected = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,30 +57,29 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     }
 
     private void initMandatory() {
+        homeMenu = findViewById(R.id.homeMenu);
+        profileMenu = findViewById(R.id.citizenMenu);
+        notificationMenu = findViewById(R.id.notificationMenu);
         homeIcon = findViewById(R.id.homeIcon);
         profileIcon = findViewById(R.id.citizenIcon);
         notificationIcon = findViewById(R.id.notificationIcon);
         bottomBar = findViewById(R.id.bottomBar);
-
-        //fetch family registered
-        kartuKeluarga = VSPreference.getInstance(getApplicationContext()).getKK();
-        Log.d("XXXLOG", "onCreate - KK logged in: " + new Gson().toJson(kartuKeluarga));
     }
 
     private void initListener() {
-        homeIcon.setOnClickListener(new View.OnClickListener() {
+        homeMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToHome();
             }
         });
-        profileIcon.setOnClickListener(new View.OnClickListener() {
+        profileMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToProfile();
             }
         });
-        notificationIcon.setOnClickListener(new View.OnClickListener() {
+        notificationMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToNotifications();
@@ -102,7 +100,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
 
     @SuppressLint("NewApi")
     private void goToProfile() {
-        fragment = new CitizenFragment();
+        fragment = new ProfileFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment, TAG_FRAGMENT_PROFILE)
                 .commit();
@@ -156,6 +154,8 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_CL:
                 fragment = new CoveringLetterFragment();
+                //Bundle bundle = new Bundle();
+                //bundle.putString("menu", menuSelected);
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_CL)
@@ -189,7 +189,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
 
     @Override
     public void onFragmentPassingData(String coveringLetter) {
-
+        menuSelected = coveringLetter;
     }
 
     @Override
@@ -218,6 +218,8 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         } else if (fragment instanceof NotificationsFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
         } else if (fragment instanceof PdfViewerFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+        } else if (fragment instanceof CoveringLetterFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
         } else {
             super.onBackPressed();

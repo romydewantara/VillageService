@@ -23,6 +23,13 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- SPINNER THEME -->
+    <style name="SpinnerTheme">
+        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="TextBlackBoldStyle1">
         <item name="android:fontFamily">@font/pt_serif_bold</item>
         <item name="android:textColor">@color/black</item>

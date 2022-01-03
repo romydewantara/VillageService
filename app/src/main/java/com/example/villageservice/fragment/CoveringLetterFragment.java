@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.example.villageservice.R;
+import com.example.villageservice.adapter.CustomSpinnerAdapter;
 import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
@@ -103,6 +104,7 @@ public class CoveringLetterFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        fragmentListener.onFragmentCreated(CoveringLetterFragment.this);
     }
 
     @Override
@@ -135,15 +137,14 @@ public class CoveringLetterFragment extends Fragment {
             }
         });
 
-        /*KartuKeluarga kartuKeluarga = VSPreference.getInstance(context).getKK();
+        KartuKeluarga kartuKeluarga = VSPreference.getInstance(context).getKK();
         ktpArrayList = new ArrayList<>();
         for (int i = 0; i < kartuKeluarga.getKeluargaList().size(); i++) {
             ktpArrayList.add(kartuKeluarga.getKeluargaList().get(i).getIdKtp());
-        }*/
+        }
 
-        /*final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(context, R.id.spinnerIdKTP, ktpArrayList);
-        spinnerAdapter.setDropDownViewResource(R.id.spinnerIdKTP);
-        ktpChooser.setAdapter(spinnerAdapter);*/
+        CustomSpinnerAdapter spinnerAdapter = new CustomSpinnerAdapter(context, R.layout.spinner_items, ktpArrayList);
+        ktpChooser.setAdapter(spinnerAdapter);
     }
 
     @Override
