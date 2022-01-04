@@ -68,13 +68,15 @@
             android:paddingRight="15dp"
             android:textColorHint="@color/dark_grey" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/background_edit_text_rounded"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@._-+"
+            android:drawableEnd="@drawable/selector_toggle_password"
+            android:drawableRight="@drawable/selector_toggle_password"
             android:hint="Kata Sandi"
             android:inputType="textPassword"
             android:maxLines="1"

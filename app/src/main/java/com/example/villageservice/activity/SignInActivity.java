@@ -1,19 +1,25 @@
 package com.example.villageservice.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.FragmentManager;
 
@@ -43,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
 
     // 2 EditText
     private EditText etEmail;
-    private EditText etPassword;
+    private AppCompatEditText etPassword;
 
     // 1 Button
     private Button signInButton;
@@ -87,6 +93,7 @@ public class SignInActivity extends AppCompatActivity {
         signInButton.setBackgroundResource(R.drawable.bg_button_disabled);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void initListener() {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +105,7 @@ public class SignInActivity extends AppCompatActivity {
         tvGuide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCAD(
+                showCustomAlertDialog(
                         "Informasi",
                         "Akun user:\nuser@test.com | password: 123pass\n\nAkun admin:\nadmin@test.com | password: pass123",
                         "Tutup", "");
@@ -142,6 +149,24 @@ public class SignInActivity extends AppCompatActivity {
                 checkButtonState();
             }
         });
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(event.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[2].getBounds().width())) {
+                        if(etPassword.getTransformationMethod() instanceof PasswordTransformationMethod){
+                            etPassword.setTransformationMethod(null);
+                            Drawable img = ContextCompat.getDrawable(v.getContext(), R.drawable.ic_visibility_off);
+                            etPassword.setCompoundDrawablesWithIntrinsicBounds(null,null, img,null);
+                        } else {
+                            etPassword.setTransformationMethod(new PasswordTransformationMethod());
+                            Drawable img = ContextCompat.getDrawable(v.getContext(), R.drawable.ic_visibility_on);
+                            etPassword.setCompoundDrawablesWithIntrinsicBounds(null,null, img,null);}
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     private void setFonts() {
@@ -163,7 +188,7 @@ public class SignInActivity extends AppCompatActivity {
         etPassword.setTextSize(16f);
     }
 
-    private void showCAD(String title, String message, String pButton, String nButton) {
+    private void showCustomAlertDialog(String title, String message, String pButton, String nButton) {
         FragmentManager fm = getSupportFragmentManager();
         CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(this, title, message)
                 .setButton(pButton, nButton, new CustomAlertDialogListener() {
@@ -188,58 +213,64 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void credentialCheck() {
-        String email = etEmail.getText().toString();
-        String password = etPassword.getText().toString();
+        final String email = etEmail.getText().toString();
+        final String password = etPassword.getText().toString();
         if (!email.isEmpty()) {
             if (email.equalsIgnoreCase(ConstantVariable.ADMIN_USERNAME)) {
                 if (password.equalsIgnoreCase(ConstantVariable.ADMIN_PASSWORD)) {
-                    login(AdminActivity.class);
+                    VSPreference.getInstance(getApplicationContext()).setRole(ConstantVariable.ADMIN);
+                    login(AdminActivity.class, 3000);
                 } else {
-                    showCAD("Gagal masuk", "Maaf… Password yang anda masukkan salah",
-                            "Coba Lagi", "");
+                    showCustomAlertDialog("Gagal masuk", "Maaf… Password yang anda masukkan salah", "Coba Lagi", "");
                 }
             } else {
-                ArrayList<Object> kartuKeluargaArrayList = VSPreference.getInstance(getApplicationContext()).getKKList();
+                final ArrayList<Object> kartuKeluargaArrayList = VSPreference.getInstance(getApplicationContext()).getKKList();
                 Log.d("XXXLOG", "credentialCheck - kk: " + new Gson().toJson(kartuKeluargaArrayList));
                 if (!kartuKeluargaArrayList.isEmpty()) {
-                    for (int i = 0; i < kartuKeluargaArrayList.size(); i++) {
-                        KartuKeluarga kkObj = (KartuKeluarga) kartuKeluargaArrayList.get(i);
-                        if (email.equalsIgnoreCase(kkObj.getIdKartuKeluarga())) {
-                            if (password.equalsIgnoreCase(kkObj.getPassword())) {
-                                VSPreference.getInstance(getApplicationContext()).setKK(kkObj);
-                                VSPreference.getInstance(getApplicationContext()).setRole(ConstantVariable.USER);
-                                login(UserActivity.class);
-                                break;
-                            } else {
-                                showCAD("Gagal masuk",
-                                        "Maaf… Password yang anda masukkan salah",
-                                        "Coba Lagi", "");
-                            }
-                            break;
-                        } else {
-                            showCAD("Gagal masuk",
-                                    "Maaf… Nomor Kartu Keluarga yang anda masukkan salah\nSilakan masukkan nomor Kartu Keluarga yang telah terdaftar",
-                                    "Coba Lagi", "");
-                        }
-                    }
+                    overlay.setVisibility(View.VISIBLE);
+                    customLoadingDialog.show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            KartuKeluarga kkObj = new KartuKeluarga();
+                            boolean isEmailFound = false;
+                            boolean isPasswordMatch = false;
+                            for (int i = 0; i < kartuKeluargaArrayList.size(); i++) {
+                                kkObj = (KartuKeluarga) kartuKeluargaArrayList.get(i);
+                                if (email.equalsIgnoreCase(kkObj.getIdKartuKeluarga())) {
+                                    isEmailFound = true;
+                                    if (password.equalsIgnoreCase(kkObj.getPassword())) {
+                                        isPasswordMatch = true;
+                                        break;
+                                    } else {
 
+                                    }
+                                    break;
+                                }
+                            }
+                            if (isEmailFound) {
+                                if (isPasswordMatch) {
+                                    VSPreference.getInstance(getApplicationContext()).setKK(kkObj);
+                                    VSPreference.getInstance(getApplicationContext()).setRole(ConstantVariable.USER);
+                                    login(UserActivity.class, 0);
+                                } else {
+                                    customLoadingDialog.dismiss();
+                                    overlay.setVisibility(View.INVISIBLE);
+                                    showCustomAlertDialog("Gagal masuk", "Maaf… Password yang anda masukkan salah", "Coba Lagi", "");
+                                }
+                            } else {
+                                customLoadingDialog.dismiss();
+                                overlay.setVisibility(View.INVISIBLE);
+                                showCustomAlertDialog("Gagal masuk", "Maaf… Nomor Kartu Keluarga yang anda masukkan salah. Silakan periksa kembali atau hubungi pihak RT", "Coba Lagi", "");
+                            }
+                        }
+                    }, 3000);
                 }
             }
-
-            /*if (email.equalsIgnoreCase(userMail) && password.equalsIgnoreCase("123pass")) {
-                login(UserActivity.class);
-            } else if (email.equalsIgnoreCase(adminMail) && password.equalsIgnoreCase("pass123")) {
-                login(AdminActivity.class);
-            } else  {
-                showCAD(
-                        "Gagal masuk",
-                        "Oops… Email atau password yang anda masukkan salah\nSilakan membaca Panduan terlebih dahulu",
-                        "Setuju", "");
-            }*/
         }
     }
 
-    private void login(final Class destination) {
+    private void login(final Class destination, long delayMillis) {
         overlay.setVisibility(View.VISIBLE);
         customLoadingDialog.show();
         new Handler().postDelayed(new Runnable() {
@@ -252,10 +283,10 @@ public class SignInActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), destination).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
                 finish();
             }
-        }, 3000);
+        }, delayMillis);
     }
 
     private void skipLogin() {
-        login(AdminActivity.class);
+        login(AdminActivity.class, 3000);
     }
 }

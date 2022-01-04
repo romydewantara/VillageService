@@ -1,9 +1,13 @@
 package com.example.villageservice.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -12,7 +16,9 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -64,7 +70,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private EditText etKota;
     private EditText etPostal;
     private EditText etProvinsi;
-    private EditText etPassword;
+    private AppCompatEditText etPassword;
 
     private Button saveButton;
 
@@ -137,6 +143,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         return view;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -196,6 +203,24 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                         customAlertDialog.show(fm, "custom_alert_dialog");
                     }
                 }
+            }
+        });
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(event.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[2].getBounds().width())) {
+                        if(etPassword.getTransformationMethod() instanceof PasswordTransformationMethod){
+                            etPassword.setTransformationMethod(null);
+                            Drawable img = ContextCompat.getDrawable(v.getContext(), R.drawable.ic_visibility_off);
+                            etPassword.setCompoundDrawablesWithIntrinsicBounds(null,null, img,null);
+                        } else {
+                            etPassword.setTransformationMethod(new PasswordTransformationMethod());
+                            Drawable img = ContextCompat.getDrawable(v.getContext(), R.drawable.ic_visibility_on);
+                            etPassword.setCompoundDrawablesWithIntrinsicBounds(null,null, img,null);}
+                    }
+                }
+                return false;
             }
         });
     }

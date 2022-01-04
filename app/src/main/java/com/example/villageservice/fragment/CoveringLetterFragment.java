@@ -1,6 +1,7 @@
 package com.example.villageservice.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.example.villageservice.R;
+import com.example.villageservice.activity.UserActivity;
 import com.example.villageservice.adapter.CustomSpinnerAdapter;
 import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
@@ -50,7 +53,7 @@ public class CoveringLetterFragment extends Fragment {
     private KartuKeluarga kartuKeluarga;
 
     private View view;
-    private RelativeLayout spinnerIdKTP;
+    private RelativeLayout overlay;
     private EditText etIdNama;
     private EditText etTempatLahir;
     private EditText etTanggal;
@@ -133,10 +136,7 @@ public class CoveringLetterFragment extends Fragment {
                     break;
             }
         }
-        fragmentListener.onFragmentCreated(CoveringLetterFragment.this);
-        kartuKeluarga = VSPreference.getInstance(context).getKK();
-        user = new User();
-        ktpArrayList = new ArrayList<>();
+        initMandatory();
     }
 
     @Override
@@ -178,6 +178,14 @@ public class CoveringLetterFragment extends Fragment {
         super.onDetach();
     }
 
+    private void initMandatory() {
+        fragmentListener.onFragmentCreated(CoveringLetterFragment.this);
+        customLoadingDialog = new CustomLoadingDialog(context);
+        kartuKeluarga = VSPreference.getInstance(context).getKK();
+        user = new User();
+        ktpArrayList = new ArrayList<>();
+    }
+
     private void initView() {
         etIdNama = view.findViewById(R.id.etIdNama);
         etTempatLahir = view.findViewById(R.id.etTempatLahir);
@@ -199,7 +207,7 @@ public class CoveringLetterFragment extends Fragment {
         genderChooser = view.findViewById(R.id.genderChooser);
         monthChooser = view.findViewById(R.id.monthChooser);
         kewarganegaraanChooser = view.findViewById(R.id.kewarganegaraanChooser);
-        spinnerIdKTP = view.findViewById(R.id.spinnerIdKTP);
+        overlay = view.findViewById(R.id.overlay);
     }
 
     private void initListener() {
@@ -244,32 +252,58 @@ public class CoveringLetterFragment extends Fragment {
     }
 
     private void send() {
-        String address = etAddress.getText().toString() + ", RT. " +
-                etRT.getText().toString() + ", RW. " +
-                etRW.getText().toString() + ", Kel. " +
-                etKel.getText().toString() + ", Kec. " +
-                etKec.getText().toString() + ", Kota " +
-                etKota.getText().toString() + ", Kode Pos: " +
-                etPostal.getText().toString();
-        String tanggalLahir = etTanggal.getText().toString() + " " + monthChooser.getSelectedItem() + " " + etTahun.getText().toString();
-        CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05",
-                "Nomor: " + " 12345678910111213", etIdNama.getText().toString(),
-                String.valueOf(genderChooser.getSelectedItem()), etTempatLahir.getText().toString() + tanggalLahir, etPekerjaan.getText().toString(),
-                String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
-                etPendidikan.getText().toString(), etAgama.getText().toString(), address, etMaksud.getText().toString(),
-                "…/JT/VI/3/014/…/2022", "05/02/2022", "Rudi", "05/02/2022", "Sukina");
-        coveringLetter.setOpened(false);
+        overlay.setVisibility(View.VISIBLE);
+        customLoadingDialog.show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                String address = etAddress.getText().toString() + ", RT. " +
+                        etRT.getText().toString() + ", RW. " +
+                        etRW.getText().toString() + ", Kel. " +
+                        etKel.getText().toString() + ", Kec. " +
+                        etKec.getText().toString() + ", Kota " +
+                        etKota.getText().toString() + ", Kode Pos: " +
+                        etPostal.getText().toString();
+                String tanggalLahir = etTanggal.getText().toString() + " " + monthChooser.getSelectedItem() + " " + etTahun.getText().toString();
+                CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05",
+                        "Nomor: " + " 12345678910111213", etIdNama.getText().toString(),
+                        String.valueOf(genderChooser.getSelectedItem()), etTempatLahir.getText().toString() + tanggalLahir, etPekerjaan.getText().toString(),
+                        String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
+                        etPendidikan.getText().toString(), etAgama.getText().toString(), address, etMaksud.getText().toString(),
+                        "…/JT/VI/3/014/…/2022", "05/02/2022", "Rudi", "05/02/2022", "Sukina");
+                coveringLetter.setOpened(false);
 
-        ArrayList<Object> coveringLetterArrayList = new ArrayList<>();
-        ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterList(ConstantVariable.KEY_CL_NIKAH);
-        if (tempObj.size() > 0) {
-            for (int i = 0; i < tempObj.size(); i++) {
-                CoveringLetter clTempObj = (CoveringLetter) tempObj.get(i);
-                coveringLetterArrayList.add(clTempObj);
+                ArrayList<Object> coveringLetterArrayList = new ArrayList<>();
+                ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterList(ConstantVariable.KEY_CL_NIKAH);
+                if (tempObj.size() > 0) {
+                    for (int i = 0; i < tempObj.size(); i++) {
+                        CoveringLetter clTempObj = (CoveringLetter) tempObj.get(i);
+                        coveringLetterArrayList.add(clTempObj);
+                    }
+                }
+                coveringLetterArrayList.add(coveringLetter);
+                VSPreference.getInstance(context).setCoveringLetterList(ConstantVariable.KEY_CL_NIKAH, coveringLetterArrayList);
+
+                customLoadingDialog.dismiss();
+                overlay.setVisibility(View.INVISIBLE);
+
+                FragmentManager fm = getFragmentManager();
+                CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, "", "Data berhasil terkirim")
+                        .setButton("Tutup", "", new CustomAlertDialogListener() {
+                            @Override
+                            public void onNegativePressed() {
+                            }
+
+                            @Override
+                            public void onPositivePressed() {
+                                fragmentListener.onFragmentFinish(CoveringLetterFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_HOME, false);
+                            }
+                        });
+                if (fm != null) {
+                    customAlertDialog.show(fm, "custom_alert_dialog");
+                }
             }
-        }
-        coveringLetterArrayList.add(coveringLetter);
-        VSPreference.getInstance(context).setCoveringLetterList(ConstantVariable.KEY_CL_NIKAH, coveringLetterArrayList);
+        }, 3000);
     }
 
     private void populateData() {

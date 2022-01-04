@@ -22,21 +22,20 @@
                 android:id="@+id/constraintKK"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="8dp">
+                android:padding="8dp"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/titleKK"
-                    style="@style/TextBlackBoldRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Data Kartu Keluarga"
-                    android:textSize="24dp"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvIdKK"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
@@ -50,16 +49,16 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
+                    android:hint="Contoh: 317509921321000051"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:hint="Contoh: 317509921321000051"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     app:layout_constraintTop_toBottomOf="@id/tvIdKK" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvKepKK"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -73,8 +72,8 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
-                    android:inputType="textEmailAddress"
                     android:hint="Contoh: Radjiman"
+                    android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
@@ -82,7 +81,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvAddress"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -105,7 +104,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRT"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -136,7 +135,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRW"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
@@ -167,7 +166,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvKel"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -190,7 +189,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvKec"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -213,7 +212,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvKota"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -227,8 +226,8 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
-                    android:inputType="textEmailAddress"
                     android:hint="Contoh: Jakarta Timur"
+                    android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
@@ -236,7 +235,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvPostal"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -249,8 +248,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
-                    android:hint="Contoh: 13490"
                     android:background="@drawable/background_edit_text_rounded"
+                    android:hint="Contoh: 13490"
                     android:inputType="number"
                     android:maxLines="1"
                     android:paddingLeft="15dp"
@@ -259,7 +258,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvProvinsi"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -282,25 +281,27 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvPassword"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/TextBlackBoldRalewayStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:text="Password Sementara"
                     app:layout_constraintTop_toBottomOf="@id/etProvinsi" />
 
-                <EditText
+                <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etPassword"
                     style="@style/TextBlackRegularRalewayStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
                     android:background="@drawable/background_edit_text_rounded"
+                    android:drawableEnd="@drawable/selector_toggle_password"
+                    android:drawableRight="@drawable/selector_toggle_password"
                     android:hint="********"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     app:layout_constraintTop_toBottomOf="@id/tvPassword" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -314,12 +315,11 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/titleKTP"
-                        style="@style/TextBlackBoldRalewayStyle1"
+                        style="@style/TextBlackBoldRalewayStyle4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Data Anggota Keluarga"
-                        android:textSize="24dp"
+                        android:text="Daftar Anggota Keluarga"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -377,6 +377,6 @@
         android:text="Simpan"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

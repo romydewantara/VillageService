@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
@@ -19,6 +21,7 @@ import com.example.villageservice.fragment.NotificationsFragment;
 import com.example.villageservice.fragment.PdfViewerFragment;
 import com.example.villageservice.fragment.ProfileFragment;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.utility.VSPreference;
 
 public class UserActivity extends AppCompatActivity implements FragmentListener {
 
@@ -43,6 +46,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     private ImageView homeIcon;
     private ImageView profileIcon;
     private ImageView notificationIcon;
+    private AppCompatTextView tvCitizen;
 
     private String menuSelected = "";
 
@@ -64,6 +68,9 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         profileIcon = findViewById(R.id.citizenIcon);
         notificationIcon = findViewById(R.id.notificationIcon);
         bottomBar = findViewById(R.id.bottomBar);
+        tvCitizen = findViewById(R.id.tvCitizen);
+        tvCitizen.setText(getApplicationContext().getResources().getString(R.string.profile_menu));
+
     }
 
     private void initListener() {
