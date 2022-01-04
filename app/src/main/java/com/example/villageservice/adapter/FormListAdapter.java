@@ -51,15 +51,15 @@ public class FormListAdapter extends BaseAdapter {
         @SuppressLint("ViewHolder") View v = View.inflate(context, R.layout.layout_form_requested, null);
         ConstraintLayout userRequest = v.findViewById(R.id.userRequest);
         AppCompatTextView tvName = v.findViewById(R.id.tvName);
-        AppCompatTextView tvStatus = v.findViewById(R.id.tvStatus);
+        AppCompatTextView tvKtp = v.findViewById(R.id.tvKTP);
         AppCompatTextView tvDate = v.findViewById(R.id.tvDate);
 
         tvName.setTypeface(fonts.rBoldExtra());
-        tvStatus.setTypeface(fonts.rRegular());
+        tvKtp.setTypeface(fonts.rRegular());
         tvName.setTypeface(fonts.rRegular());
 
         tvName.setText(coveringLetterList.get(position).getClNama());
-        tvStatus.setText(coveringLetterList.get(position).getClKtp());
+        tvKtp.setText(coveringLetterList.get(position).getClKtp());
         tvDate.setText(coveringLetterList.get(position).getClKeperluan());
 
         userRequest.setOnClickListener(new View.OnClickListener() {

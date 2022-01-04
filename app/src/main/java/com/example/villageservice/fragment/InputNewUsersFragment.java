@@ -2,8 +2,10 @@ package com.example.villageservice.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.villageservice.R;
+import com.example.villageservice.activity.AdminActivity;
 import com.example.villageservice.adapter.MembersAdapter;
 import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
@@ -55,6 +58,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
 
     private List<User> temporaryUserAdded;
 
+    private RecyclerView overlay;
     private RecyclerView recyclerViewMember;
     private View view;
     private ImageView addMemberButton;
@@ -116,7 +120,6 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        fragmentListener.onFragmentCreated(InputNewUsersFragment.this);
         initMandatory();
     }
 
@@ -139,6 +142,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         addMemberButton = view.findViewById(R.id.addMemberButton);
         tvEmpty = view.findViewById(R.id.tvEmpty);
         saveButton = view.findViewById(R.id.saveButton);
+        overlay = view.findViewById(R.id.overlay);
 
         return view;
     }
@@ -188,7 +192,28 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                         !etRW.getText().toString().isEmpty() && !etKel.getText().toString().isEmpty() &&
                         !etKec.getText().toString().isEmpty() && !etKota.getText().toString().isEmpty() &&
                         !etPostal.getText().toString().isEmpty() && !etProvinsi.getText().toString().isEmpty()) {
-                    saveDataKK();
+                    showOverlay(true);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            saveDataKK();
+                            showOverlay(false);
+                            FragmentManager fm = getFragmentManager();
+                            CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context,
+                                    "", "Data Kartu Keluarga berhasil didaftarkan")
+                                    .setButton("Tutup", "", new CustomAlertDialogListener() {
+                                        @Override
+                                        public void onNegativePressed() {}
+                                        @Override
+                                        public void onPositivePressed() {
+                                            fragmentListener.onFragmentFinish(InputNewUsersFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
+                                        }
+                                    });
+                            if (fm != null) {
+                                customAlertDialog.show(fm, "custom_alert_dialog");
+                            }
+                        }
+                    }, 3000);
                 } else {
                     FragmentManager fm = getFragmentManager();
                     CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context,
@@ -243,6 +268,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     }
 
     private void initMandatory() {
+        fragmentListener.onFragmentCreated(InputNewUsersFragment.this);
         temporaryUserAdded = new ArrayList<>();
     }
 
@@ -295,6 +321,16 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
 
     private void deleteFamilyMember() {
 
+    }
+
+    public void showOverlay(boolean isShow) {
+        if (isShow) {
+            overlay.setVisibility(View.VISIBLE);
+            customLoadingDialog.show();
+        } else {
+            customLoadingDialog.dismiss();
+            overlay.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void showAddMemberDialog(final MembersAdapter.MemberHolder memberHolder, final View view, int position, String ktp) {

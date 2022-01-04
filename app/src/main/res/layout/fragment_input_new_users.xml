@@ -25,13 +25,29 @@
                 android:padding="8dp"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:padding="5dp"
+                    android:src="@mipmap/ic_back_blue"
+                    android:visibility="visible"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent=".1" />
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/titleKK"
                     style="@style/TextBlackBoldRalewayStyle4"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="Data Kartu Keluarga"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintLeft_toRightOf="@id/backButton"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent=".9" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvIdKK"
@@ -378,5 +394,12 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_50"
+        android:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

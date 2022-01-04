@@ -279,7 +279,7 @@ public class HomeUserFragment extends Fragment {
 
     private void goToNextFragment(String menuSelected) {
         fragmentListener.onFragmentPassingData(menuSelected);
-        fragmentListener.onFragmentFinish(HomeUserFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_CL, true);
+        fragmentListener.onFragmentFinish(HomeUserFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_ENTRY, true);
     }
 
     private Runnable getDurationRunnable() {

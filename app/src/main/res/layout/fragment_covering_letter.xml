@@ -16,13 +16,29 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
 
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:padding="5dp"
+                android:src="@mipmap/ic_back_blue"
+                android:visibility="visible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".1" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/titleForm"
                 style="@style/TextBlackBoldRalewayStyle4"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="Formulir Surat Pengantar"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintLeft_toRightOf="@id/backButton"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".9" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvIdKTP"
@@ -30,8 +46,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Nomor Kartu Tanda Penduduk (KTP)"
                 app:layout_constraintTop_toBottomOf="@id/titleForm" />
 
@@ -60,8 +76,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Nama Lengkap"
                 app:layout_constraintTop_toBottomOf="@id/spinnerIdKTP" />
 
@@ -85,8 +101,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Jenis Kelamin"
                 app:layout_constraintTop_toBottomOf="@id/etIdNama" />
 
@@ -114,8 +130,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Tempat Lahir"
                 app:layout_constraintTop_toBottomOf="@id/relativeGender" />
 
@@ -139,8 +155,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Tanggal Lahir"
                 app:layout_constraintTop_toBottomOf="@id/etTempatLahir" />
 
@@ -161,8 +177,8 @@
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_edit_text_rounded"
-                    android:inputType="number"
                     android:hint="10"
+                    android:inputType="number"
                     android:maxLines="1"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp" />
@@ -194,8 +210,8 @@
                     android:layout_marginTop="3dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_edit_text_rounded"
-                    android:inputType="number"
                     android:hint="1985"
+                    android:inputType="number"
                     android:maxLines="1"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp" />
@@ -208,8 +224,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Pekerjaan"
                 app:layout_constraintTop_toBottomOf="@id/relativeTanggalLahir" />
 
@@ -220,8 +236,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="textEmailAddress"
                 android:hint="Contoh: Karyawan Swasta"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -233,8 +249,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Kewarganegaraan"
                 app:layout_constraintTop_toBottomOf="@id/etPekerjaan" />
 
@@ -262,8 +278,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Pendidikan"
                 app:layout_constraintTop_toBottomOf="@id/relativeKewarganegaraan" />
 
@@ -274,8 +290,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="textEmailAddress"
                 android:hint="Contoh: Strata-1"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -287,8 +303,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Agama"
                 app:layout_constraintTop_toBottomOf="@id/etPendidikan" />
 
@@ -299,8 +315,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="textEmailAddress"
                 android:hint="Contoh: Islam"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -312,8 +328,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Alamat"
                 app:layout_constraintTop_toBottomOf="@id/etAgama" />
 
@@ -324,8 +340,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="textEmailAddress"
                 android:hint="Contoh: Jl. Mawar Gang. 1 No. 109"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -339,8 +355,8 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginRight="3dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Nomor. RT"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/tvRW"
@@ -355,8 +371,8 @@
                 android:layout_marginEnd="3dp"
                 android:layout_marginRight="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="number"
                 android:hint="Contoh: 007"
+                android:inputType="number"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -372,8 +388,8 @@
                 android:layout_marginStart="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Nomor. RW"
                 app:layout_constraintLeft_toRightOf="@id/tvRT"
                 app:layout_constraintRight_toRightOf="parent"
@@ -388,8 +404,8 @@
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="number"
                 android:hint="Contoh: 014"
+                android:inputType="number"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -403,8 +419,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Kelurahan"
                 app:layout_constraintTop_toBottomOf="@id/etRT" />
 
@@ -415,8 +431,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="textEmailAddress"
                 android:hint="Contoh: Penggilingan"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -428,8 +444,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Kecamatan"
                 app:layout_constraintTop_toBottomOf="@id/etKel" />
 
@@ -440,8 +456,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="textEmailAddress"
                 android:hint="Contoh: Cakung"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -453,8 +469,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Kota"
                 app:layout_constraintTop_toBottomOf="@id/etKec" />
 
@@ -465,8 +481,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="textEmailAddress"
                 android:hint="Contoh: Jakarta Timur"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -478,8 +494,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Kode Pos"
                 app:layout_constraintTop_toBottomOf="@id/etKota" />
 
@@ -490,8 +506,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="number"
                 android:hint="Contoh: 13490"
+                android:inputType="number"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -503,8 +519,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:paddingRight="5dp"
                 android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:text="Maksud/Keperluan"
                 app:layout_constraintTop_toBottomOf="@id/etPostal" />
 
@@ -515,8 +531,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/background_edit_text_rounded"
-                android:inputType="textEmailAddress"
                 android:hint="Contoh: Membuat Surat Pengantar Nikah"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"

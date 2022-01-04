@@ -88,6 +88,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
             menuSelected = getArguments().getString("menu");
+            Log.d("XXXLOG", "onCreate - menuSelected: " + menuSelected);
         }
         fragmentListener.onFragmentCreated(FormListFragment.this);
     }
@@ -115,7 +116,12 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         coveringLetters = new ArrayList<>();
         for (int i = 0; i < coveringLetterArrayList.size(); i++) {
             CoveringLetter coveringLetter = (CoveringLetter) coveringLetterArrayList.get(i);
-            coveringLetters.add(coveringLetter);
+            Log.d("XXXLOG", "onViewCreated - keperluan: " + coveringLetter.getClKeperluan());
+            if (coveringLetter.getClType() != null) {
+                if (coveringLetter.getClType().equalsIgnoreCase(menuSelected)) {
+                    coveringLetters.add(coveringLetter);
+                }
+            }
         }
         Collections.reverse(coveringLetters);
         FormListAdapter formListAdapter = new FormListAdapter(context, coveringLetters, this);
@@ -168,6 +174,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                 coveringLetter.setClPendidikan(coveringLetters.get(i).getClPendidikan());
                 coveringLetter.setClKewarganegaraan(coveringLetters.get(i).getClKewarganegaraan());
                 coveringLetter.setClKeperluan(coveringLetters.get(i).getClKeperluan());
+                break;
             }
         }
 
@@ -177,7 +184,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
 
     private void appliedCoveringLetter(CoveringLetter cl) {
         CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05",
-                "Nomor: " + "123456789109876",
+                "Nomor: " + "…/JT/VI/3/007/014/…/2022",
                 cl.getClNama(), cl.getClJenisKelamin(), cl.getClTempatTanggalLahir(), cl.getClPekerjaan(),
                 String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(), cl.getClAgama(), cl.getClAlamat(), cl.getClKeperluan(),
                 "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina");

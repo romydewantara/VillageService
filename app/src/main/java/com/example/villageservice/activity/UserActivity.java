@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
 import com.example.villageservice.fragment.CoveringLetterFragment;
+import com.example.villageservice.fragment.EntryFragment;
 import com.example.villageservice.fragment.FormListFragment;
 import com.example.villageservice.fragment.HomeAdminFragment;
 import com.example.villageservice.fragment.HomeUserFragment;
@@ -21,6 +22,7 @@ import com.example.villageservice.fragment.NotificationsFragment;
 import com.example.villageservice.fragment.PdfViewerFragment;
 import com.example.villageservice.fragment.ProfileFragment;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 
 public class UserActivity extends AppCompatActivity implements FragmentListener {
@@ -30,7 +32,8 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     public static final int FRAGMENT_FINISH_GOTO_HOME = 1;
     public static final int FRAGMENT_FINISH_GOTO_PROFILE = 2;
     public static final int FRAGMENT_FINISH_GOTO_NOTIFICATION = 3;
-    public static final int FRAGMENT_FINISH_GOTO_CL = 4;
+    public static final int FRAGMENT_FINISH_GOTO_ENTRY = 4;
+    public static final int FRAGMENT_FINISH_GOTO_CL = 5;
 
 
     public static final String TAG_FRAGMENT_HOME_USER = "home_user_fragment";
@@ -49,6 +52,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     private AppCompatTextView tvCitizen;
 
     private String menuSelected = "";
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,10 +169,20 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                         .replace(R.id.container, fragment, TAG_FRAGMENT_NOTIFICATIONS)
                         .commit();
                 break;
+            case FRAGMENT_FINISH_GOTO_ENTRY:
+                fragment = new EntryFragment();
+                bundle = new Bundle();
+                bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
+                fragment.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_CL)
+                        .commit();
+                break;
             case FRAGMENT_FINISH_GOTO_CL:
                 fragment = new CoveringLetterFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("menu", menuSelected);
+                bundle = new Bundle();
+                bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
                 fragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -231,10 +245,13 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
         } else if (fragment instanceof NotificationsFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+        } else if (fragment instanceof EntryFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
         } else if (fragment instanceof PdfViewerFragment) {
-            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+            //TODO: go to list fragment
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_ENTRY, false);
         } else if (fragment instanceof CoveringLetterFragment) {
-            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_ENTRY, false);
         } else {
             super.onBackPressed();
         }

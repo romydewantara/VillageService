@@ -86,7 +86,6 @@ public class HomeAdminFragment extends Fragment {
     private Animation imgAnimationOut;
 
     private int currentIndex = -1;
-    private String menuSelected = "";
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -207,42 +206,41 @@ public class HomeAdminFragment extends Fragment {
         cvInfo1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                menuSelected = ConstantVariable.KEY_CL_NIKAH;
-                goToNextFragment(1);
+                goToNextFragment(ConstantVariable.KEY_CL_NIKAH);
             }
         });
         cvInfo2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNextFragment(7);
+                goToNextFragment(ConstantVariable.KEY_CL_UMKM);
                 //Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar UMKM", Toast.LENGTH_SHORT).show();
             }
         });
         cvInfo3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNextFragment(1);
+                goToNextFragment(ConstantVariable.KEY_CL_DOMISILI_KTP);
                 //Toast.makeText(context, "Permintaan Persetujuan Formulir Pindah Rumah", Toast.LENGTH_SHORT).show();
             }
         });
         cvInfo4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNextFragment(1);
+                goToNextFragment(ConstantVariable.KEY_CL_KK_BARU);
                 //Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Pembuatan Kartu Keluarga", Toast.LENGTH_SHORT).show();
             }
         });
         cvInfo5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNextFragment(1);
+                goToNextFragment(ConstantVariable.KEY_CL_AKTA_LAHIR);
                 //Toast.makeText(context, "Permintaan Persetujuan Surat Pengantar Pembuatan Akta Lahir", Toast.LENGTH_SHORT).show();
             }
         });
         cvInfo6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNextFragment(1);
+                goToNextFragment(ConstantVariable.KEY_CL_AKTA_KEMATIAN);
                 //Toast.makeText(context, "Permintaan Persetujuan Pembuatan Surat Kematian", Toast.LENGTH_SHORT).show();
             }
         });
@@ -304,9 +302,9 @@ public class HomeAdminFragment extends Fragment {
         imageSwitcherHandler.removeCallbacks(imageSwitcherRunnable);
     }
 
-    private void goToNextFragment(int nextFragment) {
+    private void goToNextFragment(String menuSelected) {
         fragmentListener.onFragmentPassingData(menuSelected);
-        fragmentListener.onFragmentFinish(HomeAdminFragment.this, nextFragment, true);
+        fragmentListener.onFragmentFinish(HomeAdminFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_FORM_LIST, true);
     }
 
     public void showOverlay(boolean isShow) {

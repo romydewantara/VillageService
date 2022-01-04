@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/userRequest"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -39,46 +40,48 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvName"
+                style="@style/TextBlueBoldRalewayStyle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:paddingStart="10dp"
                 android:paddingLeft="10dp"
                 android:text="Muhammad Fakhri Pratama"
                 android:textColor="@color/dark_blue_max"
-                android:textSize="14dp"
-                app:layout_constraintBottom_toTopOf="@+id/tvStatus"
                 app:layout_constraintLeft_toRightOf="@id/imageIcon"
-                app:layout_constraintRight_toLeftOf="@id/tvDate"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".8"
+                tools:ignore="RtlSymmetry" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvStatus"
+                android:id="@+id/tvKTP"
+                style="@style/TextBlueBoldRalewayStyle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:paddingStart="10dp"
                 android:paddingLeft="10dp"
-                android:text="Warga Tetap"
-                android:textColor="@color/dark_blue_max"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="3173055020xxxxx"
                 app:layout_constraintLeft_toRightOf="@id/imageIcon"
-                app:layout_constraintRight_toLeftOf="@id/tvDate"
-                app:layout_constraintTop_toBottomOf="@id/tvName" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                app:layout_constraintWidth_percent=".8"
+                tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/tvDate"
+                style="@style/TextBlackMediumRalewayStyle2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="end"
-                android:paddingRight="15dp"
-                android:text="10/10/2021"
-                android:textColor="@color/dark_blue"
-                android:textSize="12dp"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:text="Membuat Surat Pengantar"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/imageIcon"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent=".3" />
+                app:layout_constraintTop_toBottomOf="@id/tvKTP"
+                app:layout_constraintWidth_percent=".8"
+                tools:ignore="RtlSymmetry" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -75,6 +75,7 @@ public class CoveringLetterFragment extends Fragment {
     private Spinner monthChooser;
     private Spinner kewarganegaraanChooser;
 
+    private String clType = "";
     private String menuSelected = "";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -110,28 +111,33 @@ public class CoveringLetterFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("XXXLOG", "onCreate - arg: " + getArguments());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            Log.d("XXXLOG", "onCreate - menu: " + getArguments().getString("menu"));
-            switch (getArguments().getString("menu")) {
+            Log.d("XXXLOG", "onCreate - menu: " + getArguments().getString(ConstantVariable.KEY_CL_BUNDLE));
+            switch (getArguments().getString(ConstantVariable.KEY_CL_BUNDLE)) {
                 case ConstantVariable.KEY_CL_NIKAH:
+                    clType = ConstantVariable.KEY_CL_NIKAH;
                     menuSelected = "Mengajukan Surat Pengantar Layak Nikah";
                     break;
                 case ConstantVariable.KEY_CL_UMKM:
+                    clType = ConstantVariable.KEY_CL_UMKM;
                     menuSelected = "Mengajukan Surat Keterangan Usaha (UMKM)";
                     break;
                 case ConstantVariable.KEY_CL_DOMISILI_KTP:
+                    clType = ConstantVariable.KEY_CL_DOMISILI_KTP;
                     menuSelected = "Mengajukan Surat Pindah Domisili KTP";
                     break;
                 case ConstantVariable.KEY_CL_KK_BARU:
+                    clType = ConstantVariable.KEY_CL_KK_BARU;
                     menuSelected = "Mengajukan Surat Pengantar Pembuatan KK Baru";
                     break;
                 case ConstantVariable.KEY_CL_AKTA_LAHIR:
+                    clType = ConstantVariable.KEY_CL_AKTA_LAHIR;
                     menuSelected = "Mengajukan Surat Pengantar Akta Kelahiran";
                     break;
                 case ConstantVariable.KEY_CL_AKTA_KEMATIAN:
+                    clType = ConstantVariable.KEY_CL_AKTA_KEMATIAN;
                     menuSelected = "Mengajukan Surat Pengantar Akta Kematian";
                     break;
             }
@@ -272,6 +278,7 @@ public class CoveringLetterFragment extends Fragment {
                         "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Sukina");
                 coveringLetter.setOpened(false);
                 coveringLetter.setApproved(false);
+                coveringLetter.setClType(clType);
                 Log.d("XXXLOG", "CL page - tempatTanggalLahir: " + tempatTanggalLahir + " vs data real: " + coveringLetter.getClTempatTanggalLahir());
 
                 ArrayList<Object> coveringLetterArrayList = new ArrayList<>();

@@ -13,6 +13,7 @@
         android:layout_height="40dp"
         android:layout_margin="10dp"
         android:padding="5dp"
+        android:visibility="invisible"
         android:src="@mipmap/ic_back_blue"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
