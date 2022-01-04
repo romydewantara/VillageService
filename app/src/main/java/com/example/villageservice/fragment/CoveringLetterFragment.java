@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,10 +27,12 @@ import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.KartuKeluarga;
+import com.example.villageservice.model.User;
 import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,6 +45,9 @@ public class CoveringLetterFragment extends Fragment {
     private FragmentListener fragmentListener;
     private CustomLoadingDialog customLoadingDialog;
     private ArrayList<String> ktpArrayList;
+
+    private User user;
+    private KartuKeluarga kartuKeluarga;
 
     private View view;
     private RelativeLayout spinnerIdKTP;
@@ -66,6 +72,7 @@ public class CoveringLetterFragment extends Fragment {
     private Spinner monthChooser;
     private Spinner kewarganegaraanChooser;
 
+    private String menuSelected = "";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -100,11 +107,36 @@ public class CoveringLetterFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("XXXLOG", "onCreate - arg: " + getArguments());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            Log.d("XXXLOG", "onCreate - menu: " + getArguments().getString("menu"));
+            switch (getArguments().getString("menu")) {
+                case ConstantVariable.KEY_CL_NIKAH:
+                    menuSelected = "Mengajukan Surat Pengantar Layak Nikah";
+                    break;
+                case ConstantVariable.KEY_CL_UMKM:
+                    menuSelected = "Mengajukan Surat Keterangan Usaha (UMKM)";
+                    break;
+                case ConstantVariable.KEY_CL_DOMISILI_KTP:
+                    menuSelected = "Mengajukan Surat Pindah Domisili KTP";
+                    break;
+                case ConstantVariable.KEY_CL_KK_BARU:
+                    menuSelected = "Mengajukan Surat Pengantar Pembuatan KK Baru";
+                    break;
+                case ConstantVariable.KEY_CL_AKTA_LAHIR:
+                    menuSelected = "Mengajukan Surat Pengantar Akta Kelahiran";
+                    break;
+                case ConstantVariable.KEY_CL_AKTA_KEMATIAN:
+                    menuSelected = "Mengajukan Surat Pengantar Akta Kematian";
+                    break;
+            }
         }
         fragmentListener.onFragmentCreated(CoveringLetterFragment.this);
+        kartuKeluarga = VSPreference.getInstance(context).getKK();
+        user = new User();
+        ktpArrayList = new ArrayList<>();
     }
 
     @Override
@@ -118,33 +150,15 @@ public class CoveringLetterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fm = getFragmentManager();
-                CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, "", "Apakah semua data yang Anda isi sudah benar?")
-                        .setButton("Ya", "Tidak", new CustomAlertDialogListener() {
-                            @Override
-                            public void onNegativePressed() {}
-                            @Override
-                            public void onPositivePressed() {
-                                send();
-                            }
-                        });
-                if (fm != null) {
-                    customAlertDialog.show(fm, "custom_alert_dialog");
-                }
-            }
-        });
 
-        KartuKeluarga kartuKeluarga = VSPreference.getInstance(context).getKK();
-        ktpArrayList = new ArrayList<>();
         for (int i = 0; i < kartuKeluarga.getKeluargaList().size(); i++) {
             ktpArrayList.add(kartuKeluarga.getKeluargaList().get(i).getIdKtp());
         }
 
         CustomSpinnerAdapter spinnerAdapter = new CustomSpinnerAdapter(context, R.layout.spinner_items, ktpArrayList);
         ktpChooser.setAdapter(spinnerAdapter);
+
+        initListener();
     }
 
     @Override
@@ -188,6 +202,47 @@ public class CoveringLetterFragment extends Fragment {
         spinnerIdKTP = view.findViewById(R.id.spinnerIdKTP);
     }
 
+    private void initListener() {
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, "", "Apakah semua data yang Anda isi sudah benar?")
+                        .setButton("Ya", "Tidak", new CustomAlertDialogListener() {
+                            @Override
+                            public void onNegativePressed() {
+                            }
+
+                            @Override
+                            public void onPositivePressed() {
+                                send();
+                            }
+                        });
+                if (fm != null) {
+                    customAlertDialog.show(fm, "custom_alert_dialog");
+                }
+            }
+        });
+        ktpChooser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String ktp = String.valueOf(ktpChooser.getSelectedItem());
+                Log.d("XXXLOG", "onItemSelected - ktp: " + ktp);
+                for (int i = 0; i < kartuKeluarga.getKeluargaList().size(); i++) {
+                    if (ktp.equalsIgnoreCase(kartuKeluarga.getKeluargaList().get(i).getIdKtp())) {
+                        user = kartuKeluarga.getKeluargaList().get(i);
+                        populateData();
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
     private void send() {
         String address = etAddress.getText().toString() + ", RT. " +
                 etRT.getText().toString() + ", RW. " +
@@ -215,5 +270,35 @@ public class CoveringLetterFragment extends Fragment {
         }
         coveringLetterArrayList.add(coveringLetter);
         VSPreference.getInstance(context).setCoveringLetterList(ConstantVariable.KEY_CL_NIKAH, coveringLetterArrayList);
+    }
+
+    private void populateData() {
+        etIdNama.setText(user.getNamaLengkap());
+        etTempatLahir.setText(user.getTempatLahir());
+        etTanggal.setText(String.valueOf(user.getTanggalLahir().getTanggal()));
+        etTahun.setText(String.valueOf(user.getTanggalLahir().getTahun()));
+        etPekerjaan.setText(user.getJenisPekerjaan());
+        etPendidikan.setText(user.getPendidikan());
+        etAgama.setText(user.getAgama());
+        etAddress.setText(kartuKeluarga.getAlamatRumah());
+        etRT.setText(String.valueOf(kartuKeluarga.getNomorRt()));
+        etRW.setText(String.valueOf(kartuKeluarga.getNomorRw()));
+        etKel.setText(kartuKeluarga.getKelurahan());
+        etKec.setText(kartuKeluarga.getKecamatan());
+        etKota.setText(kartuKeluarga.getKota());
+        etPostal.setText(String.valueOf(kartuKeluarga.getKodePos()));
+        etMaksud.setText(menuSelected);
+        etMaksud.setEnabled(false);
+
+        ArrayList<String> genderList = new ArrayList<>(Arrays.asList(ConstantVariable.SPINNER_GENDER));
+        ArrayList<String> monthList = new ArrayList<>(Arrays.asList(ConstantVariable.SPINNER_MONTH));
+        ArrayList<String> citizensStateList = new ArrayList<>(Arrays.asList(ConstantVariable.SPINNER_CITIZEN_STATE));
+        CustomSpinnerAdapter genderAdapter = new CustomSpinnerAdapter(context, R.layout.spinner_items, genderList);
+        CustomSpinnerAdapter monthAdapter = new CustomSpinnerAdapter(context, R.layout.spinner_items, monthList);
+        CustomSpinnerAdapter csAdapter = new CustomSpinnerAdapter(context, R.layout.spinner_items, citizensStateList);
+
+        genderChooser.setAdapter(genderAdapter);
+        monthChooser.setAdapter(monthAdapter);
+        kewarganegaraanChooser.setAdapter(csAdapter);
     }
 }

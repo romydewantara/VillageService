@@ -154,8 +154,9 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_CL:
                 fragment = new CoveringLetterFragment();
-                //Bundle bundle = new Bundle();
-                //bundle.putString("menu", menuSelected);
+                Bundle bundle = new Bundle();
+                bundle.putString("menu", menuSelected);
+                fragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_CL)

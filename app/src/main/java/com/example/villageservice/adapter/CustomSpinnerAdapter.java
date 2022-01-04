@@ -22,6 +22,7 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView view = (TextView) super.getView(position, convertView, parent);
         view.setTypeface(font);
+        view.setPadding(25, 0, 0, 0);
         return view;
     }
 

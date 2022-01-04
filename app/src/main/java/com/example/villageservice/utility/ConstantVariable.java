@@ -1,5 +1,7 @@
 package com.example.villageservice.utility;
 
+import java.util.ArrayList;
+
 public class ConstantVariable {
 
     public final static String KEY_SIGNED_IN = "KEY_SIGNED_IN";
@@ -24,5 +26,9 @@ public class ConstantVariable {
     //account
     public final static String ADMIN_USERNAME = "007";
     public final static String ADMIN_PASSWORD = "password123";
+
+    public static String[] SPINNER_GENDER = {"Laki-laki", "Perempuan"};
+    public static String[] SPINNER_MONTH = {"Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"};
+    public static String[] SPINNER_CITIZEN_STATE = {"WNI (Warga Negara Indonesia)", "WNA (Warga Negara Asing)"};
 
 }

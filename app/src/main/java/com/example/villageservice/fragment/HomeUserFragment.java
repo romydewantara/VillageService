@@ -25,6 +25,7 @@ import com.example.villageservice.activity.UserActivity;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.KartuKeluarga;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
@@ -128,7 +129,37 @@ public class HomeUserFragment extends Fragment {
         cvInfo1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentListener.onFragmentFinish(HomeUserFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_CL, true);
+                goToNextFragment(ConstantVariable.KEY_CL_NIKAH);
+            }
+        });
+        cvInfo2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNextFragment(ConstantVariable.KEY_CL_UMKM);
+            }
+        });
+        cvInfo3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNextFragment(ConstantVariable.KEY_CL_DOMISILI_KTP);
+            }
+        });
+        cvInfo4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNextFragment(ConstantVariable.KEY_CL_KK_BARU);
+            }
+        });
+        cvInfo5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNextFragment(ConstantVariable.KEY_CL_AKTA_LAHIR);
+            }
+        });
+        cvInfo6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNextFragment(ConstantVariable.KEY_CL_AKTA_KEMATIAN);
             }
         });
     }
@@ -183,5 +214,10 @@ public class HomeUserFragment extends Fragment {
                 showOverlay(false);
             }
         }, 1800);
+    }
+
+    private void goToNextFragment(String menuSelected) {
+        fragmentListener.onFragmentPassingData(menuSelected);
+        fragmentListener.onFragmentFinish(HomeUserFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_CL, true);
     }
 }
