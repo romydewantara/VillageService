@@ -172,12 +172,12 @@
             android:layout_height="1dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:background="@color/blue"
+            android:background="@color/light_blue_50"
             app:layout_constraintTop_toBottomOf="@+id/layoutLogo" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDataKeluarga"
-            style="@style/TextBlueBoldRalewayStyle3"
+            style="@style/TextBlackBoldRalewayStyle4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

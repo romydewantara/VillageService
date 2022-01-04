@@ -5,19 +5,29 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.villageservice.R;
+import com.example.villageservice.adapter.DataKeluargaAdapter;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
+import com.example.villageservice.utility.VSPreference;
 
 import java.util.ArrayList;
 
@@ -26,16 +36,19 @@ import java.util.ArrayList;
  * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements DataKeluargaAdapter.ItemClickListener {
 
     private Context context;
     private FragmentListener fragmentListener;
     private CustomLoadingDialog customLoadingDialog;
     private KartuKeluarga kartuKeluarga;
     private View view;
-
+    private RelativeLayout overlay;
     private CardView cvPhotoProfile;
     private ConstraintLayout constraintIdentity;
+    private AppCompatTextView tvKepalaKeluarga;
+    private AppCompatTextView tvNomorKK;
+    private RecyclerView recyclerMember;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -113,20 +126,57 @@ public class ProfileFragment extends Fragment {
 
     private void initMandatory() {
         fragmentListener.onFragmentCreated(ProfileFragment.this);
-
+        customLoadingDialog = new CustomLoadingDialog(context);
+        kartuKeluarga = VSPreference.getInstance(context).getKK();
     }
 
     private void initView() {
         cvPhotoProfile = view.findViewById(R.id.cvPhotoProfile);
         constraintIdentity = view.findViewById(R.id.constraintIdentity);
+        tvKepalaKeluarga = view.findViewById(R.id.tvKepalaKeluarga);
+        tvNomorKK = view.findViewById(R.id.tvNomorKK);
+        recyclerMember = view.findViewById(R.id.recyclerMember);
+        overlay = view.findViewById(R.id.overlay);
+
+        tvKepalaKeluarga.setText(kartuKeluarga.getNamaKepalaKeluarga());
+        tvNomorKK.setText("No. " + kartuKeluarga.getIdKartuKeluarga());
+        DataKeluargaAdapter dkAdapter = new DataKeluargaAdapter(kartuKeluarga.getKeluargaList());
+        dkAdapter.setClickListener(ProfileFragment.this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerMember.setLayoutManager(layoutManager);
+        recyclerMember.setAdapter(dkAdapter);
     }
 
     private void initListener() {
 
     }
 
+    public void showOverlay(boolean isShow) {
+        if (isShow) {
+            overlay.setVisibility(View.VISIBLE);
+            customLoadingDialog.show();
+        } else {
+            customLoadingDialog.dismiss();
+            overlay.setVisibility(View.INVISIBLE);
+        }
+    }
+
     private void prepareLayout() {
-        cvPhotoProfile.setVisibility(View.VISIBLE);
-        constraintIdentity.setVisibility(View.VISIBLE);
+        showOverlay(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.bounched_show);
+                cvPhotoProfile.setVisibility(View.VISIBLE);
+                constraintIdentity.setVisibility(View.VISIBLE);
+                cvPhotoProfile.startAnimation(slideUp);
+                showOverlay(false);
+            }
+        }, 1800);
+    }
+
+    @Override
+    public void onItemClick(DataKeluargaAdapter.DataKeluargaHolder dataKeluargaHolder, String ktp) {
+        Toast.makeText(context, "Detail for " + ktp + " is coming soon", Toast.LENGTH_SHORT).show();
     }
 }

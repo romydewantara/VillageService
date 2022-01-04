@@ -271,7 +271,7 @@ public class HomeUserFragment extends Fragment {
                 layoutSpace.setVisibility(View.VISIBLE);
                 constraintContainer.setVisibility(View.VISIBLE);
                 cvBanner.setVisibility(View.VISIBLE);
-                cvBanner.startAnimation(slideUp);
+                //cvBanner.startAnimation(slideUp);
                 showOverlay(false);
             }
         }, 1800);

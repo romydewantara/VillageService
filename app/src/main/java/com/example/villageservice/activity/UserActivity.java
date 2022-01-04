@@ -77,19 +77,25 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         homeMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToHome();
+                if (fragment.getTag() != null && !fragment.getTag().equalsIgnoreCase(TAG_FRAGMENT_HOME_USER)) {
+                    goToHome();
+                }
             }
         });
         profileMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToProfile();
+                if (fragment.getTag() != null && !fragment.getTag().equalsIgnoreCase(TAG_FRAGMENT_PROFILE)) {
+                    goToProfile();
+                }
             }
         });
         notificationMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToNotifications();
+                if (fragment.getTag() != null && !fragment.getTag().equalsIgnoreCase(TAG_FRAGMENT_NOTIFICATIONS)) {
+                    goToNotifications();
+                }
             }
         });
     }
