@@ -22,6 +22,7 @@ import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.PortableDocumentFormat;
 import com.example.villageservice.model.User;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
@@ -34,7 +35,6 @@ public class PdfViewerFragment extends Fragment {
 
     private Context context;
     private PortableDocumentFormat portableDocumentFormat;
-    private User user;
     private CoveringLetter coveringLetter;
 
     private View view;
@@ -163,13 +163,7 @@ public class PdfViewerFragment extends Fragment {
     }
 
     private void loadData() {
-        user = (User) VSPreference.getInstance(context).getUser();
-        Log.d("XXXUSER", "loadData - user: " + new Gson().toJson(user));
-
-        //key = String.valueOf(user.getIdKtp());
-        key = "12341092409182";
-
-        coveringLetter = VSPreference.getInstance(context).getCoveringLetter(key);
+        coveringLetter = VSPreference.getInstance(context).getCoveringLetter(ConstantVariable.KEY_COVERING_LETTER);
         Log.d("XXXCL", "loadData - data: " + new Gson().toJson(coveringLetter));
         tvLampiran.setText(coveringLetter.getClLampiran());
         tvNumber.setText(coveringLetter.getClNomorHeader());
@@ -180,7 +174,7 @@ public class PdfViewerFragment extends Fragment {
         tvRTName.setText(coveringLetter.getClNamaRt());
         tvNameR1.setText(coveringLetter.getClNama());
         tvNameR2.setText(coveringLetter.getClJenisKelamin());
-        tvNameR3.setText(coveringLetter.getClTanggalLahir());
+        tvNameR3.setText(coveringLetter.getClTempatTanggalLahir());
         tvNameR4.setText(coveringLetter.getClPekerjaan());
         tvNameR5.setText(coveringLetter.getClKtp());
         tvNameR6.setText(coveringLetter.getClKewarganegaraan());
@@ -194,12 +188,17 @@ public class PdfViewerFragment extends Fragment {
         pdfViewerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isAdmin) {
-                    showCAD("Peringatan", "Apakah Anda yakin akan menyetujui surat pengantar ini?", "Ya", "Tunda");
+                if (isAdmin && !coveringLetter.isApproved()) {
+                    imageStamp.setVisibility(View.VISIBLE);
+                    imageSignature.setVisibility(View.VISIBLE);
+                    coveringLetter.setApproved(true);
                 } else {
-                    showCAD("Informasi", "Apakah Anda yakin akan mengunduh surat pengantar ini?", "Ya", "Batal");
+                    if (coveringLetter.isApproved()) {
+                        imageStamp.setVisibility(View.VISIBLE);
+                        imageSignature.setVisibility(View.VISIBLE);
+                        portableDocumentFormat.generatePdf(pdfFile, coveringLetter.getClNama().trim() + "_" + coveringLetter.getClKeperluan());
+                    }
                 }
-                portableDocumentFormat.generatePdf(pdfFile, "GanjarPranowo");
             }
         });
     }
@@ -212,17 +211,7 @@ public class PdfViewerFragment extends Fragment {
                     public void onNegativePressed() {}
                     @Override
                     public void onPositivePressed() {
-                        if (isAdmin && !coveringLetter.isApproved()) {
-                            imageStamp.setVisibility(View.VISIBLE);
-                            imageSignature.setVisibility(View.VISIBLE);
-                            coveringLetter.setApproved(true);
-                        } else {
-                            if (coveringLetter.isApproved()) {
-                                imageStamp.setVisibility(View.VISIBLE);
-                                imageSignature.setVisibility(View.VISIBLE);
-                                portableDocumentFormat.generatePdf(pdfFile, user.getNamaLengkap().trim() + "_");
-                            }
-                        }
+
                     }
                 });
         if (fm != null) {

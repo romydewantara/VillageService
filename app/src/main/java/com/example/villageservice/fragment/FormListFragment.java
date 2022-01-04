@@ -23,11 +23,13 @@ import com.example.villageservice.adapter.FormListAdapter;
 import com.example.villageservice.listener.FormUserRequestedListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
-import com.example.villageservice.model.User;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -85,8 +87,8 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            menuSelected = getArguments().getString("menu");
         }
-        menuSelected = getArguments().getString("menu");
         fragmentListener.onFragmentCreated(FormListFragment.this);
     }
 
@@ -115,6 +117,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
             CoveringLetter coveringLetter = (CoveringLetter) coveringLetterArrayList.get(i);
             coveringLetters.add(coveringLetter);
         }
+        Collections.reverse(coveringLetters);
         FormListAdapter formListAdapter = new FormListAdapter(context, coveringLetters, this);
         listForm.setDivider(null);
         listForm.setDividerHeight(0);
@@ -157,23 +160,27 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                 coveringLetter.setClNama(coveringLetters.get(i).getClNama());
                 coveringLetter.setClKtp(coveringLetters.get(i).getClKtp());
                 coveringLetter.setClJenisKelamin(coveringLetters.get(i).getClJenisKelamin());
-                coveringLetter.setClTempatLahir(coveringLetters.get(i).getClTempatLahir());
-                coveringLetter.setClTanggalLahir(coveringLetters.get(i).getClTanggalLahir());
+                coveringLetter.setClPekerjaan(coveringLetters.get(i).getClPekerjaan());
+                coveringLetter.setClTempatTanggalLahir(coveringLetters.get(i).getClTempatTanggalLahir());
+                Log.d("XXXLOG", "onSelectedUserRequest - ttl: " + coveringLetters.get(i).getClTempatTanggalLahir());
                 coveringLetter.setClAgama(coveringLetters.get(i).getClAgama());
+                coveringLetter.setClAlamat(coveringLetters.get(i).getClAlamat());
                 coveringLetter.setClPendidikan(coveringLetters.get(i).getClPendidikan());
                 coveringLetter.setClKewarganegaraan(coveringLetters.get(i).getClKewarganegaraan());
+                coveringLetter.setClKeperluan(coveringLetters.get(i).getClKeperluan());
             }
         }
+
         appliedCoveringLetter(coveringLetter);
         fragmentListener.onFragmentFinish(FormListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_PDF_VIEWER, true);
     }
 
     private void appliedCoveringLetter(CoveringLetter cl) {
         CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05",
-                "Nomor: " + "12345678910111213",
-                cl.getClNama(), cl.getClJenisKelamin(), cl.getClTanggalLahir(), cl.getClPekerjaan(),
-                String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(), cl.getClAgama(), "", cl.getClKeperluan(),
-                "…/JT/VI/3/014/…/2022", "05/02/2022", "Rudi", "05/02/2022", "Sukina");
-        VSPreference.getInstance(context).setCoveringLetter(coveringLetter.getClKtp(), coveringLetter);
+                "Nomor: " + "123456789109876",
+                cl.getClNama(), cl.getClJenisKelamin(), cl.getClTempatTanggalLahir(), cl.getClPekerjaan(),
+                String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(), cl.getClAgama(), cl.getClAlamat(), cl.getClKeperluan(),
+                "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina");
+        VSPreference.getInstance(context).setCoveringLetter(ConstantVariable.KEY_COVERING_LETTER, coveringLetter);
     }
 }

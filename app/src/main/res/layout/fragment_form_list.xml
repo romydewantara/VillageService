@@ -25,11 +25,11 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitlePage"
+            style="@style/TextWhiteBoldRalewayStyle4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/form_list"
-            android:textSize="14dp"
             app:layout_constraintLeft_toRightOf="@id/buttonLeft"
             app:layout_constraintRight_toLeftOf="@id/buttonRight" />
 
@@ -38,7 +38,6 @@
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:padding="10dp"
-            android:src="@drawable/jakarta"
             app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

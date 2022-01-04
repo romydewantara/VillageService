@@ -16,11 +16,8 @@ public class CoveringLetter {
     @SerializedName("cl_jenis_kelamin")
     String clJenisKelamin;
 
-    @SerializedName("cl_tempat_lahir")
-    String clTempatLahir;
-
-    @SerializedName("cl_tanggal_lahir")
-    String clTanggalLahir;
+    @SerializedName("cl_tempat_tanggal_lahir")
+    String clTempatTanggalLahir;
 
     @SerializedName("cl_pekerjaan")
     String clPekerjaan;
@@ -72,14 +69,14 @@ public class CoveringLetter {
     }
 
     public CoveringLetter(String clLampiran, String clNomorHeader, String clNama, String clJenisKelamin,
-                          String clTanggalLahir, String clPekerjaan, String clKtp, String clKewarganegaraan,
+                          String clTempatTanggalLahir, String clPekerjaan, String clKtp, String clKewarganegaraan,
                           String clPendidikan, String clAgama, String clAlamat, String clKeperluan, String clNomorFooter,
                           String clTanggalFooterRw, String clNamaRw, String clTanggalRt, String clNamaRt) {
         this.clLampiran = clLampiran;
         this.clNomorHeader = clNomorHeader;
         this.clNama = clNama;
         this.clJenisKelamin = clJenisKelamin;
-        this.clTanggalLahir = clTanggalLahir;
+        this.clTempatTanggalLahir = clTempatTanggalLahir;
         this.clPekerjaan = clPekerjaan;
         this.clKtp = clKtp;
         this.clKewarganegaraan = clKewarganegaraan;
@@ -126,20 +123,12 @@ public class CoveringLetter {
         this.clJenisKelamin = clJenisKelamin;
     }
 
-    public String getClTempatLahir() {
-        return clTempatLahir;
+    public String getClTempatTanggalLahir() {
+        return clTempatTanggalLahir;
     }
 
-    public void setClTempatLahir(String clTempatLahir) {
-        this.clTempatLahir = clTempatLahir;
-    }
-
-    public String getClTanggalLahir() {
-        return clTanggalLahir;
-    }
-
-    public void setClTanggalLahir(String clTanggalLahir) {
-        this.clTanggalLahir = clTanggalLahir;
+    public void setClTempatTanggalLahir(String clTempatTanggalLahir) {
+        this.clTempatTanggalLahir = clTempatTanggalLahir;
     }
 
     public String getClPekerjaan() {

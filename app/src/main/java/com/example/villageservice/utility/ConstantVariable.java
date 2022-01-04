@@ -10,6 +10,7 @@ public class ConstantVariable {
     public final static String KEY_KARTU_KELUARGA_LIST = "KEY_KARTU_KELUARGA_LIST";
     public final static String KEY_USER = "KEY_USER";
     public final static String KEY_USER_LIST = "KEY_USER_LIST";
+    public final static String KEY_COVERING_LETTER = "KEY_COVERING_LETTER";
 
     //Role
     public final static String USER = "USER";

@@ -257,21 +257,22 @@ public class CoveringLetterFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                String address = etAddress.getText().toString() + ", RT. " +
-                        etRT.getText().toString() + ", RW. " +
-                        etRW.getText().toString() + ", Kel. " +
-                        etKel.getText().toString() + ", Kec. " +
-                        etKec.getText().toString() + ", Kota " +
-                        etKota.getText().toString() + ", Kode Pos: " +
-                        etPostal.getText().toString();
-                String tanggalLahir = etTanggal.getText().toString() + " " + monthChooser.getSelectedItem() + " " + etTahun.getText().toString();
-                CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05",
-                        "Nomor: " + " 12345678910111213", etIdNama.getText().toString(),
-                        String.valueOf(genderChooser.getSelectedItem()), etTempatLahir.getText().toString() + tanggalLahir, etPekerjaan.getText().toString(),
-                        String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
-                        etPendidikan.getText().toString(), etAgama.getText().toString(), address, etMaksud.getText().toString(),
-                        "…/JT/VI/3/014/…/2022", "05/02/2022", "Rudi", "05/02/2022", "Sukina");
+                String alamatLengkap = etAddress.getText().toString() +
+                        ", RT. " + etRT.getText().toString() +
+                        ", RW. " + etRW.getText().toString() +
+                        ", Kel. " + etKel.getText().toString() +
+                        ", Kec. " + etKec.getText().toString() +
+                        ", Kota " + etKota.getText().toString() +
+                        ", Kode Pos: " + etPostal.getText().toString();
+                String tempatTanggalLahir = etTempatLahir.getText().toString() + ", " + etTanggal.getText().toString() + " " + monthChooser.getSelectedItem() + " " + etTahun.getText().toString();
+                CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05", "Nomor: 12345678910987645",
+                        etIdNama.getText().toString(), String.valueOf(genderChooser.getSelectedItem()), tempatTanggalLahir,
+                        etPekerjaan.getText().toString(), String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
+                        etPendidikan.getText().toString(), etAgama.getText().toString(), alamatLengkap, etMaksud.getText().toString(),
+                        "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Sukina");
                 coveringLetter.setOpened(false);
+                coveringLetter.setApproved(false);
+                Log.d("XXXLOG", "CL page - tempatTanggalLahir: " + tempatTanggalLahir + " vs data real: " + coveringLetter.getClTempatTanggalLahir());
 
                 ArrayList<Object> coveringLetterArrayList = new ArrayList<>();
                 ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterList(ConstantVariable.KEY_CL_NIKAH);
