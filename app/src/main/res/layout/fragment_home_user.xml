@@ -70,7 +70,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_profile_photo" />
+                        android:src="@mipmap/ic_diamond" />
 
                 </androidx.cardview.widget.CardView>
 
