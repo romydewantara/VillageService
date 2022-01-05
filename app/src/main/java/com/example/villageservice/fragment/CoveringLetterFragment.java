@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
@@ -33,6 +34,7 @@ import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
 import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,6 +55,7 @@ public class CoveringLetterFragment extends Fragment {
     private KartuKeluarga kartuKeluarga;
 
     private View view;
+    private ImageView backButton;
     private RelativeLayout overlay;
     private EditText etIdNama;
     private EditText etTempatLahir;
@@ -200,6 +203,7 @@ public class CoveringLetterFragment extends Fragment {
     }
 
     private void initView() {
+        backButton = view.findViewById(R.id.backButton);
         etIdNama = view.findViewById(R.id.etIdNama);
         etTempatLahir = view.findViewById(R.id.etTempatLahir);
         etTanggal = view.findViewById(R.id.etTanggal);
@@ -262,6 +266,12 @@ public class CoveringLetterFragment extends Fragment {
 
             }
         });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentListener.onActivityBackPressed();
+            }
+        });
     }
 
     private void send() {
@@ -286,7 +296,7 @@ public class CoveringLetterFragment extends Fragment {
                 coveringLetter.setOpened(false);
                 coveringLetter.setApproved(false);
                 coveringLetter.setClType(clType);
-                Log.d("XXXLOG", "CL page - tempatTanggalLahir: " + tempatTanggalLahir + " vs data real: " + coveringLetter.getClTempatTanggalLahir());
+                Log.d("XXXLOG", "CL Fragment - coveringLetter to be send: " + new Gson().toJson(coveringLetter));
 
                 ArrayList<Object> coveringLetterArrayList = new ArrayList<>();
                 ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterList(ConstantVariable.KEY_CL_NIKAH);

@@ -62,6 +62,7 @@ public class HomeUserFragment extends Fragment {
 
     private RelativeLayout overlay;
     private AppCompatTextView tvKKNumber;
+    private AppCompatTextView tvKKKep;
     private CardView cvInfo1;
     private CardView cvInfo2;
     private CardView cvInfo3;
@@ -128,6 +129,7 @@ public class HomeUserFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home_user, container, false);
         tvKKNumber = view.findViewById(R.id.tvKKNumber);
+        tvKKKep = view.findViewById(R.id.tvKKKep);
         cvInfo1 = view.findViewById(R.id.cvInfo1);
         cvInfo2 = view.findViewById(R.id.cvInfo2);
         cvInfo3 = view.findViewById(R.id.cvInfo3);
@@ -150,8 +152,10 @@ public class HomeUserFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         prepareLayout();
-        String textKK = "Nomor Kartu Keluarga:\n" + kartuKeluarga.getIdKartuKeluarga();
+        String textKK = "No. Kartu Keluarga:\n" + kartuKeluarga.getIdKartuKeluarga();
+        String textKep = "Kepala Keluarga:\n" + kartuKeluarga.getNamaKepalaKeluarga();
         tvKKNumber.setText(textKK);
+        tvKKKep.setText(textKep);
         imageSwitcher.setInAnimation(imgAnimationIn);
         imageSwitcher.setOutAnimation(imgAnimationOut);
         imageSwitcher.setVisibility(View.VISIBLE);

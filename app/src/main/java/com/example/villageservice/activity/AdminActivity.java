@@ -268,7 +268,11 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
             }
         } else {
             bottomBar.setVisibility(View.GONE);
-            bottomBar.startAnimation(slideDown);
+            if (previousFragment.equalsIgnoreCase(TAG_FRAGMENT_HOME_ADMIN) ||
+                    previousFragment.equalsIgnoreCase(TAG_FRAGMENT_CITIZENS) ||
+                    previousFragment.equalsIgnoreCase(TAG_FRAGMENT_NOTIFICATIONS)) {
+                bottomBar.startAnimation(slideDown);
+            }
         }
     }
 

@@ -10,18 +10,23 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.example.villageservice.R;
 import com.example.villageservice.activity.AdminActivity;
 import com.example.villageservice.activity.UserActivity;
 import com.example.villageservice.adapter.FormListAdapter;
+import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FormUserRequestedListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
@@ -44,11 +49,13 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
 
     private Context context;
     private FragmentListener fragmentListener;
+    private CustomLoadingDialog customLoadingDialog;
 
     private ConstraintLayout constraintEmptyData;
     private View view;
     private ListView listForm;
     private ImageView buttonLeft;
+    private RelativeLayout overlay;
     private AppCompatTextView tvPageTitle;
     private AppCompatTextView tvEmptyData;
 
@@ -134,6 +141,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         listForm = view.findViewById(R.id.listForm);
         constraintEmptyData = view.findViewById(R.id.constraintEmptyData);
         tvEmptyData = view.findViewById(R.id.tvEmptyData);
+        overlay = view.findViewById(R.id.overlay);
 
         return view;
     }
@@ -151,35 +159,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
          * fetch covering letters which the cl_type is CL_NIKAH and show the covering letters from KartuKeluarga list only
          *
          * */
-
-        for (int i = 0; i < coveringLetterArrayList.size(); i++) {
-            CoveringLetter coveringLetter = (CoveringLetter) coveringLetterArrayList.get(i);
-            if (coveringLetter.getClType() != null) {
-                if (coveringLetter.getClType().equalsIgnoreCase(menuSelected)) {
-                    if (isAdmin) {
-                        //Admin
-                        coveringLetters.add(coveringLetter);
-                    } else {
-                        //User
-                        for (int j = 0; j < kartuKeluarga.getKeluargaList().size(); j++) {
-                            if (coveringLetter.getClKtp().equalsIgnoreCase(kartuKeluarga.getKeluargaList().get(j).getIdKtp())) {
-                                coveringLetters.add(coveringLetter);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        Collections.reverse(coveringLetters);
-        FormListAdapter formListAdapter = new FormListAdapter(context, coveringLetters, this);
-        listForm.setDivider(null);
-        listForm.setDividerHeight(0);
-        listForm.setAdapter(formListAdapter);
-
-        if (coveringLetters.isEmpty()) {
-            constraintEmptyData.setVisibility(View.VISIBLE);
-            tvEmptyData.setText("Oops… belum ada warga yang\n" + menuSelected + "…");
-        }
+        prepareLayout();
         initListener();
     }
 
@@ -202,7 +182,8 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
 
     private void initMandatory() {
         fragmentListener.onFragmentCreated(FormListFragment.this, previousFragment);
-        coveringLetterArrayList = VSPreference.getInstance(context).getCoveringLetterList(menuSelected);
+        customLoadingDialog = new CustomLoadingDialog(context);
+        coveringLetterArrayList = VSPreference.getInstance(context).getCoveringLetterList(clType);
         coveringLetters = new ArrayList<>();
         if (VSPreference.getInstance(context).getRole().equalsIgnoreCase(ConstantVariable.ADMIN)) isAdmin = true;
         if (!isAdmin) {
@@ -217,7 +198,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                 if (isAdmin) {
                     fragmentListener.onFragmentFinish(FormListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
                 } else {
-                    fragmentListener.onFragmentPassingData(menuSelected);
+                    fragmentListener.onFragmentPassingData(clType);
                     fragmentListener.onFragmentFinish(FormListFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_ENTRY, false);
                 }
             }
@@ -246,8 +227,10 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
 
         appliedCoveringLetter(coveringLetter);
         if (isAdmin) {
+            fragmentListener.onFragmentPassingData(clType);
             fragmentListener.onFragmentFinish(FormListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_PDF_VIEWER, true);
         } else {
+            fragmentListener.onFragmentPassingData(clType);
             fragmentListener.onFragmentFinish(FormListFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_PDF_VIEWER, true);
         }
     }
@@ -260,4 +243,53 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                 "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina");
         VSPreference.getInstance(context).setCoveringLetter(ConstantVariable.KEY_COVERING_LETTER, coveringLetter);
     }
+
+    private void prepareLayout() {
+        showOverlay(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < coveringLetterArrayList.size(); i++) {
+                    CoveringLetter coveringLetter = (CoveringLetter) coveringLetterArrayList.get(i);
+                    if (coveringLetter.getClType() != null) {
+                        if (coveringLetter.getClType().equalsIgnoreCase(clType)) {
+                            if (isAdmin) {
+                                //Admin
+                                coveringLetters.add(coveringLetter);
+                            } else {
+                                //User
+                                for (int j = 0; j < kartuKeluarga.getKeluargaList().size(); j++) {
+                                    if (coveringLetter.getClKtp().equalsIgnoreCase(kartuKeluarga.getKeluargaList().get(j).getIdKtp())) {
+                                        coveringLetters.add(coveringLetter);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                Collections.reverse(coveringLetters);
+                FormListAdapter formListAdapter = new FormListAdapter(context, coveringLetters, FormListFragment.this);
+                listForm.setDivider(null);
+                listForm.setDividerHeight(0);
+                listForm.setAdapter(formListAdapter);
+
+                if (coveringLetters.isEmpty()) {
+                    constraintEmptyData.setVisibility(View.VISIBLE);
+                    tvEmptyData.setText("Oops! belum ada warga yang\n" + menuSelected + "…");
+                }
+                showOverlay(false);
+            }
+        }, 1800);
+    }
+
+    public void showOverlay(boolean isShow) {
+        if (isShow) {
+            overlay.setVisibility(View.VISIBLE);
+            customLoadingDialog.show();
+        } else {
+            customLoadingDialog.dismiss();
+            overlay.setVisibility(View.INVISIBLE);
+        }
+    }
+
 }

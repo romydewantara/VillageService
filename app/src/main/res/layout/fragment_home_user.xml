@@ -80,15 +80,27 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvKKNumber"
-            android:layout_width="match_parent"
+            style="@style/MulishWhiteMediumStyle1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Nomor Kartu Keluarga:\n012345678910"
-            android:textColor="@color/white"
-            android:visibility="visible"
+            android:text="No.Kartu Keluarga:\n012345678910"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent=".5"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvKKKep"
+            style="@style/MulishWhiteMediumStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Kepala Keluarga:\nCristiano Ronaldo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent=".5"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

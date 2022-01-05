@@ -119,7 +119,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvQuestion"
-            style="@style/MulishBoldBlackStyle2"
+            style="@style/MulishGreyMediumStyle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -127,7 +127,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvRegister"
-            style="@style/MulishBlackMediumStyle1"
+            style="@style/MulishBlueBoldStyle3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

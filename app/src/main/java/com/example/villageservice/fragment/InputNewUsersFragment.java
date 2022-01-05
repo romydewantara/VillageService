@@ -187,6 +187,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         customLoadingDialog = new CustomLoadingDialog(context);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void initListener() {
         cvAddMember.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,6 +203,9 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                                 ArrayList<User> arrayList = new ArrayList<>();
                                 for (int i = 1; i <= total; i++) {
                                     arrayList.add(user);
+                                }
+                                if (membersAdapter != null) {
+                                    membersAdapter = null;
                                 }
                                 membersAdapter = new MembersAdapter(context, arrayList);
                                 membersAdapter.setClickListener(InputNewUsersFragment.this);
@@ -228,31 +232,48 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                         !etAddress.getText().toString().isEmpty() && !etRT.getText().toString().isEmpty() &&
                         !etRW.getText().toString().isEmpty() && !etKel.getText().toString().isEmpty() &&
                         !etKec.getText().toString().isEmpty() && !etKota.getText().toString().isEmpty() &&
-                        !etPostal.getText().toString().isEmpty() && !etProvinsi.getText().toString().isEmpty()) {
-                    showOverlay(true);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            saveDataKK();
-                            showOverlay(false);
-                            FragmentManager fm = getFragmentManager();
-                            CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context,
-                                    "", "Data Kartu Keluarga berhasil didaftarkan")
-                                    .setButton("Tutup", "", new CustomAlertDialogListener() {
-                                        @Override
-                                        public void onNegativePressed() {
-                                        }
+                        !etPostal.getText().toString().isEmpty() && !etProvinsi.getText().toString().isEmpty() &&
+                        !etPassword.getText().toString().isEmpty() && (tvEmpty.getVisibility() == View.INVISIBLE)) {
 
+                    FragmentManager fm = getFragmentManager();
+                    CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context,
+                            "Peringatan!", "Apakah semua data keluarga sudah benar?")
+                            .setButton("Ya", "Periksa Ulang", new CustomAlertDialogListener() {
+                                @Override
+                                public void onNegativePressed() {
+                                }
+
+                                @Override
+                                public void onPositivePressed() {
+                                    showOverlay(true);
+                                    new Handler().postDelayed(new Runnable() {
                                         @Override
-                                        public void onPositivePressed() {
-                                            fragmentListener.onFragmentFinish(InputNewUsersFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
+                                        public void run() {
+                                            saveDataKK();
+                                            showOverlay(false);
+                                            FragmentManager fm = getFragmentManager();
+                                            CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context,
+                                                    "", "Data Kartu Keluarga berhasil didaftarkan")
+                                                    .setButton("Tutup", "", new CustomAlertDialogListener() {
+                                                        @Override
+                                                        public void onNegativePressed() {
+                                                        }
+
+                                                        @Override
+                                                        public void onPositivePressed() {
+                                                            fragmentListener.onFragmentFinish(InputNewUsersFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
+                                                        }
+                                                    });
+                                            if (fm != null) {
+                                                customAlertDialog.show(fm, "custom_alert_dialog");
+                                            }
                                         }
-                                    });
-                            if (fm != null) {
-                                customAlertDialog.show(fm, "custom_alert_dialog");
-                            }
-                        }
-                    }, 3000);
+                                    }, 3000);
+                                }
+                            });
+                    if (fm != null) {
+                        customAlertDialog.show(fm, "custom_alert_dialog");
+                    }
                 } else {
                     FragmentManager fm = getFragmentManager();
                     CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context,

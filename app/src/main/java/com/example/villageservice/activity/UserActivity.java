@@ -36,7 +36,8 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     public static final int FRAGMENT_FINISH_GOTO_NOTIFICATION = 3;
     public static final int FRAGMENT_FINISH_GOTO_ENTRY = 4;
     public static final int FRAGMENT_FINISH_GOTO_CL = 5;
-    public static final int FRAGMENT_FINISH_GOTO_PDF_VIEWER = 6;
+    public static final int FRAGMENT_FINISH_GOTO_FORM_LIST = 6;
+    public static final int FRAGMENT_FINISH_GOTO_PDF_VIEWER = 7;
 
 
     public static final String TAG_FRAGMENT_HOME_USER = "home_user_fragment";
@@ -44,6 +45,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     public static final String TAG_FRAGMENT_NOTIFICATIONS = "notifications_fragment";
     public static final String TAG_FRAGMENT_ENTRY = "entry_fragment";
     public static final String TAG_FRAGMENT_CL = "cl_fragment";
+    public static final String TAG_FRAGMENT_FORM_LIST = "form_list_fragment";
     public static final String TAG_FRAGMENT_PDF_VIEWER = "pdf_viewer_fragment";
 
 
@@ -203,6 +205,17 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                         .replace(R.id.container, fragment, TAG_FRAGMENT_CL)
                         .commit();
                 break;
+            case FRAGMENT_FINISH_GOTO_FORM_LIST:
+                fragment = new FormListFragment();
+                ((FormListFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
+                bundle = new Bundle();
+                bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
+                fragment.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_FORM_LIST)
+                        .commit();
+                break;
             case FRAGMENT_FINISH_GOTO_PDF_VIEWER:
                 fragment = new PdfViewerFragment();
                 ((PdfViewerFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
@@ -211,7 +224,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 fragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
-                        .replace(R.id.container, fragment, TAG_FRAGMENT_CL)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_PDF_VIEWER)
                         .commit();
                 break;
         }
@@ -246,7 +259,11 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
             }
         } else {
             bottomBar.setVisibility(View.GONE);
-            bottomBar.startAnimation(slideDown);
+            if (previousFragment.equalsIgnoreCase(TAG_FRAGMENT_HOME_USER) ||
+                    previousFragment.equalsIgnoreCase(TAG_FRAGMENT_PROFILE) ||
+                    previousFragment.equalsIgnoreCase(TAG_FRAGMENT_NOTIFICATIONS)) {
+                bottomBar.startAnimation(slideDown);
+            }
         }
     }
 
@@ -267,15 +284,13 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
 
     @Override
     public void onActivityBackPressed() {
-
+        onBackPressed();
     }
 
     @Override
     public void onBackPressed() {
-        if (fragment instanceof HomeAdminFragment) {
-            finish();
-        } else if (fragment instanceof FormListFragment) {
-            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+        if (fragment instanceof FormListFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_ENTRY, false);
         } else if (fragment instanceof ProfileFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
         } else if (fragment instanceof NotificationsFragment) {

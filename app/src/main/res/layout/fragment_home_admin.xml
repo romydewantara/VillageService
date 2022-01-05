@@ -37,7 +37,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvHeader"
-                style="@style/MulishWhiteBoldStyle5"
+                style="@style/MulishBoldBlackStyle5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -45,7 +45,7 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:text="RT. 19"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

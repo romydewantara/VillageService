@@ -266,7 +266,7 @@
             android:text="Registrasi Kartu Keluarga"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent" />
-        
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
