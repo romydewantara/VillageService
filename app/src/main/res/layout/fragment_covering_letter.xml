@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@id/tvIdKTP">
 
@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:entries="@array/ktpExampleItems"
-                    android:popupBackground="@drawable/background_edit_text_rounded"
+                    android:popupBackground="@drawable/bg_edit_text_white_rounded"
                     android:theme="@style/SpinnerTheme" />
             </RelativeLayout>
 
@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: Radjiman"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -108,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@id/tvJenisKelamin">
 
@@ -117,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:entries="@array/genderItems"
-                    android:popupBackground="@drawable/background_edit_text_rounded"
+                    android:popupBackground="@drawable/bg_edit_text_white_rounded"
                     android:theme="@style/SpinnerTheme" />
             </RelativeLayout>
 
@@ -138,7 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: Jakarta"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -173,7 +173,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/background_edit_text_rounded"
+                    android:background="@drawable/bg_edit_text_white_rounded"
                     android:hint="10"
                     android:inputType="number"
                     android:maxLines="1"
@@ -186,14 +186,14 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
                     android:layout_weight="1"
-                    android:background="@drawable/background_edit_text_rounded">
+                    android:background="@drawable/bg_edit_text_white_rounded">
 
                     <Spinner
                         android:id="@+id/monthChooser"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:entries="@array/monthItems"
-                        android:popupBackground="@drawable/background_edit_text_rounded"
+                        android:popupBackground="@drawable/bg_edit_text_white_rounded"
                         android:theme="@style/SpinnerTheme" />
                 </RelativeLayout>
 
@@ -206,7 +206,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="3dp"
                     android:layout_weight="1"
-                    android:background="@drawable/background_edit_text_rounded"
+                    android:background="@drawable/bg_edit_text_white_rounded"
                     android:hint="1985"
                     android:inputType="number"
                     android:maxLines="1"
@@ -232,7 +232,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: Karyawan Swasta"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -256,7 +256,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:padding="5dp"
                 app:layout_constraintTop_toBottomOf="@id/tvKewarganegaraan">
 
@@ -265,7 +265,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:entries="@array/kewarganegaraanItems"
-                    android:popupBackground="@drawable/background_edit_text_rounded"
+                    android:popupBackground="@drawable/bg_edit_text_white_rounded"
                     android:theme="@style/SpinnerTheme" />
             </RelativeLayout>
 
@@ -286,7 +286,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: Strata-1"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -311,7 +311,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: Islam"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -336,7 +336,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: Jl. Mawar Gang. 1 No. 109"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -367,7 +367,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginRight="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: 007"
                 android:inputType="number"
                 android:maxLines="1"
@@ -400,7 +400,7 @@
                 android:layout_marginStart="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: 014"
                 android:inputType="number"
                 android:maxLines="1"
@@ -427,7 +427,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: Penggilingan"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -452,7 +452,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: Cakung"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -477,7 +477,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: Jakarta Timur"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -502,7 +502,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: 13490"
                 android:inputType="number"
                 android:maxLines="1"
@@ -527,7 +527,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/bg_edit_text_white_rounded"
                 android:hint="Contoh: Membuat Surat Pengantar Nikah"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"

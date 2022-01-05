@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,8 @@ import com.example.villageservice.model.User;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 public class InputUserDialog extends DialogFragment {
 
     private TextView titleAlert;
@@ -37,11 +41,13 @@ public class InputUserDialog extends DialogFragment {
     private CharSequence pButtonText = "";
     private CharSequence nButtonText = "";
     private boolean shown = false;
+    private boolean isComplete = false;
 
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
     private static String textTitle;
     private static String textKtp;
+    private static ArrayList<Object> userList;
 
     private InputUserDialogListener inputUserDialogListener;
 
@@ -55,6 +61,8 @@ public class InputUserDialog extends DialogFragment {
         mContext = context;
         textTitle = title;
         textKtp = ktp;
+        userList = VSPreference.getInstance(context).loadUserList();
+        Log.d("XXXLOG", "newInstance - userList: " + new Gson().toJson(userList));
 
         arguments.putString("title", title);
         fragment.setArguments(arguments);
@@ -161,9 +169,16 @@ public class InputUserDialog extends DialogFragment {
                 user.setKewarganegaraan(et12.getText().toString());
                 user.setNamaAyah(et13.getText().toString());
                 user.setNamaIbu(et14.getText().toString());
-                inputUserDialogListener.onAddButtonPressed(user);
 
-                dismiss();
+                if (!et1.getText().toString().isEmpty() && !et2.getText().toString().isEmpty() &&
+                        !et3.getText().toString().isEmpty() && !et4.getText().toString().isEmpty() &&
+                        !et5.getText().toString().isEmpty() && !et6.getText().toString().isEmpty() &&
+                        !et7.getText().toString().isEmpty() && !et8.getText().toString().isEmpty() &&
+                        !et9.getText().toString().isEmpty() && !et10.getText().toString().isEmpty() &&
+                        !et12.getText().toString().isEmpty() && isComplete) {
+                    inputUserDialogListener.onAddButtonPressed(user);
+                    dismiss();
+                }
             }
         });
         negativeButton.setOnClickListener(new View.OnClickListener() {
@@ -171,6 +186,25 @@ public class InputUserDialog extends DialogFragment {
             public void onClick(View view) {
                 inputUserDialogListener.onCancelButtonPressed();
                 dismiss();
+            }
+        });
+        et1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                for (int i = 0; i < userList.size(); i++) {
+                    User user = (User) userList.get(i);
+                    if (user.getIdKtp().equalsIgnoreCase(s.toString())) {
+                        et1.setBackgroundResource(R.drawable.bg_edit_text_red_rounded);
+                        isComplete = false;
+                    } else {
+                        et1.setBackgroundResource(R.drawable.bg_edit_text_white_rounded);
+                        isComplete = true;
+                    }
+                }
             }
         });
     }

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,6 +61,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private CustomLoadingDialog customLoadingDialog;
 
     private List<User> temporaryUserAdded;
+    private ArrayList<Object> kkObjList;
 
     private RelativeLayout overlay;
     private RecyclerView recyclerViewMember;
@@ -76,6 +79,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private EditText etProvinsi;
     private AppCompatEditText etPassword;
     private AppCompatTextView tvEmpty;
+    private AppCompatTextView tvIdKKError;
 
     private CardView cvAddMember;
     private ImageView backButton;
@@ -83,6 +87,8 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
 
     private MembersAdapter membersAdapter;
     private String previousFragment = "";
+    private boolean isComplete = false;
+    private boolean isPasswordOk = false;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -149,6 +155,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         cvAddMember = view.findViewById(R.id.cvAddMember);
         backButton = view.findViewById(R.id.backButton);
         tvEmpty = view.findViewById(R.id.tvEmpty);
+        tvIdKKError = view.findViewById(R.id.tvIdKKError);
         saveButton = view.findViewById(R.id.saveButton);
         overlay = view.findViewById(R.id.overlay);
 
@@ -185,10 +192,46 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         fragmentListener.onFragmentCreated(InputNewUsersFragment.this, previousFragment);
         temporaryUserAdded = new ArrayList<>();
         customLoadingDialog = new CustomLoadingDialog(context);
+        kkObjList = VSPreference.getInstance(context).getKKList();
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private void initListener() {
+        etIdKK.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                for (int i = 0; i < kkObjList.size(); i++) {
+                    KartuKeluarga tempKK = (KartuKeluarga) kkObjList.get(i);
+                    if (tempKK.getIdKartuKeluarga().equalsIgnoreCase(s.toString())) {
+                        etIdKK.setBackgroundResource(R.drawable.bg_edit_text_red_rounded);
+                        tvIdKKError.setVisibility(View.VISIBLE);
+                        isComplete = false;
+                    } else {
+                        etIdKK.setBackgroundResource(R.drawable.bg_edit_text_white_rounded);
+                        tvIdKKError.setVisibility(View.GONE);
+                        isComplete = true;
+                    }
+                }
+            }
+        });
+        etPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().length() < 6) {
+                    isPasswordOk = false;
+                } else {
+                    isPasswordOk = true;
+                }
+            }
+        });
         cvAddMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,7 +276,8 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                         !etRW.getText().toString().isEmpty() && !etKel.getText().toString().isEmpty() &&
                         !etKec.getText().toString().isEmpty() && !etKota.getText().toString().isEmpty() &&
                         !etPostal.getText().toString().isEmpty() && !etProvinsi.getText().toString().isEmpty() &&
-                        !etPassword.getText().toString().isEmpty() && (tvEmpty.getVisibility() == View.INVISIBLE)) {
+                        !etPassword.getText().toString().isEmpty() && (tvEmpty.getVisibility() == View.INVISIBLE) &&
+                        isComplete && isPasswordOk) {
 
                     FragmentManager fm = getFragmentManager();
                     CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context,
@@ -242,7 +286,6 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                                 @Override
                                 public void onNegativePressed() {
                                 }
-
                                 @Override
                                 public void onPositivePressed() {
                                     showOverlay(true);
