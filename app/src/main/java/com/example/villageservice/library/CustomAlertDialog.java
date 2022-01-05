@@ -125,10 +125,10 @@ public class CustomAlertDialog extends DialogFragment {
             messageAlert.setVisibility(View.VISIBLE);
         }
 
-        titleAlert.setTypeface(fonts.rBold());
-        messageAlert.setTypeface(fonts.rRegular());
-        negativeButton.setTypeface(fonts.rBold());
-        positiveButton.setTypeface(fonts.rBold());
+        titleAlert.setTypeface(fonts.mulishBold());
+        messageAlert.setTypeface(fonts.mulishRegular());
+        negativeButton.setTypeface(fonts.mulishBold());
+        positiveButton.setTypeface(fonts.mulishBold());
 
         titleAlert.setTextColor(mContext.getResources().getColor(R.color.black));
         messageAlert.setTextColor(mContext.getResources().getColor(R.color.black));

@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.TypedValue;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.TextViewCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -17,10 +21,11 @@ import com.example.villageservice.utility.VSPreference;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final int SPLASH_DELAY = 2500;
+    private static final int SPLASH_DELAY = 3000;
 
     private LottieAnimationView lottieSplash;
     private AppCompatTextView tvCopyright;
+    private ConstraintLayout constraintCopyright;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,23 +34,15 @@ public class SplashActivity extends AppCompatActivity {
 
         lottieSplash = findViewById(R.id.lottieSplash);
         tvCopyright = findViewById(R.id.tvCopyright);
-        tvCopyright.setTypeface(new Fonts(getApplicationContext()).rMedium());
+        constraintCopyright = findViewById(R.id.constraintCopyright);
+
+        Animation slideUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+        constraintCopyright.setVisibility(View.VISIBLE);
+        constraintCopyright.startAnimation(slideUp);
+
+        tvCopyright.setTypeface(new Fonts(getApplicationContext()).mulishMedium());
         tvCopyright.setTextColor(R.color.light_blue);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvCopyright, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
-
-        /*lottieSplash.addAnimatorListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {}
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                startActivity(new Intent(getApplicationContext(), SignInActivity.class).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
-                finish();
-            }
-            @Override
-            public void onAnimationCancel(Animator animation) {}
-            @Override
-            public void onAnimationRepeat(Animator animation) {}
-        });*/
 
         new Handler().postDelayed(new Runnable() {
             @Override

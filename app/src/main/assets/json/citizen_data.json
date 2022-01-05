@@ -1,79 +1,45 @@
 {
   "kartu_keluarga_list": [
     {
-      "id_ktp": 3173033014890004,
-      "id_kartu_keluarga": 5113033014890055,
-      "nama_lengkap": "Muhammad Fakhri Pratama",
-      "jenis_kelamin": "Laki-laki",
-      "tempat_lahir": "Bandung",
-      "tanggal_lahir": {
-        "tanggal": 10,
-        "bulan": 10,
-        "tahun": 2010
-      },
-      "agama": "Islam",
-      "pendidikan": "Strata-1",
-      "jenis_pekerjaan": "Wiraswasta",
-      "status_pernikahan": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "Ayah",
-      "kewarganegaraan": "WNI",
-      "nama_ayah": "Zeus",
-      "nama_ibu": "Helena",
-      "tanggal_bergabung": {
-        "tanggal": 10,
-        "bulan": 10,
-        "tahun": 2010
-      }
-    },
-    {
-      "id_ktp": 3173033014890004,
-      "id_kartu_keluarga": 5113033014890055,
-      "nama_lengkap": "Aditia Nugraha",
-      "jenis_kelamin": "Laki-laki",
-      "tempat_lahir": "Bandung",
-      "tanggal_lahir": {
-        "tanggal": 10,
-        "bulan": 10,
-        "tahun": 2010
-      },
-      "agama": "Islam",
-      "pendidikan": "Strata-1",
-      "jenis_pekerjaan": "Wiraswasta",
-      "status_pernikahan": "Belum Kawin",
-      "status_hubungan_dalam_keluarga": "Ayah",
-      "kewarganegaraan": "WNI",
-      "nama_ayah": "Zeus",
-      "nama_ibu": "Helena",
-      "tanggal_bergabung": {
-        "tanggal": 10,
-        "bulan": 10,
-        "tahun": 2010
-      }
-    },
-    {
-      "id_ktp": 3173033014890004,
-      "id_kartu_keluarga": 5113033014890055,
-      "nama_lengkap": "Romy Dewantara",
-      "jenis_kelamin": "Laki-laki",
-      "tempat_lahir": "Bandung",
-      "tanggal_lahir": {
-        "tanggal": 10,
-        "bulan": 10,
-        "tahun": 2010
-      },
-      "agama": "Islam",
-      "pendidikan": "Strata-1",
-      "jenis_pekerjaan": "Wiraswasta",
-      "status_pernikahan": "Kawin",
-      "status_hubungan_dalam_keluarga": "Ayah",
-      "kewarganegaraan": "WNI",
-      "nama_ayah": "Zeus",
-      "nama_ibu": "Helena",
-      "tanggal_bergabung": {
-        "tanggal": 10,
-        "bulan": 10,
-        "tahun": 2010
-      }
+      "id_kartu_keluarga": "3175061601097908",
+      "nama_kepala_keluarga": "P.SIMBOLON",
+      "alamat_lengkap": "",
+      "alamat_rumah": "",
+      "nomor_rt": 0,
+      "nomor_rw": 0,
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": 13490,
+      "provinsi": "DKI Jakarta",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175060410710007",
+          "id_kartu_keluarga":"3175061601097908",
+          "nama_lengkap": "P.SIMBOLON",
+          "jenis_kelamin":"Laki-laki",
+          "tempat_lahir": "DELI SERDANG",
+          "tanggal_lahir": {
+            "tanggal": 4,
+            "bulan":"Oktober",
+            "tahun": 1971
+          },
+          "tanggal_bergabung": {
+            "tanggal": 0,
+            "bulan":"",
+            "tahun": 0
+          },
+          "agama":"KATOLIK",
+          "pendidikan": "",
+          "jenis_pekerjaan":"TNI",
+          "status_pernikahan": "",
+          "status_hubungan_dalam_keluarga":"",
+          "kewarganegaraan": "WNI",
+          "nama_ayah":"",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
     }
   ]
 }

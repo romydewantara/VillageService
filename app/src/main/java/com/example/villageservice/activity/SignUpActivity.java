@@ -63,13 +63,13 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void setFonts() {
-        tvTitle.setTypeface(fonts.rBoldExtra());
-        tvSignIn.setTypeface(fonts.rBold());
-        tvQuestion.setTypeface(fonts.rRegular());
-        tvBottom.setTypeface(fonts.rMedium());
-        etKtp.setTypeface(fonts.rRegular());
-        etName.setTypeface(fonts.rRegular());
-        etPassword.setTypeface(fonts.rRegular());
-        etConfirmPassword.setTypeface(fonts.rRegular());
+        tvTitle.setTypeface(fonts.mulishBoldExtra());
+        tvSignIn.setTypeface(fonts.mulishBold());
+        tvQuestion.setTypeface(fonts.mulishRegular());
+        tvBottom.setTypeface(fonts.mulishMedium());
+        etKtp.setTypeface(fonts.mulishRegular());
+        etName.setTypeface(fonts.mulishRegular());
+        etPassword.setTypeface(fonts.mulishRegular());
+        etConfirmPassword.setTypeface(fonts.mulishRegular());
     }
 }

@@ -16,32 +16,6 @@ public class Fonts {
         this.context = context;
     }
 
-    // get fonts collections
-    // Smoolthan fonts
-    public Typeface stBold() {
-        Typeface stBold = Typeface.createFromAsset(context.getAssets(),
-                "fonts/Smoolthan Bold.otf");
-        return stBold;
-    }
-
-    public Typeface stMedium() {
-        Typeface stMedium = Typeface.createFromAsset(context.getAssets(),
-                "fonts/Smoolthan Medium.otf");
-        return stMedium;
-    }
-
-    public Typeface stRegular() {
-        Typeface stRegular = Typeface.createFromAsset(context.getAssets(),
-                "fonts/Smoolthan Regular.otf");
-        return stRegular;
-    }
-
-    public Typeface stThin() {
-        Typeface stThin = Typeface.createFromAsset(context.getAssets(),
-                "fonts/Smoolthan Thin.otf");
-        return stThin;
-    }
-
     public Typeface rBold() {
         return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-Bold.ttf");
     }
@@ -62,8 +36,21 @@ public class Fonts {
         return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-Regular.ttf");
     }
 
-    public Typeface rThin() {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-Thin.ttf");
+    public Typeface mulishBold() {
+        return Typeface.createFromAsset(context.getAssets(), "fonts/Mulish-Bold.ttf");
     }
+
+    public Typeface mulishBoldExtra() {
+        return Typeface.createFromAsset(context.getAssets(), "fonts/Mulish-BoldExtra.ttf");
+    }
+
+    public Typeface mulishMedium() {
+        return Typeface.createFromAsset(context.getAssets(), "fonts/Mulish-Medium.ttf");
+    }
+
+    public Typeface mulishRegular() {
+        return Typeface.createFromAsset(context.getAssets(), "fonts/Mulish-Regular.ttf");
+    }
+
 
 }

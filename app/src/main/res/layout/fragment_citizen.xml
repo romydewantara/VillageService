@@ -43,8 +43,6 @@
             android:paddingRight="10dp"
             android:text="DAFTAR WARGA RT. 09"
             android:textColor="@color/dark_blue"
-            android:textSize="24dp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/backButton"
             app:layout_constraintTop_toTopOf="parent" />
@@ -137,8 +135,6 @@
                 android:paddingRight="10dp"
                 android:text="Edit Profile"
                 android:textAllCaps="false"
-                android:textColor="@color/dark_blue"
-                android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -262,8 +258,6 @@
         android:maxLines="1"
         android:text="Registrasi Kartu Keluarga"
         android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent" />
 

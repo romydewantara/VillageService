@@ -29,7 +29,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/titleForm"
-                style="@style/TextBlackBoldRalewayStyle4"
+                style="@style/MulishBoldBlackStyle5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -42,7 +42,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvIdKTP"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -53,7 +53,6 @@
 
             <RelativeLayout
                 android:id="@+id/spinnerIdKTP"
-                style="@style/TextBlackRegularRalewayStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
@@ -72,7 +71,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvIdNama"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -83,7 +82,7 @@
 
             <EditText
                 android:id="@+id/etIdNama"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -97,7 +96,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvJenisKelamin"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -126,7 +125,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTempatLahir"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -137,7 +136,7 @@
 
             <EditText
                 android:id="@+id/etTempatLahir"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -151,7 +150,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTanggalLahir"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -169,7 +168,7 @@
 
                 <EditText
                     android:id="@+id/etTanggal"
-                    style="@style/TextBlackRegularRalewayStyle2"
+                    style="@style/MulishMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -202,7 +201,7 @@
 
                 <EditText
                     android:id="@+id/etTahun"
-                    style="@style/TextBlackRegularRalewayStyle2"
+                    style="@style/MulishMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginStart="5dp"
@@ -220,7 +219,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPekerjaan"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -231,7 +230,7 @@
 
             <EditText
                 android:id="@+id/etPekerjaan"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -245,7 +244,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvKewarganegaraan"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -274,7 +273,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPendidikan"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -285,7 +284,7 @@
 
             <EditText
                 android:id="@+id/etPendidikan"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -299,7 +298,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvAgama"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -310,7 +309,7 @@
 
             <EditText
                 android:id="@+id/etAgama"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -324,7 +323,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvAddress"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -335,7 +334,7 @@
 
             <EditText
                 android:id="@+id/etAddress"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -349,7 +348,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvRT"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -364,7 +363,7 @@
 
             <EditText
                 android:id="@+id/etRT"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -382,7 +381,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvRW"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -397,7 +396,7 @@
 
             <EditText
                 android:id="@+id/etRW"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="3dp"
@@ -415,7 +414,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvKel"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -426,7 +425,7 @@
 
             <EditText
                 android:id="@+id/etKel"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -440,7 +439,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvKec"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -451,7 +450,7 @@
 
             <EditText
                 android:id="@+id/etKec"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -465,7 +464,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvKota"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -476,7 +475,7 @@
 
             <EditText
                 android:id="@+id/etKota"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -490,7 +489,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPostal"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -501,7 +500,7 @@
 
             <EditText
                 android:id="@+id/etPostal"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -515,7 +514,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvMaksud"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -526,7 +525,7 @@
 
             <EditText
                 android:id="@+id/etMaksud"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"
@@ -550,7 +549,7 @@
 
     <Button
         android:id="@+id/sendButton"
-        style="@style/TextBlackBoldRalewayStyle1"
+        style="@style/MulishWhiteBoldStyle2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/dark_blue"

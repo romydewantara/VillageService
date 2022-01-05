@@ -167,8 +167,8 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
             @Override
             public void run() {
                 Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.bounched_show);
-                cvPhotoProfile.setVisibility(View.VISIBLE);
                 constraintIdentity.setVisibility(View.VISIBLE);
+                cvPhotoProfile.setVisibility(View.VISIBLE);
                 cvPhotoProfile.startAnimation(slideUp);
                 showOverlay(false);
             }

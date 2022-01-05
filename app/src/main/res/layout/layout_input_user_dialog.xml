@@ -11,7 +11,7 @@
 
         <TextView
             android:id="@+id/titleAlert"
-            style="@style/TextBlackMediumRalewayStyle3"
+            style="@style/MulishBoldBlackStyle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -30,7 +30,7 @@
 
             <EditText
                 android:id="@+id/et1"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -41,7 +41,7 @@
 
             <EditText
                 android:id="@+id/et2"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -52,7 +52,7 @@
 
             <EditText
                 android:id="@+id/et3"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -63,7 +63,7 @@
 
             <EditText
                 android:id="@+id/et4"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -74,7 +74,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTanggalLahir"
-                style="@style/TextBlackRegularRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -89,7 +89,7 @@
 
                 <EditText
                     android:id="@+id/et5"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/MulishMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginEnd="5dp"
@@ -120,7 +120,7 @@
 
                 <EditText
                     android:id="@+id/et6"
-                    style="@style/TextBlackRegularRalewayStyle1"
+                    style="@style/MulishMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginStart="5dp"
@@ -137,7 +137,7 @@
 
             <EditText
                 android:id="@+id/et7"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -149,7 +149,7 @@
 
             <EditText
                 android:id="@+id/et8"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -160,7 +160,7 @@
 
             <EditText
                 android:id="@+id/et9"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -171,7 +171,7 @@
 
             <EditText
                 android:id="@+id/et10"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -182,7 +182,7 @@
 
             <EditText
                 android:id="@+id/et11"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -193,7 +193,7 @@
 
             <EditText
                 android:id="@+id/et12"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -204,7 +204,7 @@
 
             <EditText
                 android:id="@+id/et13"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -215,7 +215,7 @@
 
             <EditText
                 android:id="@+id/et14"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/background_edit_text_rounded"
@@ -238,7 +238,7 @@
 
             <TextView
                 android:id="@+id/negativeButton"
-                style="@style/TextGreyBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
@@ -250,7 +250,7 @@
 
             <TextView
                 android:id="@+id/positiveButton"
-                style="@style/TextBlueBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"

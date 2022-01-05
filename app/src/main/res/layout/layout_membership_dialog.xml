@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/titleAlert"
-            style="@style/TextBlackRegularRalewayStyle3"
+            style="@style/MulishBoldBlackStyle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -36,7 +36,7 @@
                 android:id="@+id/tvTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                style="@style/TextBlackRegularRalewayStyle4"
+                style="@style/MulishBoldBlackStyle4"
                 android:text="1"
                 android:gravity="center"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -82,7 +82,7 @@
 
             <TextView
                 android:id="@+id/negativeButton"
-                style="@style/TextGreyBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_cad_negative_button"
@@ -94,7 +94,7 @@
 
             <TextView
                 android:id="@+id/positiveButton"
-                style="@style/TextBlueBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_cad_positive_button"

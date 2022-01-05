@@ -26,7 +26,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvMemberName"
-                style="@style/TextBlackRegularRalewayStyle2"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -37,7 +37,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvMemberKTP"
-                style="@style/TextBlackRegularRalewayStyle1"
+                style="@style/MulishRegularStyle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -49,7 +49,7 @@
 
             <TextView
                 android:id="@+id/editButton"
-                style="@style/TextBlueBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:gravity="center"

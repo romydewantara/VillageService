@@ -38,8 +38,6 @@ import java.util.ArrayList;
 
 public class SignInActivity extends AppCompatActivity {
 
-    Fonts fonts;
-
     // 6 TextView
     private AppCompatTextView tvAplName;
     private AppCompatTextView tvInfo;
@@ -76,7 +74,6 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void initMandatory() {
-        fonts = new Fonts(getApplicationContext());
         customLoadingDialog = new CustomLoadingDialog(this);
         tvAplName = findViewById(R.id.tvAplName);
         tvInfo = findViewById(R.id.tvInfo);
@@ -170,15 +167,6 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void setFonts() {
-        tvAplName.setTypeface(fonts.rBold());
-        tvInfo.setTypeface(fonts.rMedium());
-        etEmail.setTypeface(fonts.rMedium());
-        etPassword.setTypeface(fonts.rMedium());
-        signInButton.setTypeface(fonts.rBold());
-        tvGuide.setTypeface(fonts.rMedium());
-        tvQuestion.setTypeface(fonts.rRegular());
-        tvRegister.setTypeface(fonts.rMedium());
-
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvAplName, 1, 20, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfo, 1, 18, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvGuide, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);

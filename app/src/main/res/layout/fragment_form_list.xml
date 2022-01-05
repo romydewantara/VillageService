@@ -27,7 +27,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitlePage"
-            style="@style/TextBlackBoldRalewayStyle4"
+            style="@style/MulishBoldBlackStyle5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -66,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/white_50"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/linearHeader"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -82,7 +82,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvEmptyData"
-            style="@style/TextBlackItalicRalewayStyle3"
+            style="@style/MulishBoldBlackStyle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Oops… belum ada\nwarga yang mengajukan data…"

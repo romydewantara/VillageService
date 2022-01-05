@@ -32,12 +32,12 @@
             android:id="@+id/constraintHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvHeader"
+                style="@style/MulishWhiteBoldStyle5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -45,8 +45,7 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:text="RT. 19"
-                android:textColor="@color/dark_blue"
-                android:textSize="24dp"
+                android:visibility="invisible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,6 +82,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvContentHeader"
+            style="@style/MulishRegularStyle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -102,7 +102,7 @@
         android:layout_marginTop="15dp"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -141,12 +141,12 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle1"
+                    style="@style/MulishBoldBlackStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:gravity="center_horizontal"
                     android:text="@string/menu_one"
-                    android:textColor="@color/dark_blue"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -186,12 +186,12 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle2"
+                    style="@style/MulishBoldBlackStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:gravity="center_horizontal"
                     android:text="@string/menu_two"
-                    android:textColor="@color/dark_blue"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -232,12 +232,12 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle3"
+                    style="@style/MulishBoldBlackStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:gravity="center_horizontal"
                     android:text="@string/menu_three"
-                    android:textColor="@color/dark_blue"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -278,12 +278,12 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle4"
+                    style="@style/MulishBoldBlackStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:gravity="center_horizontal"
                     android:text="@string/menu_four"
-                    android:textColor="@color/dark_blue"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -324,12 +324,12 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle5"
+                    style="@style/MulishBoldBlackStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:gravity="center_horizontal"
                     android:text="@string/menu_five"
-                    android:textColor="@color/dark_blue"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -370,12 +370,12 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfoTitle6"
+                    style="@style/MulishBoldBlackStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:gravity="center_horizontal"
                     android:text="@string/menu_six"
-                    android:textColor="@color/dark_blue"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

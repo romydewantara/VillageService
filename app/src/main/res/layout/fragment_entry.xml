@@ -82,7 +82,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvMenuLeft"
-                    style="@style/TextWhiteBoldRalewayStyle2"
+                    style="@style/MulishWhiteBoldStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -122,7 +122,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvMenuRight"
-                    style="@style/TextWhiteBoldRalewayStyle2"
+                    style="@style/MulishWhiteBoldStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -153,7 +153,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTitle"
-                    style="@style/TextWhiteBoldRalewayStyle4"
+                    style="@style/MulishWhiteBoldStyle4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -163,7 +163,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvPemohon"
-                    style="@style/TextLightBlueBoldRalewayStyle5"
+                    style="@style/MulishWhiteBoldStyle3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -172,7 +172,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopNum1"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -183,7 +183,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopReq1"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -194,7 +194,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopNum2"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -205,7 +205,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopReq2"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -216,7 +216,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopNum3"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -227,7 +227,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopReq3"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -238,7 +238,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopNum4"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -249,7 +249,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopReq4"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -260,7 +260,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopNum5"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -271,7 +271,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopReq5"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -282,7 +282,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopNum6"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -293,7 +293,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopReq6"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -304,7 +304,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopNum7"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -315,7 +315,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopReq7"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -326,7 +326,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopNum8"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -337,7 +337,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopReq8"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -348,7 +348,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopNum9"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -359,7 +359,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTopReq9"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -370,7 +370,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvCalonPemohon"
-                    style="@style/TextLightBlueBoldRalewayStyle5"
+                    style="@style/MulishWhiteBoldStyle3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -379,7 +379,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotNum1"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -390,7 +390,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotReq1"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -401,7 +401,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotNum2"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -412,7 +412,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotReq2"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -423,7 +423,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotNum3"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -434,7 +434,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotReq3"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -445,7 +445,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotNum4"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -456,7 +456,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotReq4"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -467,7 +467,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotNum5"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -478,7 +478,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotReq5"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -489,7 +489,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotNum6"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -500,7 +500,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBotReq6"
-                    style="@style/TextWhiteMediumRalewayStyle3"
+                    style="@style/MulishWhiteBoldStyle1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"

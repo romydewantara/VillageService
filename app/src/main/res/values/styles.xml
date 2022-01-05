@@ -25,7 +25,7 @@
 
     <!-- SPINNER THEME -->
     <style name="SpinnerTheme">
-        <item name="android:fontFamily">@font/raleway_regular</item>
+        <item name="android:fontFamily">@font/mulish_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">14sp</item>
     </style>
@@ -42,188 +42,111 @@
         <item name="android:textSize">10sp</item>
     </style>
 
-    <!-- RALEWAY BOLD BLACK -->
-    <style name="TextBlackBoldRalewayStyle1">
-        <item name="android:fontFamily">@font/raleway_bold</item>
+    <!-- MULISH BOLD BLACK -->
+    <style name="MulishBoldBlackStyleTiny">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="MulishBoldBlackStyle1">
+        <item name="android:fontFamily">@font/mulish_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">14sp</item>
     </style>
-
-    <style name="TextBlackBoldRalewayStyle2">
-        <item name="android:fontFamily">@font/raleway_bold</item>
+    <style name="MulishBoldBlackStyle2">
+        <item name="android:fontFamily">@font/mulish_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
-
-    <style name="TextBlackBoldRalewayStyle4">
-        <item name="android:fontFamily">@font/raleway_bold</item>
+    <style name="MulishBoldBlackStyle3">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="MulishBoldBlackStyle4">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="MulishBoldBlackStyle5">
+        <item name="android:fontFamily">@font/mulish_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">24sp</item>
     </style>
-
-    <!-- RALEWAY BOLD LIGHT BLUE -->
-    <style name="TextLightBlueBoldRalewayStyle1">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/light_blue</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="TextLightBlueBoldRalewayStyle2">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/light_blue</item>
+    <!-- MULISH BOLD BLACK -->
+    <style name="MulishWhiteBoldStyle1">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
     </style>
-
-    <style name="TextLightBlueBoldRalewayStyle3">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/light_blue</item>
+    <style name="MulishWhiteBoldStyle2">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
     </style>
-
-    <style name="TextLightBlueBoldRalewayStyle4">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/light_blue</item>
+    <style name="MulishWhiteBoldStyle3">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
     </style>
+    <style name="MulishWhiteBoldStyle4">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="MulishWhiteBoldStyle5">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+    </style>
 
-    <style name="TextLightBlueBoldRalewayStyle5">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/light_blue</item>
+    <!-- MULISH MEDIUM BLACK -->
+    <style name="MulishMediumStyle1">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="MulishMediumStyle2">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="MulishMediumStyle3">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="MulishMediumStyle4">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
 
-    <!-- RALEWAY BOLD WHITE -->
-    <style name="TextWhiteBoldRalewayStyle1">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="TextWhiteBoldRalewayStyle2">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="TextWhiteBoldRalewayStyle3">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="TextWhiteBoldRalewayStyle4">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">24sp</item>
-    </style>
-
-    <!-- RALEWAY MEDIUM WHITE -->
-    <style name="TextWhiteMediumRalewayStyle1">
-        <item name="android:fontFamily">@font/raleway_medium</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="TextWhiteMediumRalewayStyle2">
-        <item name="android:fontFamily">@font/raleway_medium</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="TextWhiteMediumRalewayStyle3">
-        <item name="android:fontFamily">@font/raleway_medium</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <!-- RALEWAY REGULAR GREY -->
-    <style name="TextGreyRegularRalewayStyle1">
-        <item name="android:fontFamily">@font/raleway_regular</item>
-        <item name="android:textColor">@color/dark_grey</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <!-- RALEWAY BOLD GREY -->
-    <style name="TextGreyBoldRalewayStyle1">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/dark_grey</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <!-- RALEWAY MEDIUM BLACK -->
-    <style name="TextBlackMediumRalewayStyle1">
-        <item name="android:fontFamily">@font/raleway_medium</item>
+    <!-- MULISH REGULAR BLACK -->
+    <style name="MulishRegularBlackStyleTiny">
+        <item name="android:fontFamily">@font/mulish_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">12sp</item>
     </style>
-
-    <style name="TextBlackMediumRalewayStyle2">
-        <item name="android:fontFamily">@font/raleway_medium</item>
+    <style name="MulishRegularStyle1">
+        <item name="android:fontFamily">@font/mulish_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">14sp</item>
     </style>
-
-    <style name="TextBlackMediumRalewayStyle3">
-        <item name="android:fontFamily">@font/raleway_medium</item>
+    <style name="MulishRegularStyle2">
+        <item name="android:fontFamily">@font/mulish_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
-
-    <!-- RALEWAY REGULAR BLACK -->
-    <style name="TextBlackRegularRalewayStyle1">
-        <item name="android:fontFamily">@font/raleway_regular</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="TextBlackRegularRalewayStyle2">
-        <item name="android:fontFamily">@font/raleway_regular</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="TextBlackRegularRalewayStyle3">
-        <item name="android:fontFamily">@font/raleway_regular</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="TextBlackRegularRalewayStyle4">
-        <item name="android:fontFamily">@font/raleway_regular</item>
+    <style name="MulishRegularStyle3">
+        <item name="android:fontFamily">@font/mulish_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
-
-    <!-- RALEWAY MEDIUM-ITALIC BLACK -->
-    <style name="TextBlackItalicRalewayStyle2">
-        <item name="android:fontFamily">@font/raleway_medium_italic</item>
-        <item name="android:textColor">@color/dark_blue_max</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="TextBlackItalicRalewayStyle3">
-        <item name="android:fontFamily">@font/raleway_medium_italic</item>
-        <item name="android:textColor">@color/dark_blue_max</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <!-- RALEWAY BOLD BLUE -->
-    <style name="TextBlueBoldRalewayStyle1">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/blue</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="TextBlueBoldRalewayStyle3">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/blue</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="TextBlueBoldRalewayStyle5">
-        <item name="android:fontFamily">@font/raleway_bold</item>
-        <item name="android:textColor">@color/blue</item>
-        <item name="android:textSize">24sp</item>
+    <style name="MulishRegularStyle4">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>

@@ -80,7 +80,6 @@ public class HomeAdminFragment extends Fragment {
     };
     private Handler imageSwitcherHandler;
     private Runnable imageSwitcherRunnable;
-    private Fonts fonts;
 
     private Animation imgAnimationIn;
     private Animation imgAnimationOut;
@@ -152,28 +151,6 @@ public class HomeAdminFragment extends Fragment {
         setFonts();
         initListener();
         prepareLayout();
-        imageSwitcher.setInAnimation(imgAnimationIn);
-        imageSwitcher.setOutAnimation(imgAnimationOut);
-        imageSwitcher.setVisibility(View.VISIBLE);
-        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                ImageView imageView = new ImageView(context);
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                return imageView;
-            }
-        });
-
-        imageSwitcherHandler = new Handler();
-        imageSwitcherRunnable = getDurationRunnable();
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                imageSwitcherHandler.post(imageSwitcherRunnable);
-            }
-        };
-        timer.scheduleAtFixedRate(timerTask, 0, 4500);
     }
 
     @Override
@@ -194,7 +171,6 @@ public class HomeAdminFragment extends Fragment {
     }
 
     private void iniMandatory() {
-        fonts = new Fonts(context);
         customLoadingDialog = new CustomLoadingDialog(context);
         imgAnimationIn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
         imgAnimationIn.setDuration(1200);
@@ -253,14 +229,6 @@ public class HomeAdminFragment extends Fragment {
     }
 
     private void setFonts() {
-        tvHeader.setTypeface(fonts.rBoldExtra());
-        tvContentHeader.setTypeface(fonts.rMedium());
-        tvInfoTitle1.setTypeface(fonts.rBold());
-        tvInfoTitle2.setTypeface(fonts.rBold());
-        tvInfoTitle3.setTypeface(fonts.rBold());
-        tvInfoTitle4.setTypeface(fonts.rBold());
-        tvInfoTitle5.setTypeface(fonts.rBold());
-        tvInfoTitle6.setTypeface(fonts.rBold());
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvHeader, 1, 24, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvContentHeader, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfoTitle1, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
@@ -287,12 +255,36 @@ public class HomeAdminFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.bounched_show);
-                constraintHeader.setVisibility(View.VISIBLE);
+                Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+                tvHeader.setVisibility(View.VISIBLE);
                 cvBanner.startAnimation(slideUp);
                 cvBanner.setVisibility(View.VISIBLE);
                 tvContentHeader.setVisibility(View.VISIBLE);
                 constraintContainer.setVisibility(View.VISIBLE);
+
+                imageSwitcher.setInAnimation(imgAnimationIn);
+                imageSwitcher.setOutAnimation(imgAnimationOut);
+                imageSwitcher.setVisibility(View.VISIBLE);
+                imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+                    @Override
+                    public View makeView() {
+                        ImageView imageView = new ImageView(context);
+                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                        return imageView;
+                    }
+                });
+
+                imageSwitcherHandler = new Handler();
+                imageSwitcherRunnable = getDurationRunnable();
+                Timer timer = new Timer();
+                TimerTask timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        imageSwitcherHandler.post(imageSwitcherRunnable);
+                    }
+                };
+                timer.scheduleAtFixedRate(timerTask, 0, 4500);
+
                 showOverlay(false);
             }
         }, 1800);

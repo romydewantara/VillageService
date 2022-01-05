@@ -26,7 +26,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvHome"
-            style="@style/TextGreyBoldRalewayStyle1"
+            style="@style/MulishBoldBlackStyle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/homeIcon"
@@ -57,7 +57,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvCitizen"
-            style="@style/TextGreyBoldRalewayStyle1"
+            style="@style/MulishBoldBlackStyle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Warga" />
@@ -85,7 +85,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvNotification"
-            style="@style/TextGreyBoldRalewayStyle1"
+            style="@style/MulishBoldBlackStyle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Notifikasi" />

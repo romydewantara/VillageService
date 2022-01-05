@@ -13,7 +13,7 @@
         android:layout_height="40dp"
         android:layout_margin="10dp"
         android:padding="5dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:src="@mipmap/ic_back_blue"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +22,7 @@
         android:id="@+id/layoutPageSpace"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintHeight_percent="0.20"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -32,7 +32,7 @@
         android:id="@+id/layoutPhotoSpace"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintHeight_percent="0.10"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -43,7 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clickable="false"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:cardCornerRadius="25dp"
         app:cardMaxElevation="25dp"
         app:cardPreventCornerOverlap="false"
@@ -82,7 +82,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="5dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/backgroundProfile"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -90,7 +90,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvKepalaKeluarga"
-            style="@style/TextBlueBoldRalewayStyle3"
+            style="@style/MulishBoldBlackStyle3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -99,7 +99,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvNomorKK"
-            style="@style/TextGreyBoldRalewayStyle1"
+            style="@style/MulishMediumStyle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -125,7 +125,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTerbitTanggal"
-                style="@style/TextBlackRegularRalewayStyle1"
+                style="@style/MulishMediumStyle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -140,7 +140,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTanggal"
-                style="@style/TextBlackBoldRalewayStyle1"
+                style="@style/MulishBoldBlackStyle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -153,7 +153,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvInfo"
-                style="@style/TextGreyRegularRalewayStyle1"
+                style="@style/MulishRegularBlackStyleTiny"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -178,7 +178,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDataKeluarga"
-            style="@style/TextBlackBoldRalewayStyle4"
+            style="@style/MulishBoldBlackStyle4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
