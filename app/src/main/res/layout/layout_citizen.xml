@@ -30,22 +30,21 @@
                 android:id="@+id/cvMenu1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="#f1c232"
-                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/blue"
+                app:cardCornerRadius="40dp"
                 app:cardMaxElevation="10dp"
                 app:cardPreventCornerOverlap="false"
                 app:layout_constraintDimensionRatio="1:1">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvMenu1"
+                    style="@style/MulishWhiteBoldStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
+                    android:layout_gravity="center"
                     android:gravity="center"
                     android:text="@string/menu_citizen_one"
-                    android:textColor="@color/dark_blue"
-                    android:layout_margin="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    android:layout_margin="8dp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -53,8 +52,8 @@
 
         <RelativeLayout
             android:id="@+id/relativeImageContainer1"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -62,19 +61,19 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvRounded1"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_centerInParent="true"
                 app:cardBackgroundColor="@color/light_blue"
-                app:cardCornerRadius="65dp">
+                app:cardCornerRadius="45dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvImageContainer1"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
                     android:layout_gravity="center"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="62.5dp">
+                    app:cardCornerRadius="42.5dp">
 
                     <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/imageResource1"
@@ -84,7 +83,7 @@
                         android:scaleType="fitCenter"
                         android:src="@mipmap/ic_profile_photo"
                         app:lottie_autoPlay="true"
-                        app:lottie_fileName="lottie/lottie_perm_villager.json"
+                        app:lottie_fileName="lottie/lottie_kk.json"
                         app:lottie_loop="true"/>
 
                 </androidx.cardview.widget.CardView>
@@ -121,22 +120,21 @@
                 android:id="@+id/cvMenu2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="#f1c232"
-                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/blue"
+                app:cardCornerRadius="40dp"
                 app:cardMaxElevation="10dp"
                 app:cardPreventCornerOverlap="false"
                 app:layout_constraintDimensionRatio="1:1">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvMenu2"
+                    style="@style/MulishWhiteBoldStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
+                    android:layout_gravity="center"
                     android:gravity="center"
                     android:text="@string/menu_citizen_two"
-                    android:textColor="@color/dark_blue"
-                    android:layout_margin="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    android:layout_margin="8dp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -144,8 +142,8 @@
 
         <RelativeLayout
             android:id="@+id/relativeImageContainer2"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -153,19 +151,19 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvRounded2"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_centerInParent="true"
                 app:cardBackgroundColor="@color/light_blue"
-                app:cardCornerRadius="65dp">
+                app:cardCornerRadius="45dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvImageContainer2"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
                     android:layout_gravity="center"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="62.5dp">
+                    app:cardCornerRadius="42.5dp">
 
                     <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/imageResource2"
@@ -175,7 +173,7 @@
                         android:scaleType="centerCrop"
                         android:src="@mipmap/ic_profile_photo"
                         app:lottie_autoPlay="true"
-                        app:lottie_fileName="lottie/lottie_temp_villager.json"
+                        app:lottie_fileName="lottie/lottie_ktp.json"
                         app:lottie_loop="true"/>
 
                 </androidx.cardview.widget.CardView>

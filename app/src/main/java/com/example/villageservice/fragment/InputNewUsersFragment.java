@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -62,8 +63,6 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private RelativeLayout overlay;
     private RecyclerView recyclerViewMember;
     private View view;
-    private ImageView addMemberButton;
-    private AppCompatTextView tvEmpty;
 
     private EditText etIdKK;
     private EditText etKepKK;
@@ -76,7 +75,10 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private EditText etPostal;
     private EditText etProvinsi;
     private AppCompatEditText etPassword;
+    private AppCompatTextView tvEmpty;
 
+    private CardView cvAddMember;
+    private ImageView backButton;
     private Button saveButton;
 
     private MembersAdapter membersAdapter;
@@ -144,7 +146,8 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         etPostal = view.findViewById(R.id.etPostal);
         etProvinsi = view.findViewById(R.id.etProvinsi);
         etPassword = view.findViewById(R.id.etPassword);
-        addMemberButton = view.findViewById(R.id.addMemberButton);
+        cvAddMember = view.findViewById(R.id.cvAddMember);
+        backButton = view.findViewById(R.id.backButton);
         tvEmpty = view.findViewById(R.id.tvEmpty);
         saveButton = view.findViewById(R.id.saveButton);
         overlay = view.findViewById(R.id.overlay);
@@ -156,7 +159,36 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        addMemberButton.setOnClickListener(new View.OnClickListener() {
+
+        setUpText();
+        initListener();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+        if (context instanceof FragmentListener) {
+            fragmentListener = (FragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+    private void initMandatory() {
+        fragmentListener.onFragmentCreated(InputNewUsersFragment.this, previousFragment);
+        temporaryUserAdded = new ArrayList<>();
+        customLoadingDialog = new CustomLoadingDialog(context);
+    }
+
+    private void initListener() {
+        cvAddMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getFragmentManager();
@@ -208,7 +240,9 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                                     "", "Data Kartu Keluarga berhasil didaftarkan")
                                     .setButton("Tutup", "", new CustomAlertDialogListener() {
                                         @Override
-                                        public void onNegativePressed() {}
+                                        public void onNegativePressed() {
+                                        }
+
                                         @Override
                                         public void onPositivePressed() {
                                             fragmentListener.onFragmentFinish(InputNewUsersFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
@@ -225,9 +259,12 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                             "Informasi", "Silakan melengkapi seluruh data\nKartu Keluarga terlebih dahulu")
                             .setButton("Tutup", "", new CustomAlertDialogListener() {
                                 @Override
-                                public void onNegativePressed() {}
+                                public void onNegativePressed() {
+                                }
+
                                 @Override
-                                public void onPositivePressed() {}
+                                public void onPositivePressed() {
+                                }
                             });
                     if (fm != null) {
                         customAlertDialog.show(fm, "custom_alert_dialog");
@@ -238,44 +275,28 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         etPassword.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(event.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[2].getBounds().width())) {
-                        if(etPassword.getTransformationMethod() instanceof PasswordTransformationMethod){
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[2].getBounds().width())) {
+                        if (etPassword.getTransformationMethod() instanceof PasswordTransformationMethod) {
                             etPassword.setTransformationMethod(null);
                             Drawable img = ContextCompat.getDrawable(v.getContext(), R.drawable.ic_visibility_off);
-                            etPassword.setCompoundDrawablesWithIntrinsicBounds(null,null, img,null);
+                            etPassword.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
                         } else {
                             etPassword.setTransformationMethod(new PasswordTransformationMethod());
                             Drawable img = ContextCompat.getDrawable(v.getContext(), R.drawable.ic_visibility_on);
-                            etPassword.setCompoundDrawablesWithIntrinsicBounds(null,null, img,null);}
+                            etPassword.setCompoundDrawablesWithIntrinsicBounds(null, null, img, null);
+                        }
                     }
                 }
                 return false;
             }
         });
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.context = context;
-        if (context instanceof FragmentListener) {
-            fragmentListener = (FragmentListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
-    private void initMandatory() {
-        fragmentListener.onFragmentCreated(InputNewUsersFragment.this, previousFragment);
-        temporaryUserAdded = new ArrayList<>();
-        customLoadingDialog = new CustomLoadingDialog(context);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentListener.onActivityBackPressed();
+            }
+        });
     }
 
     private void saveDataKK() {
@@ -336,8 +357,10 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                         memberHolder.setUpdateData(user.getNamaLengkap(), user.getIdKtp());
                         temporaryUserAdded.add(user);
                     }
+
                     @Override
-                    public void onCancelButtonPressed() {}
+                    public void onCancelButtonPressed() {
+                    }
                 });
         if (fm != null) {
             inputUserDialog.show(fm, "input_user_dialog");
@@ -354,6 +377,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         etPostal.setText("13490");
         etProvinsi.setText("DKI Jakarta");
     }
+
     @Override
     public void onItemClick(MembersAdapter.MemberHolder memberHolder, View view, int position, String ktp) {
         showAddMemberDialog(memberHolder, view, position, ktp);

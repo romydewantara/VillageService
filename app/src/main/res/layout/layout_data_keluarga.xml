@@ -59,7 +59,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvName"
-                style="@style/MulishMediumStyle2"
+                style="@style/MulishBlackMediumStyle2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Muhammad Fakhri Pratama"
@@ -70,7 +70,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvJenKel"
-                style="@style/MulishMediumStyle2"
+                style="@style/MulishBlackMediumStyle2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Laki-laki"
@@ -81,7 +81,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPekerjaan"
-                style="@style/MulishMediumStyle2"
+                style="@style/MulishBlackMediumStyle2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="KARYAWAN SWASTA"
@@ -92,7 +92,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvAgama"
-                style="@style/MulishMediumStyle2"
+                style="@style/MulishBlackMediumStyle2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="ISLAM"
@@ -103,7 +103,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvStatus"
-                style="@style/MulishMediumStyle2"
+                style="@style/MulishBlackMediumStyle2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="KAWIN"

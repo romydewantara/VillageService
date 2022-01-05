@@ -42,6 +42,8 @@
         <item name="android:textSize">10sp</item>
     </style>
 
+
+
     <!-- MULISH BOLD BLACK -->
     <style name="MulishBoldBlackStyleTiny">
         <item name="android:fontFamily">@font/mulish_bold</item>
@@ -73,7 +75,38 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">24sp</item>
     </style>
-    <!-- MULISH BOLD BLACK -->
+    <!-- MULISH BOLD BLUE -->
+    <style name="MulishBlueBoldStyleTiny">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="MulishBlueBoldStyle1">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="MulishBlueBoldStyle2">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="MulishBlueBoldStyle3">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="MulishBlueBoldStyle4">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="MulishBlueBoldStyle5">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <!-- MULISH BOLD WHITE -->
     <style name="MulishWhiteBoldStyle1">
         <item name="android:fontFamily">@font/mulish_bold</item>
         <item name="android:textColor">@color/white</item>
@@ -99,28 +132,100 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">24sp</item>
     </style>
+    <!-- MULISH BOLD GREY -->
+    <style name="MulisGreyBoldStyle1">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="MulisGreyBoldStyle2">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="MulisGreyBoldStyle3">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="MulisGreyBoldStyle4">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="MulisGreyBoldStyle5">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+
 
     <!-- MULISH MEDIUM BLACK -->
-    <style name="MulishMediumStyle1">
+    <style name="MulishBlackMediumStyle1">
         <item name="android:fontFamily">@font/mulish_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">14sp</item>
     </style>
-    <style name="MulishMediumStyle2">
+    <style name="MulishBlackMediumStyle2">
         <item name="android:fontFamily">@font/mulish_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
-    <style name="MulishMediumStyle3">
+    <style name="MulishBlackMediumStyle3">
         <item name="android:fontFamily">@font/mulish_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
-    <style name="MulishMediumStyle4">
+    <style name="MulishBlackMediumStyle4">
         <item name="android:fontFamily">@font/mulish_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
+    <!-- MULISH MEDIUM WHITE -->
+    <style name="MulishWhiteMediumStyle1">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="MulishWhiteMediumStyle2">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="MulishWhiteMediumStyle3">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="MulishWhiteMediumStyle4">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <!-- MULISH MEDIUM GREY -->
+    <style name="MulishGreyMediumStyle1">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="MulishGreyMediumStyle2">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="MulishGreyMediumStyle3">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="MulishGreyMediumStyle4">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+
 
     <!-- MULISH REGULAR BLACK -->
     <style name="MulishRegularBlackStyleTiny">

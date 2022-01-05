@@ -57,7 +57,7 @@
 
         <EditText
             android:id="@+id/etEmail"
-            style="@style/MulishMediumStyle2"
+            style="@style/MulishBlackMediumStyle2"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/background_edit_text_rounded"
@@ -70,7 +70,7 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etPassword"
-            style="@style/MulishMediumStyle2"
+            style="@style/MulishBlackMediumStyle2"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
@@ -127,7 +127,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvRegister"
-            style="@style/MulishMediumStyle1"
+            style="@style/MulishBlackMediumStyle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

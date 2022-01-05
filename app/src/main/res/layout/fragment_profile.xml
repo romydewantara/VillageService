@@ -99,7 +99,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvNomorKK"
-            style="@style/MulishMediumStyle1"
+            style="@style/MulishBlackMediumStyle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -125,7 +125,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTerbitTanggal"
-                style="@style/MulishMediumStyle1"
+                style="@style/MulishBlackMediumStyle1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

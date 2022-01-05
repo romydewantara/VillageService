@@ -289,7 +289,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
 
     @Override
     public void onActivityBackPressed() {
-
+        onBackPressed();
     }
 
     @Override

@@ -28,17 +28,15 @@
                 <ImageView
                     android:id="@+id/backButton"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:padding="5dp"
+                    android:layout_height="35dp"
                     android:src="@mipmap/ic_back_blue"
-                    android:visibility="visible"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintWidth_percent=".1" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/titleKK"
-                    style="@style/MulishBoldBlackStyle5"
+                    style="@style/MulishBlueBoldStyle5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
@@ -60,7 +58,7 @@
 
                 <EditText
                     android:id="@+id/etIdKK"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -83,7 +81,7 @@
 
                 <EditText
                     android:id="@+id/etKepKK"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -106,7 +104,7 @@
 
                 <EditText
                     android:id="@+id/etAddress"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -133,7 +131,7 @@
 
                 <EditText
                     android:id="@+id/etRT"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -164,7 +162,7 @@
 
                 <EditText
                     android:id="@+id/etRW"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="3dp"
@@ -191,7 +189,7 @@
 
                 <EditText
                     android:id="@+id/etKel"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -214,7 +212,7 @@
 
                 <EditText
                     android:id="@+id/etKec"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -237,7 +235,7 @@
 
                 <EditText
                     android:id="@+id/etKota"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -260,7 +258,7 @@
 
                 <EditText
                     android:id="@+id/etPostal"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -283,7 +281,7 @@
 
                 <EditText
                     android:id="@+id/etProvinsi"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -306,7 +304,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etPassword"
-                    style="@style/MulishMediumStyle1"
+                    style="@style/MulishBlackMediumStyle1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="3dp"
@@ -321,33 +319,75 @@
                     app:layout_constraintTop_toBottomOf="@id/tvPassword" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintKTP"
+                    android:id="@+id/constraintMember"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etPassword">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/titleKTP"
                         style="@style/MulishBoldBlackStyle4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Daftar Anggota Keluarga"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/addMemberButton"
-                        android:layout_width="30dp"
+                        android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@mipmap/ic_add_user"
+                        android:gravity="center_vertical"
+                        android:text="Daftar Anggota Keluarga"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/cvAddMember"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".75" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvAddMember"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="5dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="10dp"
+                        app:cardMaxElevation="10dp"
+                        app:cardPreventCornerOverlap="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="2.5:1"
                         app:layout_constraintLeft_toRightOf="@id/titleKTP"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent=".25">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintKTP"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/blue">
+
+                            <ImageView
+                                android:id="@+id/addMemberButton"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:padding="5dp"
+                                android:src="@mipmap/ic_add_users"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toLeftOf="@id/tvTambah"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvTambah"
+                                style="@style/MulishWhiteBoldStyle1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingEnd="5dp"
+                                android:paddingRight="5dp"
+                                android:text="Tambah"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toRightOf="@id/addMemberButton"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="RtlSymmetry" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -358,14 +398,16 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/constraintKTP">
+                    app:layout_constraintTop_toBottomOf="@id/constraintMember">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvEmpty"
-                        style="@style/MulishMediumStyle2"
+                        style="@style/MulishGreyMediumStyle2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Data Anggota Keluarga Kosong"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="Belum Ada Daftar Anggota Keluarga"
                         android:visibility="visible" />
 
                     <androidx.recyclerview.widget.RecyclerView
