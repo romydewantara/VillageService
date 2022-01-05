@@ -9,35 +9,33 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearHeader"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/blue"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/buttonLeft"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:src="@mipmap/ic_back_white"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:src="@mipmap/ic_back_blue"
+            app:layout_constraintWidth_percent=".1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitlePage"
-            style="@style/TextWhiteBoldRalewayStyle4"
+            style="@style/TextBlackBoldRalewayStyle4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="@string/form_list"
+            app:layout_constraintWidth_percent=".9"
             app:layout_constraintLeft_toRightOf="@id/buttonLeft"
-            app:layout_constraintRight_toLeftOf="@id/buttonRight" />
-
-        <ImageView
-            android:id="@+id/buttonRight"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:padding="10dp"
             app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -52,8 +50,45 @@
             android:id="@+id/listForm"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent" />
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_50"
+        android:visibility="invisible" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintEmptyData"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white_50"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/linearHeader"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieEmptyData"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie/empty_data.json"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEmptyData"
+            style="@style/TextBlackItalicRalewayStyle3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Oops… belum ada\nwarga yang mengajukan data…"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/lottieEmptyData"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

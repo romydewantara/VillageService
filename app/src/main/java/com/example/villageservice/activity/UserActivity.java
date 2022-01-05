@@ -34,13 +34,16 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     public static final int FRAGMENT_FINISH_GOTO_NOTIFICATION = 3;
     public static final int FRAGMENT_FINISH_GOTO_ENTRY = 4;
     public static final int FRAGMENT_FINISH_GOTO_CL = 5;
+    public static final int FRAGMENT_FINISH_GOTO_PDF_VIEWER = 6;
 
 
     public static final String TAG_FRAGMENT_HOME_USER = "home_user_fragment";
     public static final String TAG_FRAGMENT_PROFILE = "profile_fragment";
     public static final String TAG_FRAGMENT_NOTIFICATIONS = "notifications_fragment";
-
+    public static final String TAG_FRAGMENT_ENTRY = "entry_fragment";
     public static final String TAG_FRAGMENT_CL = "cl_fragment";
+    public static final String TAG_FRAGMENT_PDF_VIEWER = "pdf_viewer_fragment";
+
 
     private FrameLayout bottomBar;
     private LinearLayout homeMenu;
@@ -176,11 +179,21 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 fragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
-                        .replace(R.id.container, fragment, TAG_FRAGMENT_CL)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_ENTRY)
                         .commit();
                 break;
             case FRAGMENT_FINISH_GOTO_CL:
                 fragment = new CoveringLetterFragment();
+                bundle = new Bundle();
+                bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
+                fragment.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_CL)
+                        .commit();
+                break;
+            case FRAGMENT_FINISH_GOTO_PDF_VIEWER:
+                fragment = new PdfViewerFragment();
                 bundle = new Bundle();
                 bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
                 fragment.setArguments(bundle);

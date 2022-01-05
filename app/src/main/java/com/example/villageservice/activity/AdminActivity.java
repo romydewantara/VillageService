@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
 import com.example.villageservice.fragment.CitizenFragment;
-import com.example.villageservice.fragment.CoveringLetterFragment;
 import com.example.villageservice.fragment.FormListFragment;
 import com.example.villageservice.fragment.HomeAdminFragment;
 import com.example.villageservice.fragment.InputNewUsersFragment;
@@ -122,7 +121,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     }
 
     private void fetchUsers() {
-        String jsonFile = appUtil.readTextFileFromAssets(getApplicationContext(), "json/users.json");
+        String jsonFile = appUtil.readTextFileFromAssets(getApplicationContext(), "json/citizen_data.json");
         Type listData = new TypeToken<UserList>() {
         }.getType();
         userList = new Gson().fromJson(jsonFile, listData);

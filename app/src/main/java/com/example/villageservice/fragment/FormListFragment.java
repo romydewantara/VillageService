@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 
@@ -19,10 +20,12 @@ import android.widget.ListView;
 
 import com.example.villageservice.R;
 import com.example.villageservice.activity.AdminActivity;
+import com.example.villageservice.activity.UserActivity;
 import com.example.villageservice.adapter.FormListAdapter;
 import com.example.villageservice.listener.FormUserRequestedListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
+import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
@@ -40,18 +43,20 @@ import java.util.List;
 public class FormListFragment extends Fragment implements FormUserRequestedListener {
 
     private Context context;
+    private FragmentListener fragmentListener;
+
+    private ConstraintLayout constraintEmptyData;
     private View view;
     private ListView listForm;
-    private FragmentListener fragmentListener;
-    private String previousFragment;
-    private String menuSelected;
+    private ImageView buttonLeft;
+    private AppCompatTextView tvPageTitle;
 
     private List<CoveringLetter> coveringLetters;
+    private KartuKeluarga kartuKeluarga;
     private ArrayList<Object> coveringLetterArrayList;
 
-    private ImageView buttonLeft;
-    private ImageView buttonRight;
-    private AppCompatTextView tvPageTitle;
+    private String menuSelected;
+    private boolean isAdmin = false;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,11 +66,6 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    public void addPreviousFragmentTag(String previousFragment) {
-        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
-        this.previousFragment = previousFragment;
-    }
 
     public FormListFragment() {
         // Required empty public constructor
@@ -90,7 +90,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
             menuSelected = getArguments().getString("menu");
             Log.d("XXXLOG", "onCreate - menuSelected: " + menuSelected);
         }
-        fragmentListener.onFragmentCreated(FormListFragment.this);
+        initMandatory();
     }
 
     @Override
@@ -99,8 +99,8 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         view = inflater.inflate(R.layout.fragment_form_list, container, false);
         tvPageTitle = view.findViewById(R.id.tvTitlePage);
         buttonLeft = view.findViewById(R.id.buttonLeft);
-        buttonRight = view.findViewById(R.id.buttonRight);
         listForm = view.findViewById(R.id.listForm);
+        constraintEmptyData = view.findViewById(R.id.constraintEmptyData);
 
         return view;
     }
@@ -108,18 +108,32 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tvPageTitle.setTypeface(new Fonts(context).rBoldExtra());
-        tvPageTitle.setTextColor(context.getResources().getColor(R.color.white));
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvPageTitle, 14, 24, 1, TypedValue.COMPLEX_UNIT_SP);
-        coveringLetterArrayList = VSPreference.getInstance(context).getCoveringLetterList(menuSelected);
 
-        coveringLetters = new ArrayList<>();
+        /** DIFFERENCE BETWEEN ADMIN AND USER ROLE
+         *
+         * Admin:
+         * fetch covering letters which the cl_type is CL_NIKAH
+         *
+         * Users:
+         * fetch covering letters which the cl_type is CL_NIKAH and show the covering letters from KartuKeluarga list only
+         *
+         * */
+
         for (int i = 0; i < coveringLetterArrayList.size(); i++) {
             CoveringLetter coveringLetter = (CoveringLetter) coveringLetterArrayList.get(i);
-            Log.d("XXXLOG", "onViewCreated - keperluan: " + coveringLetter.getClKeperluan());
             if (coveringLetter.getClType() != null) {
                 if (coveringLetter.getClType().equalsIgnoreCase(menuSelected)) {
-                    coveringLetters.add(coveringLetter);
+                    if (isAdmin) {
+                        //Admin
+                        coveringLetters.add(coveringLetter);
+                    } else {
+                        //User
+                        for (int j = 0; j < kartuKeluarga.getKeluargaList().size(); j++) {
+                            if (coveringLetter.getClKtp().equalsIgnoreCase(kartuKeluarga.getKeluargaList().get(j).getIdKtp())) {
+                                coveringLetters.add(coveringLetter);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -129,6 +143,9 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         listForm.setDividerHeight(0);
         listForm.setAdapter(formListAdapter);
 
+        if (coveringLetters.isEmpty()) {
+            constraintEmptyData.setVisibility(View.VISIBLE);
+        }
         initListener();
     }
 
@@ -149,11 +166,26 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         super.onDetach();
     }
 
+    private void initMandatory() {
+        fragmentListener.onFragmentCreated(FormListFragment.this);
+        coveringLetterArrayList = VSPreference.getInstance(context).getCoveringLetterList(menuSelected);
+        coveringLetters = new ArrayList<>();
+        if (VSPreference.getInstance(context).getRole().equalsIgnoreCase(ConstantVariable.ADMIN)) isAdmin = true;
+        if (!isAdmin) {
+            kartuKeluarga = VSPreference.getInstance(context).getKK();
+        }
+    }
+
     private void initListener() {
         buttonLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentListener.onFragmentFinish(FormListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
+                if (isAdmin) {
+                    fragmentListener.onFragmentFinish(FormListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
+                } else {
+                    fragmentListener.onFragmentPassingData(menuSelected);
+                    fragmentListener.onFragmentFinish(FormListFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_ENTRY, false);
+                }
             }
         });
     }
@@ -179,7 +211,11 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         }
 
         appliedCoveringLetter(coveringLetter);
-        fragmentListener.onFragmentFinish(FormListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_PDF_VIEWER, true);
+        if (isAdmin) {
+            fragmentListener.onFragmentFinish(FormListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_PDF_VIEWER, true);
+        } else {
+            fragmentListener.onFragmentFinish(FormListFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_PDF_VIEWER, true);
+        }
     }
 
     private void appliedCoveringLetter(CoveringLetter cl) {
