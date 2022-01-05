@@ -81,7 +81,6 @@ public class EntryFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
             clType = getArguments().getString(ConstantVariable.KEY_CL_BUNDLE);
-            Log.d("XXXLOG", "onCreate - menuSel: " + menuSelected);
         }
         fragmentListener.onFragmentCreated(EntryFragment.this, previousFragment);
 

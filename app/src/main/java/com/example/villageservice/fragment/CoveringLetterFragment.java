@@ -292,14 +292,13 @@ public class CoveringLetterFragment extends Fragment {
                         etIdNama.getText().toString(), String.valueOf(genderChooser.getSelectedItem()), tempatTanggalLahir,
                         etPekerjaan.getText().toString(), String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
                         etPendidikan.getText().toString(), etAgama.getText().toString(), alamatLengkap, etMaksud.getText().toString(),
-                        "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Sukina");
+                        "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Sukina", clType, false);
                 coveringLetter.setOpened(false);
-                coveringLetter.setApproved(false);
                 coveringLetter.setClType(clType);
                 Log.d("XXXLOG", "CL Fragment - coveringLetter to be send: " + new Gson().toJson(coveringLetter));
 
                 ArrayList<Object> coveringLetterArrayList = new ArrayList<>();
-                ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterList(ConstantVariable.KEY_CL_NIKAH);
+                ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterList(clType);
                 if (tempObj.size() > 0) {
                     for (int i = 0; i < tempObj.size(); i++) {
                         CoveringLetter clTempObj = (CoveringLetter) tempObj.get(i);
@@ -307,8 +306,7 @@ public class CoveringLetterFragment extends Fragment {
                     }
                 }
                 coveringLetterArrayList.add(coveringLetter);
-                VSPreference.getInstance(context).setCoveringLetterList(ConstantVariable.KEY_CL_NIKAH, coveringLetterArrayList);
-
+                VSPreference.getInstance(context).setCoveringLetterList(clType, coveringLetterArrayList);
                 customLoadingDialog.dismiss();
                 overlay.setVisibility(View.INVISIBLE);
 

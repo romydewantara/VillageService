@@ -5,15 +5,15 @@
     android:id="@+id/pdf_file"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_blue"
+    android:background="@color/blue"
     tools:context=".fragment.PdfViewerFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:paddingTop="10dp"
+        android:paddingRight="10dp"
         android:paddingBottom="15dp">
 
         <RelativeLayout
@@ -21,10 +21,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@id/pdfViewerButton"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/pdfViewerButton">
+            app:layout_constraintTop_toTopOf="parent">
 
             <include layout="@layout/layout_pdf" />
         </RelativeLayout>
@@ -34,15 +34,15 @@
             style="@style/MulishWhiteBoldStyle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_enabled"
+            android:maxLines="1"
             android:paddingLeft="35dp"
             android:paddingRight="35dp"
-            android:background="@drawable/bg_button_disabled"
-            android:maxLines="1"
             android:text="Download"
             android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

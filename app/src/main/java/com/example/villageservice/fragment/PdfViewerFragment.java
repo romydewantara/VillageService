@@ -1,5 +1,6 @@
 package com.example.villageservice.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,18 +14,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.villageservice.R;
-import com.example.villageservice.library.CustomAlertDialog;
-import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.PortableDocumentFormat;
-import com.example.villageservice.model.User;
 import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,10 +62,11 @@ public class PdfViewerFragment extends Fragment {
     private ImageView imageStamp;
     private ImageView imageSignature;
 
-    private String key;
     private boolean isAdmin = false;
+    private ArrayList<Object> coveringLettersList;
 
     private String previousFragment = "";
+    private String clType;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -102,9 +102,31 @@ public class PdfViewerFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            Log.d("XXXLOG", "onCreate - cl: " + getArguments().getString(ConstantVariable.KEY_CL_BUNDLE));
+            switch (getArguments().getString(ConstantVariable.KEY_CL_BUNDLE)) {
+                case ConstantVariable.KEY_CL_NIKAH:
+                    clType = ConstantVariable.KEY_CL_NIKAH;
+                    break;
+                case ConstantVariable.KEY_CL_UMKM:
+                    clType = ConstantVariable.KEY_CL_UMKM;
+                    break;
+                case ConstantVariable.KEY_CL_DOMISILI_KTP:
+                    clType = ConstantVariable.KEY_CL_DOMISILI_KTP;
+                    break;
+                case ConstantVariable.KEY_CL_KK_BARU:
+                    clType = ConstantVariable.KEY_CL_KK_BARU;
+                    break;
+                case ConstantVariable.KEY_CL_AKTA_LAHIR:
+                    clType = ConstantVariable.KEY_CL_AKTA_LAHIR;
+                    break;
+                case ConstantVariable.KEY_CL_AKTA_KEMATIAN:
+                    clType = ConstantVariable.KEY_CL_AKTA_KEMATIAN;
+                    break;
+            }
         }
         fragmentListener.onFragmentCreated(PdfViewerFragment.this, previousFragment);
         portableDocumentFormat = new PortableDocumentFormat(context);
+        coveringLettersList = new ArrayList<>();
     }
 
     @Override
@@ -185,16 +207,25 @@ public class PdfViewerFragment extends Fragment {
         tvNameR8.setText(coveringLetter.getClAgama());
         tvNameR19.setText(coveringLetter.getClAlamat());
         tvNameR10.setText(coveringLetter.getClKeperluan());
+        if (coveringLetter.isApproved()) {
+            imageStamp.setVisibility(View.VISIBLE);
+            imageSignature.setVisibility(View.VISIBLE);
+            if (isAdmin) {
+                disableButton();
+            }
+        }
     }
 
     private void initListener() {
         pdfViewerButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
             @Override
             public void onClick(View v) {
                 if (isAdmin && !coveringLetter.isApproved()) {
                     imageStamp.setVisibility(View.VISIBLE);
                     imageSignature.setVisibility(View.VISIBLE);
                     coveringLetter.setApproved(true);
+                    saveChanges();
                 } else {
                     if (coveringLetter.isApproved()) {
                         imageStamp.setVisibility(View.VISIBLE);
@@ -202,23 +233,27 @@ public class PdfViewerFragment extends Fragment {
                         portableDocumentFormat.generatePdf(pdfFile, coveringLetter.getClNama().trim() + "_" + coveringLetter.getClKeperluan());
                     }
                 }
+                disableButton();
             }
         });
     }
 
-    private void showCAD(String title, String message, String pButton, String nButton) {
-        FragmentManager fm = getFragmentManager();
-        CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, title, message)
-                .setButton(pButton, nButton, new CustomAlertDialogListener() {
-                    @Override
-                    public void onNegativePressed() {}
-                    @Override
-                    public void onPositivePressed() {
-
-                    }
-                });
-        if (fm != null) {
-            customAlertDialog.show(fm, "custom_alert_dialog");
-        }
+    @SuppressLint("NewApi")
+    private void disableButton() {
+        pdfViewerButton.setBackgroundResource(R.drawable.bg_button_disabled);
+        pdfViewerButton.setTextColor(context.getColor(R.color.dark_grey));
+        pdfViewerButton.setEnabled(false);
     }
+
+    private void saveChanges() {
+        ArrayList<Object> clArrayList = VSPreference.getInstance(context).getCoveringLetterList(clType);
+        for (int i = 0; i < clArrayList.size(); i++) {
+            CoveringLetter clTemp = (CoveringLetter) clArrayList.get(i);
+            if (clTemp.getClKtp().equalsIgnoreCase(coveringLetter.getClKtp())) {
+                clArrayList.set(i, coveringLetter);
+            }
+        }
+        VSPreference.getInstance(context).setCoveringLetterList(clType, clArrayList);
+    }
+
 }

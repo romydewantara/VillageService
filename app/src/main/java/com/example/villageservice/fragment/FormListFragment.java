@@ -2,25 +2,20 @@ package com.example.villageservice.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
-
-import android.os.Handler;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 import com.example.villageservice.R;
 import com.example.villageservice.activity.AdminActivity;
@@ -32,11 +27,9 @@ import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.utility.ConstantVariable;
-import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -185,7 +178,8 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         customLoadingDialog = new CustomLoadingDialog(context);
         coveringLetterArrayList = VSPreference.getInstance(context).getCoveringLetterList(clType);
         coveringLetters = new ArrayList<>();
-        if (VSPreference.getInstance(context).getRole().equalsIgnoreCase(ConstantVariable.ADMIN)) isAdmin = true;
+        if (VSPreference.getInstance(context).getRole().equalsIgnoreCase(ConstantVariable.ADMIN))
+            isAdmin = true;
         if (!isAdmin) {
             kartuKeluarga = VSPreference.getInstance(context).getKK();
         }
@@ -215,12 +209,12 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                 coveringLetter.setClJenisKelamin(coveringLetters.get(i).getClJenisKelamin());
                 coveringLetter.setClPekerjaan(coveringLetters.get(i).getClPekerjaan());
                 coveringLetter.setClTempatTanggalLahir(coveringLetters.get(i).getClTempatTanggalLahir());
-                Log.d("XXXLOG", "onSelectedUserRequest - ttl: " + coveringLetters.get(i).getClTempatTanggalLahir());
                 coveringLetter.setClAgama(coveringLetters.get(i).getClAgama());
                 coveringLetter.setClAlamat(coveringLetters.get(i).getClAlamat());
                 coveringLetter.setClPendidikan(coveringLetters.get(i).getClPendidikan());
                 coveringLetter.setClKewarganegaraan(coveringLetters.get(i).getClKewarganegaraan());
                 coveringLetter.setClKeperluan(coveringLetters.get(i).getClKeperluan());
+                coveringLetter.setApproved(coveringLetters.get(i).isApproved());
                 break;
             }
         }
@@ -240,7 +234,8 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                 "Nomor: " + "…/JT/VI/3/007/014/…/2022",
                 cl.getClNama(), cl.getClJenisKelamin(), cl.getClTempatTanggalLahir(), cl.getClPekerjaan(),
                 String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(), cl.getClAgama(), cl.getClAlamat(), cl.getClKeperluan(),
-                "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina");
+                "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina",
+                clType, cl.isApproved());
         VSPreference.getInstance(context).setCoveringLetter(ConstantVariable.KEY_COVERING_LETTER, coveringLetter);
     }
 
@@ -254,10 +249,8 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                     if (coveringLetter.getClType() != null) {
                         if (coveringLetter.getClType().equalsIgnoreCase(clType)) {
                             if (isAdmin) {
-                                //Admin
                                 coveringLetters.add(coveringLetter);
                             } else {
-                                //User
                                 for (int j = 0; j < kartuKeluarga.getKeluargaList().size(); j++) {
                                     if (coveringLetter.getClKtp().equalsIgnoreCase(kartuKeluarga.getKeluargaList().get(j).getIdKtp())) {
                                         coveringLetters.add(coveringLetter);

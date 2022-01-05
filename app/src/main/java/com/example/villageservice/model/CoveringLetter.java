@@ -71,7 +71,7 @@ public class CoveringLetter {
     public CoveringLetter(String clLampiran, String clNomorHeader, String clNama, String clJenisKelamin,
                           String clTempatTanggalLahir, String clPekerjaan, String clKtp, String clKewarganegaraan,
                           String clPendidikan, String clAgama, String clAlamat, String clKeperluan, String clNomorFooter,
-                          String clTanggalFooterRw, String clNamaRw, String clTanggalRt, String clNamaRt) {
+                          String clTanggalFooterRw, String clNamaRw, String clTanggalRt, String clNamaRt, String clType, boolean isApproved) {
         this.clLampiran = clLampiran;
         this.clNomorHeader = clNomorHeader;
         this.clNama = clNama;
@@ -89,6 +89,8 @@ public class CoveringLetter {
         this.clNamaRw = clNamaRw;
         this.clTanggalRt = clTanggalRt;
         this.clNamaRt = clNamaRt;
+        this.clType = clType;
+        this.isApproved = isApproved;
     }
 
     public String getClLampiran() {

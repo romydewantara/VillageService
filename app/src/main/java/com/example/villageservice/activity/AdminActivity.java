@@ -50,7 +50,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     private ImageView notificationIcon;
 
     private Fragment fragment;
-    private String menuSelected = "";
+    private String coveringLetterType = "";
 
     Animation slideUp;
     Animation slideDown;
@@ -181,6 +181,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
             enter = R.anim.enter_from_left;
             exit = R.anim.exit_to_right;
         }
+        Bundle bundle;
         switch (destination) {
             case FRAGMENT_FINISH_GOTO_HOME_ADMIN:
                 fragment = new HomeAdminFragment();
@@ -193,8 +194,8 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
             case FRAGMENT_FINISH_GOTO_FORM_LIST:
                 fragment = new FormListFragment();
                 ((FormListFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
-                Bundle bundle = new Bundle();
-                bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
+                bundle = new Bundle();
+                bundle.putString(ConstantVariable.KEY_CL_BUNDLE, coveringLetterType);
                 fragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -203,6 +204,9 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_PDF_VIEWER:
                 fragment = new PdfViewerFragment();
+                bundle = new Bundle();
+                bundle.putString(ConstantVariable.KEY_CL_BUNDLE, coveringLetterType);
+                fragment.setArguments(bundle);
                 ((PdfViewerFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -278,7 +282,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
 
     @Override
     public void onFragmentPassingData(String coveringLetter) {
-        menuSelected = coveringLetter;
+        coveringLetterType = coveringLetter;
     }
 
     @Override
