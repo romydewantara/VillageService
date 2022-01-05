@@ -30,14 +30,14 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="TextBlackBoldStyle1">
-        <item name="android:fontFamily">@font/pt_serif_bold</item>
+    <style name="NotoSansBlackBoldStyle1">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="TextBlackRegularStyle1">
-        <item name="android:fontFamily">@font/pt_serif_regular</item>
+    <style name="NotoSansBlackRegularStyle1">
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">10sp</item>
     </style>

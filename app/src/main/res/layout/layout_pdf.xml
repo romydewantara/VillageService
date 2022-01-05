@@ -23,7 +23,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvLampiran"
-                style="@style/TextBlackRegularStyle1"
+                style="@style/NotoSansBlackRegularStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -32,7 +32,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPdfHeader"
-                style="@style/TextBlackBoldStyle1"
+                style="@style/NotoSansBlackBoldStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -59,7 +59,7 @@
 
             <TextView
                 android:id="@+id/tvPdfTitle"
-                style="@style/TextBlackBoldStyle1"
+                style="@style/NotoSansBlackBoldStyle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -80,7 +80,7 @@
 
             <TextView
                 android:id="@+id/tvNumber"
-                style="@style/TextBlackRegularStyle1"
+                style="@style/NotoSansBlackRegularStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -89,7 +89,7 @@
 
             <TextView
                 android:id="@+id/tvStatement"
-                style="@style/TextBlackRegularStyle1"
+                style="@style/NotoSansBlackRegularStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -129,7 +129,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvNumberFooterL"
-                        style="@style/TextBlackRegularStyle1"
+                        style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Nomor"
@@ -139,7 +139,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvNumberFooterR"
-                        style="@style/TextBlackRegularStyle1"
+                        style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="\t/JT/VI/3/00\t/014/\t/20"
@@ -149,7 +149,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvTanggalFooterL"
-                        style="@style/TextBlackRegularStyle1"
+                        style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Tanggal"
@@ -159,7 +159,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvTanggalFooterR"
-                        style="@style/TextBlackRegularStyle1"
+                        style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="20.12.21"
@@ -169,7 +169,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvRW"
-                        style="@style/TextBlackRegularStyle1"
+                        style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
@@ -189,7 +189,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvRWName"
-                        style="@style/TextBlackRegularStyle1"
+                        style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -212,7 +212,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvTanggalRT"
-                        style="@style/TextBlackRegularStyle1"
+                        style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -223,7 +223,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvSpaceEmpty"
-                        style="@style/TextBlackRegularStyle1"
+                        style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="20.12.21"
@@ -232,7 +232,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvRT"
-                        style="@style/TextBlackRegularStyle1"
+                        style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
@@ -263,7 +263,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvRTName"
-                        style="@style/TextBlackRegularStyle1"
+                        style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
