@@ -11,7 +11,7 @@
 
         <TextView
             android:id="@+id/titleAlert"
-            style="@style/MulishBoldBlackStyle2"
+            style="@style/MulishBoldBlackStyle3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -77,6 +77,8 @@
                 style="@style/MulishBoldBlackStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
                 android:layout_marginTop="5dp"
                 android:text="Tanggal Lahir"
                 app:layout_constraintTop_toBottomOf="@id/etTempatLahir" />
@@ -188,6 +190,7 @@
                 android:background="@drawable/background_edit_text_rounded"
                 android:layout_marginTop="5dp"
                 android:hint="Status Hubungan Dalam Keluarga"
+                android:visibility="gone"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp" />
 
@@ -210,6 +213,7 @@
                 android:background="@drawable/background_edit_text_rounded"
                 android:layout_marginTop="5dp"
                 android:hint="Nama Ayah"
+                android:visibility="gone"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp" />
 
@@ -221,6 +225,7 @@
                 android:background="@drawable/background_edit_text_rounded"
                 android:layout_marginTop="5dp"
                 android:hint="Nama Ibu"
+                android:visibility="gone"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp" />
 

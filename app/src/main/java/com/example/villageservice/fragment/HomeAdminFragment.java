@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -86,10 +87,17 @@ public class HomeAdminFragment extends Fragment {
 
     private int currentIndex = -1;
 
+    private String previousFragment = "";
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+
+    public void addPreviousFragmentTag(String previousFragment) {
+        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
+        this.previousFragment = previousFragment;
+    }
 
     public HomeAdminFragment() {
         // Required empty public constructor
@@ -119,7 +127,7 @@ public class HomeAdminFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home_admin, container, false);
-        fragmentListener.onFragmentCreated(this);
+        fragmentListener.onFragmentCreated(this, previousFragment);
         constraintContainer = view.findViewById(R.id.constraintContainer);
         constraintHeader = view.findViewById(R.id.constraintHeader);
         signOutButton = view.findViewById(R.id.signOutButton);

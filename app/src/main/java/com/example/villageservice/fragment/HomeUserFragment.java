@@ -82,6 +82,8 @@ public class HomeUserFragment extends Fragment {
             R.drawable.banner_four
     };
 
+    private String previousFragment = "";
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -91,18 +93,15 @@ public class HomeUserFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    public void addPreviousFragmentTag(String previousFragment) {
+        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
+        this.previousFragment = previousFragment;
+    }
+
     public HomeUserFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeUserFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static HomeUserFragment newInstance(String param1, String param2) {
         HomeUserFragment fragment = new HomeUserFragment();
@@ -239,7 +238,7 @@ public class HomeUserFragment extends Fragment {
     }
 
     private void initMandatory() {
-        fragmentListener.onFragmentCreated(HomeUserFragment.this);
+        fragmentListener.onFragmentCreated(HomeUserFragment.this, previousFragment);
         customLoadingDialog = new CustomLoadingDialog(context);
         imgAnimationIn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
         imgAnimationIn.setDuration(1200);

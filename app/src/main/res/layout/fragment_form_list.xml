@@ -10,6 +10,8 @@
         android:id="@+id/linearHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -19,7 +21,8 @@
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:padding="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:src="@mipmap/ic_back_blue"
             app:layout_constraintWidth_percent=".1"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -29,12 +32,14 @@
             android:id="@+id/tvTitlePage"
             style="@style/MulishBoldBlackStyle5"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:layout_height="0dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:gravity="center_vertical"
             android:text="@string/form_list"
             app:layout_constraintWidth_percent=".9"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/buttonLeft"
             app:layout_constraintRight_toRightOf="parent" />
 
@@ -75,16 +80,18 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="fitCenter"
+            android:layout_marginTop="50dp"
             app:lottie_autoPlay="true"
             app:lottie_fileName="lottie/empty_data.json"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvEmptyData"
             style="@style/MulishBoldBlackStyle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:text="Oops… belum ada\nwarga yang mengajukan data…"
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/lottieEmptyData"/>

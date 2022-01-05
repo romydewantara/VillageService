@@ -47,6 +47,7 @@ public class CitizenFragment extends Fragment {
     private Button addUserButton;
 
     private ImageView backButton;
+    private String previousFragment = "";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,6 +57,11 @@ public class CitizenFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public void addPreviousFragmentTag(String previousFragment) {
+        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
+        this.previousFragment = previousFragment;
+    }
 
     public CitizenFragment() {
         // Required empty public constructor
@@ -124,7 +130,7 @@ public class CitizenFragment extends Fragment {
     }
 
     private void initMandatory() {
-        fragmentListener.onFragmentCreated(CitizenFragment.this);
+        fragmentListener.onFragmentCreated(CitizenFragment.this, previousFragment);
         customLoadingDialog = new CustomLoadingDialog(context);
     }
 

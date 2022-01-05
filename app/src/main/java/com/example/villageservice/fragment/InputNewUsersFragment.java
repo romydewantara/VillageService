@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -58,7 +59,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
 
     private List<User> temporaryUserAdded;
 
-    private RecyclerView overlay;
+    private RelativeLayout overlay;
     private RecyclerView recyclerViewMember;
     private View view;
     private ImageView addMemberButton;
@@ -79,8 +80,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private Button saveButton;
 
     private MembersAdapter membersAdapter;
-
-    KartuKeluarga kartuKeluarga = new KartuKeluarga();
+    private String previousFragment = "";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -90,6 +90,11 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public void addPreviousFragmentTag(String previousFragment) {
+        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
+        this.previousFragment = previousFragment;
+    }
 
     public InputNewUsersFragment() {
         // Required empty public constructor
@@ -268,8 +273,9 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     }
 
     private void initMandatory() {
-        fragmentListener.onFragmentCreated(InputNewUsersFragment.this);
+        fragmentListener.onFragmentCreated(InputNewUsersFragment.this, previousFragment);
         temporaryUserAdded = new ArrayList<>();
+        customLoadingDialog = new CustomLoadingDialog(context);
     }
 
     private void saveDataKK() {
@@ -310,19 +316,6 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
 
     }
 
-    private void insertKTP(User user) {
-        String key = String.valueOf(user.getIdKtp());
-        VSPreference.getInstance(context).insertUser(key, user);
-    }
-
-    private void updateFamilyMember() {
-
-    }
-
-    private void deleteFamilyMember() {
-
-    }
-
     public void showOverlay(boolean isShow) {
         if (isShow) {
             overlay.setVisibility(View.VISIBLE);
@@ -351,6 +344,16 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         }
     }
 
+    private void setUpText() {
+        etAddress.setText("Jl. Raya Penggilingan");
+        etRT.setText("007");
+        etRW.setText("014");
+        etKel.setText("Penggilingan");
+        etKec.setText("Cakung");
+        etKota.setText("Jakarta Timur");
+        etPostal.setText("13490");
+        etProvinsi.setText("DKI Jakarta");
+    }
     @Override
     public void onItemClick(MembersAdapter.MemberHolder memberHolder, View view, int position, String ktp) {
         showAddMemberDialog(memberHolder, view, position, ktp);

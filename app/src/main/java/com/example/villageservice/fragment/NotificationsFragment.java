@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class NotificationsFragment extends Fragment {
     private View view;
     private RelativeLayout overlay;
     private List<CoveringLetter> coveringLetterList;
+    private String previousFragment = "";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,6 +45,11 @@ public class NotificationsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public void addPreviousFragmentTag(String previousFragment) {
+        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
+        this.previousFragment = previousFragment;
+    }
 
     public NotificationsFragment() {
         // Required empty public constructor
@@ -102,7 +109,7 @@ public class NotificationsFragment extends Fragment {
     }
 
     private void initMandatory() {
-        fragmentListener.onFragmentCreated(NotificationsFragment.this);
+        fragmentListener.onFragmentCreated(NotificationsFragment.this, previousFragment);
         customLoadingDialog = new CustomLoadingDialog(context);
         coveringLetterList = new ArrayList<>();
     }

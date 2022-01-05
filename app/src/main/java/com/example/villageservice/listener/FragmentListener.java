@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
  * */
 public interface FragmentListener {
     void onFragmentFinish(Fragment currentFragment, int destination, boolean isForward);
-    void onFragmentCreated(Fragment currentFragment);
+    void onFragmentCreated(Fragment currentFragment, String previousFragment);
     void onFragmentPassingData(String coveringLetter);
     void onFragmentPaused();
     void onActivityFinish();

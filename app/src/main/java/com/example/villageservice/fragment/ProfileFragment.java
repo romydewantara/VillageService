@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,8 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
     private AppCompatTextView tvNomorKK;
     private RecyclerView recyclerMember;
 
+    private String previousFragment = "";
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,6 +61,11 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public void addPreviousFragmentTag(String previousFragment) {
+        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
+        this.previousFragment = previousFragment;
+    }
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -125,7 +133,7 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
     }
 
     private void initMandatory() {
-        fragmentListener.onFragmentCreated(ProfileFragment.this);
+        fragmentListener.onFragmentCreated(ProfileFragment.this, previousFragment);
         customLoadingDialog = new CustomLoadingDialog(context);
         kartuKeluarga = VSPreference.getInstance(context).getKK();
     }

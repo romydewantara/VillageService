@@ -33,6 +33,7 @@ public class EntryFragment extends Fragment {
     private CardView cvMenuLeft;
     private CardView cvMenuRight;
     private String menuSelected;
+    private String previousFragment = "";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,6 +43,11 @@ public class EntryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public void addPreviousFragmentTag(String previousFragment) {
+        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
+        this.previousFragment = previousFragment;
+    }
 
     public EntryFragment() {
         // Required empty public constructor
@@ -74,7 +80,7 @@ public class EntryFragment extends Fragment {
             menuSelected = getArguments().getString(ConstantVariable.KEY_CL_BUNDLE);
             Log.d("XXXLOG", "onCreate - menuSel: " + menuSelected);
         }
-        fragmentListener.onFragmentCreated(EntryFragment.this);
+        fragmentListener.onFragmentCreated(EntryFragment.this, previousFragment);
 
     }
 

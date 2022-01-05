@@ -36,8 +36,8 @@
 
             <ImageView
                 android:id="@+id/imageLogo1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:padding="5dp"
                 android:src="@mipmap/stikom_logo"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -46,8 +46,8 @@
 
             <ImageView
                 android:id="@+id/imageLogo2"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:padding="5dp"
                 android:src="@mipmap/stikom_logo_second"
                 app:layout_constraintLeft_toRightOf="@id/imageLogo1"

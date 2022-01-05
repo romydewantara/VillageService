@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,6 +24,7 @@ import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.User;
 import com.example.villageservice.model.UserList;
 import com.example.villageservice.utility.AppUtil;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -47,8 +50,10 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     private ImageView notificationIcon;
 
     private Fragment fragment;
-
     private String menuSelected = "";
+
+    Animation slideUp;
+    Animation slideDown;
 
     public static final int FRAGMENT_FINISH_GOTO_HOME_ADMIN = 0;
     public static final int FRAGMENT_FINISH_GOTO_FORM_LIST = 1;
@@ -76,6 +81,8 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     }
 
     private void initMandatory() {
+        slideUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+        slideDown = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
         appUtil = new AppUtil();
         bottomBar = findViewById(R.id.bottomBar);
         homeIcon = findViewById(R.id.homeIcon);
@@ -177,6 +184,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         switch (destination) {
             case FRAGMENT_FINISH_GOTO_HOME_ADMIN:
                 fragment = new HomeAdminFragment();
+                ((HomeAdminFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_ADMIN)
@@ -184,8 +192,9 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_FORM_LIST:
                 fragment = new FormListFragment();
+                ((FormListFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 Bundle bundle = new Bundle();
-                bundle.putString("menu", menuSelected);
+                bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
                 fragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -194,6 +203,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_PDF_VIEWER:
                 fragment = new PdfViewerFragment();
+                ((PdfViewerFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_PDF_VIEWER)
@@ -201,6 +211,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_CITIZENS:
                 fragment = new CitizenFragment();
+                ((CitizenFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_CITIZENS)
@@ -208,43 +219,56 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_INPUT_USER:
                 fragment = new InputNewUsersFragment();
+                ((InputNewUsersFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_INPUT_USER)
                         .commit();
                 break;
-
             case FRAGMENT_FINISH_GOTO_NOTIFICATION:
                 fragment = new NotificationsFragment();
+                ((NotificationsFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_NOTIFICATIONS)
                         .commit();
-
                 break;
         }
     }
 
     @SuppressLint("NewApi")
     @Override
-    public void onFragmentCreated(Fragment currentFragment) {
+    public void onFragmentCreated(Fragment currentFragment, String previousFragment) {
         if (currentFragment instanceof HomeAdminFragment) {
             homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_on));
             citizenIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_off));
             notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
             bottomBar.setVisibility(View.VISIBLE);
+            if (previousFragment.equalsIgnoreCase(TAG_FRAGMENT_FORM_LIST)
+                    || previousFragment.equalsIgnoreCase(TAG_FRAGMENT_INPUT_USER)) {
+                bottomBar.startAnimation(slideUp);
+            }
         } else if (currentFragment instanceof CitizenFragment) {
             homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
             citizenIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_on));
             notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
             bottomBar.setVisibility(View.VISIBLE);
+            if (previousFragment.equalsIgnoreCase(TAG_FRAGMENT_FORM_LIST)
+                    || previousFragment.equalsIgnoreCase(TAG_FRAGMENT_INPUT_USER)) {
+                bottomBar.startAnimation(slideUp);
+            }
         } else if (currentFragment instanceof NotificationsFragment) {
             homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
             citizenIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_off));
             notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_on));
             bottomBar.setVisibility(View.VISIBLE);
+            if (previousFragment.equalsIgnoreCase(TAG_FRAGMENT_FORM_LIST)
+                    || previousFragment.equalsIgnoreCase(TAG_FRAGMENT_INPUT_USER)) {
+                bottomBar.startAnimation(slideUp);
+            }
         } else {
             bottomBar.setVisibility(View.GONE);
+            bottomBar.startAnimation(slideDown);
         }
     }
 

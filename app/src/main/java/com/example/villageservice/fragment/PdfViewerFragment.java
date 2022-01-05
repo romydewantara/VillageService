@@ -34,6 +34,7 @@ import com.google.gson.Gson;
 public class PdfViewerFragment extends Fragment {
 
     private Context context;
+    private FragmentListener fragmentListener;
     private PortableDocumentFormat portableDocumentFormat;
     private CoveringLetter coveringLetter;
 
@@ -48,9 +49,6 @@ public class PdfViewerFragment extends Fragment {
     private AppCompatTextView tvTanggalRT;
     private AppCompatTextView tvRTName;
 
-    /**
-     * FORM
-     */
     private AppCompatTextView tvNameR1;
     private AppCompatTextView tvNameR2;
     private AppCompatTextView tvNameR3;
@@ -68,7 +66,7 @@ public class PdfViewerFragment extends Fragment {
     private String key;
     private boolean isAdmin = false;
 
-    private FragmentListener fragmentListener;
+    private String previousFragment = "";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,6 +76,11 @@ public class PdfViewerFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public void addPreviousFragmentTag(String previousFragment) {
+        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
+        this.previousFragment = previousFragment;
+    }
 
     public PdfViewerFragment() {
         // Required empty public constructor
@@ -100,7 +103,7 @@ public class PdfViewerFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        fragmentListener.onFragmentCreated(PdfViewerFragment.this);
+        fragmentListener.onFragmentCreated(PdfViewerFragment.this, previousFragment);
         portableDocumentFormat = new PortableDocumentFormat(context);
     }
 

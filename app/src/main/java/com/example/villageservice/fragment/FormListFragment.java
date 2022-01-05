@@ -50,13 +50,16 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     private ListView listForm;
     private ImageView buttonLeft;
     private AppCompatTextView tvPageTitle;
+    private AppCompatTextView tvEmptyData;
 
     private List<CoveringLetter> coveringLetters;
     private KartuKeluarga kartuKeluarga;
     private ArrayList<Object> coveringLetterArrayList;
 
     private String menuSelected;
+    private String clType;
     private boolean isAdmin = false;
+    private String previousFragment = "";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,6 +69,11 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public void addPreviousFragmentTag(String previousFragment) {
+        Log.d("PREVIOUS", "previousFragmentTag: " + previousFragment);
+        this.previousFragment = previousFragment;
+    }
 
     public FormListFragment() {
         // Required empty public constructor
@@ -87,8 +95,32 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            menuSelected = getArguments().getString("menu");
-            Log.d("XXXLOG", "onCreate - menuSelected: " + menuSelected);
+            switch (getArguments().getString(ConstantVariable.KEY_CL_BUNDLE)) {
+                case ConstantVariable.KEY_CL_NIKAH:
+                    clType = ConstantVariable.KEY_CL_NIKAH;
+                    menuSelected = "Mengajukan Surat Pengantar Layak Nikah";
+                    break;
+                case ConstantVariable.KEY_CL_UMKM:
+                    clType = ConstantVariable.KEY_CL_UMKM;
+                    menuSelected = "Mengajukan Surat Keterangan Usaha (UMKM)";
+                    break;
+                case ConstantVariable.KEY_CL_DOMISILI_KTP:
+                    clType = ConstantVariable.KEY_CL_DOMISILI_KTP;
+                    menuSelected = "Mengajukan Surat Pindah Domisili KTP";
+                    break;
+                case ConstantVariable.KEY_CL_KK_BARU:
+                    clType = ConstantVariable.KEY_CL_KK_BARU;
+                    menuSelected = "Mengajukan Surat Pengantar Pembuatan KK Baru";
+                    break;
+                case ConstantVariable.KEY_CL_AKTA_LAHIR:
+                    clType = ConstantVariable.KEY_CL_AKTA_LAHIR;
+                    menuSelected = "Mengajukan Surat Pengantar Akta Kelahiran";
+                    break;
+                case ConstantVariable.KEY_CL_AKTA_KEMATIAN:
+                    clType = ConstantVariable.KEY_CL_AKTA_KEMATIAN;
+                    menuSelected = "Mengajukan Surat Pengantar Akta Kematian";
+                    break;
+            }
         }
         initMandatory();
     }
@@ -101,6 +133,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         buttonLeft = view.findViewById(R.id.buttonLeft);
         listForm = view.findViewById(R.id.listForm);
         constraintEmptyData = view.findViewById(R.id.constraintEmptyData);
+        tvEmptyData = view.findViewById(R.id.tvEmptyData);
 
         return view;
     }
@@ -145,6 +178,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
 
         if (coveringLetters.isEmpty()) {
             constraintEmptyData.setVisibility(View.VISIBLE);
+            tvEmptyData.setText("Oops… belum ada warga yang\n" + menuSelected + "…");
         }
         initListener();
     }
@@ -167,7 +201,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     }
 
     private void initMandatory() {
-        fragmentListener.onFragmentCreated(FormListFragment.this);
+        fragmentListener.onFragmentCreated(FormListFragment.this, previousFragment);
         coveringLetterArrayList = VSPreference.getInstance(context).getCoveringLetterList(menuSelected);
         coveringLetters = new ArrayList<>();
         if (VSPreference.getInstance(context).getRole().equalsIgnoreCase(ConstantVariable.ADMIN)) isAdmin = true;

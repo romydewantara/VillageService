@@ -3,6 +3,8 @@ package com.example.villageservice.activity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -56,6 +58,8 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
 
     private String menuSelected = "";
     private Bundle bundle;
+    Animation slideUp;
+    Animation slideDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +72,8 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     }
 
     private void initMandatory() {
+        slideUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+        slideDown = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
         homeMenu = findViewById(R.id.homeMenu);
         profileMenu = findViewById(R.id.citizenMenu);
         notificationMenu = findViewById(R.id.notificationMenu);
@@ -153,6 +159,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         switch (destination) {
             case FRAGMENT_FINISH_GOTO_HOME:
                 fragment = new HomeUserFragment();
+                ((HomeUserFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_USER)
@@ -160,6 +167,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_PROFILE:
                 fragment = new ProfileFragment();
+                ((ProfileFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_PROFILE)
@@ -167,6 +175,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_NOTIFICATION:
                 fragment = new NotificationsFragment();
+                ((NotificationsFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
                         .replace(R.id.container, fragment, TAG_FRAGMENT_NOTIFICATIONS)
@@ -174,6 +183,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_ENTRY:
                 fragment = new EntryFragment();
+                ((EntryFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 bundle = new Bundle();
                 bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
                 fragment.setArguments(bundle);
@@ -184,6 +194,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_CL:
                 fragment = new CoveringLetterFragment();
+                ((CoveringLetterFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 bundle = new Bundle();
                 bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
                 fragment.setArguments(bundle);
@@ -194,6 +205,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_PDF_VIEWER:
                 fragment = new PdfViewerFragment();
+                ((PdfViewerFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 bundle = new Bundle();
                 bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
                 fragment.setArguments(bundle);
@@ -207,24 +219,34 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
 
     @SuppressLint("NewApi")
     @Override
-    public void onFragmentCreated(Fragment currentFragment) {
+    public void onFragmentCreated(Fragment currentFragment, String previousFragment) {
         if (currentFragment instanceof HomeUserFragment) {
             homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_on));
             profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_profile_off));
             notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
             bottomBar.setVisibility(View.VISIBLE);
+            if (previousFragment.equalsIgnoreCase(TAG_FRAGMENT_ENTRY)) {
+                bottomBar.startAnimation(slideUp);
+            }
         } else if (currentFragment instanceof ProfileFragment) {
             homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
             profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_profile_on));
             notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
             bottomBar.setVisibility(View.VISIBLE);
+            if (previousFragment.equalsIgnoreCase(TAG_FRAGMENT_ENTRY)) {
+                bottomBar.startAnimation(slideUp);
+            }
         } else if (currentFragment instanceof NotificationsFragment) {
             homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
             profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_profile_off));
             notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_on));
             bottomBar.setVisibility(View.VISIBLE);
+            if (previousFragment.equalsIgnoreCase(TAG_FRAGMENT_ENTRY)) {
+                bottomBar.startAnimation(slideUp);
+            }
         } else {
             bottomBar.setVisibility(View.GONE);
+            bottomBar.startAnimation(slideDown);
         }
     }
 
