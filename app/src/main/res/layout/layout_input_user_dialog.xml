@@ -39,6 +39,16 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvError1"
+                style="@style/MulishRegularRedStyleTiny"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Nomor KTP telah terdaftar…*"
+                android:visibility="gone"/>
+
             <EditText
                 android:id="@+id/et2"
                 style="@style/MulishBlackMediumStyle1"

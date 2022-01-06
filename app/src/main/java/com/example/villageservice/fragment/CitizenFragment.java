@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -42,6 +43,8 @@ public class CitizenFragment extends Fragment {
     private LinearLayout linearMainMenu;
     private RelativeLayout overlay;
     private View view;
+    private AppCompatTextView tvJWT1;
+    private AppCompatTextView tvJWT2;
     private CardView cvInfoLeader;
     private CardView cvInfoWargaBaru;
     private Button addUserButton;
@@ -97,6 +100,8 @@ public class CitizenFragment extends Fragment {
         addUserButton = view.findViewById(R.id.addUserButton);
         cvInfoLeader = view.findViewById(R.id.cvInfoLeader);
         cvInfoWargaBaru = view.findViewById(R.id.cvInfoWargaBaru);
+        tvJWT1 = view.findViewById(R.id.tvJWT1);
+        tvJWT2 = view.findViewById(R.id.tvJWT2);
         overlay = view.findViewById(R.id.overlay);
         backButton = view.findViewById(R.id.backButton);
         return view;
@@ -107,9 +112,8 @@ public class CitizenFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initListener();
+        setUpData();
         prepareLayout();
-        ArrayList<Object> kkObjList = retrieveDataKK();
-        Log.d("XXXLOG", "onViewCreated - list: " + new Gson().toJson(kkObjList));
     }
 
     @Override
@@ -153,8 +157,12 @@ public class CitizenFragment extends Fragment {
 
     }
 
-    private ArrayList<Object> retrieveDataKK() {
-        return VSPreference.getInstance(context).getKKList();
+    private void setUpData() {
+        ArrayList<Object> kkObjList = VSPreference.getInstance(context).getKKList();
+        Log.d("XXXLOG", "onViewCreated - list: " + new Gson().toJson(kkObjList));
+
+        //set data to layout
+        tvJWT1.setText(String.valueOf(kkObjList.size()));
     }
 
     private void prepareLayout() {

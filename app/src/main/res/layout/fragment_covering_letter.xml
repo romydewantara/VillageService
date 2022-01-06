@@ -8,8 +8,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="50dp">
+        android:layout_height="0dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/sendButton"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -523,7 +525,7 @@
 
             <EditText
                 android:id="@+id/etMaksud"
-                style="@style/MulishBlackMediumStyle1"
+                style="@style/MulishGreyMediumStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"

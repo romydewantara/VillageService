@@ -213,7 +213,7 @@ public class SignInActivity extends AppCompatActivity {
                 }
             } else {
                 final ArrayList<Object> kartuKeluargaArrayList = VSPreference.getInstance(getApplicationContext()).getKKList();
-                Log.d("XXXLOG", "credentialCheck - kk: " + new Gson().toJson(kartuKeluargaArrayList));
+                Log.d("XXXLOG", "SignIn (credentialCheck) - KK List: " + new Gson().toJson(kartuKeluargaArrayList));
                 if (!kartuKeluargaArrayList.isEmpty()) {
                     overlay.setVisibility(View.VISIBLE);
                     customLoadingDialog.show();

@@ -199,30 +199,49 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private void initListener() {
         etIdKK.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
             @Override
             public void afterTextChanged(Editable s) {
-                for (int i = 0; i < kkObjList.size(); i++) {
-                    KartuKeluarga tempKK = (KartuKeluarga) kkObjList.get(i);
-                    if (tempKK.getIdKartuKeluarga().equalsIgnoreCase(s.toString())) {
-                        etIdKK.setBackgroundResource(R.drawable.bg_edit_text_red_rounded);
-                        tvIdKKError.setVisibility(View.VISIBLE);
-                        isComplete = false;
-                    } else {
-                        etIdKK.setBackgroundResource(R.drawable.bg_edit_text_white_rounded);
-                        tvIdKKError.setVisibility(View.GONE);
-                        isComplete = true;
+                Log.d("XXXLOG", "afterTextChanged - input: " + s.toString());
+                Log.d("XXXLOG", "afterTextChanged - kkObjSize: " + kkObjList.size());
+                if (!kkObjList.isEmpty()) {
+                    for (int i = 0; i < kkObjList.size(); i++) {
+                        KartuKeluarga tempKK = (KartuKeluarga) kkObjList.get(i);
+                        Log.d("XXXLOG", "afterTextChanged - tempKK: " + new Gson().toJson(tempKK));
+                        if (tempKK.getIdKartuKeluarga().equalsIgnoreCase(s.toString())) {
+                            Log.d("XXXLOG", "afterTextChanged - Exists");
+                            etIdKK.setBackgroundResource(R.drawable.bg_edit_text_red_rounded);
+                            tvIdKKError.setVisibility(View.VISIBLE);
+                            isComplete = false;
+                            break;
+                        } else {
+                            Log.d("XXXLOG", "afterTextChanged - Not exists");
+                            etIdKK.setBackgroundResource(R.drawable.bg_edit_text_white_rounded);
+                            tvIdKKError.setVisibility(View.GONE);
+                            isComplete = true;
+                        }
                     }
+                } else {
+                    Log.d("XXXLOG", "afterTextChanged - Empty");
+                    isComplete = true;
                 }
             }
         });
         etPassword.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().length() < 6) {
@@ -271,6 +290,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("XXXLOG", "onClick - isComplete: " + isComplete + " | isPasswordOk: " + isPasswordOk);
                 if (!etIdKK.getText().toString().isEmpty() && !etKepKK.getText().toString().isEmpty() &&
                         !etAddress.getText().toString().isEmpty() && !etRT.getText().toString().isEmpty() &&
                         !etRW.getText().toString().isEmpty() && !etKel.getText().toString().isEmpty() &&
@@ -286,6 +306,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                                 @Override
                                 public void onNegativePressed() {
                                 }
+
                                 @Override
                                 public void onPositivePressed() {
                                     showOverlay(true);
@@ -397,6 +418,28 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         }
         kartuKeluargaList.add(tempKKObj);
         Log.d("XXXLOG", "saveDataKK - KK List: " + new Gson().toJson(kartuKeluargaList));
+
+        ArrayList<Object> userList = new ArrayList<>();
+        for (int i = 0; i < temporaryUserAdded.size(); i++) {
+            User user = new User();
+            user.setNamaLengkap(temporaryUserAdded.get(i).getNamaLengkap());
+            user.setIdKtp(temporaryUserAdded.get(i).getIdKtp());
+            user.setIdKartuKeluarga(temporaryUserAdded.get(i).getIdKartuKeluarga());
+            user.setJenisKelamin(temporaryUserAdded.get(i).getJenisKelamin());
+            user.setTempatLahir(temporaryUserAdded.get(i).getTempatLahir());
+            user.setTanggalLahir(temporaryUserAdded.get(i).getTanggalLahir());
+            user.setAgama(temporaryUserAdded.get(i).getAgama());
+            user.setPendidikan(temporaryUserAdded.get(i).getPendidikan());
+            user.setJenisPekerjaan(temporaryUserAdded.get(i).getJenisPekerjaan());
+            user.setStatusPernikahan(temporaryUserAdded.get(i).getStatusPernikahan());
+            user.setStatusHubunganDalamKeluarga(temporaryUserAdded.get(i).getStatusHubunganDalamKeluarga());
+            user.setKewarganegaraan(temporaryUserAdded.get(i).getKewarganegaraan());
+            user.setNamaAyah(temporaryUserAdded.get(i).getNamaAyah());
+            user.setNamaIbu(temporaryUserAdded.get(i).getNamaIbu());
+            userList.add(user);
+        }
+
+        VSPreference.getInstance(context).saveUserList(userList);
         VSPreference.getInstance(context).saveKKList(kartuKeluargaList);
 
     }

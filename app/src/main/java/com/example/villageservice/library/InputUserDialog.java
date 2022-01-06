@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -36,6 +37,7 @@ public class InputUserDialog extends DialogFragment {
     private TextView negativeButton;
 
     private EditText et1, et2, et3, et4, et5, et6, et7, et8, et9, et10, et11, et12, et13, et14;
+    private AppCompatTextView tvError1;
     private Spinner monthChooser;
 
     private CharSequence pButtonText = "";
@@ -108,6 +110,7 @@ public class InputUserDialog extends DialogFragment {
         et12 = view.findViewById(R.id.et12);
         et13 = view.findViewById(R.id.et13);
         et14 = view.findViewById(R.id.et14);
+        tvError1 = view.findViewById(R.id.tvError1);
         monthChooser = view.findViewById(R.id.monthChooser);
 
         titleAlert.setText(textTitle);
@@ -174,8 +177,8 @@ public class InputUserDialog extends DialogFragment {
                         !et3.getText().toString().isEmpty() && !et4.getText().toString().isEmpty() &&
                         !et5.getText().toString().isEmpty() && !et6.getText().toString().isEmpty() &&
                         !et7.getText().toString().isEmpty() && !et8.getText().toString().isEmpty() &&
-                        !et9.getText().toString().isEmpty() && !et10.getText().toString().isEmpty() &&
-                        !et12.getText().toString().isEmpty() && isComplete) {
+                        !et9.getText().toString().isEmpty() && !et12.getText().toString().isEmpty() &&
+                        isComplete) {
                     inputUserDialogListener.onAddButtonPressed(user);
                     dismiss();
                 }
@@ -195,15 +198,22 @@ public class InputUserDialog extends DialogFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
             @Override
             public void afterTextChanged(Editable s) {
-                for (int i = 0; i < userList.size(); i++) {
-                    User user = (User) userList.get(i);
-                    if (user.getIdKtp().equalsIgnoreCase(s.toString())) {
-                        et1.setBackgroundResource(R.drawable.bg_edit_text_red_rounded);
-                        isComplete = false;
-                    } else {
-                        et1.setBackgroundResource(R.drawable.bg_edit_text_white_rounded);
-                        isComplete = true;
+                if (!userList.isEmpty()) {
+                    for (int i = 0; i < userList.size(); i++) {
+                        User user = (User) userList.get(i);
+                        if (user.getIdKtp().equalsIgnoreCase(s.toString())) {
+                            et1.setBackgroundResource(R.drawable.bg_edit_text_red_rounded);
+                            tvError1.setVisibility(View.VISIBLE);
+                            isComplete = false;
+                            break;
+                        } else {
+                            et1.setBackgroundResource(R.drawable.bg_edit_text_white_rounded);
+                            tvError1.setVisibility(View.GONE);
+                            isComplete = true;
+                        }
                     }
+                } else {
+                    isComplete = true;
                 }
             }
         });

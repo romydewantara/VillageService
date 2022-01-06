@@ -346,6 +346,7 @@ public class CoveringLetterFragment extends Fragment {
         etPostal.setText(String.valueOf(kartuKeluarga.getKodePos()));
         etMaksud.setText(menuSelected);
         etMaksud.setEnabled(false);
+        etMaksud.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
 
         ArrayList<String> genderList = new ArrayList<>(Arrays.asList(ConstantVariable.SPINNER_GENDER));
         ArrayList<String> monthList = new ArrayList<>(Arrays.asList(ConstantVariable.SPINNER_MONTH));

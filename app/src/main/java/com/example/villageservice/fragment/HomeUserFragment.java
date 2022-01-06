@@ -251,7 +251,7 @@ public class HomeUserFragment extends Fragment {
 
         //fetch family registered
         kartuKeluarga = VSPreference.getInstance(context).getKK();
-        Log.d("XXXLOG", "onCreate - KK logged in: " + new Gson().toJson(kartuKeluarga));
+        Log.d("XXXLOG", "HomeUser (onCreate) - current KK signed in: " + new Gson().toJson(kartuKeluarga));
     }
 
     public void showOverlay(boolean isShow) {
