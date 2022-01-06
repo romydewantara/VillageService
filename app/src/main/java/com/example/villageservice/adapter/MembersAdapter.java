@@ -1,6 +1,7 @@
 package com.example.villageservice.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.villageservice.R;
 import com.example.villageservice.model.User;
+import com.example.villageservice.utility.ConstantVariable;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
 public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MemberHolder> {
 
     private Context context;
-    private ArrayList<User> userArrayList;
     private ItemClickListener itemClickListener;
+    private final ArrayList<User> userArrayList;
 
     public MembersAdapter(Context context, ArrayList<User> userArrayList) {
         this.context = context;
@@ -68,17 +71,20 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MemberHo
 
         @Override
         public void onClick(View v) {
-            if (itemClickListener != null) itemClickListener.onItemClick(this, v, getAdapterPosition(), tvMemberKTP.getText().toString());
+            if (itemClickListener != null) itemClickListener.onItemClick(this, userArrayList.get(getAdapterPosition()), getAdapterPosition());
         }
 
-        public void setUpdateData(String name, String ktp) {
-            tvMemberName.setText(name);
-            tvMemberKTP.setText(ktp);
+        public void setUpdateData(User user, int position) {
+            tvMemberName.setText(user.getNamaLengkap());
+            tvMemberKTP.setText(user.getIdKtp());
+            Log.d("XXXLOG", "setUpdateData - arrayList (BEFORE): " + new Gson().toJson(userArrayList));
+            userArrayList.set(position, user);
+            Log.d("XXXLOG", "setUpdateData - arrayList (AFTER): " + new Gson().toJson(userArrayList));
         }
 
     }
 
     public interface ItemClickListener {
-        void onItemClick(MemberHolder memberHolder, View view, int position, String ktp);
+        void onItemClick(MemberHolder memberHolder, User user, int position);
     }
 }

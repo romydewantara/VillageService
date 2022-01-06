@@ -43,6 +43,7 @@ import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.listener.InputUserDialogListener;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
@@ -87,6 +88,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
 
     private MembersAdapter membersAdapter;
     private String previousFragment = "";
+    private int position;
     private boolean isComplete = false;
     private boolean isPasswordOk = false;
 
@@ -260,8 +262,8 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                             @Override
                             public void onButtonPositivePressed(int total) {
                                 User user = new User();
-                                user.setNamaLengkap("-- Nama wajib diisi --");
-                                user.setIdKtp("-- KTP wajib diisi --");
+                                user.setNamaLengkap(ConstantVariable.empty_username);
+                                user.setIdKtp(ConstantVariable.empty_ktp);
                                 ArrayList<User> arrayList = new ArrayList<>();
                                 for (int i = 1; i <= total; i++) {
                                     arrayList.add(user);
@@ -398,12 +400,12 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         tempKKObj.setNamaKepalaKeluarga(etKepKK.getText().toString());
         tempKKObj.setAlamatLengkap(detailAddress);
         tempKKObj.setAlamatRumah(etAddress.getText().toString());
-        tempKKObj.setNomorRt(Integer.parseInt(etRT.getText().toString()));
-        tempKKObj.setNomorRw(Integer.parseInt(etRW.getText().toString()));
+        tempKKObj.setNomorRt(etRT.getText().toString());
+        tempKKObj.setNomorRw(etRW.getText().toString());
         tempKKObj.setKelurahan(etKel.getText().toString());
         tempKKObj.setKecamatan(etKec.getText().toString());
         tempKKObj.setKota(etKota.getText().toString());
-        tempKKObj.setKodePos(Integer.parseInt(etPostal.getText().toString()));
+        tempKKObj.setKodePos(etPostal.getText().toString());
         tempKKObj.setProvinsi(etProvinsi.getText().toString());
         tempKKObj.setKeluargaList(temporaryUserAdded);
         tempKKObj.setPassword(etPassword.getText().toString());
@@ -454,14 +456,13 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         }
     }
 
-    private void showAddMemberDialog(final MembersAdapter.MemberHolder memberHolder, final View view, int position, String ktp) {
+    private void showAddMemberDialog(final MembersAdapter.MemberHolder memberHolder, String idKk, User user) {
         FragmentManager fm = getFragmentManager();
-        InputUserDialog inputUserDialog = InputUserDialog.newInstance(context, "Anggota Keluarga", ktp)
+        InputUserDialog inputUserDialog = InputUserDialog.newInstance(context, "Anggota Keluarga", idKk, user)
                 .setButton("Tambah", "Batal", new InputUserDialogListener() {
                     @Override
                     public void onAddButtonPressed(User user) {
-                        //TODO: Update Name AND KTP from selected item
-                        memberHolder.setUpdateData(user.getNamaLengkap(), user.getIdKtp());
+                        memberHolder.setUpdateData(user, position);
                         temporaryUserAdded.add(user);
                     }
 
@@ -486,8 +487,9 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     }
 
     @Override
-    public void onItemClick(MembersAdapter.MemberHolder memberHolder, View view, int position, String ktp) {
-        showAddMemberDialog(memberHolder, view, position, ktp);
+    public void onItemClick(MembersAdapter.MemberHolder memberHolder, User user, int position) {
+        this.position = position;
+        showAddMemberDialog(memberHolder, etIdKK.getText().toString(), user);
     }
 
 }

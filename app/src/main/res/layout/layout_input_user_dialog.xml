@@ -44,9 +44,9 @@
                 style="@style/MulishRegularRedStyleTiny"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="Nomor KTP telah terdaftar…*"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Nomor Induk telah terdaftar…*"
                 android:visibility="gone"/>
 
             <EditText
@@ -110,6 +110,7 @@
                     android:background="@drawable/bg_edit_text_white_rounded"
                     android:inputType="number"
                     android:maxLines="1"
+                    android:text=""
                     android:hint="Tgl"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp" />

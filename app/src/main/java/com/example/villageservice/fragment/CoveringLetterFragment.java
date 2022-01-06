@@ -338,12 +338,12 @@ public class CoveringLetterFragment extends Fragment {
         etPendidikan.setText(user.getPendidikan());
         etAgama.setText(user.getAgama());
         etAddress.setText(kartuKeluarga.getAlamatRumah());
-        etRT.setText(String.valueOf(kartuKeluarga.getNomorRt()));
-        etRW.setText(String.valueOf(kartuKeluarga.getNomorRw()));
+        etRT.setText(kartuKeluarga.getNomorRt());
+        etRW.setText(kartuKeluarga.getNomorRw());
         etKel.setText(kartuKeluarga.getKelurahan());
         etKec.setText(kartuKeluarga.getKecamatan());
         etKota.setText(kartuKeluarga.getKota());
-        etPostal.setText(String.valueOf(kartuKeluarga.getKodePos()));
+        etPostal.setText(kartuKeluarga.getKodePos());
         etMaksud.setText(menuSelected);
         etMaksud.setEnabled(false);
         etMaksud.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);

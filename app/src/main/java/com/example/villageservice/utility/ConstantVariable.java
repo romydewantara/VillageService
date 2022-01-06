@@ -25,6 +25,8 @@ public class ConstantVariable {
     public final static String KEY_CL_AKTA_KEMATIAN = "KEY_CL_AKTA_KEMATIAN";
 
     public final static String KEY_CL_BUNDLE = "KEY_CL_BUNDLE";
+    public final static String empty_username = "-- Nama wajib diisi --";
+    public final static String empty_ktp = "-- KTP wajib diisi --";
 
     //account
     public final static String ADMIN_USERNAME = "007";

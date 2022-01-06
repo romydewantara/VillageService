@@ -20,10 +20,10 @@ public class KartuKeluarga {
     private String alamatRumah = "";
 
     @SerializedName("nomor_rt")
-    private int nomorRt;
+    private String nomorRt;
 
     @SerializedName("nomor_rw")
-    private int nomorRw;
+    private String nomorRw;
 
     @SerializedName("kelurahan")
     private String kelurahan = "";
@@ -35,7 +35,7 @@ public class KartuKeluarga {
     private String kota = "";
 
     @SerializedName("kode_pos")
-    private int kodePos;
+    private String kodePos;
 
     @SerializedName("provinsi")
     private String provinsi = "";
@@ -78,19 +78,19 @@ public class KartuKeluarga {
         this.alamatRumah = alamatRumah;
     }
 
-    public int getNomorRt() {
+    public String getNomorRt() {
         return nomorRt;
     }
 
-    public void setNomorRt(int nomorRt) {
+    public void setNomorRt(String nomorRt) {
         this.nomorRt = nomorRt;
     }
 
-    public int getNomorRw() {
+    public String getNomorRw() {
         return nomorRw;
     }
 
-    public void setNomorRw(int nomorRw) {
+    public void setNomorRw(String nomorRw) {
         this.nomorRw = nomorRw;
     }
 
@@ -118,11 +118,11 @@ public class KartuKeluarga {
         this.kota = kota;
     }
 
-    public int getKodePos() {
+    public String getKodePos() {
         return kodePos;
     }
 
-    public void setKodePos(int kodePos) {
+    public void setKodePos(String kodePos) {
         this.kodePos = kodePos;
     }
 

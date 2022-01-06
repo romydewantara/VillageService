@@ -25,6 +25,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.villageservice.R;
 import com.example.villageservice.listener.InputUserDialogListener;
 import com.example.villageservice.model.User;
+import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
@@ -48,7 +49,8 @@ public class InputUserDialog extends DialogFragment {
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
     private static String textTitle;
-    private static String textKtp;
+    private static String textKk;
+    private static User currentUser;
     private static ArrayList<Object> userList;
 
     private InputUserDialogListener inputUserDialogListener;
@@ -57,12 +59,13 @@ public class InputUserDialog extends DialogFragment {
 
     }
 
-    public static InputUserDialog newInstance(Context context, String title, String ktp) {
+    public static InputUserDialog newInstance(Context context, String title, String kk, User user) {
         InputUserDialog fragment = new InputUserDialog();
         Bundle arguments = new Bundle();
         mContext = context;
         textTitle = title;
-        textKtp = ktp;
+        textKk = kk;
+        currentUser = user;
         userList = VSPreference.getInstance(context).loadUserList();
         Log.d("XXXLOG", "newInstance - userList: " + new Gson().toJson(userList));
 
@@ -114,18 +117,16 @@ public class InputUserDialog extends DialogFragment {
         monthChooser = view.findViewById(R.id.monthChooser);
 
         titleAlert.setText(textTitle);
-
+        populateData();
         initListener();
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Log.d("Xnull", "onAttach - context: " + mContext);
         if (mContext.getApplicationContext() instanceof InputUserDialogListener) {
             inputUserDialogListener = (InputUserDialogListener) mContext;
         }
-        Log.d("Xnull", "onAttach - inputUserDialogListener: " + inputUserDialogListener);
     }
 
     @Override
@@ -139,7 +140,6 @@ public class InputUserDialog extends DialogFragment {
         } catch (IllegalStateException e) {
             Log.d("InputUserDialog", "Exception: ", e);
         }
-        populateData();
     }
 
     @Override
@@ -155,9 +155,9 @@ public class InputUserDialog extends DialogFragment {
                 User user = new User();
 
                 User.TanggalDetail tanggalDetail = new User.TanggalDetail();
-                tanggalDetail.setTanggal(Integer.parseInt(et5.getText().toString()));
+                tanggalDetail.setTanggal(et5.getText().toString());
                 tanggalDetail.setBulan(String.valueOf(monthChooser.getSelectedItem()));
-                tanggalDetail.setTahun(Integer.parseInt(et6.getText().toString()));
+                tanggalDetail.setTahun(et6.getText().toString());
 
                 user.setIdKtp(et1.getText().toString());
                 user.setNamaLengkap(et2.getText().toString());
@@ -198,21 +198,28 @@ public class InputUserDialog extends DialogFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
             @Override
             public void afterTextChanged(Editable s) {
+                boolean isExists = false;
                 if (!userList.isEmpty()) {
                     for (int i = 0; i < userList.size(); i++) {
                         User user = (User) userList.get(i);
                         if (user.getIdKtp().equalsIgnoreCase(s.toString())) {
-                            et1.setBackgroundResource(R.drawable.bg_edit_text_red_rounded);
-                            tvError1.setVisibility(View.VISIBLE);
-                            isComplete = false;
+                            isExists = true;
                             break;
                         } else {
-                            et1.setBackgroundResource(R.drawable.bg_edit_text_white_rounded);
-                            tvError1.setVisibility(View.GONE);
-                            isComplete = true;
+                            isExists = false;
                         }
                     }
                 } else {
+                    isComplete = true;
+                }
+
+                if (s.toString().equalsIgnoreCase(textKk) || isExists) {
+                    et1.setBackgroundResource(R.drawable.bg_edit_text_red_rounded);
+                    tvError1.setVisibility(View.VISIBLE);
+                    isComplete = false;
+                } else {
+                    et1.setBackgroundResource(R.drawable.bg_edit_text_white_rounded);
+                    tvError1.setVisibility(View.GONE);
                     isComplete = true;
                 }
             }
@@ -220,10 +227,9 @@ public class InputUserDialog extends DialogFragment {
     }
 
     private void populateData() {
-        User user = VSPreference.getInstance(mContext).getDataUser(textKtp);
-        Log.d("XXXPOP", "populateData - ktp: " + textKtp);
-        if (user != null) {
-            Log.d("XXXPOP", "populateData not null - user: " + new Gson().toJson(user));
+        if (!currentUser.getIdKtp().equalsIgnoreCase(ConstantVariable.empty_ktp)) {
+            Log.d("XXXPOP", "populateData not null - user: " + new Gson().toJson(currentUser));
+            et1.setText(String.valueOf(currentUser.getIdKtp()));
         } else {
             Log.d("XXXPOP", "populateData null");
         }

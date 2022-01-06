@@ -298,8 +298,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         } else if (fragment instanceof EntryFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
         } else if (fragment instanceof PdfViewerFragment) {
-            //TODO: go to list fragment
-            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_ENTRY, false);
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_FORM_LIST, false);
         } else if (fragment instanceof CoveringLetterFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_ENTRY, false);
         } else {

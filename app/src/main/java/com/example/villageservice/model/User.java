@@ -5,49 +5,49 @@ import com.google.gson.annotations.SerializedName;
 public class User {
 
     @SerializedName("id_ktp")
-    private String idKtp;
+    private String idKtp = "";
 
     @SerializedName("id_kartu_keluarga")
-    private String idKartuKeluarga;
+    private String idKartuKeluarga = "";
 
     @SerializedName("nama_lengkap")
-    private String namaLengkap;
+    private String namaLengkap = "";
 
     @SerializedName("jenis_kelamin")
-    private String jenisKelamin;
+    private String jenisKelamin = "";
 
     @SerializedName("tempat_lahir")
-    private String tempatLahir;
+    private String tempatLahir = "";
 
     @SerializedName("tanggal_lahir")
-    private TanggalDetail tanggalLahir;
+    private TanggalDetail tanggalLahir = null;
 
     @SerializedName("tanggal_bergabung")
-    private TanggalDetail tanggalBergabung;
+    private TanggalDetail tanggalBergabung = null;
 
     @SerializedName("agama")
-    private String agama;
+    private String agama = "";
 
     @SerializedName("pendidikan")
-    private String pendidikan;
+    private String pendidikan = "";
 
     @SerializedName("jenis_pekerjaan")
-    private String jenisPekerjaan;
+    private String jenisPekerjaan = "";
 
     @SerializedName("status_pernikahan")
-    private String statusPernikahan;
+    private String statusPernikahan = "";
 
     @SerializedName("status_hubungan_dalam_keluarga")
-    private String statusHubunganDalamKeluarga;
+    private String statusHubunganDalamKeluarga = "";
 
     @SerializedName("kewarganegaraan")
-    private String kewarganegaraan;
+    private String kewarganegaraan = "";
 
     @SerializedName("nama_ayah")
-    private String namaAyah;
+    private String namaAyah = "";
 
     @SerializedName("nama_ibu")
-    private String namaIbu;
+    private String namaIbu = "";
 
     public String getIdKtp() {
         return idKtp;
@@ -172,19 +172,19 @@ public class User {
     public static class TanggalDetail {
 
         @SerializedName("tanggal")
-        private int tanggal;
+        private String tanggal;
 
         @SerializedName("bulan")
         private String bulan;
 
         @SerializedName("tahun")
-        private int tahun;
+        private String tahun;
 
-        public int getTanggal() {
+        public String getTanggal() {
             return tanggal;
         }
 
-        public void setTanggal(int tanggal) {
+        public void setTanggal(String tanggal) {
             this.tanggal = tanggal;
         }
 
@@ -196,11 +196,11 @@ public class User {
             this.bulan = bulan;
         }
 
-        public int getTahun() {
+        public String getTahun() {
             return tahun;
         }
 
-        public void setTahun(int tahun) {
+        public void setTahun(String tahun) {
             this.tahun = tahun;
         }
     }
