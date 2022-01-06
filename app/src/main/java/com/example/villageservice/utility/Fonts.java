@@ -16,26 +16,6 @@ public class Fonts {
         this.context = context;
     }
 
-    public Typeface rBold() {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-Bold.ttf");
-    }
-
-    public Typeface rBoldExtra() {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-BoldExtra.ttf");
-    }
-
-    public Typeface rLight() {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-Light.ttf");
-    }
-
-    public Typeface rMedium() {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-Medium.ttf");
-    }
-
-    public Typeface rRegular() {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/Raleway-Regular.ttf");
-    }
-
     public Typeface mulishBold() {
         return Typeface.createFromAsset(context.getAssets(), "fonts/Mulish-Bold.ttf");
     }

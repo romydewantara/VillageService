@@ -12,7 +12,7 @@ import java.util.List;
 public class CustomSpinnerAdapter extends ArrayAdapter<String> {
 
     Typeface font = Typeface.createFromAsset(getContext().getAssets(),
-            "fonts/Raleway-Regular.ttf");
+            "fonts/Mulish-Regular.ttf");
 
     public CustomSpinnerAdapter(Context context, int resource, List<String> items) {
         super(context, resource, items);

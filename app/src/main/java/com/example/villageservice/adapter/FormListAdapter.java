@@ -54,10 +54,6 @@ public class FormListAdapter extends BaseAdapter {
         AppCompatTextView tvKtp = v.findViewById(R.id.tvKTP);
         AppCompatTextView tvDate = v.findViewById(R.id.tvDate);
 
-        tvName.setTypeface(fonts.mulishBoldExtra());
-        tvKtp.setTypeface(fonts.rRegular());
-        tvName.setTypeface(fonts.rRegular());
-
         tvName.setText(coveringLetterList.get(position).getClNama());
         tvKtp.setText(coveringLetterList.get(position).getClKtp());
         tvDate.setText(coveringLetterList.get(position).getClKeperluan());

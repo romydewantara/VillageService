@@ -39,7 +39,12 @@ public class InputUserDialog extends DialogFragment {
 
     private EditText et1, et2, et3, et4, et5, et6, et7, et8, et9, et10, et11, et12, et13, et14;
     private AppCompatTextView tvError1;
-    private Spinner monthChooser;
+    private Spinner spinnerMonth;
+    private Spinner spinnerGender;
+    private Spinner spinnerPd;
+    private Spinner spinnerKerja;
+    private Spinner spinnerMaritalStatus;
+    private Spinner spinnerKewarganegaraan;
 
     private CharSequence pButtonText = "";
     private CharSequence nButtonText = "";
@@ -105,16 +110,13 @@ public class InputUserDialog extends DialogFragment {
         et4 = view.findViewById(R.id.et4);
         et5 = view.findViewById(R.id.et5);
         et6 = view.findViewById(R.id.et6);
-        et7 = view.findViewById(R.id.et7);
-        et8 = view.findViewById(R.id.et8);
-        et9 = view.findViewById(R.id.et9);
-        et10 = view.findViewById(R.id.et10);
-        et11 = view.findViewById(R.id.et11);
-        et12 = view.findViewById(R.id.et12);
-        et13 = view.findViewById(R.id.et13);
-        et14 = view.findViewById(R.id.et14);
         tvError1 = view.findViewById(R.id.tvError1);
-        monthChooser = view.findViewById(R.id.monthChooser);
+        spinnerMonth = view.findViewById(R.id.spinnerMonth);
+        spinnerGender = view.findViewById(R.id.spinnerGender);
+        spinnerPd = view.findViewById(R.id.spinnerPd);
+        spinnerKerja = view.findViewById(R.id.spinnerKerja);
+        spinnerMaritalStatus = view.findViewById(R.id.spinnerStatusMarital);
+        spinnerKewarganegaraan = view.findViewById(R.id.spinnerKewarganegaraan);
 
         titleAlert.setText(textTitle);
         populateData();
@@ -155,29 +157,24 @@ public class InputUserDialog extends DialogFragment {
                 User user = new User();
 
                 User.TanggalDetail tanggalDetail = new User.TanggalDetail();
-                tanggalDetail.setTanggal(et5.getText().toString());
-                tanggalDetail.setBulan(String.valueOf(monthChooser.getSelectedItem()));
-                tanggalDetail.setTahun(et6.getText().toString());
+                tanggalDetail.setTanggal(et4.getText().toString());
+                tanggalDetail.setBulan(String.valueOf(spinnerMonth.getSelectedItem()));
+                tanggalDetail.setTahun(et5.getText().toString());
 
                 user.setIdKtp(et1.getText().toString());
                 user.setNamaLengkap(et2.getText().toString());
-                user.setJenisKelamin(et3.getText().toString());
-                user.setTempatLahir(et4.getText().toString());
+                user.setJenisKelamin(String.valueOf(spinnerGender.getSelectedItem()));
+                user.setTempatLahir(et3.getText().toString());
                 user.setTanggalLahir(tanggalDetail);
-                user.setAgama(et7.getText().toString());
-                user.setPendidikan(et8.getText().toString());
-                user.setJenisPekerjaan(et9.getText().toString());
-                user.setStatusPernikahan(et10.getText().toString());
-                user.setStatusHubunganDalamKeluarga(et11.getText().toString());
-                user.setKewarganegaraan(et12.getText().toString());
-                user.setNamaAyah(et13.getText().toString());
-                user.setNamaIbu(et14.getText().toString());
+                user.setAgama(et6.getText().toString());
+                user.setPendidikan(String.valueOf(spinnerPd.getSelectedItem()));
+                user.setJenisPekerjaan(String.valueOf(spinnerKerja.getSelectedItem()));
+                user.setStatusPernikahan(String.valueOf(spinnerMaritalStatus.getSelectedItem()));
+                user.setKewarganegaraan(String.valueOf(spinnerKewarganegaraan.getSelectedItem()));
 
                 if (!et1.getText().toString().isEmpty() && !et2.getText().toString().isEmpty() &&
                         !et3.getText().toString().isEmpty() && !et4.getText().toString().isEmpty() &&
                         !et5.getText().toString().isEmpty() && !et6.getText().toString().isEmpty() &&
-                        !et7.getText().toString().isEmpty() && !et8.getText().toString().isEmpty() &&
-                        !et9.getText().toString().isEmpty() && !et12.getText().toString().isEmpty() &&
                         isComplete) {
                     inputUserDialogListener.onAddButtonPressed(user);
                     dismiss();

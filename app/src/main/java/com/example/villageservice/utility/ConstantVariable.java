@@ -34,6 +34,6 @@ public class ConstantVariable {
 
     public static String[] SPINNER_GENDER = {"Laki-laki", "Perempuan"};
     public static String[] SPINNER_MONTH = {"Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"};
-    public static String[] SPINNER_CITIZEN_STATE = {"WNI (Warga Negara Indonesia)", "WNA (Warga Negara Asing)"};
+    public static String[] SPINNER_CITIZEN_STATE = {"WNI", "Non WNI"};
 
 }
