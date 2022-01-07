@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -16,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
@@ -39,7 +37,7 @@ public class CitizenFragment extends Fragment {
     private CustomLoadingDialog customLoadingDialog;
     private FragmentListener fragmentListener;
 
-    private ConstraintLayout constraintHeader;
+    private LinearLayout linearMiddle;
     private LinearLayout linearMainMenu;
     private RelativeLayout overlay;
     private View view;
@@ -49,7 +47,6 @@ public class CitizenFragment extends Fragment {
     private CardView cvInfoWargaBaru;
     private Button addUserButton;
 
-    private ImageView backButton;
     private String previousFragment = "";
 
     // TODO: Rename parameter arguments, choose names that match
@@ -95,7 +92,7 @@ public class CitizenFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_citizen, container, false);
-        constraintHeader = view.findViewById(R.id.constraintHeader);
+        linearMiddle = view.findViewById(R.id.linearMiddle);
         linearMainMenu = view.findViewById(R.id.linearMainMenu);
         addUserButton = view.findViewById(R.id.addUserButton);
         cvInfoLeader = view.findViewById(R.id.cvInfoLeader);
@@ -103,7 +100,7 @@ public class CitizenFragment extends Fragment {
         tvJWT1 = view.findViewById(R.id.tvJWT1);
         tvJWT2 = view.findViewById(R.id.tvJWT2);
         overlay = view.findViewById(R.id.overlay);
-        backButton = view.findViewById(R.id.backButton);
+
         return view;
     }
 
@@ -145,16 +142,6 @@ public class CitizenFragment extends Fragment {
                 fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_INPUT_USER, true);
             }
         });
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
-            }
-        });
-    }
-
-    private void setFonts() {
-
     }
 
     private void setUpData() {
@@ -162,7 +149,9 @@ public class CitizenFragment extends Fragment {
         Log.d("XXXLOG", "onViewCreated - list: " + new Gson().toJson(kkObjList));
 
         //set data to layout
-        tvJWT1.setText(String.valueOf(kkObjList.size()));
+        String wargaTetap = kkObjList.size() + " jiwa";
+        tvJWT1.setText(wargaTetap);
+        tvJWT2.setText(wargaTetap);
     }
 
     private void prepareLayout() {
@@ -170,7 +159,7 @@ public class CitizenFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                constraintHeader.setVisibility(View.VISIBLE);
+                linearMiddle.setVisibility(View.VISIBLE);
                 linearMainMenu.setVisibility(View.VISIBLE);
                 addUserButton.setVisibility(View.VISIBLE);
                 cvInfoLeader.setVisibility(View.VISIBLE);

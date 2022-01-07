@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:measureAllChildren="false"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvMenu1"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@color/grey_medium"
+                app:cardCornerRadius="47.5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_menu_wedding" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSyarat1"
+                style="@style/MulishWhiteMediumStyleTiny"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Persyaratan\nNikah"
+                app:layout_constraintLeft_toLeftOf="@id/cvMenu1"
+                app:layout_constraintRight_toRightOf="@id/cvMenu1"
+                app:layout_constraintTop_toBottomOf="@id/cvMenu1" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvMenu2"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                app:cardBackgroundColor="@color/grey_medium"
+                app:cardCornerRadius="47.5dp"
+                app:layout_constraintLeft_toRightOf="@id/cvMenu1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_menu_umkm" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSyarat2"
+                style="@style/MulishWhiteMediumStyleTiny"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Persyaratan\nUMKM"
+                app:layout_constraintLeft_toLeftOf="@id/cvMenu2"
+                app:layout_constraintRight_toRightOf="@id/cvMenu2"
+                app:layout_constraintTop_toBottomOf="@id/cvMenu2" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvMenu3"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                app:cardBackgroundColor="@color/grey_medium"
+                app:cardCornerRadius="47.5dp"
+                app:layout_constraintLeft_toRightOf="@id/cvMenu2"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_menu_move" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/MulishWhiteMediumStyleTiny"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Persyaratan\nKTP"
+                app:layout_constraintLeft_toLeftOf="@id/cvMenu3"
+                app:layout_constraintRight_toRightOf="@id/cvMenu3"
+                app:layout_constraintTop_toBottomOf="@id/cvMenu3" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvMenu4"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                app:cardBackgroundColor="@color/grey_medium"
+                app:cardCornerRadius="47.5dp"
+                app:layout_constraintLeft_toRightOf="@id/cvMenu3"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_menu_kk" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/MulishWhiteMediumStyleTiny"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Persyaratan\nKK Baru"
+                app:layout_constraintLeft_toLeftOf="@id/cvMenu4"
+                app:layout_constraintRight_toRightOf="@id/cvMenu4"
+                app:layout_constraintTop_toBottomOf="@id/cvMenu4" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvMenu5"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                app:cardBackgroundColor="@color/grey_light"
+                app:cardCornerRadius="47.5dp"
+                app:layout_constraintLeft_toRightOf="@id/cvMenu4"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_menu_akta" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/MulishWhiteMediumStyleTiny"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Persyaratan\nAkta Lahir"
+                app:layout_constraintLeft_toLeftOf="@id/cvMenu5"
+                app:layout_constraintRight_toRightOf="@id/cvMenu5"
+                app:layout_constraintTop_toBottomOf="@id/cvMenu5" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvMenu6"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                app:cardBackgroundColor="@color/grey_light"
+                app:cardCornerRadius="47.5dp"
+                app:layout_constraintLeft_toRightOf="@id/cvMenu5"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_menu_cemetery" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/MulishWhiteMediumStyleTiny"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Persyaratan\nAkta Kematian"
+                app:layout_constraintLeft_toLeftOf="@id/cvMenu6"
+                app:layout_constraintRight_toRightOf="@id/cvMenu6"
+                app:layout_constraintTop_toBottomOf="@id/cvMenu6" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</HorizontalScrollView>

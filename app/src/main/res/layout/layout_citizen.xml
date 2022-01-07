@@ -8,14 +8,14 @@
         android:id="@+id/constraintContainer1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
         android:layout_weight="1"
+        android:padding="5dp"
         android:orientation="vertical">
 
         <View
             android:id="@+id/viewTransparent1"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:background="@android:color/transparent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,6 @@
             android:id="@+id/LinearMenu1"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewTransparent1">
 
             <androidx.cardview.widget.CardView
@@ -42,55 +41,48 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_margin="8dp"
                     android:gravity="center"
-                    android:text="@string/menu_citizen_one"
-                    android:layout_margin="8dp" />
+                    android:text="@string/menu_citizen_one" />
 
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/relativeImageContainer1"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvRounded1"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_centerInParent="true"
+            app:cardBackgroundColor="@color/light_blue"
+            app:cardCornerRadius="45dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvRounded1"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_centerInParent="true"
-                app:cardBackgroundColor="@color/light_blue"
-                app:cardCornerRadius="45dp">
+                android:id="@+id/cvImageContainer1"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="42.5dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvImageContainer1"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/imageResource1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="42.5dp">
-
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:id="@+id/imageResource1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_profile_photo"
-                        app:lottie_autoPlay="true"
-                        app:lottie_fileName="lottie/lottie_kk.json"
-                        app:lottie_loop="true"/>
-
-                </androidx.cardview.widget.CardView>
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_profile_photo"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="lottie/lottie_kk.json"
+                    app:lottie_loop="true" />
 
             </androidx.cardview.widget.CardView>
 
-        </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -98,14 +90,14 @@
         android:id="@+id/constraintContainer2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
         android:layout_weight="1"
+        android:padding="5dp"
         android:orientation="vertical">
 
         <View
             android:id="@+id/viewTransparent2"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:background="@android:color/transparent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -132,55 +124,48 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_margin="8dp"
                     android:gravity="center"
-                    android:text="@string/menu_citizen_two"
-                    android:layout_margin="8dp" />
+                    android:text="@string/menu_citizen_two" />
 
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/relativeImageContainer2"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvRounded2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_centerInParent="true"
+            app:cardBackgroundColor="@color/light_blue"
+            app:cardCornerRadius="45dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvRounded2"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_centerInParent="true"
-                app:cardBackgroundColor="@color/light_blue"
-                app:cardCornerRadius="45dp">
+                android:id="@+id/cvImageContainer2"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="42.5dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvImageContainer2"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/imageResource2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="42.5dp">
-
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:id="@+id/imageResource2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_profile_photo"
-                        app:lottie_autoPlay="true"
-                        app:lottie_fileName="lottie/lottie_ktp.json"
-                        app:lottie_loop="true"/>
-
-                </androidx.cardview.widget.CardView>
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_profile_photo"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="lottie/lottie_ktp.json"
+                    app:lottie_loop="true" />
 
             </androidx.cardview.widget.CardView>
 
-        </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

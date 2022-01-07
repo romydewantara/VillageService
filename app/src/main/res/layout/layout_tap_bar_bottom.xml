@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/bottom_bar">
 
     <LinearLayout
         android:id="@+id/homeMenu"
@@ -26,11 +26,9 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvHome"
-            style="@style/MulishBoldBlackStyle1"
+            style="@style/MulishBoldBlackStyleTiny"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/homeIcon"
-            android:layout_centerInParent="true"
             android:text="Beranda" />
 
     </LinearLayout>
@@ -57,7 +55,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvCitizen"
-            style="@style/MulishBoldBlackStyle1"
+            style="@style/MulishBoldBlackStyleTiny"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Warga" />
@@ -85,7 +83,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvNotification"
-            style="@style/MulishBoldBlackStyle1"
+            style="@style/MulishBoldBlackStyleTiny"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Notifikasi" />

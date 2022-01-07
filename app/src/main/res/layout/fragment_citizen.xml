@@ -17,47 +17,17 @@
             android:background="@drawable/ic_bg_home_by_stwn"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintHeight_percent="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/backButton"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:src="@mipmap/ic_back_blue"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent=".1" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvTitleInputUserPage"
-                style="@style/MulishBlueBoldStyle5"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="DAFTAR WARGA RT. 09"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/backButton"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent=".9"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvInfoLeader"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
             android:clickable="false"
             android:visibility="invisible"
             app:cardCornerRadius="10dp"
@@ -66,7 +36,7 @@
             app:layout_constraintHeight_percent=".20"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintHeader">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -79,7 +49,7 @@
                     style="@style/MulishWhiteBoldStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bpk. Sukina\n(Ketua RT. 09)"
+                    android:text="Bpk. Sukina\n(Ketua RT. 007)"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -131,11 +101,10 @@
 
                 <Button
                     android:id="@+id/editProfileButton"
-                    style="@style/MulishBlueBoldStyle2"
+                    style="@style/MulishBlueBoldStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_button_edit"
-                    android:maxLines="1"
                     android:text="Edit"
                     android:textAllCaps="false"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -149,7 +118,9 @@
             android:id="@+id/cvInfoWargaBaru"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
             android:clickable="false"
             android:visibility="invisible"
             app:cardCornerRadius="10dp"
@@ -163,80 +134,81 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="#6D8299">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvWT1"
-                        style="@style/MulishRegularStyle1"
+                        style="@style/MulishWhiteMediumStyleTiny"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Daftar Warga\nTetap"
                         android:gravity="center"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toTopOf="@id/viewWT1"/>
+                        android:text="Daftar Warga\nTetap"
+                        app:layout_constraintBottom_toTopOf="@id/viewWT1"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <View
                         android:id="@+id/viewWT1"
                         android:layout_width="match_parent"
                         android:layout_height="0.6dp"
-                        android:background="@color/blue"
-                        app:layout_constraintTop_toBottomOf="@id/tvWT1"
-                        app:layout_constraintBottom_toTopOf="@id/tvJWT1"/>
+                        android:background="@color/white_50"
+                        app:layout_constraintBottom_toTopOf="@id/tvJWT1"
+                        app:layout_constraintTop_toBottomOf="@id/tvWT1" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvJWT1"
-                        style="@style/MulishBlueBoldStyle1"
+                        style="@style/MulishWhiteBoldStyle1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="149 jiwa"
                         android:gravity="center"
-                        app:layout_constraintTop_toBottomOf="@id/viewWT1"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:text="149 jiwa"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/viewWT1" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View
                     android:layout_width="0.5dp"
                     android:layout_height="match_parent"
-                    android:background="@color/light_blue"/>
+                    android:background="@color/white_50" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvWT2"
-                        style="@style/MulishRegularStyle1"
+                        style="@style/MulishWhiteMediumStyleTiny"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Daftar Warga\nTidak Tetap"
                         android:gravity="center"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toTopOf="@id/viewWT2"/>
+                        android:text="Daftar Warga\nTidak Tetap"
+                        app:layout_constraintBottom_toTopOf="@id/viewWT2"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <View
                         android:id="@+id/viewWT2"
                         android:layout_width="match_parent"
                         android:layout_height="0.6dp"
-                        android:background="@color/blue"
-                        app:layout_constraintTop_toBottomOf="@id/tvWT2"
-                        app:layout_constraintBottom_toTopOf="@id/tvJWT2"/>
+                        android:background="@color/white_50"
+                        app:layout_constraintBottom_toTopOf="@id/tvJWT2"
+                        app:layout_constraintTop_toBottomOf="@id/tvWT2" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvJWT2"
-                        style="@style/MulishBlueBoldStyle1"
+                        style="@style/MulishWhiteBoldStyle1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="56 jiwa"
                         android:gravity="center"
-                        app:layout_constraintTop_toBottomOf="@id/viewWT2"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:text="56 jiwa"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/viewWT2" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -245,13 +217,43 @@
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
+            android:id="@+id/linearMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/dark_blue"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/cvInfoWargaBaru">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLayoutSyarat"
+                style="@style/MulishWhiteBoldStyle3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Syarat-syarat Pengajuan Surat Pengantar"
+                app:layout_constraintTop_toBottomOf="@id/cvInfoWargaBaru" />
+
+            <include
+                layout="@layout/layout_citizen_info"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/linearMainMenu"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="center"
             android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@id/cvInfoWargaBaru"
+            app:layout_constraintTop_toBottomOf="@id/linearMiddle"
             app:layout_constraintBottom_toTopOf="@id/addUserButton">
+
             <include layout="@layout/layout_citizen" />
         </LinearLayout>
 

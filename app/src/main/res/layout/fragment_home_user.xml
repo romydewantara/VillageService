@@ -22,61 +22,64 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:padding="10dp"
-        android:visibility="invisible"
         android:src="@mipmap/ic_sign_out"
+        android:visibility="invisible"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutSpace"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:visibility="invisible"
-        app:layout_constraintHeight_percent="0.21"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:id="@+id/profile"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            app:layout_constraintBottom_toTopOf="@id/tvKKNumber"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="50dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvProfile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerInParent="true"
+                android:id="@+id/cardView"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_gravity="center"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="50dp">
+                app:cardCornerRadius="47.5dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
-                    android:layout_width="95dp"
-                    android:layout_height="95dp"
+                <ImageView
+                    android:id="@+id/imageProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="47.5dp">
-
-                    <ImageView
-                        android:id="@+id/imageProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_diamond" />
-
-                </androidx.cardview.widget.CardView>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_man_profile" />
 
             </androidx.cardview.widget.CardView>
 
-        </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNumberTitle"
+            style="@style/MulishWhiteMediumStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="No. Kartu Keluarga:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile"
+            app:layout_constraintWidth_percent=".5" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvKKNumber"
@@ -84,11 +87,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="No.Kartu Keluarga:\n012345678910"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile"
+            android:maxLines="2"
+            android:text="012345678910"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintWidth_percent=".5"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNumberTitle"
+            app:layout_constraintWidth_percent=".5" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvKKKep1"
+            style="@style/MulishWhiteMediumStyle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Kepala Keluarga:"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile"
+            app:layout_constraintWidth_percent=".5" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvKKKep"
@@ -96,11 +112,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Kepala Keluarga:\nCristiano Ronaldo"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile"
+            android:maxLines="1"
+            android:text="Cristiano Ronaldo"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintWidth_percent=".5"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvKKKep1"
+            app:layout_constraintWidth_percent=".5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -108,10 +125,10 @@
         android:id="@+id/constraintContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="invisible"
-        android:paddingTop="25dp"
         android:paddingLeft="15dp"
+        android:paddingTop="25dp"
         android:paddingRight="15dp"
+        android:visibility="invisible"
         app:layout_constraintHeight_percent=".6"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -180,7 +197,7 @@
                 android:id="@+id/constraintInfo2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white"
+                android:background="@color/grey_light"
                 android:orientation="vertical">
 
                 <ImageView
@@ -226,7 +243,7 @@
                 android:id="@+id/constraintInfo3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white"
+                android:background="@color/grey_light"
                 android:orientation="vertical">
 
                 <ImageView
@@ -364,7 +381,7 @@
                 android:id="@+id/constraintInfo6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white"
+                android:background="@color/grey_light"
                 android:orientation="vertical">
 
                 <ImageView
@@ -392,29 +409,6 @@
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvBanner"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:visibility="invisible"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintHeight_percent=".18"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintContainer"
-        app:layout_constraintWidth_percent=".65">
-
-        <ImageSwitcher
-            android:id="@+id/imageSwitcher"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/dark_blue_max"
-            android:visibility="visible" />
-
-    </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:id="@+id/overlay"

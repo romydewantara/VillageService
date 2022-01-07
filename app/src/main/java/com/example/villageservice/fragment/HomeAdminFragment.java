@@ -50,6 +50,7 @@ public class HomeAdminFragment extends Fragment {
     private CustomLoadingDialog customLoadingDialog;
 
     private RelativeLayout overlay;
+    private RelativeLayout relativeSignOut;
     private ConstraintLayout constraintContainer;
     private ConstraintLayout constraintHeader;
     private View view;
@@ -131,6 +132,7 @@ public class HomeAdminFragment extends Fragment {
         constraintContainer = view.findViewById(R.id.constraintContainer);
         constraintHeader = view.findViewById(R.id.constraintHeader);
         signOutButton = view.findViewById(R.id.signOutButton);
+        relativeSignOut = view.findViewById(R.id.relativeSignOut);
         tvHeader = view.findViewById(R.id.tvHeader);
         tvContentHeader = view.findViewById(R.id.tvContentHeader);
         tvInfoTitle1 = view.findViewById(R.id.tvInfoTitle1);
@@ -228,7 +230,7 @@ public class HomeAdminFragment extends Fragment {
                 //Toast.makeText(context, "Permintaan Persetujuan Pembuatan Surat Kematian", Toast.LENGTH_SHORT).show();
             }
         });
-        signOutButton.setOnClickListener(new View.OnClickListener() {
+        relativeSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showCustomDialog("", "Apakah anda yakin anda ingin keluar?", "Ya", "Batal");

@@ -9,11 +9,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Handler;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +57,6 @@ public class HomeUserFragment extends Fragment {
 
     private Handler imageSwitcherHandler;
     private Runnable imageSwitcherRunnable;
-    private ImageSwitcher imageSwitcher;
 
     private Animation imgAnimationIn;
     private Animation imgAnimationOut;
@@ -73,7 +74,6 @@ public class HomeUserFragment extends Fragment {
     private ImageView signOutButton;
     private ConstraintLayout layoutSpace;
     private ConstraintLayout constraintContainer;
-    private CardView cvBanner;
 
     private int currentIndex = -1;
     private final int[] images = {
@@ -138,11 +138,9 @@ public class HomeUserFragment extends Fragment {
         cvInfo6 = view.findViewById(R.id.cvInfo6);
         overlay = view.findViewById(R.id.overlay);
 
-        imageSwitcher = view.findViewById(R.id.imageSwitcher);
         signOutButton = view.findViewById(R.id.signOutButton);
         layoutSpace = view.findViewById(R.id.layoutSpace);
         constraintContainer = view.findViewById(R.id.constraintContainer);
-        cvBanner = view.findViewById(R.id.cvBanner);
 
         return view;
     }
@@ -152,32 +150,12 @@ public class HomeUserFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         prepareLayout();
-        String textKK = "No. Kartu Keluarga:\n" + kartuKeluarga.getIdKartuKeluarga();
-        String textKep = "Kepala Keluarga:\n" + kartuKeluarga.getNamaKepalaKeluarga();
+        String textKK = kartuKeluarga.getIdKartuKeluarga();
+        String textKep = kartuKeluarga.getNamaKepalaKeluarga();
         tvKKNumber.setText(textKK);
         tvKKKep.setText(textKep);
-        imageSwitcher.setInAnimation(imgAnimationIn);
-        imageSwitcher.setOutAnimation(imgAnimationOut);
-        imageSwitcher.setVisibility(View.VISIBLE);
-        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                ImageView imageView = new ImageView(context);
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                return imageView;
-            }
-        });
-
-        imageSwitcherHandler = new Handler();
-        imageSwitcherRunnable = getDurationRunnable();
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                imageSwitcherHandler.post(imageSwitcherRunnable);
-            }
-        };
-        timer.scheduleAtFixedRate(timerTask, 0, 4500);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvKKNumber, 1,14, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvKKKep, 1,14, 1, TypedValue.COMPLEX_UNIT_SP);
 
         cvInfo1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -273,7 +251,6 @@ public class HomeUserFragment extends Fragment {
                 signOutButton.setVisibility(View.VISIBLE);
                 layoutSpace.setVisibility(View.VISIBLE);
                 constraintContainer.setVisibility(View.VISIBLE);
-                cvBanner.setVisibility(View.VISIBLE);
                 //cvBanner.startAnimation(slideUp);
                 showOverlay(false);
             }
@@ -283,17 +260,6 @@ public class HomeUserFragment extends Fragment {
     private void goToNextFragment(String menuSelected) {
         fragmentListener.onFragmentPassingData(menuSelected);
         fragmentListener.onFragmentFinish(HomeUserFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_ENTRY, true);
-    }
-
-    private Runnable getDurationRunnable() {
-        return new Runnable() {
-            @Override
-            public void run() {
-                currentIndex++;
-                if (currentIndex == images.length) currentIndex = 0;
-                imageSwitcher.setImageResource(images[currentIndex]);
-            }
-        };
     }
 
     private void showCustomDialog(String title, String message, String pButton, String nButton) {
