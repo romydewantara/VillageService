@@ -29,6 +29,15 @@
             <include layout="@layout/layout_pdf" />
         </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/ic_back_blue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".1" />
+
         <Button
             android:id="@+id/pdfViewerButton"
             style="@style/MulishWhiteBoldStyle2"

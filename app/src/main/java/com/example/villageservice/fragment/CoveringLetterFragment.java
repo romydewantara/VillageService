@@ -311,7 +311,7 @@ public class CoveringLetterFragment extends Fragment {
                 overlay.setVisibility(View.INVISIBLE);
 
                 FragmentManager fm = getFragmentManager();
-                CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, "", "Data berhasil terkirim")
+                CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, "", "Surat pengantar berhasil terkirim, mohon menunggu persetujuan Pengurus RT")
                         .setButton("Tutup", "", new CustomAlertDialogListener() {
                             @Override
                             public void onNegativePressed() {

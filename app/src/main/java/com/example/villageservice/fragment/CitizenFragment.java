@@ -21,6 +21,7 @@ import com.example.villageservice.R;
 import com.example.villageservice.activity.AdminActivity;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.model.Admin;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
@@ -43,9 +44,12 @@ public class CitizenFragment extends Fragment {
     private View view;
     private AppCompatTextView tvJWT1;
     private AppCompatTextView tvJWT2;
+    private AppCompatTextView tvName;
+    private AppCompatTextView tvPhoneNum;
     private CardView cvInfoLeader;
     private CardView cvInfoWargaBaru;
     private Button addUserButton;
+    private Button editProfileButton;
 
     private String previousFragment = "";
 
@@ -95,10 +99,13 @@ public class CitizenFragment extends Fragment {
         linearMiddle = view.findViewById(R.id.linearMiddle);
         linearMainMenu = view.findViewById(R.id.linearMainMenu);
         addUserButton = view.findViewById(R.id.addUserButton);
+        editProfileButton = view.findViewById(R.id.editProfileButton);
         cvInfoLeader = view.findViewById(R.id.cvInfoLeader);
         cvInfoWargaBaru = view.findViewById(R.id.cvInfoWargaBaru);
         tvJWT1 = view.findViewById(R.id.tvJWT1);
         tvJWT2 = view.findViewById(R.id.tvJWT2);
+        tvName = view.findViewById(R.id.tvName);
+        tvPhoneNum = view.findViewById(R.id.tvPhoneNum);
         overlay = view.findViewById(R.id.overlay);
 
         return view;
@@ -111,6 +118,11 @@ public class CitizenFragment extends Fragment {
         initListener();
         setUpData();
         prepareLayout();
+        Admin admin = VSPreference.getInstance(context).getAdmin();
+        if (admin != null) {
+            tvName.setText("Bpk. " + admin.getName());
+            tvPhoneNum.setText(admin.getPhoneNumber());
+        }
     }
 
     @Override
@@ -140,6 +152,12 @@ public class CitizenFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_INPUT_USER, true);
+            }
+        });
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_ADMIN_PROFILE, true);
             }
         });
     }

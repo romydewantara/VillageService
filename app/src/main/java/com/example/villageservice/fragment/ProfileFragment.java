@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
     private CustomLoadingDialog customLoadingDialog;
     private KartuKeluarga kartuKeluarga;
     private View view;
+    private ImageView backButton;
     private RelativeLayout overlay;
     private CardView cvPhotoProfile;
     private ConstraintLayout constraintIdentity;
@@ -139,6 +141,7 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
     }
 
     private void initView() {
+        backButton = view.findViewById(R.id.backButton);
         cvPhotoProfile = view.findViewById(R.id.cvPhotoProfile);
         constraintIdentity = view.findViewById(R.id.constraintIdentity);
         tvKepalaKeluarga = view.findViewById(R.id.tvKepalaKeluarga);
@@ -156,7 +159,12 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
     }
 
     private void initListener() {
-
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentListener.onActivityBackPressed();
+            }
+        });
     }
 
     public void showOverlay(boolean isShow) {
@@ -185,6 +193,6 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
 
     @Override
     public void onItemClick(DataKeluargaAdapter.DataKeluargaHolder dataKeluargaHolder, String ktp) {
-        Toast.makeText(context, "Detail for " + ktp + " is coming soon", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "detail for ID:" + ktp + " is coming soon…", Toast.LENGTH_SHORT).show();
     }
 }

@@ -2,6 +2,7 @@ package com.example.villageservice.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,6 +40,7 @@ public class PdfViewerFragment extends Fragment {
 
     private View view;
     private View pdfFile;
+    private ImageView backButton;
     private Button pdfViewerButton;
     private AppCompatTextView tvLampiran;
     private AppCompatTextView tvNumber;
@@ -134,6 +136,7 @@ public class PdfViewerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_preview_pdf, container, false);
+        backButton = view.findViewById(R.id.backButton);
         pdfFile = view.findViewById(R.id.relativeLayoutPdf);
         pdfViewerButton = view.findViewById(R.id.pdfViewerButton);
         initView();
@@ -213,6 +216,10 @@ public class PdfViewerFragment extends Fragment {
             if (isAdmin) {
                 disableButton();
             }
+        } else {
+            if (!isAdmin) {
+                disableButton();
+            }
         }
     }
 
@@ -236,12 +243,18 @@ public class PdfViewerFragment extends Fragment {
                 disableButton();
             }
         });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentListener.onActivityBackPressed();
+            }
+        });
     }
 
     @SuppressLint("NewApi")
     private void disableButton() {
         pdfViewerButton.setBackgroundResource(R.drawable.bg_button_disabled);
-        pdfViewerButton.setTextColor(context.getColor(R.color.dark_grey));
+        pdfViewerButton.setTextColor(Color.parseColor("#80B1D0E0"));
         pdfViewerButton.setEnabled(false);
     }
 

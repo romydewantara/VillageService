@@ -4,6 +4,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -69,10 +71,13 @@ public class DataKeluargaAdapter extends RecyclerView.Adapter<DataKeluargaAdapte
             tvStatus = itemView.findViewById(R.id.tvStatus);
 
             Log.d("XXXLOG", "DataKeluargaHolder - tvKTP: " + tvKTP);
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+            Animation clickEffect = AnimationUtils.loadAnimation(v.getContext(), R.anim.button_bounched);
+            v.startAnimation(clickEffect);
             if (itemClickListener != null) itemClickListener.onItemClick(this, tvKTP.getText().toString());
         }
     }

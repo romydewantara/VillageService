@@ -2,7 +2,20 @@ package com.example.villageservice.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,19 +26,6 @@ import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.os.Handler;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageSwitcher;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.ViewSwitcher;
-
 import com.example.villageservice.R;
 import com.example.villageservice.activity.SignInActivity;
 import com.example.villageservice.activity.UserActivity;
@@ -33,14 +33,13 @@ import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.model.Admin;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.utility.ConstantVariable;
-import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.net.URLEncoder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,15 +54,15 @@ public class HomeUserFragment extends Fragment {
     private KartuKeluarga kartuKeluarga;
     private View view;
 
-    private Handler imageSwitcherHandler;
-    private Runnable imageSwitcherRunnable;
-
     private Animation imgAnimationIn;
     private Animation imgAnimationOut;
 
     private RelativeLayout overlay;
+    private RelativeLayout relativeSignOut;
     private AppCompatTextView tvKKNumber;
     private AppCompatTextView tvKKKep;
+    private AppCompatTextView tvWhatsapp;
+    private AppCompatTextView tvCall;
     private CardView cvInfo1;
     private CardView cvInfo2;
     private CardView cvInfo3;
@@ -71,10 +70,16 @@ public class HomeUserFragment extends Fragment {
     private CardView cvInfo5;
     private CardView cvInfo6;
 
+    private ImageView imageWhatsapp;
+    private ImageView imageCall;
     private ImageView signOutButton;
+    private ConstraintLayout constraintContact;
     private ConstraintLayout layoutSpace;
     private ConstraintLayout constraintContainer;
 
+    Animation slideUp;
+    Animation animContact;
+    Animation clickEffect;
     private int currentIndex = -1;
     private final int[] images = {
             R.drawable.banner_one,
@@ -130,6 +135,8 @@ public class HomeUserFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_home_user, container, false);
         tvKKNumber = view.findViewById(R.id.tvKKNumber);
         tvKKKep = view.findViewById(R.id.tvKKKep);
+        tvWhatsapp = view.findViewById(R.id.tvWhatsapp);
+        tvCall = view.findViewById(R.id.tvCall);
         cvInfo1 = view.findViewById(R.id.cvInfo1);
         cvInfo2 = view.findViewById(R.id.cvInfo2);
         cvInfo3 = view.findViewById(R.id.cvInfo3);
@@ -139,7 +146,11 @@ public class HomeUserFragment extends Fragment {
         overlay = view.findViewById(R.id.overlay);
 
         signOutButton = view.findViewById(R.id.signOutButton);
+        relativeSignOut = view.findViewById(R.id.relativeSignOut);
         layoutSpace = view.findViewById(R.id.layoutSpace);
+        constraintContact = view.findViewById(R.id.constraintContact);
+        imageWhatsapp = view.findViewById(R.id.imageWhatsapp);
+        imageCall = view.findViewById(R.id.imageCall);
         constraintContainer = view.findViewById(R.id.constraintContainer);
 
         return view;
@@ -154,12 +165,18 @@ public class HomeUserFragment extends Fragment {
         String textKep = kartuKeluarga.getNamaKepalaKeluarga();
         tvKKNumber.setText(textKK);
         tvKKKep.setText(textKep);
+        Admin admin = VSPreference.getInstance(context).getAdmin();
+        if (admin != null) {
+            tvWhatsapp.setText("WhatsApp\n" + admin.getPhoneNumber());
+            tvCall.setText("Panggil\n" + admin.getPhoneNumber());
+        }
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvKKNumber, 1,14, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvKKKep, 1,14, 1, TypedValue.COMPLEX_UNIT_SP);
 
         cvInfo1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cvInfo1.startAnimation(clickEffect);
                 goToNextFragment(ConstantVariable.KEY_CL_NIKAH);
             }
         });
@@ -193,7 +210,40 @@ public class HomeUserFragment extends Fragment {
                 goToNextFragment(ConstantVariable.KEY_CL_AKTA_KEMATIAN);
             }
         });
-        signOutButton.setOnClickListener(new View.OnClickListener() {
+        imageWhatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageWhatsapp.startAnimation(animContact);
+//                String number = "+6281932634438";
+                String number = "+6285156649677";
+                String message = "Assalamu'alaikum, permisi Bapak/Ibu RT, maaf mengganggu waktunya.\nSaya dari keluarga Bpk. " + kartuKeluarga.getNamaKepalaKeluarga() + " ingin bertanya.";
+                try{
+                    PackageManager packageManager = getActivity().getPackageManager();
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    String url = "https://api.whatsapp.com/send?phone="+ number +"&text=" + URLEncoder.encode(message, "UTF-8");
+                    i.setPackage("com.whatsapp");
+                    i.setData(Uri.parse(url));
+                    if (i.resolveActivity(packageManager) != null) {
+                        startActivity(i);
+                    }else {
+                        Toast.makeText(context, "Whatsapp app not installed in your phone", Toast.LENGTH_SHORT).show();
+                    }
+                } catch(Exception e) {
+                    Log.e("ERROR WHATSAPP",e.toString());
+                    Toast.makeText(context, "Whatsapp app not installed in your phone", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        imageCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageCall.startAnimation(animContact);
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:+6285156649677"));
+                startActivity(intent);
+            }
+        });
+        relativeSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showCustomDialog("", "Apakah anda yakin anda ingin keluar?", "Ya", "Batal");
@@ -226,6 +276,9 @@ public class HomeUserFragment extends Fragment {
         imgAnimationIn.setDuration(1200);
         imgAnimationOut = AnimationUtils.loadAnimation(context, android.R.anim.slide_out_right);
         imgAnimationOut.setDuration(1200);
+        slideUp = AnimationUtils.loadAnimation(context, R.anim.bounched_show);
+        clickEffect = AnimationUtils.loadAnimation(context, R.anim.button_bounched);
+        animContact = AnimationUtils.loadAnimation(context, R.anim.small_button_bounched);
 
         //fetch family registered
         kartuKeluarga = VSPreference.getInstance(context).getKK();
@@ -247,11 +300,11 @@ public class HomeUserFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.bounched_show);
                 signOutButton.setVisibility(View.VISIBLE);
                 layoutSpace.setVisibility(View.VISIBLE);
                 constraintContainer.setVisibility(View.VISIBLE);
-                //cvBanner.startAnimation(slideUp);
+                constraintContact.setVisibility(View.VISIBLE);
+                constraintContact.startAnimation(slideUp);
                 showOverlay(false);
             }
         }, 1800);

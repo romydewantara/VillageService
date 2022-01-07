@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.example.villageservice.model.Admin;
 import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
@@ -55,12 +56,20 @@ public class VSPreference {
         return getObject(ConstantVariable.KEY_USER, User.class);
     }
 
-    public void insertUser(String key, User user) {
-        putObject(key, user);
+    public void setPhoneNum(String key, String phone) {
+        putString(key, phone);
     }
 
-    public User getDataUser(String key) {
-        return (User) getObject(key, User.class);
+    public String getPhoneNum(String key) {
+        return getString(key);
+    }
+
+    public void setAdmin(Admin admin) {
+        putObject(ConstantVariable.KEY_ADMIN, admin);
+    }
+
+    public Admin getAdmin() {
+        return (Admin) getObject(ConstantVariable.KEY_ADMIN, Admin.class);
     }
 
     public void setKK(KartuKeluarga kartuKeluarga) {

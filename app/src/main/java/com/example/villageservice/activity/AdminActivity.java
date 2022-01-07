@@ -16,6 +16,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
+import com.example.villageservice.fragment.AdminProfileFragment;
 import com.example.villageservice.fragment.CitizenFragment;
 import com.example.villageservice.fragment.FormListFragment;
 import com.example.villageservice.fragment.HomeAdminFragment;
@@ -66,6 +67,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     public static final int FRAGMENT_FINISH_GOTO_CITIZENS = 3;
     public static final int FRAGMENT_FINISH_GOTO_INPUT_USER = 4;
     public static final int FRAGMENT_FINISH_GOTO_NOTIFICATION = 6;
+    public static final int FRAGMENT_FINISH_GOTO_ADMIN_PROFILE = 7;
 
     public static final String TAG_FRAGMENT_HOME_ADMIN = "home_admin_fragment";
     public static final String TAG_FRAGMENT_FORM_LIST = "form_list_fragment";
@@ -73,6 +75,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     public static final String TAG_FRAGMENT_CITIZENS = "citizens_fragment";
     public static final String TAG_FRAGMENT_INPUT_USER = "input_user_fragment";
     public static final String TAG_FRAGMENT_NOTIFICATIONS = "notifications_fragment";
+    public static final String TAG_FRAGMENT_ADMIN_PROFILE = "admin_profile_fragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -266,6 +269,14 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                         .replace(R.id.container, fragment, TAG_FRAGMENT_NOTIFICATIONS)
                         .commit();
                 break;
+            case FRAGMENT_FINISH_GOTO_ADMIN_PROFILE:
+                fragment = new AdminProfileFragment();
+                ((AdminProfileFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(enter, exit)
+                        .replace(R.id.container, fragment, TAG_FRAGMENT_ADMIN_PROFILE)
+                        .commit();
+                break;
         }
     }
 
@@ -343,6 +354,8 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_CITIZENS, false);
         } else if (fragment instanceof NotificationsFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
+        } else if (fragment instanceof AdminProfileFragment) {
+            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_CITIZENS, false);
         } else {
             super.onBackPressed();
         }

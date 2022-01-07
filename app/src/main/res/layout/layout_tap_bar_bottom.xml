@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingTop="5dp"
+        android:paddingTop="10dp"
         android:paddingBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -20,13 +20,13 @@
 
         <ImageView
             android:id="@+id/homeIcon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@mipmap/ic_home_off" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvHome"
-            style="@style/MulishBoldBlackStyleTiny"
+            style="@style/MulishBoldBlackStyleTyke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Beranda" />
@@ -49,13 +49,13 @@
 
         <ImageView
             android:id="@+id/citizenIcon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@mipmap/ic_citizen_off" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvCitizen"
-            style="@style/MulishBoldBlackStyleTiny"
+            style="@style/MulishBoldBlackStyleTyke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Warga" />
@@ -77,13 +77,13 @@
 
         <ImageView
             android:id="@+id/notificationIcon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@mipmap/ic_notification_off" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvNotification"
-            style="@style/MulishBoldBlackStyleTiny"
+            style="@style/MulishBoldBlackStyleTyke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Notifikasi" />

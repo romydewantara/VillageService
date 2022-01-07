@@ -1,6 +1,7 @@
 package com.example.villageservice.activity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -56,7 +57,9 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     private ImageView homeIcon;
     private ImageView profileIcon;
     private ImageView notificationIcon;
+    private AppCompatTextView tvHome;
     private AppCompatTextView tvCitizen;
+    private AppCompatTextView tvNotification;
 
     private String menuSelected = "";
     private Bundle bundle;
@@ -83,6 +86,8 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         profileIcon = findViewById(R.id.citizenIcon);
         notificationIcon = findViewById(R.id.notificationIcon);
         bottomBar = findViewById(R.id.bottomBar);
+        tvHome = findViewById(R.id.tvHome);
+        tvNotification = findViewById(R.id.tvNotification);
         tvCitizen = findViewById(R.id.tvCitizen);
         tvCitizen.setText(getApplicationContext().getResources().getString(R.string.profile_menu));
 
@@ -115,15 +120,43 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         });
     }
 
+    @SuppressLint({"NewApi", "UseCompatLoadingForDrawables"})
+    private void setBottomBar(String tag) {
+        switch (tag) {
+            case TAG_FRAGMENT_HOME_USER:
+                homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_on));
+                profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_off));
+                notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
+                tvHome.setTextColor(Color.parseColor("#000000"));
+                tvCitizen.setTextColor(Color.parseColor("#A9A9A9"));
+                tvNotification.setTextColor(Color.parseColor("#A9A9A9"));
+                break;
+            case TAG_FRAGMENT_PROFILE:
+                homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
+                profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_on));
+                notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
+                tvHome.setTextColor(Color.parseColor("#A9A9A9"));
+                tvCitizen.setTextColor(Color.parseColor("#000000"));
+                tvNotification.setTextColor(Color.parseColor("#A9A9A9"));
+                break;
+            case TAG_FRAGMENT_NOTIFICATIONS:
+                homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
+                profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_citizen_off));
+                notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_on));
+                tvHome.setTextColor(Color.parseColor("#A9A9A9"));
+                tvCitizen.setTextColor(Color.parseColor("#A9A9A9"));
+                tvNotification.setTextColor(Color.parseColor("#000000"));
+                break;
+        }
+    }
+
     @SuppressLint("NewApi")
     private void goToHome() {
         fragment = new HomeUserFragment();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, fragment, TAG_FRAGMENT_CL)
+                .replace(R.id.container, fragment, TAG_FRAGMENT_HOME_USER)
                 .commit();
-        homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_on));
-        profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_profile_off));
-        notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
+        setBottomBar(TAG_FRAGMENT_HOME_USER);
     }
 
     @SuppressLint("NewApi")
@@ -132,9 +165,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment, TAG_FRAGMENT_PROFILE)
                 .commit();
-        homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
-        profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_profile_on));
-        notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_off));
+        setBottomBar(TAG_FRAGMENT_PROFILE);
     }
 
     @SuppressLint("NewApi")
@@ -143,9 +174,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment, TAG_FRAGMENT_NOTIFICATIONS)
                 .commit();
-        homeIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_home_off));
-        profileIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_profile_off));
-        notificationIcon.setImageDrawable(getApplicationContext().getDrawable(R.mipmap.ic_notification_on));
+        setBottomBar(TAG_FRAGMENT_NOTIFICATIONS);
     }
 
     @Override

@@ -49,16 +49,16 @@
                     style="@style/MulishWhiteBoldStyle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bpk. Sukina\n(Ketua RT. 007)"
+                    android:text="Bpk. Sukina (Ketua RT. 007)"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvPeriod"
+                    android:id="@+id/tvPhoneNum"
                     style="@style/MulisGreyBoldStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Periode: 2019-2024"
+                    android:text="+6281932634438"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvName" />
 
