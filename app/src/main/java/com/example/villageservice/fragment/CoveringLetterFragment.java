@@ -398,8 +398,8 @@ public class CoveringLetterFragment extends Fragment {
         kewarganegaraanChooser.setAdapter(csAdapter);
 
         genderChooser.setSelection(genderAdapter.getPosition(user.getJenisKelamin()));
-        monthChooser.setSelection(genderAdapter.getPosition(user.getTanggalLahir().getBulan()));
-        kewarganegaraanChooser.setSelection(genderAdapter.getPosition(user.getKewarganegaraan()));
+        monthChooser.setSelection(monthAdapter.getPosition(user.getTanggalLahir().getBulan()));
+        kewarganegaraanChooser.setSelection(csAdapter.getPosition(user.getKewarganegaraan()));
 
         disabledAllView();
     }

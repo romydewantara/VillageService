@@ -254,6 +254,21 @@ public class InputUserDialog extends DialogFragment {
                 }
             }
         });
+        et4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!s.toString().equalsIgnoreCase("")) {
+                    if (s.toString().length() > 2 || Integer.parseInt(String.valueOf(s)) > 31) {
+                        et4.setText("31");
+                        et4.setSelection(et4.getText().length());
+                    }
+                }
+            }
+        });
         spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
