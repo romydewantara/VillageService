@@ -19,9 +19,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintNotifications"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="8dp"
+        android:visibility="invisible"
+        android:background="@drawable/background_waterpaint"
         app:layout_constraintTop_toBottomOf="@id/tvSubTitle"
         app:layout_constraintBottom_toBottomOf="parent">
 

@@ -5,7 +5,10 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.util.Log;
@@ -15,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.example.villageservice.R;
+import com.example.villageservice.adapter.NotificationsAdapter;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
@@ -31,17 +35,20 @@ import java.util.List;
  * Use the {@link NotificationsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NotificationsFragment extends Fragment {
+public class NotificationsFragment extends Fragment implements NotificationsAdapter.ItemClickListener {
 
     private Context context;
     private CustomLoadingDialog customLoadingDialog;
     private FragmentListener fragmentListener;
     private View view;
     private RelativeLayout overlay;
+    private RecyclerView recyclerNotification;
+    private ConstraintLayout constraintNotifications;
 
     private List<Object> coveringLetters;
     private KartuKeluarga kartuKeluarga;
-    private ArrayList<Object> coveringLetterArrayList;
+    private ArrayList<CoveringLetter> coveringLetterArrayList;
+    private NotificationsAdapter notificationsAdapter;
 
     private boolean isAdmin = false;
 
@@ -89,9 +96,9 @@ public class NotificationsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_notifications, container, false);
-
+        recyclerNotification = view.findViewById(R.id.recyclerNotification);
+        constraintNotifications = view.findViewById(R.id.constraintNotifications);
         overlay = view.findViewById(R.id.overlay);
-
         return view;
     }
 
@@ -122,9 +129,11 @@ public class NotificationsFragment extends Fragment {
     private void initMandatory() {
         fragmentListener.onFragmentCreated(NotificationsFragment.this, previousFragment);
         customLoadingDialog = new CustomLoadingDialog(context);
+        coveringLetterArrayList = new ArrayList<>();
         coveringLetters = new ArrayList<>();
 
-        if (VSPreference.getInstance(context).getRole().equalsIgnoreCase(ConstantVariable.ADMIN)) isAdmin = true;
+        if (VSPreference.getInstance(context).getRole().equalsIgnoreCase(ConstantVariable.ADMIN))
+            isAdmin = true;
 
         if (isAdmin) {
             coveringLetters = VSPreference.getInstance(context).getCoveringLettersList();
@@ -144,7 +153,8 @@ public class NotificationsFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
+                constraintNotifications.setVisibility(View.VISIBLE);
+                populateData();
                 showOverlay(false);
             }
         }, 1400);
@@ -161,7 +171,21 @@ public class NotificationsFragment extends Fragment {
     }
 
     private void populateData() {
-
+        if (!coveringLetters.isEmpty()) {
+            for (int i = 0; i < coveringLetters.size(); i++) {
+                CoveringLetter coveringLetter = (CoveringLetter) coveringLetters.get(i);
+                coveringLetterArrayList.add(coveringLetter);
+            }
+            notificationsAdapter = new NotificationsAdapter(coveringLetterArrayList);
+            notificationsAdapter.setClickListener(NotificationsFragment.this);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+            recyclerNotification.setLayoutManager(layoutManager);
+            recyclerNotification.setAdapter(notificationsAdapter);
+        }
     }
 
+    @Override
+    public void onItemClicked(NotificationsAdapter.NotificationsHolder notificationsHolder, CoveringLetter coveringLetter, int position) {
+
+    }
 }
