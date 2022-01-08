@@ -52,6 +52,7 @@ public class HomeUserFragment extends Fragment {
     private CustomLoadingDialog customLoadingDialog;
     private FragmentListener fragmentListener;
     private KartuKeluarga kartuKeluarga;
+    private Admin admin;
     private View view;
 
     private Animation imgAnimationIn;
@@ -89,6 +90,7 @@ public class HomeUserFragment extends Fragment {
     };
 
     private String previousFragment = "";
+    private String phoneNumber;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -165,10 +167,13 @@ public class HomeUserFragment extends Fragment {
         String textKep = kartuKeluarga.getNamaKepalaKeluarga();
         tvKKNumber.setText(textKK);
         tvKKKep.setText(textKep);
-        Admin admin = VSPreference.getInstance(context).getAdmin();
+        admin = VSPreference.getInstance(context).getAdmin();
         if (admin != null) {
             tvWhatsapp.setText("WhatsApp\n" + admin.getPhoneNumber());
             tvCall.setText("Panggil\n" + admin.getPhoneNumber());
+            phoneNumber = admin.getPhoneNumber();
+        } else {
+            phoneNumber = "+6281932634438";
         }
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvKKNumber, 1,14, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvKKKep, 1,14, 1, TypedValue.COMPLEX_UNIT_SP);
@@ -214,23 +219,21 @@ public class HomeUserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 imageWhatsapp.startAnimation(animContact);
-//                String number = "+6281932634438";
-                String number = "+6285156649677";
                 String message = "Assalamu'alaikum, permisi Bapak/Ibu RT, maaf mengganggu waktunya.\nSaya dari keluarga Bpk. " + kartuKeluarga.getNamaKepalaKeluarga() + " ingin bertanya.";
                 try{
                     PackageManager packageManager = getActivity().getPackageManager();
                     Intent i = new Intent(Intent.ACTION_VIEW);
-                    String url = "https://api.whatsapp.com/send?phone="+ number +"&text=" + URLEncoder.encode(message, "UTF-8");
+                    String url = "https://api.whatsapp.com/send?phone="+ phoneNumber +"&text=" + URLEncoder.encode(message, "UTF-8");
                     i.setPackage("com.whatsapp");
                     i.setData(Uri.parse(url));
                     if (i.resolveActivity(packageManager) != null) {
                         startActivity(i);
                     }else {
-                        Toast.makeText(context, "Whatsapp app not installed in your phone", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Aplikasi Whatsapp belum terinstal di Handphone Anda", Toast.LENGTH_SHORT).show();
                     }
                 } catch(Exception e) {
                     Log.e("ERROR WHATSAPP",e.toString());
-                    Toast.makeText(context, "Whatsapp app not installed in your phone", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Aplikasi Whatsapp belum terinstal di Handphone Anda", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -239,7 +242,7 @@ public class HomeUserFragment extends Fragment {
             public void onClick(View v) {
                 imageCall.startAnimation(animContact);
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:+6285156649677"));
+                intent.setData(Uri.parse("tel:" + phoneNumber));
                 startActivity(intent);
             }
         });

@@ -45,7 +45,6 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
     private CustomLoadingDialog customLoadingDialog;
     private KartuKeluarga kartuKeluarga;
     private View view;
-    private ImageView backButton;
     private RelativeLayout overlay;
     private CardView cvPhotoProfile;
     private ConstraintLayout constraintIdentity;
@@ -141,7 +140,6 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
     }
 
     private void initView() {
-        backButton = view.findViewById(R.id.backButton);
         cvPhotoProfile = view.findViewById(R.id.cvPhotoProfile);
         constraintIdentity = view.findViewById(R.id.constraintIdentity);
         tvKepalaKeluarga = view.findViewById(R.id.tvKepalaKeluarga);
@@ -159,12 +157,7 @@ public class ProfileFragment extends Fragment implements DataKeluargaAdapter.Ite
     }
 
     private void initListener() {
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentListener.onActivityBackPressed();
-            }
-        });
+
     }
 
     public void showOverlay(boolean isShow) {

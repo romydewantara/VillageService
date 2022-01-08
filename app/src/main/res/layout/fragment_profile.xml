@@ -7,17 +7,6 @@
     android:background="@drawable/background_waterpaint"
     tools:context=".fragment.ProfileFragment">
 
-    <ImageView
-        android:id="@+id/backButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:padding="5dp"
-        android:src="@mipmap/ic_back_blue"
-        android:visibility="visible"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutPageSpace"
         android:layout_width="0dp"
@@ -83,7 +72,19 @@
         android:layout_height="0dp"
         android:background="@drawable/bg_profile_rounded_top"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutPageSpace" />
+        app:layout_constraintTop_toBottomOf="@id/layoutPageSpace">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:src="@mipmap/ic_ellipsis"
+            app:layout_constraintHeight_percent=".07"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintIdentity"

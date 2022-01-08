@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="genderItems">
+        <item>@string/gender</item>
         <item>@string/gender_male</item>
         <item>@string/gender_female</item>
     </string-array>
 
+    <string-array name="agamaItems">
+        <item>@string/agama</item>
+        <item>@string/ag_islam</item>
+        <item>@string/ag_kristen</item>
+        <item>@string/ag_katolik</item>
+        <item>@string/ag_hindu</item>
+        <item>@string/ag_buddha</item>
+        <item>@string/ag_konghucu</item>
+    </string-array>
+
     <string-array name="pendidikanItems">
+        <item>@string/pd</item>
         <item>@string/pd_sd</item>
         <item>@string/pd_smp</item>
         <item>@string/pd_sma</item>
@@ -14,35 +26,31 @@
     </string-array>
 
     <string-array name="kerjaItems">
+        <item>@string/kerja</item>
         <item>@string/k_pegawai_swasta</item>
         <item>@string/k_pegawai_negeri</item>
         <item>@string/k_petani</item>
-    </string-array>
-
-    <string-array name="statusItems">
-        <item>@string/pd_sd</item>
-        <item>@string/pd_smp</item>
-        <item>@string/pd_sma</item>
-        <item>@string/pd_diploma</item>
-        <item>@string/pd_strata_satu</item>
+        <item>@string/k_pelajar</item>
     </string-array>
 
     <string-array name="kewarganegaraanItems">
+        <item>@string/kewarganegaraan</item>
         <item>@string/k_wni</item>
         <item>@string/k_wna</item>
     </string-array>
 
     <string-array name="kawinItems">
+        <item>@string/status</item>
         <item>@string/s_kawin</item>
         <item>@string/s_belum_kawin</item>
     </string-array>
 
     <string-array name="ktpExampleItems">
         <item>123456789109876</item>
-        <item>678901234567889</item>
     </string-array>
 
     <string-array name="monthItems">
+        <item>@string/bulan</item>
         <item>Januari</item>
         <item>Februari</item>
         <item>Maret</item>
@@ -55,6 +63,10 @@
         <item>Oktober</item>
         <item>November</item>
         <item>Desember</item>
+    </string-array>
+
+    <string-array name="yearItems">
+        <item>@string/tahun</item>
     </string-array>
 
 </resources>

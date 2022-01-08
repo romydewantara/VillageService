@@ -28,6 +28,14 @@
     <!-- Gender Menu -->
     <string name="gender_male">Laki-laki</string>
     <string name="gender_female">Perempuan</string>
+
+    <string name="ag_islam">Islam</string>
+    <string name="ag_kristen">Kristen</string>
+    <string name="ag_katolik">Katolik</string>
+    <string name="ag_hindu">Hindu</string>
+    <string name="ag_buddha">Buddha</string>
+    <string name="ag_konghucu">Konghucu</string>
+
     <string name="pd_sd">Sekolah Dasar</string>
     <string name="pd_smp">Sekolah Menengah Pertama</string>
     <string name="pd_sma">Sekolah Menengah Atas</string>
@@ -37,11 +45,20 @@
     <string name="k_pegawai_swasta">Pegawai Swasta</string>
     <string name="k_pegawai_negeri">Pegawai Negeri</string>
     <string name="k_petani">Petani</string>
-    <string name="k_">Strata-1</string>
+    <string name="k_pelajar">Pelajar/Mahasiswa</string>
 
     <string name="k_wni">WNI</string>
     <string name="k_wna">Non WNI</string>
     <string name="s_kawin">Kawin</string>
     <string name="s_belum_kawin">Belum Kawin</string>
 
+
+    <string name="gender">-- Jenis Kelamin --</string>
+    <string name="bulan">-- Bulan --</string>
+    <string name="tahun">-- Tahun --</string>
+    <string name="agama">-- Agama --</string>
+    <string name="pd">-- Pendidikan --</string>
+    <string name="kerja">-- Pekerjaan --</string>
+    <string name="status">-- Status Perkawinan --</string>
+    <string name="kewarganegaraan">-- Kewarganegaraan --</string>
 </resources>

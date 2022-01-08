@@ -61,7 +61,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private FragmentListener fragmentListener;
     private CustomLoadingDialog customLoadingDialog;
 
-    private List<User> temporaryUserAdded;
+    private ArrayList<User> temporaryUserAdded;
     private ArrayList<Object> kkObjList;
 
     private RelativeLayout overlay;
@@ -261,17 +261,17 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                         .setButton("Tambah", "Batal", new CustomMembershipDialogListener() {
                             @Override
                             public void onButtonPositivePressed(int total) {
+                                if (membersAdapter != null) {
+                                    membersAdapter = null;
+                                    temporaryUserAdded.clear();
+                                }
                                 User user = new User();
                                 user.setNamaLengkap(ConstantVariable.empty_username);
                                 user.setIdKtp(ConstantVariable.empty_ktp);
-                                ArrayList<User> arrayList = new ArrayList<>();
                                 for (int i = 1; i <= total; i++) {
-                                    arrayList.add(user);
+                                    temporaryUserAdded.add(user);
                                 }
-                                if (membersAdapter != null) {
-                                    membersAdapter = null;
-                                }
-                                membersAdapter = new MembersAdapter(context, arrayList);
+                                membersAdapter = new MembersAdapter(context, temporaryUserAdded);
                                 membersAdapter.setClickListener(InputNewUsersFragment.this);
                                 LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                                 recyclerViewMember.setLayoutManager(layoutManager);
@@ -463,7 +463,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                     @Override
                     public void onAddButtonPressed(User user) {
                         memberHolder.setUpdateData(user, position);
-                        temporaryUserAdded.add(user);
+                        temporaryUserAdded.set(position, user);
                     }
 
                     @Override

@@ -350,7 +350,7 @@ public class CoveringLetterFragment extends Fragment {
 
         ArrayList<String> genderList = new ArrayList<>(Arrays.asList(ConstantVariable.SPINNER_GENDER));
         ArrayList<String> monthList = new ArrayList<>(Arrays.asList(ConstantVariable.SPINNER_MONTH));
-        ArrayList<String> citizensStateList = new ArrayList<>(Arrays.asList(ConstantVariable.SPINNER_CITIZEN_STATE));
+        ArrayList<String> citizensStateList = new ArrayList<>(Arrays.asList("WNI", "Non WNI"));
         CustomSpinnerAdapter genderAdapter = new CustomSpinnerAdapter(context, R.layout.spinner_items, genderList);
         CustomSpinnerAdapter monthAdapter = new CustomSpinnerAdapter(context, R.layout.spinner_items, monthList);
         CustomSpinnerAdapter csAdapter = new CustomSpinnerAdapter(context, R.layout.spinner_items, citizensStateList);
