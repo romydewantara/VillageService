@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,6 +42,7 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
     private CustomLoadingDialog customLoadingDialog;
     private FragmentListener fragmentListener;
     private View view;
+    private AppCompatTextView tvSubTitle;
     private RelativeLayout overlay;
     private RecyclerView recyclerNotification;
     private ConstraintLayout constraintNotifications;
@@ -96,6 +98,7 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_notifications, container, false);
+        tvSubTitle = view.findViewById(R.id.tvSubTitle);
         recyclerNotification = view.findViewById(R.id.recyclerNotification);
         constraintNotifications = view.findViewById(R.id.constraintNotifications);
         overlay = view.findViewById(R.id.overlay);
@@ -154,6 +157,7 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
             @Override
             public void run() {
                 constraintNotifications.setVisibility(View.VISIBLE);
+                tvSubTitle.setVisibility(View.VISIBLE);
                 populateData();
                 showOverlay(false);
             }

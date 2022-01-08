@@ -344,4 +344,11 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+
+    <!-- MULISH REGULAR GREEN -->
+    <style name="MulishBoldGreenStyle1">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/green</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

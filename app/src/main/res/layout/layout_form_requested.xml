@@ -47,7 +47,6 @@
                 android:paddingStart="10dp"
                 android:paddingLeft="10dp"
                 android:text="Muhammad Fakhri Pratama"
-                android:textColor="@color/dark_blue_max"
                 app:layout_constraintLeft_toRightOf="@id/imageIcon"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent=".6"

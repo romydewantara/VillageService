@@ -8,14 +8,14 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSubTitle"
-        style="@style/MulishWhiteBoldStyle3"
+        style="@style/MulishWhiteBoldStyle5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
         android:maxLines="1"
-        android:padding="10dp"
+        android:padding="15dp"
         android:text="Notifications"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,9 +23,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="invisible"
-        android:background="@drawable/background_waterpaint"
         app:layout_constraintTop_toBottomOf="@id/tvSubTitle"
         app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/background_sparkling" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerNotification"

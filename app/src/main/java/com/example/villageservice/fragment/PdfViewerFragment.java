@@ -6,10 +6,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +20,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
+import com.example.villageservice.library.ZoomableRelativeLayout;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.PortableDocumentFormat;
@@ -39,7 +43,8 @@ public class PdfViewerFragment extends Fragment {
     private CoveringLetter coveringLetter;
 
     private View view;
-    private View pdfFile;
+    private RelativeLayout relativePdf;
+    private ZoomableRelativeLayout layoutPdf;
     private ImageView backButton;
     private Button pdfViewerButton;
     private AppCompatTextView tvLampiran;
@@ -49,6 +54,7 @@ public class PdfViewerFragment extends Fragment {
     private AppCompatTextView tvRWName;
     private AppCompatTextView tvTanggalRT;
     private AppCompatTextView tvRTName;
+    private ScaleGestureDetector scaleGestureDetector;
 
     private AppCompatTextView tvNameR1;
     private AppCompatTextView tvNameR2;
@@ -129,6 +135,7 @@ public class PdfViewerFragment extends Fragment {
         fragmentListener.onFragmentCreated(PdfViewerFragment.this, previousFragment);
         portableDocumentFormat = new PortableDocumentFormat(context);
         coveringLettersList = new ArrayList<>();
+        scaleGestureDetector = new ScaleGestureDetector(context, new OnPinchListener());
     }
 
     @Override
@@ -137,7 +144,8 @@ public class PdfViewerFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_preview_pdf, container, false);
         backButton = view.findViewById(R.id.backButton);
-        pdfFile = view.findViewById(R.id.relativeLayoutPdf);
+        layoutPdf = view.findViewById(R.id.layout_pdf);
+        relativePdf = view.findViewById(R.id.relativePdf);
         pdfViewerButton = view.findViewById(R.id.pdfViewerButton);
         initView();
         return view;
@@ -223,6 +231,7 @@ public class PdfViewerFragment extends Fragment {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void initListener() {
         pdfViewerButton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NewApi")
@@ -237,10 +246,18 @@ public class PdfViewerFragment extends Fragment {
                     if (coveringLetter.isApproved()) {
                         imageStamp.setVisibility(View.VISIBLE);
                         imageSignature.setVisibility(View.VISIBLE);
-                        portableDocumentFormat.generatePdf(pdfFile, coveringLetter.getClNama().trim() + "_" + coveringLetter.getClKeperluan());
+                        portableDocumentFormat.generatePdf(relativePdf, coveringLetter.getClNama().trim() + "_" + coveringLetter.getClKeperluan());
                     }
                 }
                 disableButton();
+            }
+        });
+        layoutPdf.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.d("XXXLOG", "onTouch - pdfFile");
+                scaleGestureDetector.onTouchEvent(event);
+                return true;
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -249,6 +266,7 @@ public class PdfViewerFragment extends Fragment {
                 fragmentListener.onActivityBackPressed();
             }
         });
+
     }
 
     @SuppressLint("NewApi")
@@ -269,4 +287,30 @@ public class PdfViewerFragment extends Fragment {
         VSPreference.getInstance(context).setCoveringLetterGroupList(clType, clArrayList);
     }
 
+    private class OnPinchListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+
+        float startingSpan;
+        float endSpan;
+        float startFocusX;
+        float startFocusY;
+
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            layoutPdf.scale(detector.getCurrentSpan() / startingSpan, startFocusX, startFocusY);
+            return true;
+        }
+
+        @Override
+        public boolean onScaleBegin(ScaleGestureDetector detector) {
+            startingSpan = detector.getCurrentSpan();
+            startFocusX = detector.getFocusX();
+            startFocusY = detector.getFocusY();
+            return true;
+        }
+
+        @Override
+        public void onScaleEnd(ScaleGestureDetector detector) {
+            layoutPdf.restore();
+        }
+    }
 }
