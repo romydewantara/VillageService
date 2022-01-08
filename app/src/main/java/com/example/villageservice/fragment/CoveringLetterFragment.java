@@ -1,26 +1,23 @@
 package com.example.villageservice.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.villageservice.R;
 import com.example.villageservice.activity.UserActivity;
@@ -36,8 +33,11 @@ import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,6 +57,9 @@ public class CoveringLetterFragment extends Fragment {
     private View view;
     private ImageView backButton;
     private RelativeLayout overlay;
+    private RelativeLayout relativeGender;
+    private RelativeLayout relativeTanggal;
+    private RelativeLayout relativeKewarganegaraan;
     private EditText etIdNama;
     private EditText etTempatLahir;
     private EditText etTanggal;
@@ -224,6 +227,10 @@ public class CoveringLetterFragment extends Fragment {
         genderChooser = view.findViewById(R.id.genderChooser);
         monthChooser = view.findViewById(R.id.monthChooser);
         kewarganegaraanChooser = view.findViewById(R.id.kewarganegaraanChooser);
+        relativeGender = view.findViewById(R.id.relativeGender);
+        relativeTanggal = view.findViewById(R.id.relativeTanggal);
+        relativeKewarganegaraan = view.findViewById(R.id.relativeKewarganegaraan);
+
         overlay = view.findViewById(R.id.overlay);
     }
 
@@ -280,6 +287,9 @@ public class CoveringLetterFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+                String tglPengajuan = currentDate + " (" + currentTime + ")";
                 String alamatLengkap = etAddress.getText().toString() +
                         ", RT. " + etRT.getText().toString() +
                         ", RW. " + etRW.getText().toString() +
@@ -292,13 +302,12 @@ public class CoveringLetterFragment extends Fragment {
                         etIdNama.getText().toString(), String.valueOf(genderChooser.getSelectedItem()), tempatTanggalLahir,
                         etPekerjaan.getText().toString(), String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
                         etPendidikan.getText().toString(), etAgama.getText().toString(), alamatLengkap, etMaksud.getText().toString(),
-                        "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Sukina", clType, false);
+                        "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Sukina", clType, tglPengajuan, false);
                 coveringLetter.setOpened(false);
-                coveringLetter.setClType(clType);
                 Log.d("XXXLOG", "CL Fragment - coveringLetter to be send: " + new Gson().toJson(coveringLetter));
 
                 ArrayList<Object> coveringLetterArrayList = new ArrayList<>();
-                ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterList(clType);
+                ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterGroupList(clType);
                 if (tempObj.size() > 0) {
                     for (int i = 0; i < tempObj.size(); i++) {
                         CoveringLetter clTempObj = (CoveringLetter) tempObj.get(i);
@@ -306,7 +315,10 @@ public class CoveringLetterFragment extends Fragment {
                     }
                 }
                 coveringLetterArrayList.add(coveringLetter);
-                VSPreference.getInstance(context).setCoveringLetterList(clType, coveringLetterArrayList);
+                VSPreference.getInstance(context).setCoveringLetterGroupList(clType, coveringLetterArrayList);
+                saveCLToFamilyNotification(coveringLetter);
+                saveCLToAdminNotification(coveringLetter);
+
                 customLoadingDialog.dismiss();
                 overlay.setVisibility(View.INVISIBLE);
 
@@ -329,6 +341,34 @@ public class CoveringLetterFragment extends Fragment {
         }, 3000);
     }
 
+    private void saveCLToFamilyNotification(CoveringLetter coveringLetter) {
+        ArrayList<Object> coveringLetterArrayList = new ArrayList<>();
+        ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterGroupList(kartuKeluarga.getIdKartuKeluarga());
+        if (tempObj.size() > 0) {
+            for (int i = 0; i < tempObj.size(); i++) {
+                CoveringLetter clTempObj = (CoveringLetter) tempObj.get(i);
+                coveringLetterArrayList.add(clTempObj);
+            }
+        }
+        coveringLetterArrayList.add(coveringLetter);
+        VSPreference.getInstance(context).setCoveringLetterGroupList(kartuKeluarga.getIdKartuKeluarga(), coveringLetterArrayList);
+    }
+
+    private void saveCLToAdminNotification(CoveringLetter coveringLetter) {
+        ArrayList<Object> clTempList = new ArrayList<>();
+        ArrayList<Object> clObjList = VSPreference.getInstance(context).getCoveringLettersList();
+        if (clObjList.size() > 0) {
+            for (int i = 0; i < clObjList.size(); i++) {
+                CoveringLetter kkObj = (CoveringLetter) clObjList.get(i);
+                clTempList.add(kkObj);
+            }
+        }
+        clTempList.add(coveringLetter);
+
+        //save to list
+        VSPreference.getInstance(context).saveCoveringLettersList(clTempList);
+    }
+
     private void populateData() {
         etIdNama.setText(user.getNamaLengkap());
         etTempatLahir.setText(user.getTempatLahir());
@@ -345,8 +385,6 @@ public class CoveringLetterFragment extends Fragment {
         etKota.setText(kartuKeluarga.getKota());
         etPostal.setText(kartuKeluarga.getKodePos());
         etMaksud.setText(menuSelected);
-        etMaksud.setEnabled(false);
-        etMaksud.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
 
         ArrayList<String> genderList = new ArrayList<>(Arrays.asList(ConstantVariable.SPINNER_GENDER));
         ArrayList<String> monthList = new ArrayList<>(Arrays.asList(ConstantVariable.SPINNER_MONTH));
@@ -358,5 +396,53 @@ public class CoveringLetterFragment extends Fragment {
         genderChooser.setAdapter(genderAdapter);
         monthChooser.setAdapter(monthAdapter);
         kewarganegaraanChooser.setAdapter(csAdapter);
+
+        genderChooser.setSelection(genderAdapter.getPosition(user.getJenisKelamin()));
+        monthChooser.setSelection(genderAdapter.getPosition(user.getTanggalLahir().getBulan()));
+        kewarganegaraanChooser.setSelection(genderAdapter.getPosition(user.getKewarganegaraan()));
+
+        disabledAllView();
+    }
+
+    private void disabledAllView() {
+        etIdNama.setEnabled(false);
+        etTempatLahir.setEnabled(false);
+        etTanggal.setEnabled(false);
+        etTahun.setEnabled(false);
+        etPekerjaan.setEnabled(false);
+        etPendidikan.setEnabled(false);
+        etAgama.setEnabled(false);
+        etAddress.setEnabled(false);
+        etRT.setEnabled(false);
+        etRW.setEnabled(false);
+        etKel.setEnabled(false);
+        etKec.setEnabled(false);
+        etKota.setEnabled(false);
+        etPostal.setEnabled(false);
+        etMaksud.setEnabled(false);
+
+        genderChooser.setEnabled(false);
+        monthChooser.setEnabled(false);
+        kewarganegaraanChooser.setEnabled(false);
+
+        etIdNama.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etTempatLahir.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etTanggal.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etTahun.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etPekerjaan.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etPendidikan.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etAgama.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etAddress.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etRT.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etRW.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etKel.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etKec.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etKota.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etPostal.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        etMaksud.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        relativeGender.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        relativeTanggal.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+        relativeKewarganegaraan.setBackgroundResource(R.drawable.bg_edit_text_grey_rounded);
+
     }
 }

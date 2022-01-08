@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -21,14 +22,12 @@ public class FormListAdapter extends BaseAdapter {
 
     private Context context;
     private List<CoveringLetter> coveringLetterList;
-    private Fonts fonts;
     private FormUserRequestedListener mListener;
 
     public FormListAdapter(Context context, List<CoveringLetter> coveringLetterList, FormUserRequestedListener mListener) {
         this.context = context;
         this.coveringLetterList = coveringLetterList;
         this.mListener = mListener;
-        fonts = new Fonts(context);
     }
 
     @Override
@@ -53,10 +52,20 @@ public class FormListAdapter extends BaseAdapter {
         AppCompatTextView tvName = v.findViewById(R.id.tvName);
         AppCompatTextView tvKtp = v.findViewById(R.id.tvKTP);
         AppCompatTextView tvDate = v.findViewById(R.id.tvDate);
+        AppCompatTextView tvStatus = v.findViewById(R.id.tvStatus);
+        ImageView imageStatus = v.findViewById(R.id.imageStatus);
 
         tvName.setText(coveringLetterList.get(position).getClNama());
         tvKtp.setText(coveringLetterList.get(position).getClKtp());
-        tvDate.setText(coveringLetterList.get(position).getClKeperluan());
+        tvDate.setText(coveringLetterList.get(position).getClTglPengajuan());
+        if (coveringLetterList.get(position).isApproved()) {
+            tvStatus.setText("Approved");
+            imageStatus.setImageResource(R.mipmap.ic_approved);
+        } else {
+            tvStatus.setText("Pending");
+            imageStatus.setImageResource(R.mipmap.ic_pending);
+        }
+
 
         userRequest.setOnClickListener(new View.OnClickListener() {
             @Override

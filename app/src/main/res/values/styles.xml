@@ -332,4 +332,16 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <!-- MULISH REGULAR BLUE -->
+    <style name="MulishRegularItalicBlueStyleTiny">
+        <item name="android:fontFamily">@font/mulish_regular_italic</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="MulishRegularItalicBlueStyle1">
+        <item name="android:fontFamily">@font/mulish_regular_italic</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 </resources>

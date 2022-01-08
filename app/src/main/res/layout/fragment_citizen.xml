@@ -235,7 +235,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="Syarat-syarat Pengajuan Surat Pengantar"
+                android:text="Syarat Pengajuan Surat Pengantar"
                 app:layout_constraintTop_toBottomOf="@id/cvInfoWargaBaru" />
 
             <include

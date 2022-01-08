@@ -259,14 +259,14 @@ public class PdfViewerFragment extends Fragment {
     }
 
     private void saveChanges() {
-        ArrayList<Object> clArrayList = VSPreference.getInstance(context).getCoveringLetterList(clType);
+        ArrayList<Object> clArrayList = VSPreference.getInstance(context).getCoveringLetterGroupList(clType);
         for (int i = 0; i < clArrayList.size(); i++) {
             CoveringLetter clTemp = (CoveringLetter) clArrayList.get(i);
             if (clTemp.getClKtp().equalsIgnoreCase(coveringLetter.getClKtp())) {
                 clArrayList.set(i, coveringLetter);
             }
         }
-        VSPreference.getInstance(context).setCoveringLetterList(clType, clArrayList);
+        VSPreference.getInstance(context).setCoveringLetterGroupList(clType, clArrayList);
     }
 
 }

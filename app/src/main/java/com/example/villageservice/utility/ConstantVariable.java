@@ -16,6 +16,7 @@ public class ConstantVariable {
     public final static String KEY_ADMIN = "KEY_ADMIN";
     public final static String KEY_USER_LIST = "KEY_USER_LIST";
     public final static String KEY_COVERING_LETTER = "KEY_COVERING_LETTER";
+    public final static String KEY_COVERING_LETTERS_LIST = "KEY_COVERING_LETTERS_LIST";
 
     //Role
     public final static String USER = "USER";

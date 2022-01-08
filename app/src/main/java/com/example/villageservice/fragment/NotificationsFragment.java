@@ -18,6 +18,10 @@ import com.example.villageservice.R;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.CoveringLetter;
+import com.example.villageservice.model.KartuKeluarga;
+import com.example.villageservice.utility.ConstantVariable;
+import com.example.villageservice.utility.VSPreference;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +38,13 @@ public class NotificationsFragment extends Fragment {
     private FragmentListener fragmentListener;
     private View view;
     private RelativeLayout overlay;
-    private List<CoveringLetter> coveringLetterList;
+
+    private List<Object> coveringLetters;
+    private KartuKeluarga kartuKeluarga;
+    private ArrayList<Object> coveringLetterArrayList;
+
+    private boolean isAdmin = false;
+
     private String previousFragment = "";
 
     // TODO: Rename parameter arguments, choose names that match
@@ -79,6 +89,7 @@ public class NotificationsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_notifications, container, false);
+
         overlay = view.findViewById(R.id.overlay);
 
         return view;
@@ -111,7 +122,17 @@ public class NotificationsFragment extends Fragment {
     private void initMandatory() {
         fragmentListener.onFragmentCreated(NotificationsFragment.this, previousFragment);
         customLoadingDialog = new CustomLoadingDialog(context);
-        coveringLetterList = new ArrayList<>();
+        coveringLetters = new ArrayList<>();
+
+        if (VSPreference.getInstance(context).getRole().equalsIgnoreCase(ConstantVariable.ADMIN)) isAdmin = true;
+
+        if (isAdmin) {
+            coveringLetters = VSPreference.getInstance(context).getCoveringLettersList();
+        } else {
+            kartuKeluarga = VSPreference.getInstance(context).getKK();
+            coveringLetters = VSPreference.getInstance(context).getCoveringLetterGroupList(kartuKeluarga.getIdKartuKeluarga());
+        }
+        Log.d("XXXLOG", "initMandatory - cl: " + new Gson().toJson(coveringLetters));
     }
 
     private void initListener() {

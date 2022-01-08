@@ -164,7 +164,11 @@ public class CitizenFragment extends Fragment {
 
     private void setUpData() {
         ArrayList<Object> kkObjList = VSPreference.getInstance(context).getKKList();
-        Log.d("XXXLOG", "onViewCreated - list: " + new Gson().toJson(kkObjList));
+        if (!kkObjList.isEmpty()) {
+            for (int i = 0; i < kkObjList.size(); i++) {
+                Log.d("XXXLOG", "onViewCreated - list: " + new Gson().toJson(kkObjList.get(i)));
+            }
+        }
 
         //set data to layout
         String wargaTetap = kkObjList.size() + " jiwa";

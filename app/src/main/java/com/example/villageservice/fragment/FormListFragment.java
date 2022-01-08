@@ -4,9 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -15,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
@@ -50,11 +54,14 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     private ImageView buttonLeft;
     private RelativeLayout overlay;
     private AppCompatTextView tvPageTitle;
+    private AppCompatTextView tvSubTitle;
     private AppCompatTextView tvEmptyData;
 
     private List<CoveringLetter> coveringLetters;
     private KartuKeluarga kartuKeluarga;
     private ArrayList<Object> coveringLetterArrayList;
+
+    private Animation fadeIn;
 
     private String menuSelected;
     private String clType;
@@ -130,11 +137,15 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_form_list, container, false);
         tvPageTitle = view.findViewById(R.id.tvTitlePage);
+        tvSubTitle = view.findViewById(R.id.tvSubTitle);
         buttonLeft = view.findViewById(R.id.buttonLeft);
         listForm = view.findViewById(R.id.listForm);
         constraintEmptyData = view.findViewById(R.id.constraintEmptyData);
         tvEmptyData = view.findViewById(R.id.tvEmptyData);
         overlay = view.findViewById(R.id.overlay);
+
+        tvSubTitle.setText(menuSelected);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvSubTitle, 1, 18, 1, TypedValue.COMPLEX_UNIT_SP);
 
         return view;
     }
@@ -176,8 +187,9 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     private void initMandatory() {
         fragmentListener.onFragmentCreated(FormListFragment.this, previousFragment);
         customLoadingDialog = new CustomLoadingDialog(context);
-        coveringLetterArrayList = VSPreference.getInstance(context).getCoveringLetterList(clType);
+        coveringLetterArrayList = VSPreference.getInstance(context).getCoveringLetterGroupList(clType);
         coveringLetters = new ArrayList<>();
+        fadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
         if (VSPreference.getInstance(context).getRole().equalsIgnoreCase(ConstantVariable.ADMIN))
             isAdmin = true;
         if (!isAdmin) {
@@ -214,6 +226,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                 coveringLetter.setClPendidikan(coveringLetters.get(i).getClPendidikan());
                 coveringLetter.setClKewarganegaraan(coveringLetters.get(i).getClKewarganegaraan());
                 coveringLetter.setClKeperluan(coveringLetters.get(i).getClKeperluan());
+                coveringLetter.setClTglPengajuan(coveringLetters.get(i).getClTglPengajuan());
                 coveringLetter.setApproved(coveringLetters.get(i).isApproved());
                 break;
             }
@@ -235,7 +248,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                 cl.getClNama(), cl.getClJenisKelamin(), cl.getClTempatTanggalLahir(), cl.getClPekerjaan(),
                 String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(), cl.getClAgama(), cl.getClAlamat(), cl.getClKeperluan(),
                 "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina",
-                clType, cl.isApproved());
+                clType, cl.getClTglPengajuan(), cl.isApproved());
         VSPreference.getInstance(context).setCoveringLetter(ConstantVariable.KEY_COVERING_LETTER, coveringLetter);
     }
 
@@ -244,6 +257,8 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                tvSubTitle.setVisibility(View.VISIBLE);
+                tvSubTitle.startAnimation(fadeIn);
                 for (int i = 0; i < coveringLetterArrayList.size(); i++) {
                     CoveringLetter coveringLetter = (CoveringLetter) coveringLetterArrayList.get(i);
                     if (coveringLetter.getClType() != null) {

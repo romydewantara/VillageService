@@ -64,6 +64,9 @@ public class CoveringLetter {
     @SerializedName("cl_type")
     String clType;
 
+    @SerializedName("cl_tanggal_pengajuan")
+    String clTglPengajuan;
+
     public CoveringLetter() {
 
     }
@@ -71,7 +74,8 @@ public class CoveringLetter {
     public CoveringLetter(String clLampiran, String clNomorHeader, String clNama, String clJenisKelamin,
                           String clTempatTanggalLahir, String clPekerjaan, String clKtp, String clKewarganegaraan,
                           String clPendidikan, String clAgama, String clAlamat, String clKeperluan, String clNomorFooter,
-                          String clTanggalFooterRw, String clNamaRw, String clTanggalRt, String clNamaRt, String clType, boolean isApproved) {
+                          String clTanggalFooterRw, String clNamaRw, String clTanggalRt, String clNamaRt, String clType,
+                          String clTglPengajuan, boolean isApproved) {
         this.clLampiran = clLampiran;
         this.clNomorHeader = clNomorHeader;
         this.clNama = clNama;
@@ -90,6 +94,7 @@ public class CoveringLetter {
         this.clTanggalRt = clTanggalRt;
         this.clNamaRt = clNamaRt;
         this.clType = clType;
+        this.clTglPengajuan = clTglPengajuan;
         this.isApproved = isApproved;
     }
 
@@ -253,4 +258,11 @@ public class CoveringLetter {
         this.clType = clType;
     }
 
+    public String getClTglPengajuan() {
+        return clTglPengajuan;
+    }
+
+    public void setClTglPengajuan(String clTglPengajuan) {
+        this.clTglPengajuan = clTglPengajuan;
+    }
 }
