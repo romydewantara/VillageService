@@ -5,11 +5,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -17,6 +19,7 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
@@ -67,7 +70,13 @@ public class PdfViewerFragment extends Fragment {
     private AppCompatTextView tvNameR19;
     private AppCompatTextView tvNameR10;
 
-    private ImageView imageStamp;
+    private AppCompatTextView tv1;
+    private AppCompatTextView tv2a;
+    private AppCompatTextView tv2b;
+    private AppCompatTextView tv3;
+    private AppCompatTextView tv4;
+
+    private RelativeLayout imageStamp;
     private ImageView imageSignature;
 
     private boolean isAdmin = false;
@@ -194,6 +203,13 @@ public class PdfViewerFragment extends Fragment {
         tvNameR8 = view.findViewById(R.id.tvNameR8);
         tvNameR19 = view.findViewById(R.id.tvNameR9);
         tvNameR10 = view.findViewById(R.id.tvNameR10);
+
+        tv1 = view.findViewById(R.id.tv1);
+        tv2a = view.findViewById(R.id.tv2a);
+        tv2b = view.findViewById(R.id.tv2b);
+        tv3 = view.findViewById(R.id.tv3);
+        tv4 = view.findViewById(R.id.tv4);
+
         imageStamp = view.findViewById(R.id.imageStamp);
         imageSignature = view.findViewById(R.id.imageSignature);
     }
@@ -218,6 +234,12 @@ public class PdfViewerFragment extends Fragment {
         tvNameR8.setText(coveringLetter.getClAgama());
         tvNameR19.setText(coveringLetter.getClAlamat());
         tvNameR10.setText(coveringLetter.getClKeperluan());
+
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv1, 1, 24, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv2a, 1, 18, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv2b, 1, 18, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv3, 1, 20, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv4, 1, 20, 1, TypedValue.COMPLEX_UNIT_SP);
         if (coveringLetter.isApproved()) {
             imageStamp.setVisibility(View.VISIBLE);
             imageSignature.setVisibility(View.VISIBLE);

@@ -28,6 +28,7 @@ import com.example.villageservice.R;
 import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
+import com.example.villageservice.model.Admin;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.Fonts;
@@ -59,6 +60,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private RelativeLayout overlay;
 
+    private Admin admin;
     // TEMPORARY MAIL
     private boolean isMailFilled = false;
     private boolean isPasswordFilled = false;
@@ -88,6 +90,11 @@ public class SignInActivity extends AppCompatActivity {
 
         //signInButton.setEnabled(false);
         signInButton.setBackgroundResource(R.drawable.bg_button_disabled);
+        admin = new Admin();
+        if (admin.getUsername().equalsIgnoreCase("")) {
+            admin.setUsername(ConstantVariable.ADMIN_USERNAME);
+            admin.setPassword(ConstantVariable.ADMIN_PASSWORD);
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -204,8 +211,8 @@ public class SignInActivity extends AppCompatActivity {
         final String email = etEmail.getText().toString();
         final String password = etPassword.getText().toString();
         if (!email.isEmpty()) {
-            if (email.equalsIgnoreCase(ConstantVariable.ADMIN_USERNAME)) {
-                if (password.equalsIgnoreCase(ConstantVariable.ADMIN_PASSWORD)) {
+            if (email.equalsIgnoreCase(admin.getUsername())) {
+                if (password.equalsIgnoreCase(admin.getPassword())) {
                     VSPreference.getInstance(getApplicationContext()).setRole(ConstantVariable.ADMIN);
                     login(AdminActivity.class, 3000);
                 } else {
@@ -230,8 +237,6 @@ public class SignInActivity extends AppCompatActivity {
                                     if (password.equalsIgnoreCase(kkObj.getPassword())) {
                                         isPasswordMatch = true;
                                         break;
-                                    } else {
-
                                     }
                                     break;
                                 }

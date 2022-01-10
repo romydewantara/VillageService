@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="@drawable/bg_stamp">
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_stamp"
+        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".6">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv1"
+            style="@style/MulishBlueBoldStyle7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="RT.007/14" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_stamp"
+        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintLeft_toRightOf="@id/relative1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".4">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv3"
+            style="@style/MulishBlueBoldStyle7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="JT" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relative2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_stamp"
+        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/relative1"
+        app:layout_constraintWidth_percent=".6">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv2a"
+            style="@style/MulishBlueBoldStyle2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:padding="1dp"
+            android:maxLines="1"
+            android:text="KELURAHAN PENGGILINGAN"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv2b"
+            style="@style/MulishBlueBoldStyle4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:padding="1dp"
+            android:maxLines="1"
+            app:layout_constraintHeight_percent=".5"
+            android:text="KECAMATAN CAKUNG"
+            app:layout_constraintTop_toBottomOf="@id/tv2a"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_stamp"
+        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintLeft_toRightOf="@id/relative1"
+        app:layout_constraintTop_toBottomOf="@id/relative3"
+        app:layout_constraintWidth_percent=".4">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv4"
+            style="@style/MulishBlueBoldStyle4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="78.08.1003" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_50" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

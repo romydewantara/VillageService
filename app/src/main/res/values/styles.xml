@@ -116,6 +116,11 @@
         <item name="android:textColor">@color/blue</item>
         <item name="android:textSize">24sp</item>
     </style>
+    <style name="MulishBlueBoldStyle7">
+        <item name="android:fontFamily">@font/mulish_bold</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">32sp</item>
+    </style>
     <!-- MULISH BOLD WHITE -->
     <style name="MulishWhiteBoldStyleTyke">
         <item name="android:fontFamily">@font/mulish_bold</item>

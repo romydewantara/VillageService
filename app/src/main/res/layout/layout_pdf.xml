@@ -179,13 +179,14 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvTanggalFooterL" />
 
-                    <ImageView
+                    <RelativeLayout
                         android:id="@+id/imageStampRW"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:src="@mipmap/ic_stamp_example"
                         android:visibility="invisible"
-                        app:layout_constraintTop_toBottomOf="@id/tvRW" />
+                        app:layout_constraintTop_toBottomOf="@id/tvRW">
+                        <include layout="@layout/layout_stamp" />
+                    </RelativeLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvRWName"
@@ -242,14 +243,16 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvSpaceEmpty" />
 
-                    <ImageView
+                    <RelativeLayout
                         android:id="@+id/imageStamp"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
-                        android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_stamp_example"
                         android:visibility="invisible"
-                        app:layout_constraintTop_toBottomOf="@id/tvRT" />
+                        app:layout_constraintTop_toBottomOf="@id/tvRT">
+
+                        <include
+                            layout="@layout/layout_stamp" />
+                    </RelativeLayout>
 
                     <ImageView
                         android:id="@+id/imageSignature"
