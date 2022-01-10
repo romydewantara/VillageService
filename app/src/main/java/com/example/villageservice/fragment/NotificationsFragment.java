@@ -138,11 +138,9 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
         if (VSPreference.getInstance(context).getRole().equalsIgnoreCase(ConstantVariable.ADMIN))
             isAdmin = true;
 
-        if (isAdmin) {
-            coveringLetters = VSPreference.getInstance(context).getCoveringLettersList();
-        } else {
+        coveringLetters = VSPreference.getInstance(context).getCoveringLetterGroupList(ConstantVariable.KEY_COVERING_LETTERS_LIST);
+        if (!isAdmin) {
             kartuKeluarga = VSPreference.getInstance(context).getKK();
-            coveringLetters = VSPreference.getInstance(context).getCoveringLetterGroupList(kartuKeluarga.getIdKartuKeluarga());
         }
         Log.d("XXXLOG", "initMandatory - cl: " + new Gson().toJson(coveringLetters));
     }
@@ -178,7 +176,15 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
         if (!coveringLetters.isEmpty()) {
             for (int i = 0; i < coveringLetters.size(); i++) {
                 CoveringLetter coveringLetter = (CoveringLetter) coveringLetters.get(i);
-                coveringLetterArrayList.add(coveringLetter);
+                if (isAdmin) {
+                    coveringLetterArrayList.add(coveringLetter);
+                } else {
+                    for (int j = 0; j < kartuKeluarga.getKeluargaList().size(); j++) {
+                        if (kartuKeluarga.getKeluargaList().get(j).getIdKtp().equalsIgnoreCase(coveringLetter.getClKtp())) {
+                            coveringLetterArrayList.add(coveringLetter);
+                        }
+                    }
+                }
             }
             notificationsAdapter = new NotificationsAdapter(coveringLetterArrayList);
             notificationsAdapter.setClickListener(NotificationsFragment.this);

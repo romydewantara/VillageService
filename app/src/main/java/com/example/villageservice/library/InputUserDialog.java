@@ -468,6 +468,7 @@ public class InputUserDialog extends DialogFragment {
             spinnerKerja.setSelection(pekerjaanAdapter.getPosition(currentUser.getJenisPekerjaan()));
             spinnerMaritalStatus.setSelection(maritalStatusAdapter.getPosition(currentUser.getStatusPernikahan()));
             spinnerKewarganegaraan.setSelection(kewarganegaraanAdapter.getPosition(currentUser.getKewarganegaraan()));
+            isKTPValid = true;
         } else {
             Log.d("XXXPOP", "populateData null");
         }

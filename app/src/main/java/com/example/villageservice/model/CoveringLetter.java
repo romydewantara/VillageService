@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class CoveringLetter {
 
+    @SerializedName("cl_id")
+    String clId;
+
     @SerializedName("cl_lampiran")
     String clLampiran;
 
@@ -71,11 +74,12 @@ public class CoveringLetter {
 
     }
 
-    public CoveringLetter(String clLampiran, String clNomorHeader, String clNama, String clJenisKelamin,
+    public CoveringLetter(String clId, String clLampiran, String clNomorHeader, String clNama, String clJenisKelamin,
                           String clTempatTanggalLahir, String clPekerjaan, String clKtp, String clKewarganegaraan,
                           String clPendidikan, String clAgama, String clAlamat, String clKeperluan, String clNomorFooter,
                           String clTanggalFooterRw, String clNamaRw, String clTanggalRt, String clNamaRt, String clType,
                           String clTglPengajuan, boolean isApproved) {
+        this.clId = clId;
         this.clLampiran = clLampiran;
         this.clNomorHeader = clNomorHeader;
         this.clNama = clNama;
@@ -96,6 +100,14 @@ public class CoveringLetter {
         this.clType = clType;
         this.clTglPengajuan = clTglPengajuan;
         this.isApproved = isApproved;
+    }
+
+    public String getClId() {
+        return clId;
+    }
+
+    public void setClId(String clId) {
+        this.clId = clId;
     }
 
     public String getClLampiran() {

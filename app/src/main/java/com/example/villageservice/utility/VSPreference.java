@@ -116,14 +116,6 @@ public class VSPreference {
         return getListObject(key, CoveringLetter.class);
     }
 
-    public void saveCoveringLettersList(ArrayList<Object> coveringLettersList) {
-        putListObject(ConstantVariable.KEY_COVERING_LETTERS_LIST, coveringLettersList);
-    }
-
-    public ArrayList<Object> getCoveringLettersList() {
-        return getListObject(ConstantVariable.KEY_COVERING_LETTERS_LIST, CoveringLetter.class);
-    }
-
     public void logout() {
         setRole("");
         setUser(null);

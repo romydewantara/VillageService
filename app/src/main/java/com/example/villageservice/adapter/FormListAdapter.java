@@ -70,7 +70,7 @@ public class FormListAdapter extends BaseAdapter {
         userRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onSelectedUserRequest(coveringLetterList.get(position).getClKtp(), coveringLetterList.get(position).getClNama());
+                mListener.onSelectedUserRequest(coveringLetterList.get(position).getClKtp(), coveringLetterList.get(position).getClId());
                 //Toast.makeText(context, user.get(position).getNamaLengkap(), Toast.LENGTH_SHORT).show();
             }
         });

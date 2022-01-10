@@ -11,7 +11,6 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -302,11 +301,24 @@ public class PdfViewerFragment extends Fragment {
         ArrayList<Object> clArrayList = VSPreference.getInstance(context).getCoveringLetterGroupList(clType);
         for (int i = 0; i < clArrayList.size(); i++) {
             CoveringLetter clTemp = (CoveringLetter) clArrayList.get(i);
-            if (clTemp.getClKtp().equalsIgnoreCase(coveringLetter.getClKtp())) {
+            if (clTemp.getClKtp().equalsIgnoreCase(coveringLetter.getClKtp()) && clTemp.getClId().equalsIgnoreCase(coveringLetter.getClId())) {
                 clArrayList.set(i, coveringLetter);
             }
         }
         VSPreference.getInstance(context).setCoveringLetterGroupList(clType, clArrayList);
+        updateCLNotifications();
+    }
+
+    private void updateCLNotifications() {
+        ArrayList<Object> notificationCLList = VSPreference.getInstance(context).getCoveringLetterGroupList(ConstantVariable.KEY_COVERING_LETTERS_LIST);
+        for (int i = 0; i < notificationCLList.size(); i++) {
+            CoveringLetter clTemp = (CoveringLetter) notificationCLList.get(i);
+            if (clTemp.getClKtp().equalsIgnoreCase(coveringLetter.getClKtp()) &&
+                    clTemp.getClId().equalsIgnoreCase(coveringLetter.getClId())) {
+                notificationCLList.set(i, coveringLetter);
+            }
+        }
+        VSPreference.getInstance(context).setCoveringLetterGroupList(ConstantVariable.KEY_COVERING_LETTERS_LIST, notificationCLList);
     }
 
     private class OnPinchListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {

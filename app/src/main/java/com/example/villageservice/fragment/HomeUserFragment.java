@@ -169,9 +169,11 @@ public class HomeUserFragment extends Fragment {
         tvKKKep.setText(textKep);
         admin = VSPreference.getInstance(context).getAdmin();
         if (admin != null) {
-            tvWhatsapp.setText("WhatsApp\n" + admin.getPhoneNumber());
-            tvCall.setText("Panggil\n" + admin.getPhoneNumber());
-            phoneNumber = admin.getPhoneNumber();
+            if (admin.getPhoneNumber() != null) {
+                phoneNumber = admin.getPhoneNumber();
+                tvWhatsapp.setText("WhatsApp\n" + phoneNumber);
+                tvCall.setText("Panggil\n" + phoneNumber);
+            }
         } else {
             phoneNumber = "+6281932634438";
         }

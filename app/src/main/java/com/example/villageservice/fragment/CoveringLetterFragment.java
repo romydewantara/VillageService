@@ -287,6 +287,9 @@ public class CoveringLetterFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                ArrayList<Object> coveringLetterList = VSPreference.getInstance(context).getCoveringLetterGroupList(ConstantVariable.KEY_COVERING_LETTERS_LIST);
+
+                String id = String.valueOf((coveringLetterList.size() - 1) + 1);
                 String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
                 String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
                 String tglPengajuan = currentDate + " (" + currentTime + ")";
@@ -298,7 +301,7 @@ public class CoveringLetterFragment extends Fragment {
                         ", Kota " + etKota.getText().toString() +
                         ", Kode Pos: " + etPostal.getText().toString();
                 String tempatTanggalLahir = etTempatLahir.getText().toString() + ", " + etTanggal.getText().toString() + " " + monthChooser.getSelectedItem() + " " + etTahun.getText().toString();
-                CoveringLetter coveringLetter = new CoveringLetter("LAMPIRAN XIII: MODEL AA.05", "Nomor: 12345678910987645",
+                CoveringLetter coveringLetter = new CoveringLetter(id, "LAMPIRAN XIII: MODEL AA.05", "Nomor: 12345678910987645",
                         etIdNama.getText().toString(), String.valueOf(genderChooser.getSelectedItem()), tempatTanggalLahir,
                         etPekerjaan.getText().toString(), String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
                         etPendidikan.getText().toString(), etAgama.getText().toString(), alamatLengkap, etMaksud.getText().toString(),
@@ -306,18 +309,8 @@ public class CoveringLetterFragment extends Fragment {
                 coveringLetter.setOpened(false);
                 Log.d("XXXLOG", "CL Fragment - coveringLetter to be send: " + new Gson().toJson(coveringLetter));
 
-                ArrayList<Object> coveringLetterArrayList = new ArrayList<>();
-                ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterGroupList(clType);
-                if (tempObj.size() > 0) {
-                    for (int i = 0; i < tempObj.size(); i++) {
-                        CoveringLetter clTempObj = (CoveringLetter) tempObj.get(i);
-                        coveringLetterArrayList.add(clTempObj);
-                    }
-                }
-                coveringLetterArrayList.add(coveringLetter);
-                VSPreference.getInstance(context).setCoveringLetterGroupList(clType, coveringLetterArrayList);
-                saveCLToFamilyNotification(coveringLetter);
-                saveCLToAdminNotification(coveringLetter);
+                saveCLAsPurpose(coveringLetter);
+                saveCLAsNotificationList(coveringLetter);
 
                 customLoadingDialog.dismiss();
                 overlay.setVisibility(View.INVISIBLE);
@@ -341,22 +334,22 @@ public class CoveringLetterFragment extends Fragment {
         }, 3000);
     }
 
-    private void saveCLToFamilyNotification(CoveringLetter coveringLetter) {
+    private void saveCLAsPurpose(CoveringLetter coveringLetter) {
         ArrayList<Object> coveringLetterArrayList = new ArrayList<>();
-        ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterGroupList(kartuKeluarga.getIdKartuKeluarga());
-        if (tempObj.size() > 0) {
+        ArrayList<Object> tempObj = VSPreference.getInstance(context).getCoveringLetterGroupList(clType);
+        if (!tempObj.isEmpty()) {
             for (int i = 0; i < tempObj.size(); i++) {
                 CoveringLetter clTempObj = (CoveringLetter) tempObj.get(i);
                 coveringLetterArrayList.add(clTempObj);
             }
         }
         coveringLetterArrayList.add(coveringLetter);
-        VSPreference.getInstance(context).setCoveringLetterGroupList(kartuKeluarga.getIdKartuKeluarga(), coveringLetterArrayList);
+        VSPreference.getInstance(context).setCoveringLetterGroupList(clType, coveringLetterArrayList);
     }
 
-    private void saveCLToAdminNotification(CoveringLetter coveringLetter) {
+    private void saveCLAsNotificationList(CoveringLetter coveringLetter) {
         ArrayList<Object> clTempList = new ArrayList<>();
-        ArrayList<Object> clObjList = VSPreference.getInstance(context).getCoveringLettersList();
+        ArrayList<Object> clObjList = VSPreference.getInstance(context).getCoveringLetterGroupList(ConstantVariable.KEY_COVERING_LETTERS_LIST);
         if (clObjList.size() > 0) {
             for (int i = 0; i < clObjList.size(); i++) {
                 CoveringLetter kkObj = (CoveringLetter) clObjList.get(i);
@@ -364,9 +357,7 @@ public class CoveringLetterFragment extends Fragment {
             }
         }
         clTempList.add(coveringLetter);
-
-        //save to list
-        VSPreference.getInstance(context).saveCoveringLettersList(clTempList);
+        VSPreference.getInstance(context).setCoveringLetterGroupList(ConstantVariable.KEY_COVERING_LETTERS_LIST, clTempList);
     }
 
     private void populateData() {

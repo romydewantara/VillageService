@@ -482,7 +482,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:text="WhatsApp\n(+6281291370000)"
+                    android:text="WhatsApp\n(+6281932634438)"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@id/imageWhatsapp"
                     app:layout_constraintTop_toTopOf="parent" />

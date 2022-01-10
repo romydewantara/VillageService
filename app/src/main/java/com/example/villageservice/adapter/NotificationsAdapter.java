@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.villageservice.R;
 import com.example.villageservice.model.CoveringLetter;
-import com.example.villageservice.model.User;
 
 import java.util.ArrayList;
 
