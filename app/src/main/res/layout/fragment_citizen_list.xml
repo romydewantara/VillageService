@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.FormListFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.CitizenListFragment">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/background_sparkling" />
+        android:src="@drawable/background_sparkling"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearHeader"
@@ -42,7 +42,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@string/form_list"
+            android:text="@string/kk_list"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/buttonLeft"
             app:layout_constraintRight_toRightOf="parent"
@@ -59,18 +59,19 @@
         android:background="@color/blue"
         android:maxLines="1"
         android:padding="10dp"
-        android:text="@string/app_name"
-        android:visibility="invisible"
+        android:text="Warga Tetap"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/linearHeader" />
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSubTitle">
 
-        <ListView
-            android:id="@+id/listForm"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewKK"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent" />

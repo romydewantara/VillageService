@@ -22,5 +22,15 @@
     <color name="green">#00A19D</color>
     <color name="lilac_light">#DADDFC</color>
     <color name="red">#FF0000</color>
+    <color name="soft_red">#D9534F</color>
+
+
+
+    <color name="priority_low">#DFD3C3</color>
+    <color name="priority_minor">#92A9BD</color>
+    <color name="priority_normal">#A3DA8D</color>
+    <color name="priority_major">#EA99D5</color>
+    <color name="priority_critical">#EF2F88</color>
+    <color name="priority_asap">#980F5A</color>
 
 </resources>

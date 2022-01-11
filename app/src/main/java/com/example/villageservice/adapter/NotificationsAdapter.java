@@ -1,5 +1,8 @@
 package com.example.villageservice.adapter;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.villageservice.R;
 import com.example.villageservice.model.CoveringLetter;
+import com.example.villageservice.utility.ConstantVariable;
 
 import java.util.ArrayList;
 
@@ -36,7 +40,32 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         holder.tvKTP.setText(coveringLetterArrayList.get(position).getClKtp());
         holder.tvDate.setText(coveringLetterArrayList.get(position).getClTglPengajuan());
         holder.tvNumHeader.setText(coveringLetterArrayList.get(position).getClNomorHeader());
+
+        String color = "#A3DA8D";
+        Log.d("XXXLOG", "onBindViewHolder - CL TYPE: " + coveringLetterArrayList.get(position).getClType());
+        switch (coveringLetterArrayList.get(position).getClType()) {
+            case ConstantVariable.KEY_CL_NIKAH:
+                color = "#2FDD92"; //normal
+                break;
+            case ConstantVariable.KEY_CL_UMKM:
+                color = "#7CD1B8"; //low
+                break;
+            case ConstantVariable.KEY_CL_DOMISILI_KTP:
+                color = "#980F5A"; //asap
+                break;
+            case ConstantVariable.KEY_CL_KK_BARU:
+                color = "#EF2F88"; //critical
+                break;
+            case ConstantVariable.KEY_CL_AKTA_LAHIR:
+                color = "#EA99D5"; //major
+                break;
+            case ConstantVariable.KEY_CL_AKTA_KEMATIAN:
+                color = "#92A9BD"; //minor
+                break;
+        }
+        Log.d("XXXLOG", "onBindViewHolder - color: " +color);
         holder.tvKeperluan.setText(coveringLetterArrayList.get(position).getClKeperluan());
+        holder.tvKeperluan.setTextColor(Color.parseColor(color));
         if (coveringLetterArrayList.get(position).isApproved()) {
             holder.imageStatus.setImageResource(R.mipmap.ic_approved);
             holder.tvStatus.setText("Approved");

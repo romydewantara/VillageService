@@ -311,7 +311,7 @@
 
             <TextView
                 android:id="@+id/positiveButton"
-                style="@style/MulishBoldBlackStyle1"
+                style="@style/MulishWhiteBoldStyle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"

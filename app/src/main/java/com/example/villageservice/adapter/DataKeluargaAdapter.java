@@ -28,7 +28,7 @@ public class DataKeluargaAdapter extends RecyclerView.Adapter<DataKeluargaAdapte
     @NonNull
     @Override
     public DataKeluargaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_data_keluarga, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_data_anggota_keluarga, parent, false);
         return new DataKeluargaHolder(view);
     }
 

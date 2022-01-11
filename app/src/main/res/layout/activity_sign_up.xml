@@ -43,6 +43,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTitle"
+                style="@style/MulishBoldBlackStyle4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -66,6 +67,7 @@
 
                 <EditText
                     android:id="@+id/etKtp"
+                    style="@style/MulishBoldBlackStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
@@ -80,6 +82,7 @@
 
                 <EditText
                     android:id="@+id/etName"
+                    style="@style/MulishBoldBlackStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
@@ -95,6 +98,7 @@
 
                 <EditText
                     android:id="@+id/etPassword"
+                    style="@style/MulishBoldBlackStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
@@ -110,6 +114,7 @@
 
                 <EditText
                     android:id="@+id/etConfirmPassword"
+                    style="@style/MulishBoldBlackStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
@@ -127,6 +132,7 @@
 
             <Button
                 android:id="@+id/signUpButton"
+                style="@style/MulishWhiteBoldStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -149,6 +155,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvQuestion"
+                style="@style/MulishBlueBoldStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -159,11 +166,11 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvSignIn"
+                style="@style/MulishBlueBoldStyle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Masuk"
-                android:textColor="@color/dark_blue"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -206,11 +213,11 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvBottom"
+            style="@style/MulishWhiteBoldStyle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Aplikasi Layanan Masyarakat\n@2022 Provinsi DKI Jakarta - Indonesia"
-            android:textColor="@color/white" />
+            android:text="Aplikasi Layanan Masyarakat\n@2022 Provinsi DKI Jakarta - Indonesia" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

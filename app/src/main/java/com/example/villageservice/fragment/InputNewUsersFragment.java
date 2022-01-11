@@ -476,14 +476,19 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     }
 
     private void setUpText() {
-        etAddress.setText("Jl. Raya Penggilingan");
-        etRT.setText("007");
-        etRW.setText("014");
-        etKel.setText("Penggilingan");
-        etKec.setText("Cakung");
-        etKota.setText("Jakarta Timur");
-        etPostal.setText("13490");
-        etProvinsi.setText("DKI Jakarta");
+        Log.d("XXXLOG", "setUpText - from: " + previousFragment);
+        if (previousFragment.equalsIgnoreCase(AdminActivity.TAG_FRAGMENT_CITIZEN_LIST)) {
+
+        } else {
+            etAddress.setText("Jl. Raya Penggilingan");
+            etRT.setText("007");
+            etRW.setText("014");
+            etKel.setText("Penggilingan");
+            etKec.setText("Cakung");
+            etKota.setText("Jakarta Timur");
+            etPostal.setText("13490");
+            etProvinsi.setText("DKI Jakarta");
+        }
     }
 
     @Override

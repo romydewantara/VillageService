@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
@@ -40,6 +41,8 @@ public class CitizenFragment extends Fragment {
 
     private LinearLayout linearMiddle;
     private LinearLayout linearMainMenu;
+    private ConstraintLayout constraintContainer1;
+    private ConstraintLayout constraintContainer2;
     private RelativeLayout overlay;
     private View view;
     private AppCompatTextView tvJWT1;
@@ -98,6 +101,8 @@ public class CitizenFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_citizen, container, false);
         linearMiddle = view.findViewById(R.id.linearMiddle);
         linearMainMenu = view.findViewById(R.id.linearMainMenu);
+        constraintContainer1 = view.findViewById(R.id.constraintContainer1);
+        constraintContainer2 = view.findViewById(R.id.constraintContainer2);
         addUserButton = view.findViewById(R.id.addUserButton);
         editProfileButton = view.findViewById(R.id.editProfileButton);
         cvInfoLeader = view.findViewById(R.id.cvInfoLeader);
@@ -158,6 +163,12 @@ public class CitizenFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_ADMIN_PROFILE, true);
+            }
+        });
+        constraintContainer1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_CITIZEN_LIST, true);
             }
         });
     }

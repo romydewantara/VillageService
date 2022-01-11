@@ -117,28 +117,12 @@ public class CustomAlertDialog extends DialogFragment {
     }
 
     private void setCosmetic() {
-        Fonts fonts = new Fonts(mContext);
         if (!textTitle.equals("")) {
             titleAlert.setVisibility(View.VISIBLE);
         }
         if (!textMessage.equals("")) {
             messageAlert.setVisibility(View.VISIBLE);
         }
-
-        titleAlert.setTypeface(fonts.mulishBold());
-        messageAlert.setTypeface(fonts.mulishRegular());
-        negativeButton.setTypeface(fonts.mulishBold());
-        positiveButton.setTypeface(fonts.mulishBold());
-
-        titleAlert.setTextColor(mContext.getResources().getColor(R.color.black));
-        messageAlert.setTextColor(mContext.getResources().getColor(R.color.black));
-        negativeButton.setTextColor(mContext.getResources().getColor(R.color.dark_grey));
-        positiveButton.setTextColor(mContext.getResources().getColor(R.color.dark_grey));
-
-        titleAlert.setTextSize(17f);
-        messageAlert.setTextSize(16f);
-        negativeButton.setTextSize(17f);
-        positiveButton.setTextSize(17f);
 
         titleAlert.setText(textTitle);
         messageAlert.setText(textMessage);

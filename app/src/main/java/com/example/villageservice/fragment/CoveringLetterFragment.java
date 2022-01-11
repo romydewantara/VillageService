@@ -306,7 +306,7 @@ public class CoveringLetterFragment extends Fragment {
                         etPekerjaan.getText().toString(), String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
                         etPendidikan.getText().toString(), etAgama.getText().toString(), alamatLengkap, etMaksud.getText().toString(),
                         "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Sukina", clType, tglPengajuan, false);
-                coveringLetter.setOpened(false);
+                coveringLetter.setNotification(false);
                 Log.d("XXXLOG", "CL Fragment - coveringLetter to be send: " + new Gson().toJson(coveringLetter));
 
                 saveCLAsPurpose(coveringLetter);

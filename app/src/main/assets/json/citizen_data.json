@@ -3,15 +3,16 @@
     {
       "id_kartu_keluarga": "3175061601097908",
       "nama_kepala_keluarga": "P.SIMBOLON",
-      "alamat_lengkap": "",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
       "alamat_rumah": "",
-      "nomor_rt": 0,
-      "nomor_rw": 0,
+      "nomor_rt": "007",
+      "nomor_rw": "014",
       "kelurahan": "Penggilingan",
       "kecamatan": "Cakung",
       "kota": "Jakarta Timur",
       "kode_pos": 13490,
       "provinsi": "DKI Jakarta",
+      "status": "tetap",
       "anggota_keluarga": [
         {
           "id_ktp": "3175060410710007",
@@ -32,7 +33,7 @@
           "agama":"KATOLIK",
           "pendidikan": "",
           "jenis_pekerjaan":"TNI",
-          "status_pernikahan": "",
+          "status_pernikahan": "Kawin",
           "status_hubungan_dalam_keluarga":"",
           "kewarganegaraan": "WNI",
           "nama_ayah":"",

@@ -40,6 +40,9 @@ public class KartuKeluarga {
     @SerializedName("provinsi")
     private String provinsi = "";
 
+    @SerializedName("status")
+    private String status = "";
+
     @SerializedName("anggota_keluarga")
     private List<User> anggotaKeluarga = new ArrayList<>();
 
@@ -132,6 +135,14 @@ public class KartuKeluarga {
 
     public void setProvinsi(String provinsi) {
         this.provinsi = provinsi;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public List<User> getKeluargaList() {

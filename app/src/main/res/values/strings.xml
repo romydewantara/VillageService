@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pelayanan Digital</string>
+    <string name="app_name">Pelayanan Warga</string> <!--(Bidol) "Peldi buat skripsi aja dah" | Mon, 10 Jan 9:39 PM -->
 
     <string name="tombol_sign_in">Sign In</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -24,6 +24,7 @@
     <string name="menu_citizen_two">Kartu Tanda Penduduk\nTerdaftar</string>
 
     <string name="form_list">Formulir Persetujuan</string>
+    <string name="kk_list">Daftar Kartu Keluarga</string>
 
     <!-- Gender Menu -->
     <string name="gender_male">Laki-laki</string>

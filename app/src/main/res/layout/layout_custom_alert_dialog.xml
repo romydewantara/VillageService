@@ -11,26 +11,28 @@
         android:layout_gravity="center_horizontal">
 
         <TextView
+            style="@style/MulishBoldBlackStyle2"
             android:id="@+id/titleAlert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Title"
-            android:paddingTop="25dp"
             android:gravity="center"
-            android:visibility="gone"/>
+            android:paddingTop="25dp"
+            android:text="Title"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/messageAlert"
+            style="@style/MulishBlackMediumStyle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Message"
-            android:paddingTop="25dp"
-            android:paddingBottom="25dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:layout_below="@id/titleAlert"
             android:gravity="center"
-            android:visibility="gone"
-            android:layout_below="@id/titleAlert"/>
+            android:paddingLeft="10dp"
+            android:paddingTop="25dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="25dp"
+            android:text="Message"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,6 +46,7 @@
 
             <TextView
                 android:id="@+id/negativeButton"
+                style="@style/MulisGreyBoldStyle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_cad_negative_button"
@@ -55,6 +58,7 @@
 
             <TextView
                 android:id="@+id/positiveButton"
+                style="@style/MulishWhiteBoldStyle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_cad_positive_button"

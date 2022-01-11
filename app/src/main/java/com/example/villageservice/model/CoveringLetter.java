@@ -61,8 +61,8 @@ public class CoveringLetter {
     @SerializedName("cl_is_approved")
     boolean isApproved;
 
-    @SerializedName("cl_is_opened")
-    boolean isOpened;
+    @SerializedName("cl_is_notification")
+    boolean isNotification;
 
     @SerializedName("cl_type")
     String clType;
@@ -254,12 +254,12 @@ public class CoveringLetter {
         isApproved = approved;
     }
 
-    public boolean isOpened() {
-        return isOpened;
+    public boolean isNotification() {
+        return isNotification;
     }
 
-    public void setOpened(boolean opened) {
-        isOpened = opened;
+    public void setNotification(boolean notification) {
+        isNotification = notification;
     }
 
     public String getClType() {

@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".fragment.InputNewUsersFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_sparkling"/>
+
     <ScrollView
         android:id="@+id/scrollContent"
         android:layout_width="match_parent"
@@ -452,7 +458,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/dark_blue"
+        android:background="@color/blue"
         android:maxLines="1"
         android:text="Simpan"
         android:textAllCaps="false"
