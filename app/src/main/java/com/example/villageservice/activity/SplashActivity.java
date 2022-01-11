@@ -40,8 +40,6 @@ public class SplashActivity extends AppCompatActivity {
         constraintCopyright.setVisibility(View.VISIBLE);
         constraintCopyright.startAnimation(slideUp);
 
-        tvCopyright.setTypeface(new Fonts(getApplicationContext()).mulishMedium());
-        tvCopyright.setTextColor(R.color.light_blue);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvCopyright, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
 
         new Handler().postDelayed(new Runnable() {

@@ -14,33 +14,16 @@ import com.example.villageservice.utility.Fonts;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private Fonts fonts;
-    private AppCompatTextView tvTitle;
     private AppCompatTextView tvSignIn;
-    private AppCompatTextView tvQuestion;
-    private AppCompatTextView tvBottom;
-    private EditText etKtp;
-    private EditText etName;
-    private EditText etPassword;
-    private EditText etConfirmPassword;
     private ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        fonts = new Fonts(getApplicationContext());
-        tvTitle = findViewById(R.id.tvTitle);
         tvSignIn = findViewById(R.id.tvSignIn);
-        tvQuestion = findViewById(R.id.tvQuestion);
-        tvBottom = findViewById(R.id.tvBottom);
-        etKtp = findViewById(R.id.etKtp);
-        etName = findViewById(R.id.etName);
-        etPassword = findViewById(R.id.etPassword);
-        etConfirmPassword = findViewById(R.id.etConfirmPassword);
         backButton = findViewById(R.id.backButton);
 
-        setFonts();
         tvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,14 +45,4 @@ public class SignUpActivity extends AppCompatActivity {
         finish();
     }
 
-    private void setFonts() {
-        tvTitle.setTypeface(fonts.mulishBoldExtra());
-        tvSignIn.setTypeface(fonts.mulishBold());
-        tvQuestion.setTypeface(fonts.mulishRegular());
-        tvBottom.setTypeface(fonts.mulishMedium());
-        etKtp.setTypeface(fonts.mulishRegular());
-        etName.setTypeface(fonts.mulishRegular());
-        etPassword.setTypeface(fonts.mulishRegular());
-        etConfirmPassword.setTypeface(fonts.mulishRegular());
-    }
 }
