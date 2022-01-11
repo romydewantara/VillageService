@@ -2,15 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="bottom">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintContainer1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:padding="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <View
             android:id="@+id/viewTransparent1"
@@ -22,28 +23,47 @@
         <LinearLayout
             android:id="@+id/LinearMenu1"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/viewTransparent1">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvMenu1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/blue"
-                app:cardCornerRadius="40dp"
-                app:cardMaxElevation="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardMaxElevation="5dp"
                 app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
                 app:layout_constraintDimensionRatio="1:1">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvMenu1"
-                    style="@style/MulishWhiteBoldStyle2"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    android:gravity="center"
-                    android:text="@string/menu_citizen_one" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/viewTransparent5"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@android:color/transparent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvMenu1"
+                        style="@style/MulishWhiteBoldStyle2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="@string/menu_citizen_one" />
+
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -89,10 +109,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintContainer2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:padding="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <View
             android:id="@+id/viewTransparent2"
@@ -104,28 +124,49 @@
         <LinearLayout
             android:id="@+id/LinearMenu2"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/viewTransparent2">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvMenu2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/blue"
-                app:cardCornerRadius="40dp"
-                app:cardMaxElevation="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardMaxElevation="5dp"
                 app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
                 app:layout_constraintDimensionRatio="1:1">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvMenu2"
-                    style="@style/MulishWhiteBoldStyle2"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    android:gravity="center"
-                    android:text="@string/menu_citizen_two" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/viewTransparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@android:color/transparent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvMenu2"
+                        style="@style/MulishWhiteBoldStyle2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="@string/menu_citizen_two" />
+
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 

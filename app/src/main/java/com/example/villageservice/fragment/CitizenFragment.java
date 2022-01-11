@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
@@ -47,6 +49,8 @@ public class CitizenFragment extends Fragment {
     private View view;
     private AppCompatTextView tvJWT1;
     private AppCompatTextView tvJWT2;
+    private AppCompatTextView tvMenu1;
+    private AppCompatTextView tvMenu2;
     private AppCompatTextView tvName;
     private AppCompatTextView tvPhoneNum;
     private CardView cvInfoLeader;
@@ -107,12 +111,16 @@ public class CitizenFragment extends Fragment {
         editProfileButton = view.findViewById(R.id.editProfileButton);
         cvInfoLeader = view.findViewById(R.id.cvInfoLeader);
         cvInfoWargaBaru = view.findViewById(R.id.cvInfoWargaBaru);
+        tvMenu1 = view.findViewById(R.id.tvMenu1);
+        tvMenu2 = view.findViewById(R.id.tvMenu2);
         tvJWT1 = view.findViewById(R.id.tvJWT1);
         tvJWT2 = view.findViewById(R.id.tvJWT2);
         tvName = view.findViewById(R.id.tvName);
         tvPhoneNum = view.findViewById(R.id.tvPhoneNum);
         overlay = view.findViewById(R.id.overlay);
 
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvMenu1, 1, 16, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvMenu2, 1, 16, 1, TypedValue.COMPLEX_UNIT_SP);
         return view;
     }
 
