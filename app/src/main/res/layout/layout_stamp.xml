@@ -9,7 +9,6 @@
         android:id="@+id/relative1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/bg_stamp"
         app:layout_constraintHeight_percent=".5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,12 +16,12 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv1"
-            style="@style/MulishBlueBoldStyle7"
+            style="@style/MulishBlueBoldStyle2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:maxLines="1"
-            android:padding="5dp"
+            android:padding="1dp"
             android:text="RT.007/14" />
 
     </RelativeLayout>
@@ -31,7 +30,6 @@
         android:id="@+id/relative3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/bg_stamp"
         app:layout_constraintHeight_percent=".5"
         app:layout_constraintLeft_toRightOf="@id/relative1"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,12 +37,11 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv3"
-            style="@style/MulishBlueBoldStyle7"
+            style="@style/MulishBlueBoldStyle2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:maxLines="1"
-            android:padding="5dp"
             android:text="JT" />
 
     </RelativeLayout>
@@ -53,7 +50,6 @@
         android:id="@+id/relative2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/bg_stamp"
         app:layout_constraintHeight_percent=".5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/relative1"
@@ -61,36 +57,44 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv2a"
-            style="@style/MulishBlueBoldStyle2"
+            style="@style/MulishBlueBoldStyleTyke"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="center"
-            android:padding="1dp"
             android:maxLines="1"
-            android:text="KELURAHAN PENGGILINGAN"
-            app:layout_constraintHeight_percent=".5"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:text="PENGGILINGAN"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv2b"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv2b"
-            style="@style/MulishBlueBoldStyle4"
+            style="@style/MulishBlueBoldStyleTyke"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="center"
-            android:padding="1dp"
             android:maxLines="1"
-            app:layout_constraintHeight_percent=".5"
-            android:text="KECAMATAN CAKUNG"
-            app:layout_constraintTop_toBottomOf="@id/tv2a"/>
+            android:text="CAKUNG"
+            app:layout_constraintTop_toBottomOf="@id/tv2a"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        app:layout_constraintTop_toBottomOf="@id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dark_blue"/>
+    <View
+        app:layout_constraintLeft_toRightOf="@id/relative1"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/dark_blue"/>
 
     <RelativeLayout
         android:id="@+id/relative4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/bg_stamp"
         app:layout_constraintHeight_percent=".5"
         app:layout_constraintLeft_toRightOf="@id/relative1"
         app:layout_constraintTop_toBottomOf="@id/relative3"
@@ -98,12 +102,11 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv4"
-            style="@style/MulishBlueBoldStyle4"
+            style="@style/MulishBlueBoldStyle2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:maxLines="1"
-            android:padding="5dp"
             android:text="78.08.1003" />
 
     </RelativeLayout>

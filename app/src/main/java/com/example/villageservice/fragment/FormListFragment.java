@@ -245,10 +245,10 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
 
     private void appliedCoveringLetter(CoveringLetter cl) {
         CoveringLetter coveringLetter = new CoveringLetter(cl.getClId(), "LAMPIRAN XIII: MODEL AA.05",
-                "Nomor: " + "…/JT/VI/3/007/014/…/2022",
+                "Nomor: " + "……/JT/VI/3/007/014/……/2022",
                 cl.getClNama(), cl.getClJenisKelamin(), cl.getClTempatTanggalLahir(), cl.getClPekerjaan(),
                 String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(), cl.getClAgama(), cl.getClAlamat(), cl.getClKeperluan(),
-                "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina",
+                "……/JT/VI/3/014/……/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina",
                 clType, cl.getClTglPengajuan(), cl.isApproved());
         VSPreference.getInstance(context).setCoveringLetter(ConstantVariable.KEY_COVERING_LETTER, coveringLetter);
     }

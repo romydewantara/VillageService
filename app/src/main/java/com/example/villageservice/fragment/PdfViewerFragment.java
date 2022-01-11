@@ -1,5 +1,6 @@
 package com.example.villageservice.fragment;
 
+import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -11,6 +12,8 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -21,6 +24,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.villageservice.R;
 import com.example.villageservice.library.ZoomableRelativeLayout;
 import com.example.villageservice.listener.FragmentListener;
@@ -43,8 +47,10 @@ public class PdfViewerFragment extends Fragment {
     private FragmentListener fragmentListener;
     private PortableDocumentFormat portableDocumentFormat;
     private CoveringLetter coveringLetter;
+    private LottieAnimationView lottieStampLoading;
 
     private View view;
+    private RelativeLayout relativeStamp;
     private RelativeLayout relativePdf;
     private ZoomableRelativeLayout layoutPdf;
     private ImageView backButton;
@@ -75,8 +81,9 @@ public class PdfViewerFragment extends Fragment {
     private AppCompatTextView tv3;
     private AppCompatTextView tv4;
 
-    private RelativeLayout imageStamp;
     private ImageView imageSignature;
+    private Animation bouncedShow;
+    private Animation fadeIn;
 
     private boolean isAdmin = false;
     private ArrayList<Object> coveringLettersList;
@@ -144,6 +151,8 @@ public class PdfViewerFragment extends Fragment {
         portableDocumentFormat = new PortableDocumentFormat(context);
         coveringLettersList = new ArrayList<>();
         scaleGestureDetector = new ScaleGestureDetector(context, new OnPinchListener());
+        bouncedShow = AnimationUtils.loadAnimation(context, R.anim.button_bounched);
+        fadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in);
     }
 
     @Override
@@ -202,6 +211,7 @@ public class PdfViewerFragment extends Fragment {
         tvNameR8 = view.findViewById(R.id.tvNameR8);
         tvNameR19 = view.findViewById(R.id.tvNameR9);
         tvNameR10 = view.findViewById(R.id.tvNameR10);
+        lottieStampLoading = view.findViewById(R.id.lottieStampLoading);
 
         tv1 = view.findViewById(R.id.tv1);
         tv2a = view.findViewById(R.id.tv2a);
@@ -209,7 +219,7 @@ public class PdfViewerFragment extends Fragment {
         tv3 = view.findViewById(R.id.tv3);
         tv4 = view.findViewById(R.id.tv4);
 
-        imageStamp = view.findViewById(R.id.imageStamp);
+        relativeStamp = view.findViewById(R.id.relativeStamp);
         imageSignature = view.findViewById(R.id.imageSignature);
     }
 
@@ -234,13 +244,14 @@ public class PdfViewerFragment extends Fragment {
         tvNameR19.setText(coveringLetter.getClAlamat());
         tvNameR10.setText(coveringLetter.getClKeperluan());
 
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv1, 1, 24, 1, TypedValue.COMPLEX_UNIT_SP);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv2a, 1, 18, 1, TypedValue.COMPLEX_UNIT_SP);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv2b, 1, 18, 1, TypedValue.COMPLEX_UNIT_SP);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv3, 1, 20, 1, TypedValue.COMPLEX_UNIT_SP);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv4, 1, 20, 1, TypedValue.COMPLEX_UNIT_SP);
+
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv1, 1, 16, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv2a, 1, 8, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv2b, 1, 8, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv3, 1, 16, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv4, 1, 16, 1, TypedValue.COMPLEX_UNIT_SP);
         if (coveringLetter.isApproved()) {
-            imageStamp.setVisibility(View.VISIBLE);
+            relativeStamp.setVisibility(View.VISIBLE);
             imageSignature.setVisibility(View.VISIBLE);
             if (isAdmin) {
                 disableButton();
@@ -259,15 +270,31 @@ public class PdfViewerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (isAdmin && !coveringLetter.isApproved()) {
-                    imageStamp.setVisibility(View.VISIBLE);
-                    imageSignature.setVisibility(View.VISIBLE);
-                    coveringLetter.setApproved(true);
-                    saveChanges();
+                    lottieStampLoading.setVisibility(View.VISIBLE);
+                    lottieStampLoading.addAnimatorListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {}
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            lottieStampLoading.setVisibility(View.GONE);
+                            relativeStamp.setVisibility(View.VISIBLE);
+                            imageSignature.setVisibility(View.VISIBLE);
+                            relativeStamp.startAnimation(bouncedShow);
+                            imageSignature.startAnimation(fadeIn);
+
+                            coveringLetter.setApproved(true);
+                            saveChanges();
+                        }
+                        @Override
+                        public void onAnimationCancel(Animator animation) {}
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {}
+                    });
                 } else {
                     if (coveringLetter.isApproved()) {
-                        imageStamp.setVisibility(View.VISIBLE);
+                        relativeStamp.setVisibility(View.VISIBLE);
                         imageSignature.setVisibility(View.VISIBLE);
-                        portableDocumentFormat.generatePdf(relativePdf, coveringLetter.getClNama().trim() + "_" + coveringLetter.getClKeperluan());
+                        portableDocumentFormat.generatePdf(relativePdf, coveringLetter.getClNama().trim() + "_" + coveringLetter.getClKeperluan().trim());
                     }
                 }
                 disableButton();

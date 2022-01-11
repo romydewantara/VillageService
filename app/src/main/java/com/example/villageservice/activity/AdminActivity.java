@@ -57,6 +57,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
     private AppCompatTextView tvNotification;
 
     private Fragment fragment;
+    private Fragment previousFragment;
     private String coveringLetterType = "";
 
     Animation slideUp;
@@ -239,6 +240,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_PDF_VIEWER:
                 fragment = new PdfViewerFragment();
+                previousFragment = currentFragment;
                 bundle = new Bundle();
                 bundle.putString(ConstantVariable.KEY_CL_BUNDLE, coveringLetterType);
                 fragment.setArguments(bundle);
@@ -358,7 +360,13 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         } else if (fragment instanceof FormListFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
         } else if (fragment instanceof PdfViewerFragment) {
-            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_FORM_LIST, false);
+            if (previousFragment != null) {
+                if (previousFragment instanceof NotificationsFragment) {
+                    onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_NOTIFICATION, false);
+                } else {
+                    onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_FORM_LIST, false);
+                }
+            }
         } else if (fragment instanceof CitizenFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
         } else if (fragment instanceof InputNewUsersFragment) {

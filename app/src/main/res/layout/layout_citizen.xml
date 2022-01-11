@@ -27,7 +27,7 @@
             app:layout_constraintTop_toBottomOf="@id/viewTransparent1">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvMenu1"
+                android:id="@+id/cvMenuLeft"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
@@ -128,7 +128,7 @@
             app:layout_constraintTop_toBottomOf="@id/viewTransparent2">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvMenu2"
+                android:id="@+id/cvMenuRight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"

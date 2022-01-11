@@ -46,6 +46,7 @@
                 android:layout_gravity="center"
                 android:paddingStart="10dp"
                 android:paddingLeft="10dp"
+                android:maxLines="1"
                 android:text="Muhammad Fakhri Pratama"
                 app:layout_constraintLeft_toRightOf="@id/imageIcon"
                 app:layout_constraintTop_toTopOf="parent"

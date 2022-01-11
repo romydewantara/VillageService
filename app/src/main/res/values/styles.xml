@@ -350,12 +350,12 @@
     <!-- RED -->
     <style name="MulishRegularRedStyleTiny">
         <item name="android:fontFamily">@font/mulish_regular</item>
-        <item name="android:textColor">@color/red</item>
+        <item name="android:textColor">@color/soft_red</item>
         <item name="android:textSize">12sp</item>
     </style>
     <style name="MulishRegularRedStyle1">
         <item name="android:fontFamily">@font/mulish_regular</item>
-        <item name="android:textColor">@color/red</item>
+        <item name="android:textColor">@color/soft_red</item>
         <item name="android:textSize">14sp</item>
     </style>
 

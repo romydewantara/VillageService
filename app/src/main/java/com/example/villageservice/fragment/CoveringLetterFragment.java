@@ -26,6 +26,7 @@ import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.model.Admin;
 import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
@@ -301,11 +302,11 @@ public class CoveringLetterFragment extends Fragment {
                         ", Kota " + etKota.getText().toString() +
                         ", Kode Pos: " + etPostal.getText().toString();
                 String tempatTanggalLahir = etTempatLahir.getText().toString() + ", " + etTanggal.getText().toString() + " " + monthChooser.getSelectedItem() + " " + etTahun.getText().toString();
-                CoveringLetter coveringLetter = new CoveringLetter(id, "LAMPIRAN XIII: MODEL AA.05", "Nomor: 12345678910987645",
+                CoveringLetter coveringLetter = new CoveringLetter(id, "LAMPIRAN XIII: MODEL AA.05", "Nomor: ……/JT/VI/3/014/……/2022",
                         etIdNama.getText().toString(), String.valueOf(genderChooser.getSelectedItem()), tempatTanggalLahir,
                         etPekerjaan.getText().toString(), String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
                         etPendidikan.getText().toString(), etAgama.getText().toString(), alamatLengkap, etMaksud.getText().toString(),
-                        "…/JT/VI/3/014/…/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Sukina", clType, tglPengajuan, false);
+                        "……/JT/VI/3/014/……/2022", "……/……/20……", "Bpk. Rudi", "……/……/20", "Sukina", clType, tglPengajuan, false);
                 coveringLetter.setNotification(false);
                 Log.d("XXXLOG", "CL Fragment - coveringLetter to be send: " + new Gson().toJson(coveringLetter));
 

@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.villageservice.R;
@@ -53,6 +54,7 @@ public class FormListAdapter extends BaseAdapter {
         AppCompatTextView tvKtp = v.findViewById(R.id.tvKTP);
         AppCompatTextView tvDate = v.findViewById(R.id.tvDate);
         AppCompatTextView tvStatus = v.findViewById(R.id.tvStatus);
+        CardView tvButtonOpen = v.findViewById(R.id.tvButtonOpen);
         ImageView imageStatus = v.findViewById(R.id.imageStatus);
 
         tvName.setText(coveringLetterList.get(position).getClNama());
@@ -67,7 +69,7 @@ public class FormListAdapter extends BaseAdapter {
         }
 
 
-        userRequest.setOnClickListener(new View.OnClickListener() {
+        tvButtonOpen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.onSelectedUserRequest(coveringLetterList.get(position).getClKtp(), coveringLetterList.get(position).getClId());

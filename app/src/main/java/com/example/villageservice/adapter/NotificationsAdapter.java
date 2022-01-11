@@ -1,8 +1,8 @@
 package com.example.villageservice.adapter;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.TextViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.villageservice.R;
@@ -66,6 +67,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         Log.d("XXXLOG", "onBindViewHolder - color: " +color);
         holder.tvKeperluan.setText(coveringLetterArrayList.get(position).getClKeperluan());
         holder.tvKeperluan.setTextColor(Color.parseColor(color));
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(holder.tvName, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
         if (coveringLetterArrayList.get(position).isApproved()) {
             holder.imageStatus.setImageResource(R.mipmap.ic_approved);
             holder.tvStatus.setText("Approved");

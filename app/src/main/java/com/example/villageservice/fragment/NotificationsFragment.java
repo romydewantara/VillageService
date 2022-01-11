@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.example.villageservice.R;
+import com.example.villageservice.activity.AdminActivity;
+import com.example.villageservice.activity.UserActivity;
 import com.example.villageservice.adapter.NotificationsAdapter;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
@@ -29,6 +31,7 @@ import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -186,6 +189,7 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
                     }
                 }
             }
+            Collections.reverse(coveringLetterArrayList);
             notificationsAdapter = new NotificationsAdapter(coveringLetterArrayList);
             notificationsAdapter.setClickListener(NotificationsFragment.this);
             LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -194,8 +198,26 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
         }
     }
 
+    private void appliedCoveringLetter(CoveringLetter cl) {
+        CoveringLetter coveringLetter = new CoveringLetter(cl.getClId(), "LAMPIRAN XIII: MODEL AA.05",
+                "Nomor: " + "……/JT/VI/3/007/014/……/2022",
+                cl.getClNama(), cl.getClJenisKelamin(), cl.getClTempatTanggalLahir(), cl.getClPekerjaan(),
+                String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(), cl.getClAgama(), cl.getClAlamat(), cl.getClKeperluan(),
+                "……/JT/VI/3/014/……/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina",
+                cl.getClType(), cl.getClTglPengajuan(), cl.isApproved());
+        VSPreference.getInstance(context).setCoveringLetter(ConstantVariable.KEY_COVERING_LETTER, coveringLetter);
+    }
+
     @Override
     public void onItemClicked(NotificationsAdapter.NotificationsHolder notificationsHolder, CoveringLetter coveringLetter, int position) {
+        Log.d("XXXLOG", "onItemClicked - id: " + position + " | cl: " + new Gson().toJson(coveringLetter));
 
+        appliedCoveringLetter(coveringLetter);
+        fragmentListener.onFragmentPassingData(coveringLetter.getClType());
+        if (isAdmin) {
+            fragmentListener.onFragmentFinish(NotificationsFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_PDF_VIEWER, true);
+        } else {
+            fragmentListener.onFragmentFinish(NotificationsFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_PDF_VIEWER, true);
+        }
     }
 }

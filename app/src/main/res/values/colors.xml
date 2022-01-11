@@ -19,6 +19,7 @@
     <color name="blue">#406882</color>
     <color name="dark_blue">#1A374D</color>
     <color name="dark_blue_max">#122635</color>
+    <color name="blue_button_disabled">#335C7AEA</color>
     <color name="green">#00A19D</color>
     <color name="lilac_light">#DADDFC</color>
     <color name="red">#FF0000</color>

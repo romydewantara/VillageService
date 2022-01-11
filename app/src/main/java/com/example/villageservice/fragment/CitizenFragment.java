@@ -43,8 +43,8 @@ public class CitizenFragment extends Fragment {
 
     private LinearLayout linearMiddle;
     private LinearLayout linearMainMenu;
-    private ConstraintLayout constraintContainer1;
-    private ConstraintLayout constraintContainer2;
+    private CardView cvMenuLeft;
+    private CardView cvMenuRight;
     private RelativeLayout overlay;
     private View view;
     private AppCompatTextView tvJWT1;
@@ -105,8 +105,8 @@ public class CitizenFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_citizen, container, false);
         linearMiddle = view.findViewById(R.id.linearMiddle);
         linearMainMenu = view.findViewById(R.id.linearMainMenu);
-        constraintContainer1 = view.findViewById(R.id.constraintContainer1);
-        constraintContainer2 = view.findViewById(R.id.constraintContainer2);
+        cvMenuLeft = view.findViewById(R.id.cvMenuLeft);
+        cvMenuRight = view.findViewById(R.id.cvMenuRight);
         addUserButton = view.findViewById(R.id.addUserButton);
         editProfileButton = view.findViewById(R.id.editProfileButton);
         cvInfoLeader = view.findViewById(R.id.cvInfoLeader);
@@ -173,7 +173,13 @@ public class CitizenFragment extends Fragment {
                 fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_ADMIN_PROFILE, true);
             }
         });
-        constraintContainer1.setOnClickListener(new View.OnClickListener() {
+        cvMenuLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_CITIZEN_LIST, true);
+            }
+        });
+        cvMenuRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_CITIZEN_LIST, true);

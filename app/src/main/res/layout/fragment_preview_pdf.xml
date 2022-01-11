@@ -5,7 +5,7 @@
     android:id="@+id/pdf_file"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/dark_blue"
     tools:context=".fragment.PdfViewerFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +44,7 @@
             style="@style/MulishWhiteBoldStyle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_enabled"
+            android:background="@drawable/bg_button_disabled"
             android:maxLines="1"
             android:paddingLeft="35dp"
             android:paddingRight="35dp"
