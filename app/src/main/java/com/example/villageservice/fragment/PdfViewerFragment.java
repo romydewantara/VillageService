@@ -23,11 +23,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.villageservice.R;
+import com.example.villageservice.library.InputHeaderDialog;
 import com.example.villageservice.library.ZoomableRelativeLayout;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.listener.InputHeaderDialogListener;
 import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.PortableDocumentFormat;
 import com.example.villageservice.utility.ConstantVariable;
@@ -244,7 +247,9 @@ public class PdfViewerFragment extends Fragment {
         tvNameR19.setText(coveringLetter.getClAlamat());
         tvNameR10.setText(coveringLetter.getClKeperluan());
 
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvNumberFooterR, 1, 10, 1, TypedValue.COMPLEX_UNIT_SP);
 
+        /** STAMP */
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv1, 1, 16, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv2a, 1, 8, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv2b, 1, 8, 1, TypedValue.COMPLEX_UNIT_SP);
@@ -270,26 +275,21 @@ public class PdfViewerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (isAdmin && !coveringLetter.isApproved()) {
-                    lottieStampLoading.setVisibility(View.VISIBLE);
-                    lottieStampLoading.addAnimatorListener(new Animator.AnimatorListener() {
-                        @Override
-                        public void onAnimationStart(Animator animation) {}
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            lottieStampLoading.setVisibility(View.GONE);
-                            relativeStamp.setVisibility(View.VISIBLE);
-                            imageSignature.setVisibility(View.VISIBLE);
-                            relativeStamp.startAnimation(bouncedShow);
-                            imageSignature.startAnimation(fadeIn);
-
-                            coveringLetter.setApproved(true);
-                            saveChanges();
-                        }
-                        @Override
-                        public void onAnimationCancel(Animator animation) {}
-                        @Override
-                        public void onAnimationRepeat(Animator animation) {}
-                    });
+                    FragmentManager fm = getFragmentManager();
+                    InputHeaderDialog customAlertDialog = InputHeaderDialog.newInstance(context, "Masukkan Nomor Surat Pengantar")
+                            .setButton("Tanda Tangan", new InputHeaderDialogListener() {
+                                @Override
+                                public void onButtonSubmit(String headerCode) {
+                                    String noHeader = "Nomor: " + headerCode;
+                                    tvNumber.setText(noHeader);
+                                    tvNumber.setAnimation(bouncedShow);
+                                    coveringLetter.setClNomorHeader(headerCode);
+                                    approved();
+                                }
+                            });
+                    if (fm != null) {
+                        customAlertDialog.show(fm, "input_header_dialog");
+                    }
                 } else {
                     if (coveringLetter.isApproved()) {
                         relativeStamp.setVisibility(View.VISIBLE);
@@ -320,8 +320,31 @@ public class PdfViewerFragment extends Fragment {
     @SuppressLint("NewApi")
     private void disableButton() {
         pdfViewerButton.setBackgroundResource(R.drawable.bg_button_disabled);
-        pdfViewerButton.setTextColor(Color.parseColor("#80B1D0E0"));
+        pdfViewerButton.setTextColor(Color.parseColor("#A9A9A9"));
         pdfViewerButton.setEnabled(false);
+    }
+
+    private void approved() {
+        lottieStampLoading.setVisibility(View.VISIBLE);
+        lottieStampLoading.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {}
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                lottieStampLoading.setVisibility(View.GONE);
+                relativeStamp.setVisibility(View.VISIBLE);
+                imageSignature.setVisibility(View.VISIBLE);
+                relativeStamp.startAnimation(bouncedShow);
+                imageSignature.startAnimation(fadeIn);
+
+                coveringLetter.setApproved(true);
+                saveChanges();
+            }
+            @Override
+            public void onAnimationCancel(Animator animation) {}
+            @Override
+            public void onAnimationRepeat(Animator animation) {}
+        });
     }
 
     private void saveChanges() {

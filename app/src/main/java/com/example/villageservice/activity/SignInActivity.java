@@ -184,8 +184,8 @@ public class SignInActivity extends AppCompatActivity implements EasyPermissions
     }
 
     private void setFonts() {
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvAplName, 1, 20, 1, TypedValue.COMPLEX_UNIT_SP);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfo, 1, 18, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvAplName, 1, 24, 1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvInfo, 1, 24, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvGuide, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvQuestion, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvRegister, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
