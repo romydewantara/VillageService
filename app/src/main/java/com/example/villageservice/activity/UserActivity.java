@@ -30,8 +30,6 @@ import com.example.villageservice.utility.VSPreference;
 
 public class UserActivity extends AppCompatActivity implements FragmentListener {
 
-    private Fragment fragment;
-
     public static final int FRAGMENT_FINISH_GOTO_HOME = 1;
     public static final int FRAGMENT_FINISH_GOTO_PROFILE = 2;
     public static final int FRAGMENT_FINISH_GOTO_NOTIFICATION = 3;
@@ -65,6 +63,9 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     private Bundle bundle;
     Animation slideUp;
     Animation slideDown;
+
+    private Fragment fragment;
+    private Fragment previousFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -247,6 +248,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_PDF_VIEWER:
                 fragment = new PdfViewerFragment();
+                previousFragment = currentFragment;
                 ((PdfViewerFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 bundle = new Bundle();
                 bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
@@ -327,7 +329,11 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         } else if (fragment instanceof EntryFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
         } else if (fragment instanceof PdfViewerFragment) {
-            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_FORM_LIST, false);
+            if (previousFragment instanceof NotificationsFragment) {
+                onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_NOTIFICATION, false);
+            } else {
+                onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_FORM_LIST, false);
+            }
         } else if (fragment instanceof CoveringLetterFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_ENTRY, false);
         } else {

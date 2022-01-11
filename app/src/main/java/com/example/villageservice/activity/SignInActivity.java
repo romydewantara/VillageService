@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -36,8 +37,12 @@ import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class SignInActivity extends AppCompatActivity {
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
+
+public class SignInActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
     // 6 TextView
     private AppCompatTextView tvAplName;
@@ -64,6 +69,11 @@ public class SignInActivity extends AppCompatActivity {
     // TEMPORARY MAIL
     private boolean isMailFilled = false;
     private boolean isPasswordFilled = false;
+
+    public ArrayList<String> permissionsToRequest;
+    public ArrayList<String> permissionsRejected;
+    private String[] perms = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    public final static int PERMISSION_REQ_CODE = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +113,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //skipLogin();
-                credentialCheck();
+                requestPermissions();
             }
         });
         tvGuide.setOnClickListener(new View.OnClickListener() {
@@ -279,7 +289,45 @@ public class SignInActivity extends AppCompatActivity {
         }, delayMillis);
     }
 
+    private void requestPermissions() {
+        if (EasyPermissions.hasPermissions(getApplicationContext(), perms)) {
+            credentialCheck();
+        } else {
+            EasyPermissions.requestPermissions(
+                    this, "Aplikasi ini membutuhkan akses ke penyimpanan Anda agar Anda dapat mengakses surat.",
+                    PERMISSION_REQ_CODE, perms);
+        }
+    }
+
     private void skipLogin() {
         login(AdminActivity.class, 3000);
     }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms) {
+        if(EasyPermissions.hasPermissions(getApplicationContext(), this.perms)){
+            credentialCheck();
+        }
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            new AppSettingsDialog.Builder(this)
+                    .setTitle(getString(R.string.title_settings_dialog))
+                    .setRationale(getString(R.string.rationale_ask_again))
+                    .setPositiveButton("Settings")
+                    .setNegativeButton("Cancel")
+                    .setRequestCode(PERMISSION_REQ_CODE)
+                    .build()
+                    .show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
 }

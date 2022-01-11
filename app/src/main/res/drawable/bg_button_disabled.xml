@@ -4,7 +4,7 @@
     android:shape="rectangle">
 
     <solid
-        android:color="@color/blue_button_disabled" />
+        android:color="@color/light_blue_50" />
 
     <corners
         android:bottomLeftRadius="50dp"
