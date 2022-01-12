@@ -4,39 +4,1641 @@
       "id_kartu_keluarga": "3175061601097908",
       "nama_kepala_keluarga": "P.SIMBOLON",
       "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
-      "alamat_rumah": "",
+      "alamat_rumah": "Jl Penggilingan Raya",
       "nomor_rt": "007",
       "nomor_rw": "014",
       "kelurahan": "Penggilingan",
       "kecamatan": "Cakung",
       "kota": "Jakarta Timur",
-      "kode_pos": 13490,
+      "kode_pos": "13490",
       "provinsi": "DKI Jakarta",
       "status": "tetap",
       "anggota_keluarga": [
         {
           "id_ktp": "3175060410710007",
-          "id_kartu_keluarga":"3175061601097908",
+          "id_kartu_keluarga": "3175061601097908",
           "nama_lengkap": "P.SIMBOLON",
-          "jenis_kelamin":"Laki-laki",
+          "jenis_kelamin": "Laki-laki",
           "tempat_lahir": "DELI SERDANG",
           "tanggal_lahir": {
-            "tanggal": 4,
-            "bulan":"Oktober",
-            "tahun": 1971
+            "tanggal": "04",
+            "bulan": "Oktober",
+            "tahun": "1971"
           },
           "tanggal_bergabung": {
-            "tanggal": 0,
-            "bulan":"",
-            "tahun": 0
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
           },
-          "agama":"KATOLIK",
+          "agama": "KATOLIK",
           "pendidikan": "",
-          "jenis_pekerjaan":"TNI",
+          "jenis_pekerjaan": "TNI",
           "status_pernikahan": "Kawin",
-          "status_hubungan_dalam_keluarga":"",
+          "status_hubungan_dalam_keluarga": "",
           "kewarganegaraan": "WNI",
-          "nama_ayah":"",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "3175064304780000",
+          "id_kartu_keluarga": "3175061601097908",
+          "nama_lengkap": "Heppy sinaga",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Medan",
+          "tanggal_lahir": {
+            "tanggal": "03",
+            "bulan": "April",
+            "tahun": "1978"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "KATOLIK",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Ibu Rumah Tangga",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "3175060410990002",
+          "id_kartu_keluarga": "3175061601097908",
+          "nama_lengkap": "Yansen",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "04",
+            "bulan": "Oktober",
+            "tahun": "1999"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "KATOLIK",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "3175060305051001",
+          "id_kartu_keluarga": "3175061601097908",
+          "nama_lengkap": "Ign Akberto",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "03",
+            "bulan": "Mei",
+            "tahun": "2005"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "KATOLIK",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "3175064406071004",
+          "id_kartu_keluarga": "3175061601097908",
+          "nama_lengkap": "Theresia Santi",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "04",
+            "bulan": "Juni",
+            "tahun": "2007"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "KATOLIK",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061809170030",
+      "nama_kepala_keluarga": "SUDAMAN",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175060410710007",
+          "id_kartu_keluarga": "3175061809170030",
+          "nama_lengkap": "SUDAMAN",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jepara",
+          "tanggal_lahir": {
+            "tanggal": "01",
+            "bulan": "Januari",
+            "tahun": "1973"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Wiraswasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "1802137112740003",
+          "id_kartu_keluarga": "3175061809170030",
+          "nama_lengkap": "Shofiati",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Magelang",
+          "tanggal_lahir": {
+            "tanggal": "31",
+            "bulan": "Desember",
+            "tahun": "1974"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Ibu Rumah Tangga",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "1802134712050002",
+          "id_kartu_keluarga": "3175061809170030",
+          "nama_lengkap": "Maya Tri Hapsari",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "07",
+            "bulan": "Desember",
+            "tahun": "2005"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "1802137107100003",
+          "id_kartu_keluarga": "3175061809170030",
+          "nama_lengkap": "Ayu Andayani",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Gunung Agung",
+          "tanggal_lahir": {
+            "tanggal": "31",
+            "bulan": "Oktober",
+            "tahun": "2010"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "",
+            "bulan": "",
+            "tahun": ""
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062001099260",
+      "nama_kepala_keluarga": "ABDUL ARIS",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3176061809820014",
+          "id_kartu_keluarga": "3175062001099260",
+          "nama_lengkap": "ABDUL ARIS",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jepara",
+          "tanggal_lahir": {
+            "tanggal": "01",
+            "bulan": "September",
+            "tahun": "1982"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "3175066103910014",
+          "id_kartu_keluarga": "3175062001099260",
+          "nama_lengkap": "Ine Mutia Sumayah",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "21",
+            "bulan": "Maret",
+            "tahun": "1991"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Ibu Rumah Tangga",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "3175065611020012",
+          "id_kartu_keluarga": "3175062001099260",
+          "nama_lengkap": "Indah Mutia R.",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "16",
+            "bulan": "November",
+            "tahun": "2002"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "3175064109111006",
+          "id_kartu_keluarga": "3175062001099260",
+          "nama_lengkap": "Risma Fitriana",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "01",
+            "bulan": "September",
+            "tahun": "2011"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061007190062",
+      "nama_kepala_keluarga": "SUWANDI",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3329061203870000",
+          "id_kartu_keluarga": "3175061007190062",
+          "nama_lengkap": "SUWANDI",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Brebes",
+          "tanggal_lahir": {
+            "tanggal": "12",
+            "bulan": "Maret",
+            "tahun": "1987"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Wiraswasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "3329066908890000",
+          "id_kartu_keluarga": "3175061007190062",
+          "nama_lengkap": "Mujiyanah",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Brebes",
+          "tanggal_lahir": {
+            "tanggal": "29",
+            "bulan": "Agustus",
+            "tahun": "1989"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Wiraswasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "3329064105120001",
+          "id_kartu_keluarga": "3175061007190062",
+          "nama_lengkap": "Vivian Andiyna Meylani",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Brebes",
+          "tanggal_lahir": {
+            "tanggal": "01",
+            "bulan": "Mei",
+            "tahun": "2012"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pelajar",
+          "status_pernikahan": "Belum Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061701090530",
+      "nama_kepala_keluarga": "NUGROGO",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175061007690012",
+          "id_kartu_keluarga": "3175061701090530",
+          "nama_lengkap": "NUGROHO",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "K.Progo",
+          "tanggal_lahir": {
+            "tanggal": "10",
+            "bulan": "Juli",
+            "tahun": "1969"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061804110060",
+      "nama_kepala_keluarga": "HADI PRAYITNO",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175063006740025",
+          "id_kartu_keluarga": "3175061804110060",
+          "nama_lengkap": "HADI PRAYITNO",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "30",
+            "bulan": "Juni",
+            "tahun": "1974"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061601092180",
+      "nama_kepala_keluarga": "SLAMET RIYADI",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175061606530009",
+          "id_kartu_keluarga": "3175061601092180",
+          "nama_lengkap": "SLAMET RIYADI",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jogjakarta",
+          "tanggal_lahir": {
+            "tanggal": "16",
+            "bulan": "Juni",
+            "tahun": "1953"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Pedagang",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062001094722",
+      "nama_kepala_keluarga": "SUNAKAM",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175061606540000",
+          "id_kartu_keluarga": "3175062001094722",
+          "nama_lengkap": "SUNAKAM",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Prembun",
+          "tanggal_lahir": {
+            "tanggal": "16",
+            "bulan": "Juni",
+            "tahun": "1954"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Wiraswasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175060204121010",
+      "nama_kepala_keluarga": "HARTONO FIRDAUS",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3215132305880003",
+          "id_kartu_keluarga": "3175060204121010",
+          "nama_lengkap": "HARTONO FIRDAUS",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "23",
+            "bulan": "Mei",
+            "tahun": "1988"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062502131071",
+      "nama_kepala_keluarga": "NOVA CHRISTIANTO",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175062611870010",
+          "id_kartu_keluarga": "3175062502131071",
+          "nama_lengkap": "NOVA CHRISTIANTO",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "26",
+            "bulan": "November",
+            "tahun": "1987"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062602180064",
+      "nama_kepala_keluarga": "SAIFUL ANWAR",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175061601921002",
+          "id_kartu_keluarga": "3175062602180064",
+          "nama_lengkap": "SAIFUL ANWAR",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Bekasi",
+          "tanggal_lahir": {
+            "tanggal": "16",
+            "bulan": "Januari",
+            "tahun": "1992"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175060705141040",
+      "nama_kepala_keluarga": "MOMON",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175021102850010",
+          "id_kartu_keluarga": "3175060705141040",
+          "nama_lengkap": "MOMON",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Kuningan",
+          "tanggal_lahir": {
+            "tanggal": "11",
+            "bulan": "Februari",
+            "tahun": "1985"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061901091560",
+      "nama_kepala_keluarga": "SURIPTO BIN SANURI",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175021102850010",
+          "id_kartu_keluarga": "3175061901091560",
+          "nama_lengkap": "SURIPTO BIN SANURI",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Tegal",
+          "tanggal_lahir": {
+            "tanggal": "17",
+            "bulan": "November",
+            "tahun": "1971"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Buruh",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061901097506",
+      "nama_kepala_keluarga": "YERLI ERITA",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175064504730029",
+          "id_kartu_keluarga": "3175061901097506",
+          "nama_lengkap": "YERLI ERITA",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Padang Panjang",
+          "tanggal_lahir": {
+            "tanggal": "05",
+            "bulan": "April",
+            "tahun": "1973"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Ibu Rumah Tangga",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061601094595",
+      "nama_kepala_keluarga": "MUKTAR",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175060603570006",
+          "id_kartu_keluarga": "3175061601094595",
+          "nama_lengkap": "MUKTAR",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Krawang",
+          "tanggal_lahir": {
+            "tanggal": "06",
+            "bulan": "Maret",
+            "tahun": "1957"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061309130002",
+      "nama_kepala_keluarga": "RUSTANDI",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175060811800017",
+          "id_kartu_keluarga": "3175061309130002",
+          "nama_lengkap": "RUSTANDI",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Indramayu",
+          "tanggal_lahir": {
+            "tanggal": "08",
+            "bulan": "November",
+            "tahun": "1980"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061601092186",
+      "nama_kepala_keluarga": "MAKMUR",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175061510610002",
+          "id_kartu_keluarga": "3175061601092186",
+          "nama_lengkap": "MAKMUR",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "15",
+            "bulan": "Oktober",
+            "tahun": "1961"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062001092333",
+      "nama_kepala_keluarga": "ODIH",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175061703670006",
+          "id_kartu_keluarga": "3175062001092333",
+          "nama_lengkap": "ODIH",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "17",
+            "bulan": "Maret",
+            "tahun": "1967"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062001095640",
+      "nama_kepala_keluarga": "RIDIN",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175062106780014",
+          "id_kartu_keluarga": "3175062001095640",
+          "nama_lengkap": "RIDIN",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Pemalang",
+          "tanggal_lahir": {
+            "tanggal": "21",
+            "bulan": "Juni",
+            "tahun": "1978"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062001094580",
+      "nama_kepala_keluarga": "YUSWANSIH",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175062812610010",
+          "id_kartu_keluarga": "3175062001094580",
+          "nama_lengkap": "YUSWANSIH",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "28",
+            "bulan": "Desember",
+            "tahun": "1961"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175060208121036",
+      "nama_kepala_keluarga": "UMROH",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "31750671112720003",
+          "id_kartu_keluarga": "3175060208121036",
+          "nama_lengkap": "UMROH",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "31",
+            "bulan": "Desember",
+            "tahun": "1972"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061701098188",
+      "nama_kepala_keluarga": "AHMAT ANJAK",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "31750671112720003",
+          "id_kartu_keluarga": "3175061701098188",
+          "nama_lengkap": "AHMAT ANJAK",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Kota Bumi",
+          "tanggal_lahir": {
+            "tanggal": "09",
+            "bulan": "November",
+            "tahun": "1973"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062112141000",
+      "nama_kepala_keluarga": "WITONO",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3275101707560009",
+          "id_kartu_keluarga": "3175062112141000",
+          "nama_lengkap": "WITONO",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Yogyakarta",
+          "tanggal_lahir": {
+            "tanggal": "17",
+            "bulan": "Juli",
+            "tahun": "1956"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175060502151000",
+      "nama_kepala_keluarga": "IRAWAN",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3201142102870003",
+          "id_kartu_keluarga": "3175060502151000",
+          "nama_lengkap": "IRAWAN",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Bogor",
+          "tanggal_lahir": {
+            "tanggal": "21",
+            "bulan": "Februrari",
+            "tahun": "1987"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062112170108",
+      "nama_kepala_keluarga": "SYAMSUL BAHRI",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175061902930001",
+          "id_kartu_keluarga": "3175062112170108",
+          "nama_lengkap": "SYAMSUL BAHRI",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "19",
+            "bulan": "Februrari",
+            "tahun": "1993"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Wiraswasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175060306110018",
+      "nama_kepala_keluarga": "SURYANSAH",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "317506130574012",
+          "id_kartu_keluarga": "3175060306110018",
+          "nama_lengkap": "SURYANSAH",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "13",
+            "bulan": "Mei",
+            "tahun": "1974"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062001094676",
+      "nama_kepala_keluarga": "SYAMSUL NANANG",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "317506130574012",
+          "id_kartu_keluarga": "3175062001094676",
+          "nama_lengkap": "SYAMSUL NANANG",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "10",
+            "bulan": "Desember",
+            "tahun": "1980"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175060304131000",
+      "nama_kepala_keluarga": "ARIF",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175060505850000",
+          "id_kartu_keluarga": "3175060304131000",
+          "nama_lengkap": "ARIF",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "05",
+            "bulan": "Mei",
+            "tahun": "1985"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062906180001",
+      "nama_kepala_keluarga": "KARMILA",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175064201810006",
+          "id_kartu_keluarga": "3175062906180001",
+          "nama_lengkap": "KARMILA",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "02",
+            "bulan": "Januari",
+            "tahun": "1981"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062411141020",
+      "nama_kepala_keluarga": "ARIEF BUDI PERMANA",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175021409730003",
+          "id_kartu_keluarga": "3175062411141020",
+          "nama_lengkap": "ARIEF BUDI PERMANA",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Kuningan",
+          "tanggal_lahir": {
+            "tanggal": "14",
+            "bulan": "September",
+            "tahun": "1973"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "BHL",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175061601092190",
+      "nama_kepala_keluarga": "AMAT SUBEKI",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "317508170950003",
+          "id_kartu_keluarga": "3175061601092190",
+          "nama_lengkap": "AMAT SUBEKI",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Yogyakarta",
+          "tanggal_lahir": {
+            "tanggal": "17",
+            "bulan": "September",
+            "tahun": "1950"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Tidak/Belum Bekerja",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "3175062603151041",
+      "nama_kepala_keluarga": "HARI",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175061301900011",
+          "id_kartu_keluarga": "3175062603151041",
+          "nama_lengkap": "HARI",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "13",
+            "bulan": "Januari",
+            "tahun": "1990"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Karyawan Swasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
           "nama_ibu": ""
         }
       ],

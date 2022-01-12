@@ -31,11 +31,16 @@ import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.model.Admin;
 import com.example.villageservice.model.KartuKeluarga;
+import com.example.villageservice.model.KartuKeluargaList;
+import com.example.villageservice.model.User;
+import com.example.villageservice.utility.AppUtil;
 import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +48,11 @@ import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class SignInActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
+
+    private AppUtil appUtil;
+    private KartuKeluargaList kartuKeluargaList;
+    private ArrayList<KartuKeluarga> kartuKeluargaArrayList;
+    private ArrayList<Object> objListUser;
 
     // 6 TextView
     private AppCompatTextView tvAplName;
@@ -83,10 +93,12 @@ public class SignInActivity extends AppCompatActivity implements EasyPermissions
         initMandatory();
         initListener();
         setFonts();
+        fetchUsers();
     }
 
     private void initMandatory() {
         customLoadingDialog = new CustomLoadingDialog(this);
+        appUtil = new AppUtil();
         tvAplName = findViewById(R.id.tvAplName);
         tvInfo = findViewById(R.id.tvInfo);
         etEmail = findViewById(R.id.etEmail);
@@ -98,7 +110,6 @@ public class SignInActivity extends AppCompatActivity implements EasyPermissions
         lottieLayer = findViewById(R.id.lottieLayer);
         overlay = findViewById(R.id.overlay);
 
-        //signInButton.setEnabled(false);
         signInButton.setBackgroundResource(R.drawable.bg_button_disabled);
         admin = new Admin();
         if (admin.getUsername().equalsIgnoreCase("")) {
@@ -189,8 +200,6 @@ public class SignInActivity extends AppCompatActivity implements EasyPermissions
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvGuide, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvQuestion, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvRegister, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
-        etEmail.setTextSize(16f);
-        etPassword.setTextSize(16f);
     }
 
     private void showCustomAlertDialog(String title, String message, String pButton, String nButton) {
@@ -330,4 +339,20 @@ public class SignInActivity extends AppCompatActivity implements EasyPermissions
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
+    private void fetchUsers() {
+        String jsonFile = appUtil.readTextFileFromAssets(getApplicationContext(), "json/citizen_data.json");
+        Type listData = new TypeToken<KartuKeluargaList>() {
+        }.getType();
+        kartuKeluargaList = new Gson().fromJson(jsonFile, listData);
+        kartuKeluargaArrayList = new ArrayList<>();
+        if (!kartuKeluargaList.getKartuKeluargaList().isEmpty()) {
+            kartuKeluargaArrayList.addAll(kartuKeluargaList.getKartuKeluargaList());
+        }
+        objListUser = VSPreference.getInstance(getApplicationContext()).getKKList();
+        if (objListUser.isEmpty()) {
+            appUtil.importKartuKeluarga(getApplicationContext(), kartuKeluargaArrayList);
+        } else {
+            //TODO: show list of kartuKeluargaArrayList to recyclerView and check if exists then hide import button
+        }
+    }
 }

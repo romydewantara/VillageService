@@ -3,7 +3,6 @@ package com.example.villageservice.activity;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -25,8 +24,9 @@ import com.example.villageservice.fragment.InputNewUsersFragment;
 import com.example.villageservice.fragment.NotificationsFragment;
 import com.example.villageservice.fragment.PdfViewerFragment;
 import com.example.villageservice.listener.FragmentListener;
+import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
-import com.example.villageservice.model.UserList;
+import com.example.villageservice.model.KartuKeluargaList;
 import com.example.villageservice.utility.AppUtil;
 import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
@@ -37,11 +37,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity implements FragmentListener {
-
-    private AppUtil appUtil;
-    private UserList userList;
-    private ArrayList<User> users;
-    private ArrayList<Object> objListUser;
 
     private FrameLayout bottomBar;
 
@@ -89,13 +84,11 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         initMandatory();
         initListener();
         goToHome();
-        //fetchUsers();
     }
 
     private void initMandatory() {
         slideUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
         slideDown = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
-        appUtil = new AppUtil();
         bottomBar = findViewById(R.id.bottomBar);
         homeIcon = findViewById(R.id.homeIcon);
         citizenIcon = findViewById(R.id.citizenIcon);
@@ -131,24 +124,6 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 .replace(R.id.container, fragment, TAG_FRAGMENT_NOTIFICATIONS)
                 .commit();
         setBottomBar(TAG_FRAGMENT_NOTIFICATIONS);
-    }
-
-    private void fetchUsers() {
-        String jsonFile = appUtil.readTextFileFromAssets(getApplicationContext(), "json/citizen_data.json");
-        Type listData = new TypeToken<UserList>() {
-        }.getType();
-        userList = new Gson().fromJson(jsonFile, listData);
-        users = new ArrayList<>();
-        if (!userList.getUserList().isEmpty()) {
-            users.addAll(userList.getUserList());
-        }
-        objListUser = VSPreference.getInstance(getApplicationContext()).loadUserList();
-        if (objListUser.isEmpty()) {
-            appUtil.importUserData(getApplicationContext(), users);
-        } else {
-            //TODO: show list of users to recyclerView and check if exists then hide import button
-        }
-        Log.d("Admin", "getJsonData - user: " + new Gson().toJson(VSPreference.getInstance(getApplicationContext()).loadUserList()));
     }
 
     private void initListener() {
