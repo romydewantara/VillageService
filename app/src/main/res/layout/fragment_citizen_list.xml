@@ -70,10 +70,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSubTitle">
 
+        <EditText
+            android:id="@+id/etSearch"
+            style="@style/MulishBlackMediumStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_edit_text_transparent"
+            android:hint="Cari Nomor Kartu Keluarga"
+            android:inputType="number"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/search_icon"
+            android:drawableLeft="@drawable/search_icon"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewKK"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/etSearch"
             android:background="@android:color/transparent" />
 
     </RelativeLayout>
