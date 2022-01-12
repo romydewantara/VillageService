@@ -1,8 +1,19 @@
 package com.example.villageservice.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,34 +24,20 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.villageservice.R;
 import com.example.villageservice.activity.AdminActivity;
-import com.example.villageservice.activity.SignInActivity;
-import com.example.villageservice.adapter.FormListAdapter;
 import com.example.villageservice.adapter.KartuKeluargaListAdapter;
 import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
-import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class CitizenListFragment extends Fragment implements KartuKeluargaListAdapter.ItemClickListener {
 
@@ -51,13 +48,14 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
     private RelativeLayout overlay;
 
     private ConstraintLayout constraintEmptyData;
-    private LottieAnimationView lottieEmptyData;
+    private ConstraintLayout constraintNotFound;
     private ImageView buttonLeft;
     private AppCompatTextView tvSubTitle;
     private AppCompatTextView tvEmptyData;
+    private EditText etSearch;
     private Animation fadeIn;
-    private String menuSelected;
-    private String clType;
+    private String idKartuKeluarga;
+    private boolean isSearch;
 
     private ArrayList<KartuKeluarga> kartuKeluargaList;
     private KartuKeluargaListAdapter kkListAdapter;
@@ -110,9 +108,10 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
 
         buttonLeft = view.findViewById(R.id.buttonLeft);
         tvSubTitle = view.findViewById(R.id.tvSubTitle);
+        etSearch = view.findViewById(R.id.etSearch);
         recyclerViewKK = view.findViewById(R.id.recyclerViewKK);
         constraintEmptyData = view.findViewById(R.id.constraintEmptyData);
-        lottieEmptyData = view.findViewById(R.id.lottieEmptyData);
+        constraintNotFound = view.findViewById(R.id.constraintNotFound);
         tvEmptyData = view.findViewById(R.id.tvEmptyData);
         overlay = view.findViewById(R.id.overlay);
         return view;
@@ -149,6 +148,35 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
                 fragmentListener.onActivityBackPressed();
             }
         });
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().length() == 16) {
+                    Log.d("XXXLOG", "afterTextChanged - isSearch true");
+                    isSearch = true;
+                    for (int i = 0; i < kartuKeluargaList.size(); i++) {
+                        if (kartuKeluargaList.get(i).getIdKartuKeluarga().equalsIgnoreCase(s.toString())) {
+                            idKartuKeluarga = kartuKeluargaList.get(i).getIdKartuKeluarga();
+                            break;
+                        }
+                    }
+                    fetchList();
+                } else {
+                    if (isSearch) {
+                        Log.d("XXXLOG", "afterTextChanged - isSearch false");
+                        isSearch = false;
+                        fetchList();
+                    }
+
+                }
+            }
+        });
     }
 
     private void initMandatory() {
@@ -159,29 +187,44 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
     }
 
     private void fetchList() {
+        Log.d("XXXLOG", "afterTextChanged - fetching…");
         if (kkListAdapter != null) {
             kkListAdapter = null;
             kartuKeluargaList.clear();
             recyclerViewKK.removeAllViews();
         }
+
+        Log.d("XXXLOG", "afterTextChanged - kk size: " + kartuKeluargaList.size());
         ArrayList<Object> kkObjList = VSPreference.getInstance(context).getKKList();
         if (!kkObjList.isEmpty()) {
             for (int i = 0; i < kkObjList.size(); i++) {
                 KartuKeluarga kartuKeluarga = (KartuKeluarga) kkObjList.get(i);
-                kartuKeluargaList.add(kartuKeluarga);
+                if (isSearch) {
+                    if (kartuKeluarga.getIdKartuKeluarga().equalsIgnoreCase(idKartuKeluarga)) {
+                        kartuKeluargaList.add(kartuKeluarga);
+                        Log.d("XXXLOG", "afterTextChanged - finish search kk: " + new Gson().toJson(kartuKeluarga));
+                        break;
+                    }
+                } else {
+                    kartuKeluargaList.add(kartuKeluarga);
+                    Log.d("XXXLOG", "afterTextChanged - kk (no search): " + new Gson().toJson(kartuKeluarga));
+                }
             }
         }
-
         Collections.reverse(kartuKeluargaList);
         kkListAdapter = new KartuKeluargaListAdapter(context, kartuKeluargaList);
         kkListAdapter.setItemClickListener(CitizenListFragment.this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerViewKK.setLayoutManager(layoutManager);
         recyclerViewKK.setAdapter(kkListAdapter);
-
-        if (kartuKeluargaList.isEmpty()) {
-            constraintEmptyData.setVisibility(View.VISIBLE);
-            tvEmptyData.setText("Oops! belum ada data warga…");
+        if (isSearch) {
+            Log.d("XXXLOG", "afterTextChanged - is kk list empty? " + kartuKeluargaList.isEmpty());
+            if (kartuKeluargaList.isEmpty()) {
+                constraintNotFound.setVisibility(View.VISIBLE);
+            }
+        } else {
+            Log.d("XXXLOG", "afterTextChanged - is hide constraint not found!");
+            constraintNotFound.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -190,10 +233,15 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                fetchList();
                 tvSubTitle.setVisibility(View.VISIBLE);
                 tvSubTitle.startAnimation(fadeIn);
-
-                fetchList();
+                if (kartuKeluargaList.isEmpty()) {
+                    constraintEmptyData.setVisibility(View.VISIBLE);
+                    tvEmptyData.setText("Oops! belum ada data warga…");
+                } else {
+                    etSearch.setVisibility(View.VISIBLE);
+                }
                 showOverlay(false);
             }
         }, 1800);

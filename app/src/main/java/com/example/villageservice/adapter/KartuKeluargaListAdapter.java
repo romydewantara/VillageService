@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -96,12 +95,9 @@ public class KartuKeluargaListAdapter extends RecyclerView.Adapter<KartuKeluarga
             switch (v.getId()) {
                 case R.id.posButton:
                     itemClickListener.onEdit(kartuKeluargaArrayList.get(getAdapterPosition()), getAdapterPosition());
-                    Log.d("XXXLOG", "onClick - kk: " + new Gson().toJson(kartuKeluargaArrayList.get(getAdapterPosition())));
-                    Toast.makeText(context, "Positive - position: " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.negButton:
                     itemClickListener.onDelete(getAdapterPosition());
-                    Toast.makeText(context, "Negative - position: " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
                     break;
             }
         }

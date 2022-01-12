@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.CitizenListFragment">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/background_sparkling"/>
+        android:src="@drawable/background_sparkling" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearHeader"
@@ -60,11 +60,10 @@
         android:maxLines="1"
         android:padding="10dp"
         android:text="Warga Tetap"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/linearHeader" />
 
     <RelativeLayout
-
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,18 +75,20 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="5dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/bg_edit_text_transparent"
-            android:hint="Cari Nomor Kartu Keluarga"
-            android:inputType="number"
-            android:drawablePadding="10dp"
             android:drawableStart="@drawable/search_icon"
             android:drawableLeft="@drawable/search_icon"
+            android:drawablePadding="10dp"
+            android:hint="Cari Nomor Kartu Keluarga"
+            android:inputType="number"
             android:maxLines="1"
+            android:maxLength="16"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
+            android:paddingRight="10dp"
+            android:visibility="invisible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewKK"
@@ -95,6 +96,37 @@
             android:layout_height="match_parent"
             android:layout_below="@id/etSearch"
             android:background="@android:color/transparent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintNotFound"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/etSearch"
+            android:background="@color/white_50"
+            android:visibility="invisible">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieNotFound"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="50dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="lottie/lottie_not_found.json" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNotFound"
+                style="@style/MulisGreyBoldStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Maaf… Data yang dicari tidak ditemukan…"
+                app:layout_constraintTop_toBottomOf="@id/lottieNotFound" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
 
