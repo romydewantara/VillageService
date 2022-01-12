@@ -24,17 +24,7 @@ import com.example.villageservice.fragment.InputNewUsersFragment;
 import com.example.villageservice.fragment.NotificationsFragment;
 import com.example.villageservice.fragment.PdfViewerFragment;
 import com.example.villageservice.listener.FragmentListener;
-import com.example.villageservice.model.KartuKeluarga;
-import com.example.villageservice.model.User;
-import com.example.villageservice.model.KartuKeluargaList;
-import com.example.villageservice.utility.AppUtil;
 import com.example.villageservice.utility.ConstantVariable;
-import com.example.villageservice.utility.VSPreference;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity implements FragmentListener {
 
@@ -196,6 +186,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
         switch (destination) {
             case FRAGMENT_FINISH_GOTO_HOME_ADMIN:
                 fragment = new HomeAdminFragment();
+                previousFragment = currentFragment;
                 ((HomeAdminFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -204,6 +195,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_FORM_LIST:
                 fragment = new FormListFragment();
+                previousFragment = currentFragment;
                 ((FormListFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 bundle = new Bundle();
                 bundle.putString(ConstantVariable.KEY_CL_BUNDLE, coveringLetterType);
@@ -227,6 +219,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_CITIZENS:
                 fragment = new CitizenFragment();
+                previousFragment = currentFragment;
                 ((CitizenFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -235,6 +228,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_INPUT_USER:
                 fragment = new InputNewUsersFragment();
+                previousFragment = currentFragment;
                 ((InputNewUsersFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -243,6 +237,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_NOTIFICATION:
                 fragment = new NotificationsFragment();
+                previousFragment = currentFragment;
                 ((NotificationsFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -251,6 +246,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_ADMIN_PROFILE:
                 fragment = new AdminProfileFragment();
+                previousFragment = currentFragment;
                 ((AdminProfileFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -259,6 +255,7 @@ public class AdminActivity extends AppCompatActivity implements FragmentListener
                 break;
             case FRAGMENT_FINISH_GOTO_CITIZEN_LIST:
                 fragment = new CitizenListFragment();
+                previousFragment = currentFragment;
                 ((CitizenListFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)

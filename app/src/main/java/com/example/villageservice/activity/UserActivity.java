@@ -9,7 +9,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -19,14 +18,12 @@ import com.example.villageservice.R;
 import com.example.villageservice.fragment.CoveringLetterFragment;
 import com.example.villageservice.fragment.EntryFragment;
 import com.example.villageservice.fragment.FormListFragment;
-import com.example.villageservice.fragment.HomeAdminFragment;
 import com.example.villageservice.fragment.HomeUserFragment;
 import com.example.villageservice.fragment.NotificationsFragment;
 import com.example.villageservice.fragment.PdfViewerFragment;
 import com.example.villageservice.fragment.ProfileFragment;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.utility.ConstantVariable;
-import com.example.villageservice.utility.VSPreference;
 
 public class UserActivity extends AppCompatActivity implements FragmentListener {
 
@@ -191,6 +188,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
         switch (destination) {
             case FRAGMENT_FINISH_GOTO_HOME:
                 fragment = new HomeUserFragment();
+                previousFragment = currentFragment;
                 ((HomeUserFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -199,6 +197,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_PROFILE:
                 fragment = new ProfileFragment();
+                previousFragment = currentFragment;
                 ((ProfileFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -207,6 +206,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_NOTIFICATION:
                 fragment = new NotificationsFragment();
+                previousFragment = currentFragment;
                 ((NotificationsFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(enter, exit)
@@ -215,6 +215,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_ENTRY:
                 fragment = new EntryFragment();
+                previousFragment = currentFragment;
                 ((EntryFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 bundle = new Bundle();
                 bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
@@ -226,6 +227,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_CL:
                 fragment = new CoveringLetterFragment();
+                previousFragment = currentFragment;
                 ((CoveringLetterFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 bundle = new Bundle();
                 bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
@@ -237,6 +239,7 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case FRAGMENT_FINISH_GOTO_FORM_LIST:
                 fragment = new FormListFragment();
+                previousFragment = currentFragment;
                 ((FormListFragment) fragment).addPreviousFragmentTag(currentFragment.getTag());
                 bundle = new Bundle();
                 bundle.putString(ConstantVariable.KEY_CL_BUNDLE, menuSelected);
@@ -321,7 +324,11 @@ public class UserActivity extends AppCompatActivity implements FragmentListener 
     @Override
     public void onBackPressed() {
         if (fragment instanceof FormListFragment) {
-            onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_ENTRY, false);
+            if (previousFragment instanceof CoveringLetterFragment) {
+                onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
+            } else {
+                onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_ENTRY, false);
+            }
         } else if (fragment instanceof ProfileFragment) {
             onFragmentFinish(fragment, FRAGMENT_FINISH_GOTO_HOME, false);
         } else if (fragment instanceof NotificationsFragment) {

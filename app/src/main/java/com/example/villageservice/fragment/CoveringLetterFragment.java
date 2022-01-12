@@ -26,7 +26,6 @@ import com.example.villageservice.library.CustomAlertDialog;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.listener.FragmentListener;
-import com.example.villageservice.model.Admin;
 import com.example.villageservice.model.CoveringLetter;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
@@ -325,7 +324,8 @@ public class CoveringLetterFragment extends Fragment {
 
                             @Override
                             public void onPositivePressed() {
-                                fragmentListener.onFragmentFinish(CoveringLetterFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_HOME, false);
+                                fragmentListener.onFragmentPassingData(clType);
+                                fragmentListener.onFragmentFinish(CoveringLetterFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_FORM_LIST, false);
                             }
                         });
                 if (fm != null) {

@@ -24,7 +24,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.villageservice.R;
 import com.example.villageservice.activity.AdminActivity;
 import com.example.villageservice.adapter.KartuKeluargaListAdapter;

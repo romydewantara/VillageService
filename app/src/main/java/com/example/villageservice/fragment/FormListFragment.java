@@ -205,7 +205,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                     fragmentListener.onFragmentFinish(FormListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
                 } else {
                     fragmentListener.onFragmentPassingData(clType);
-                    fragmentListener.onFragmentFinish(FormListFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_ENTRY, false);
+                    fragmentListener.onActivityBackPressed();
                 }
             }
         });
