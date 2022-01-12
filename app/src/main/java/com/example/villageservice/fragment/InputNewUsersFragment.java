@@ -2,7 +2,7 @@ package com.example.villageservice.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +24,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -48,7 +49,6 @@ import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,6 +63,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
 
     private ArrayList<User> temporaryUserAdded;
     private ArrayList<Object> kkObjList;
+    private KartuKeluarga kartuKeluarga;
 
     private RelativeLayout overlay;
     private RecyclerView recyclerViewMember;
@@ -82,6 +83,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private AppCompatTextView tvEmpty;
     private AppCompatTextView tvIdKKError;
 
+    private ConstraintLayout constraintKTP;
     private CardView cvAddMember;
     private ImageView backButton;
     private Button saveButton;
@@ -91,6 +93,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     private int position;
     private boolean isComplete = false;
     private boolean isPasswordOk = false;
+    private boolean isEditData = false;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -161,6 +164,8 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         saveButton = view.findViewById(R.id.saveButton);
         overlay = view.findViewById(R.id.overlay);
 
+        constraintKTP = view.findViewById(R.id.constraintKTP);
+
         return view;
     }
 
@@ -169,7 +174,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setUpText();
+        setUpData();
         initListener();
     }
 
@@ -195,6 +200,12 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         temporaryUserAdded = new ArrayList<>();
         customLoadingDialog = new CustomLoadingDialog(context);
         kkObjList = VSPreference.getInstance(context).getKKList();
+        if (previousFragment.equalsIgnoreCase(AdminActivity.TAG_FRAGMENT_CITIZEN_LIST)) {
+            isEditData = true;
+            isComplete = true;
+            isPasswordOk = true;
+            kartuKeluarga = VSPreference.getInstance(context).getKK();
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -211,11 +222,10 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
             @Override
             public void afterTextChanged(Editable s) {
                 Log.d("XXXLOG", "afterTextChanged - input: " + s.toString());
-                Log.d("XXXLOG", "afterTextChanged - kkObjSize: " + kkObjList.size());
                 if (!kkObjList.isEmpty()) {
                     for (int i = 0; i < kkObjList.size(); i++) {
                         KartuKeluarga tempKK = (KartuKeluarga) kkObjList.get(i);
-                        Log.d("XXXLOG", "afterTextChanged - tempKK: " + new Gson().toJson(tempKK));
+                        Log.d("XXXLOG", "afterTextChanged - tempKK: " + new Gson().toJson(tempKK.getIdKartuKeluarga()) + " vs Input: " + s.toString());
                         if (tempKK.getIdKartuKeluarga().equalsIgnoreCase(s.toString())) {
                             Log.d("XXXLOG", "afterTextChanged - Exists");
                             etIdKK.setBackgroundResource(R.drawable.bg_edit_text_red_rounded);
@@ -261,22 +271,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                         .setButton("Tambah", "Batal", new CustomMembershipDialogListener() {
                             @Override
                             public void onButtonPositivePressed(int total) {
-                                if (membersAdapter != null) {
-                                    membersAdapter = null;
-                                    temporaryUserAdded.clear();
-                                }
-                                User user = new User();
-                                user.setNamaLengkap(ConstantVariable.empty_username);
-                                user.setIdKtp(ConstantVariable.empty_ktp);
-                                for (int i = 1; i <= total; i++) {
-                                    temporaryUserAdded.add(user);
-                                }
-                                membersAdapter = new MembersAdapter(context, temporaryUserAdded);
-                                membersAdapter.setClickListener(InputNewUsersFragment.this);
-                                LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-                                recyclerViewMember.setLayoutManager(layoutManager);
-                                recyclerViewMember.setAdapter(membersAdapter);
-                                tvEmpty.setVisibility(View.INVISIBLE);
+                                fetchMembers(total);
                             }
 
                             @Override
@@ -317,9 +312,13 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                                         public void run() {
                                             saveDataKK();
                                             showOverlay(false);
+                                            String message = "Data Kartu Keluarga berhasil didaftarkan";
+                                            if (isEditData) {
+                                                message = "Data Kartu Keluarga berhasil diubah!";
+                                            }
                                             FragmentManager fm = getFragmentManager();
                                             CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context,
-                                                    "", "Data Kartu Keluarga berhasil didaftarkan")
+                                                    "", message)
                                                     .setButton("Tutup", "", new CustomAlertDialogListener() {
                                                         @Override
                                                         public void onNegativePressed() {
@@ -327,7 +326,9 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
 
                                                         @Override
                                                         public void onPositivePressed() {
-                                                            fragmentListener.onFragmentFinish(InputNewUsersFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
+                                                            if (!isEditData) {
+                                                                fragmentListener.onFragmentFinish(InputNewUsersFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_HOME_ADMIN, false);
+                                                            }
                                                         }
                                                     });
                                             if (fm != null) {
@@ -386,6 +387,59 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
         });
     }
 
+    private void setUpData() {
+        Log.d("XXXLOG", "setUpData - from: " + previousFragment);
+        if (isEditData) {
+            cvAddMember.setEnabled(false);
+            constraintKTP.setBackgroundColor(Color.parseColor("#80B1D0E0"));
+            etIdKK.setText(kartuKeluarga.getIdKartuKeluarga());
+            etKepKK.setText(kartuKeluarga.getNamaKepalaKeluarga());
+            etAddress.setText(kartuKeluarga.getAlamatRumah());
+            etRT.setText(kartuKeluarga.getNomorRt());
+            etRW.setText(kartuKeluarga.getNomorRw());
+            etKel.setText(kartuKeluarga.getKelurahan());
+            etKec.setText(kartuKeluarga.getKecamatan());
+            etKota.setText(kartuKeluarga.getKota());
+            etPostal.setText(kartuKeluarga.getKodePos());
+            etProvinsi.setText(kartuKeluarga.getProvinsi());
+            etPassword.setText(kartuKeluarga.getPassword());
+            fetchMembers(kartuKeluarga.getKeluargaList().size());
+        } else {
+            etAddress.setText("Jl. Raya Penggilingan");
+            etRT.setText("007");
+            etRW.setText("014");
+            etKel.setText("Penggilingan");
+            etKec.setText("Cakung");
+            etKota.setText("Jakarta Timur");
+            etPostal.setText("13490");
+            etProvinsi.setText("DKI Jakarta");
+        }
+    }
+
+    private void fetchMembers(int total) {
+        if (membersAdapter != null) {
+            membersAdapter = null;
+            temporaryUserAdded.clear();
+        }
+        if (isEditData) {
+            temporaryUserAdded.addAll(kartuKeluarga.getKeluargaList());
+        } else {
+            User user = new User();
+            user.setNamaLengkap(ConstantVariable.empty_username);
+            user.setIdKtp(ConstantVariable.empty_ktp);
+            for (int i = 1; i <= total; i++) {
+                temporaryUserAdded.add(user);
+            }
+        }
+
+        membersAdapter = new MembersAdapter(context, temporaryUserAdded);
+        membersAdapter.setClickListener(InputNewUsersFragment.this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerViewMember.setLayoutManager(layoutManager);
+        recyclerViewMember.setAdapter(membersAdapter);
+        tvEmpty.setVisibility(View.INVISIBLE);
+    }
+
     private void saveDataKK() {
         String detailAddress = etAddress.getText().toString() + ", RT. " +
                 etRT.getText().toString() + ", RW. " +
@@ -412,14 +466,24 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
 
         ArrayList<Object> kkObjList = VSPreference.getInstance(context).getKKList(); //get KK List from Pref
         ArrayList<Object> kartuKeluargaList = new ArrayList<>(); //create new temporary KK obj List
+
         if (kkObjList.size() > 0) {
             for (int i = 0; i < kkObjList.size(); i++) {
                 KartuKeluarga kkObj = (KartuKeluarga) kkObjList.get(i);
                 kartuKeluargaList.add(kkObj);
             }
         }
-        kartuKeluargaList.add(tempKKObj);
-        Log.d("XXXLOG", "saveDataKK - KK List: " + new Gson().toJson(kartuKeluargaList));
+        if (isEditData) {
+            for (int i = 0; i < kartuKeluargaList.size(); i++) {
+                KartuKeluarga tempKK = (KartuKeluarga) kartuKeluargaList.get(i);
+                if (tempKK.getIdKartuKeluarga().equalsIgnoreCase(kartuKeluarga.getIdKartuKeluarga())) {
+                    kartuKeluargaList.set(i, tempKKObj);
+                    break;
+                }
+            }
+        } else {
+            kartuKeluargaList.add(tempKKObj);
+        }
 
         ArrayList<Object> userList = new ArrayList<>();
         for (int i = 0; i < temporaryUserAdded.size(); i++) {
@@ -472,22 +536,6 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
                 });
         if (fm != null) {
             inputUserDialog.show(fm, "input_user_dialog");
-        }
-    }
-
-    private void setUpText() {
-        Log.d("XXXLOG", "setUpText - from: " + previousFragment);
-        if (previousFragment.equalsIgnoreCase(AdminActivity.TAG_FRAGMENT_CITIZEN_LIST)) {
-
-        } else {
-            etAddress.setText("Jl. Raya Penggilingan");
-            etRT.setText("007");
-            etRW.setText("014");
-            etKel.setText("Penggilingan");
-            etKec.setText("Cakung");
-            etKota.setText("Jakarta Timur");
-            etPostal.setText("13490");
-            etProvinsi.setText("DKI Jakarta");
         }
     }
 

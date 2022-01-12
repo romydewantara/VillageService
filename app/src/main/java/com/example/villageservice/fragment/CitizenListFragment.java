@@ -210,7 +210,7 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
     }
 
     @Override
-    public void onDelete(int position) {
+    public void onDelete(final int position) {
         FragmentManager fm = getFragmentManager();
         CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, "", "Apakah Anda yakin ingin menghapus data kartu keluarga Bpk. " + kartuKeluargaList.get(position).getNamaKepalaKeluarga())
                 .setButton("Ya", "Batal", new CustomAlertDialogListener() {
@@ -218,7 +218,16 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
                     public void onNegativePressed() {}
                     @Override
                     public void onPositivePressed() {
-                        //delete then refresh again
+                        Log.d("XXXLOG", "onPositivePressed - kartu keluarga yg akan dihapus: " + kartuKeluargaList.get(position).getIdKartuKeluarga());
+                        for (int i = 0; i < kartuKeluargaList.size(); i++) {
+                            if (kartuKeluargaList.get(i).getIdKartuKeluarga().equalsIgnoreCase(kartuKeluargaList.get(position).getIdKartuKeluarga())) {
+                                kartuKeluargaList.remove(i);
+                                break;
+                            }
+                        }
+                        Collections.reverse(kartuKeluargaList);
+                        ArrayList<Object> kkUpdated = new ArrayList<Object>(kartuKeluargaList);
+                        VSPreference.getInstance(context).saveKKList(kkUpdated);
                         fetchList();
                     }
                 });
@@ -229,6 +238,7 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
 
     @Override
     public void onEdit(KartuKeluarga kartuKeluarga, int position) {
+        VSPreference.getInstance(context).setKK(kartuKeluarga);
         fragmentListener.onFragmentFinish(CitizenListFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_INPUT_USER, true);
     }
 }
