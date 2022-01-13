@@ -47,6 +47,7 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
     private View view;
     private AppCompatTextView tvSubTitle;
     private RelativeLayout overlay;
+    private ConstraintLayout constraintEmptyNotification;
     private RecyclerView recyclerNotification;
     private ConstraintLayout constraintNotifications;
 
@@ -104,6 +105,7 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
         tvSubTitle = view.findViewById(R.id.tvSubTitle);
         recyclerNotification = view.findViewById(R.id.recyclerNotification);
         constraintNotifications = view.findViewById(R.id.constraintNotifications);
+        constraintEmptyNotification = view.findViewById(R.id.constraintEmptyNotification);
         overlay = view.findViewById(R.id.overlay);
         return view;
     }
@@ -195,6 +197,8 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
             LinearLayoutManager layoutManager = new LinearLayoutManager(context);
             recyclerNotification.setLayoutManager(layoutManager);
             recyclerNotification.setAdapter(notificationsAdapter);
+        } else {
+            constraintEmptyNotification.setVisibility(View.VISIBLE);
         }
     }
 

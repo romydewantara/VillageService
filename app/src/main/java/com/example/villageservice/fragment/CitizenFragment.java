@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,8 @@ import com.example.villageservice.activity.AdminActivity;
 import com.example.villageservice.library.CustomLoadingDialog;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.model.Admin;
+import com.example.villageservice.model.KartuKeluarga;
+import com.example.villageservice.model.User;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 
@@ -182,23 +185,27 @@ public class CitizenFragment extends Fragment {
         cvMenuRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_CITIZEN_LIST, true);
+                Toast.makeText(context, "Maaf… saat ini halaman belum tersedia", Toast.LENGTH_SHORT).show();
+                //fragmentListener.onFragmentFinish(CitizenFragment.this, AdminActivity.FRAGMENT_FINISH_GOTO_CITIZEN_LIST, true);
             }
         });
     }
 
     private void setUpData() {
         ArrayList<Object> kkObjList = VSPreference.getInstance(context).getKKList();
+        ArrayList<User> userArrayList = new ArrayList<>();
         if (!kkObjList.isEmpty()) {
             for (int i = 0; i < kkObjList.size(); i++) {
-                Log.d("XXXLOG", "onViewCreated - list: " + new Gson().toJson(kkObjList.get(i)));
+                KartuKeluarga kartuKeluarga = (KartuKeluarga) kkObjList.get(i);
+                userArrayList.addAll(kartuKeluarga.getKeluargaList());
             }
         }
 
         //set data to layout
-        String wargaTetap = kkObjList.size() + " jiwa";
-        tvJWT1.setText(wargaTetap);
-        tvJWT2.setText(wargaTetap);
+        String jmlKel = kkObjList.size() + " Keluarga";
+        String jmlWrg = userArrayList.size() + " Jiwa";
+        tvJWT1.setText(jmlKel);
+        tvJWT2.setText(jmlWrg);
     }
 
     private void prepareLayout() {

@@ -148,7 +148,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Daftar Warga\nTetap"
+                        android:text="Jumlah Keluarga\nTerdaftar"
                         app:layout_constraintBottom_toTopOf="@id/viewWT1"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -166,7 +166,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="149 jiwa"
+                        android:text="40 Keluarga"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/viewWT1" />
 
@@ -188,7 +188,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Daftar Warga\nTidak Tetap"
+                        android:text="Jumlah Warga\nTerdaftar"
                         app:layout_constraintBottom_toTopOf="@id/viewWT2"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -206,7 +206,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="56 jiwa"
+                        android:text="150 jiwa"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/viewWT2" />
 

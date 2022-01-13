@@ -140,7 +140,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Dikeluarkan Tanggal:"
+                android:text="Didaftarkan Pada Tanggal:"
                 app:layout_constraintBottom_toTopOf="@id/tvTanggal"
                 app:layout_constraintLeft_toRightOf="@id/logo"
                 app:layout_constraintRight_toRightOf="parent"

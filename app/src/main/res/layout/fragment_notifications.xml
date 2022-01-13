@@ -39,6 +39,38 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintEmptyNotification"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white_50"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubTitle">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieEmptyNotification"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="50dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie/lottie_notification.json" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEmptyNotification"
+            style="@style/MulisGreyBoldStyle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Belum Ada Notifikasi Baru"
+            app:layout_constraintTop_toBottomOf="@id/lottieEmptyNotification" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <RelativeLayout
         android:id="@+id/overlay"
         android:layout_width="match_parent"
