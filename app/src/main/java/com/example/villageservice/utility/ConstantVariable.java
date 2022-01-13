@@ -39,12 +39,19 @@ public class ConstantVariable {
     public final static String ADMIN_PASSWORD = "password123";
 
     public static String[] SPINNER_GENDER = {"-- Jenis Kelamin --", "Laki-laki", "Perempuan"};
-    public static String[] SPINNER_MONTH = {"-- Bulan --", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"};
-    public static String[] SPINNER_YEAR = {"-- Tahun --", "1985", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003"};
     public static String[] SPINNER_AGAMA = {"-- Agama --", "Islam", "Kristen", "Katolik", "Hindu", "Buddha", "Konghucu"};
     public static String[] SPINNER_PENDIDIKAN = {"-- Pendidikan --", "Tidak/Belum Sekolah", "Belum Tamat SD/Sederajat", "Tamat SD/Sederajat", "SLTP/Sederajat", "SLTA/Sederajat", "Diploma IV/Strata I", "Diploma I/II", "Akademi/Diploma III/S. Muda", "Strata II", "Strata III"};
-    public static String[] SPINNER_PEKERJAAN = {"-- Pekerjaan --", "Belum/Tidak Bekerja", "Mengurus Rumah Tangga", "Pelajar/Mahasiswa", "Pensiunan", "PNS", "TNI", "Kepolisian RI", "Seniman", "Petani", "Nelayan", "Lainnya"};
+    public static String[] SPINNER_PEKERJAAN = {"-- Pekerjaan --", "Belum/Tidak Bekerja", "Ibu Rumah Tangga", "Pelajar/Mahasiswa", "Karyawan Swasta", "Buruh", "BHL", "TNI", "Pedagang", "Petani", "Nelayan", "Lainnya"};
     public static String[] SPINNER_MARITAL_STATUS = {"-- Status Perkawinan --", "Kawin", "Belum Kawin"};
     public static String[] SPINNER_CITIZEN_STATE = {"-- Kewarganegaraan --", "WNI", "Non WNI"};
+    public static String[] SPINNER_MONTH = {"-- Bulan --", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"};
+    public static String[] SPINNER_YEAR = {"-- Tahun --",
+            "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959",
+            "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969",
+            "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979",
+            "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989",
+            "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999",
+            "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009",
+            "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019"};
 
 }

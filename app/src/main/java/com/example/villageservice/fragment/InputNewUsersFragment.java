@@ -441,52 +441,70 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
     }
 
     private void saveDataKK() {
-        String detailAddress = etAddress.getText().toString() + ", RT. " +
-                etRT.getText().toString() + ", RW. " +
-                etRW.getText().toString() + ", Kel. " +
-                etKel.getText().toString() + ", Kec. " +
-                etKec.getText().toString() + ", Kota " +
-                etKota.getText().toString() + ", Kode Pos: " +
-                etPostal.getText().toString();
+        String addressDetails = etAddress.getText().toString() +
+                ", RT. " + etRT.getText().toString() +
+                ", RW. " + etRW.getText().toString() +
+                ", Kel. " + etKel.getText().toString() +
+                ", Kec. " + etKec.getText().toString() +
+                ", Kota " + etKota.getText().toString() +
+                ", Kode Pos: " + etPostal.getText().toString();
 
-        KartuKeluarga tempKKObj = new KartuKeluarga();
-        tempKKObj.setIdKartuKeluarga(etIdKK.getText().toString());
-        tempKKObj.setNamaKepalaKeluarga(etKepKK.getText().toString());
-        tempKKObj.setAlamatLengkap(detailAddress);
-        tempKKObj.setAlamatRumah(etAddress.getText().toString());
-        tempKKObj.setNomorRt(etRT.getText().toString());
-        tempKKObj.setNomorRw(etRW.getText().toString());
-        tempKKObj.setKelurahan(etKel.getText().toString());
-        tempKKObj.setKecamatan(etKec.getText().toString());
-        tempKKObj.setKota(etKota.getText().toString());
-        tempKKObj.setKodePos(etPostal.getText().toString());
-        tempKKObj.setProvinsi(etProvinsi.getText().toString());
-        tempKKObj.setKeluargaList(temporaryUserAdded);
-        tempKKObj.setPassword(etPassword.getText().toString());
+        KartuKeluarga temporaryKK = new KartuKeluarga();
+        temporaryKK.setIdKartuKeluarga(etIdKK.getText().toString());
+        temporaryKK.setNamaKepalaKeluarga(etKepKK.getText().toString());
+        temporaryKK.setAlamatLengkap(addressDetails);
+        temporaryKK.setAlamatRumah(etAddress.getText().toString());
+        temporaryKK.setNomorRt(etRT.getText().toString());
+        temporaryKK.setNomorRw(etRW.getText().toString());
+        temporaryKK.setKelurahan(etKel.getText().toString());
+        temporaryKK.setKecamatan(etKec.getText().toString());
+        temporaryKK.setKota(etKota.getText().toString());
+        temporaryKK.setKodePos(etPostal.getText().toString());
+        temporaryKK.setProvinsi(etProvinsi.getText().toString());
+        temporaryKK.setKeluargaList(temporaryUserAdded);
+        temporaryKK.setPassword(etPassword.getText().toString());
 
-        ArrayList<Object> kkObjList = VSPreference.getInstance(context).getKKList(); //get KK List from Pref
-        ArrayList<Object> kartuKeluargaList = new ArrayList<>(); //create new temporary KK obj List
-
-        if (kkObjList.size() > 0) {
-            for (int i = 0; i < kkObjList.size(); i++) {
-                KartuKeluarga kkObj = (KartuKeluarga) kkObjList.get(i);
-                kartuKeluargaList.add(kkObj);
+        ArrayList<Object> objListKK = VSPreference.getInstance(context).getKKList(); //get KK List from Pref
+        ArrayList<Object> temporaryObjListKK = new ArrayList<>();
+        ArrayList<Object> objListUser = VSPreference.getInstance(context).loadUserList(); //get Users List from Pref
+        ArrayList<Object> temporaryObjListUser = new ArrayList<>();
+        if (objListKK.size() > 0) {
+            for (int i = 0; i < objListKK.size(); i++) {
+                KartuKeluarga kkObj = (KartuKeluarga) objListKK.get(i);
+                temporaryObjListKK.add(kkObj);
             }
         }
+        if (!objListUser.isEmpty()) {
+            for (int i = 0; i < objListUser.size(); i++) {
+                User objUser = (User) objListUser.get(i);
+                temporaryObjListUser.add(objUser);
+            }
+        }
+
         if (isEditData) {
-            for (int i = 0; i < kartuKeluargaList.size(); i++) {
-                KartuKeluarga tempKK = (KartuKeluarga) kartuKeluargaList.get(i);
+            for (int i = 0; i < temporaryObjListKK.size(); i++) {
+                KartuKeluarga tempKK = (KartuKeluarga) temporaryObjListKK.get(i);
                 if (tempKK.getIdKartuKeluarga().equalsIgnoreCase(kartuKeluarga.getIdKartuKeluarga())) {
-                    kartuKeluargaList.set(i, tempKKObj);
+                    temporaryObjListKK.set(i, temporaryKK);
                     break;
                 }
             }
+            for (int i = 0; i < temporaryObjListUser.size(); i++) {
+                User tempUser = (User) temporaryObjListUser.get(i);
+                for (int j = 0; j < temporaryUserAdded.size(); j++) {
+                    if (tempUser.getIdKtp().equalsIgnoreCase(temporaryUserAdded.get(j).getIdKtp())) {
+                        temporaryObjListUser.set(i, temporaryUserAdded.get(j));
+                        break;
+                    }
+                }
+            }
         } else {
-            kartuKeluargaList.add(tempKKObj);
+            temporaryObjListKK.add(temporaryKK);
+            temporaryObjListUser.addAll(temporaryUserAdded);
         }
 
-        ArrayList<Object> userList = new ArrayList<>();
-        for (int i = 0; i < temporaryUserAdded.size(); i++) {
+        /** what the heck, is this actually useful for us? -_-"
+            for (int i = 0; i < temporaryUserAdded.size(); i++) {
             User user = new User();
             user.setNamaLengkap(temporaryUserAdded.get(i).getNamaLengkap());
             user.setIdKtp(temporaryUserAdded.get(i).getIdKtp());
@@ -502,12 +520,11 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
             user.setKewarganegaraan(temporaryUserAdded.get(i).getKewarganegaraan());
             user.setNamaAyah(temporaryUserAdded.get(i).getNamaAyah());
             user.setNamaIbu(temporaryUserAdded.get(i).getNamaIbu());
-            userList.add(user);
-        }
+            temporaryObjListUser.add(user);
+        }*/
 
-        VSPreference.getInstance(context).saveUserList(userList);
-        VSPreference.getInstance(context).saveKKList(kartuKeluargaList);
-
+        VSPreference.getInstance(context).saveKKList(temporaryObjListKK);
+        VSPreference.getInstance(context).saveUserList(temporaryObjListUser);
     }
 
     public void showOverlay(boolean isShow) {

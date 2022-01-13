@@ -552,7 +552,7 @@
         style="@style/MulishWhiteBoldStyle2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue"
+        android:background="@color/dark_blue"
         android:maxLines="1"
         android:text="Kirim"
         android:textAllCaps="false"

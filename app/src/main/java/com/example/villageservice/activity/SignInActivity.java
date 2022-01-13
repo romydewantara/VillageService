@@ -32,10 +32,8 @@ import com.example.villageservice.listener.CustomAlertDialogListener;
 import com.example.villageservice.model.Admin;
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.KartuKeluargaList;
-import com.example.villageservice.model.User;
 import com.example.villageservice.utility.AppUtil;
 import com.example.villageservice.utility.ConstantVariable;
-import com.example.villageservice.utility.Fonts;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -350,7 +348,7 @@ public class SignInActivity extends AppCompatActivity implements EasyPermissions
         }
         objListUser = VSPreference.getInstance(getApplicationContext()).getKKList();
         if (objListUser.isEmpty()) {
-            appUtil.importKartuKeluarga(getApplicationContext(), kartuKeluargaArrayList);
+            appUtil.importKK(getApplicationContext(), kartuKeluargaArrayList);
         } else {
             //TODO: show list of kartuKeluargaArrayList to recyclerView and check if exists then hide import button
         }

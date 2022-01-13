@@ -1,13 +1,17 @@
 package com.example.villageservice.utility;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class AppUtil {
@@ -28,8 +32,9 @@ public class AppUtil {
         }
     }
 
-    public void importKartuKeluarga(Context context, List<KartuKeluarga> kartuKeluargaList) {
+    public void importKK(Context context, List<KartuKeluarga> kartuKeluargaList) {
         ArrayList<Object> kartuKeluargaArrayList = new ArrayList<>();
+        ArrayList<Object> usersArrayList = new ArrayList<>();
         for (int i = 0; i < kartuKeluargaList.size(); i++) {
             KartuKeluarga kartuKeluarga = new KartuKeluarga();
 
@@ -56,8 +61,10 @@ public class AppUtil {
                 user.setKewarganegaraan(users.get(j).getKewarganegaraan());
                 user.setNamaAyah(users.get(j).getNamaAyah());
                 user.setNamaIbu(users.get(j).getNamaIbu());
-
+                usersArrayList.add(user);
             }
+            VSPreference.getInstance(context).saveUserList(usersArrayList);
+            Log.d("XXXLOG", "importKK - userArrayList: " + new Gson().toJson(usersArrayList));
 
             kartuKeluarga.setIdKartuKeluarga(kartuKeluargaList.get(i).getIdKartuKeluarga());
             kartuKeluarga.setNamaKepalaKeluarga(kartuKeluargaList.get(i).getNamaKepalaKeluarga());

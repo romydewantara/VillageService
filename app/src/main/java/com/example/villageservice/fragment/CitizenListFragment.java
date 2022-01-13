@@ -156,7 +156,7 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
             }
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.toString().length() == 16) {
+                if (s.toString().length() >= 15) {
                     Log.d("XXXLOG", "afterTextChanged - isSearch true");
                     isSearch = true;
                     for (int i = 0; i < kartuKeluargaList.size(); i++) {
@@ -222,7 +222,7 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
                 constraintNotFound.setVisibility(View.VISIBLE);
             }
         } else {
-            Log.d("XXXLOG", "afterTextChanged - is hide constraint not found!");
+            Log.d("XXXLOG", "afterTextChanged - hide… \"The Not-Found Constraint Layout\"");
             constraintNotFound.setVisibility(View.INVISIBLE);
         }
     }
@@ -259,13 +259,12 @@ public class CitizenListFragment extends Fragment implements KartuKeluargaListAd
     @Override
     public void onDelete(final int position) {
         FragmentManager fm = getFragmentManager();
-        CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, "", "Apakah Anda yakin ingin menghapus data kartu keluarga Bpk. " + kartuKeluargaList.get(position).getNamaKepalaKeluarga())
+        CustomAlertDialog customAlertDialog = CustomAlertDialog.newInstance(context, "Peringatan!", "Apakah Anda yakin ingin menghapus data kartu keluarga Bpk. " + kartuKeluargaList.get(position).getNamaKepalaKeluarga() + "?")
                 .setButton("Ya", "Batal", new CustomAlertDialogListener() {
                     @Override
                     public void onNegativePressed() {}
                     @Override
                     public void onPositivePressed() {
-                        Log.d("XXXLOG", "onPositivePressed - kartu keluarga yg akan dihapus: " + kartuKeluargaList.get(position).getIdKartuKeluarga());
                         for (int i = 0; i < kartuKeluargaList.size(); i++) {
                             if (kartuKeluargaList.get(i).getIdKartuKeluarga().equalsIgnoreCase(kartuKeluargaList.get(position).getIdKartuKeluarga())) {
                                 kartuKeluargaList.remove(i);

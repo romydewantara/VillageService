@@ -3,7 +3,6 @@ package com.example.villageservice.utility;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.example.villageservice.model.Admin;
 import com.example.villageservice.model.CoveringLetter;
