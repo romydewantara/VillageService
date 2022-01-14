@@ -325,7 +325,7 @@ public class CoveringLetterFragment extends Fragment {
                             @Override
                             public void onPositivePressed() {
                                 fragmentListener.onFragmentPassingData(clType);
-                                fragmentListener.onFragmentFinish(CoveringLetterFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_FORM_LIST, false);
+                                fragmentListener.onFragmentFinish(CoveringLetterFragment.this, UserActivity.FRAGMENT_FINISH_GOTO_FORM_LIST, true);
                             }
                         });
                 if (fm != null) {

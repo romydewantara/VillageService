@@ -25,9 +25,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.villageservice.R;
+import com.example.villageservice.activity.UserActivity;
 import com.example.villageservice.adapter.CustomSpinnerAdapter;
 import com.example.villageservice.listener.InputUserDialogListener;
 import com.example.villageservice.model.User;
+import com.example.villageservice.utility.AppUtil;
 import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
 import com.google.gson.Gson;
@@ -77,6 +79,7 @@ public class InputUserDialog extends DialogFragment {
 
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
+    private static AppUtil appUtil;
     private static String textTitle;
     private static String textKk;
     private static User currentUser;
@@ -96,6 +99,7 @@ public class InputUserDialog extends DialogFragment {
         textKk = kk;
         currentUser = user;
         userList = VSPreference.getInstance(context).loadUserList();
+        appUtil = new AppUtil();
         Log.d("XXXLOG", "newInstance - userList: " + new Gson().toJson(userList));
 
         arguments.putString("title", title);
@@ -275,11 +279,12 @@ public class InputUserDialog extends DialogFragment {
                 if (!spinnerGender.getSelectedItem().toString().equalsIgnoreCase(gender)) {
                     relativeGender.setBackgroundResource(R.drawable.bg_edit_text_white_rounded);
                 }
+                Log.d("XXXLOG", "onItemSelected");
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                Log.d("XXXLOG", "onNothingSelected");
             }
         });
         spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

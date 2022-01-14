@@ -1,7 +1,9 @@
 package com.example.villageservice.utility;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 
 import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.User;
@@ -40,6 +42,8 @@ public class AppUtil {
 
             List<User> users = kartuKeluargaList.get(i).getKeluargaList();
             for (int j = 0; j < users.size(); j++) {
+                if (users.get(j).getPendidikan().equalsIgnoreCase("")) users.get(j).setPendidikan("SLTA/Sederajat");
+
                 User user = new User();
                 User.TanggalDetail tanggalDetail = new User.TanggalDetail();
                 tanggalDetail.setTanggal(users.get(j).getTanggalLahir().getTanggal());
@@ -92,6 +96,15 @@ public class AppUtil {
 
     public void deleteUserData() {
 
+    }
+
+    public void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null && activity.getCurrentFocus() != null) {
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        }
     }
 
 }
