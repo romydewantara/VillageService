@@ -300,12 +300,16 @@ public class CoveringLetterFragment extends Fragment {
                         ", Kec. " + etKec.getText().toString() +
                         ", Kota " + etKota.getText().toString() +
                         ", Kode Pos: " + etPostal.getText().toString();
-                String tempatTanggalLahir = etTempatLahir.getText().toString() + ", " + etTanggal.getText().toString() + " " + monthChooser.getSelectedItem() + " " + etTahun.getText().toString();
+                String tempatTanggalLahir = etTempatLahir.getText().toString() + ", " +
+                        etTanggal.getText().toString() + " " +
+                        monthChooser.getSelectedItem() + " " +
+                        etTahun.getText().toString();
+
                 CoveringLetter coveringLetter = new CoveringLetter(id, "LAMPIRAN XIII: MODEL AA.05", "Nomor: ……/JT/VI/3/014/……/2022",
                         etIdNama.getText().toString(), String.valueOf(genderChooser.getSelectedItem()), tempatTanggalLahir,
                         etPekerjaan.getText().toString(), String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
                         etPendidikan.getText().toString(), etAgama.getText().toString(), alamatLengkap, etMaksud.getText().toString(),
-                        "……/JT/VI/3/014/……/2022", "……/……/20……", "Bpk. Rudi", "……/……/20", "Sukina", clType, tglPengajuan, false);
+                        "……/JT/VI/3/014/……/2022", "……/……/20……", "Bpk. Rudi", "……/……/20", "Bpk. Sukina", clType, tglPengajuan, false);
                 coveringLetter.setNotification(false);
                 Log.d("XXXLOG", "CL Fragment - coveringLetter to be send: " + new Gson().toJson(coveringLetter));
 

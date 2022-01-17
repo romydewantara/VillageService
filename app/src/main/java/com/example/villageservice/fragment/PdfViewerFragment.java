@@ -276,14 +276,17 @@ public class PdfViewerFragment extends Fragment {
             public void onClick(View v) {
                 if (isAdmin && !coveringLetter.isApproved()) {
                     FragmentManager fm = getFragmentManager();
-                    InputHeaderDialog customAlertDialog = InputHeaderDialog.newInstance(context, "Masukkan Nomor Surat Pengantar")
+                    InputHeaderDialog customAlertDialog = InputHeaderDialog.newInstance(context, "Masukkan Nomor\nSurat Pengantar")
                             .setButton("Tanda Tangan", new InputHeaderDialogListener() {
                                 @Override
                                 public void onButtonSubmit(String headerCode) {
-                                    String noHeader = "Nomor: " + headerCode;
-                                    tvNumber.setText(noHeader);
+                                    tvNumber.setText("Nomor: " + headerCode);
+                                    tvNumberFooterR.setText(headerCode);
                                     tvNumber.setAnimation(bouncedShow);
+                                    tvNumberFooterR.setAnimation(bouncedShow);
                                     coveringLetter.setClNomorHeader(headerCode);
+                                    coveringLetter.setClNomorFooter(headerCode);
+                                    coveringLetter.setApproved(true);
                                     approved();
                                 }
                             });
@@ -337,7 +340,6 @@ public class PdfViewerFragment extends Fragment {
                 relativeStamp.startAnimation(bouncedShow);
                 imageSignature.startAnimation(fadeIn);
 
-                coveringLetter.setApproved(true);
                 saveChanges();
             }
             @Override
@@ -353,6 +355,7 @@ public class PdfViewerFragment extends Fragment {
             CoveringLetter clTemp = (CoveringLetter) clArrayList.get(i);
             if (clTemp.getClKtp().equalsIgnoreCase(coveringLetter.getClKtp()) && clTemp.getClId().equalsIgnoreCase(coveringLetter.getClId())) {
                 clArrayList.set(i, coveringLetter);
+                Log.d("XXXLOG", "saveChanges - cl: " + new Gson().toJson(coveringLetter));
             }
         }
         VSPreference.getInstance(context).setCoveringLetterGroupList(clType, clArrayList);

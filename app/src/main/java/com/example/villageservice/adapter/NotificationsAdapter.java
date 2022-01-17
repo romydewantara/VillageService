@@ -43,7 +43,6 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         holder.tvNumHeader.setText(coveringLetterArrayList.get(position).getClNomorHeader());
 
         String color = "#A3DA8D";
-        Log.d("XXXLOG", "onBindViewHolder - CL TYPE: " + coveringLetterArrayList.get(position).getClType());
         switch (coveringLetterArrayList.get(position).getClType()) {
             case ConstantVariable.KEY_CL_NIKAH:
                 color = "#2FDD92"; //normal
@@ -64,16 +63,17 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
                 color = "#92A9BD"; //minor
                 break;
         }
-        Log.d("XXXLOG", "onBindViewHolder - color: " +color);
         holder.tvKeperluan.setText(coveringLetterArrayList.get(position).getClKeperluan());
         holder.tvKeperluan.setTextColor(Color.parseColor(color));
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(holder.tvName, 1, 14, 1, TypedValue.COMPLEX_UNIT_SP);
         if (coveringLetterArrayList.get(position).isApproved()) {
             holder.imageStatus.setImageResource(R.mipmap.ic_approved);
             holder.tvStatus.setText("Approved");
+            holder.tvNumHeader.setTextColor(Color.parseColor("#00A19D"));
         } else {
             holder.imageStatus.setImageResource(R.mipmap.ic_pending);
             holder.tvStatus.setText("Pending");
+            holder.tvNumHeader.setTextColor(Color.parseColor("#D9534F"));
         }
     }
 

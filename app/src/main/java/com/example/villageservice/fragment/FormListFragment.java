@@ -217,6 +217,9 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
         for (int i = 0; i < coveringLetters.size(); i++) {
             if (coveringLetters.get(i).getClKtp().equalsIgnoreCase(ktp) && coveringLetters.get(i).getClId().equalsIgnoreCase(id)) {
                 coveringLetter.setClId(coveringLetters.get(i).getClId());
+                coveringLetter.setClLampiran(coveringLetters.get(i).getClLampiran());
+                coveringLetter.setClNomorHeader(coveringLetters.get(i).getClNomorHeader());
+                coveringLetter.setClNomorFooter(coveringLetters.get(i).getClNomorHeader());
                 coveringLetter.setClNama(coveringLetters.get(i).getClNama());
                 coveringLetter.setClKtp(coveringLetters.get(i).getClKtp());
                 coveringLetter.setClJenisKelamin(coveringLetters.get(i).getClJenisKelamin());
@@ -244,12 +247,11 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
     }
 
     private void appliedCoveringLetter(CoveringLetter cl) {
-        CoveringLetter coveringLetter = new CoveringLetter(cl.getClId(), "LAMPIRAN XIII: MODEL AA.05",
-                "Nomor: " + "……/JT/VI/3/007/014/……/2022",
-                cl.getClNama(), cl.getClJenisKelamin(), cl.getClTempatTanggalLahir(), cl.getClPekerjaan(),
-                String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(), cl.getClAgama(), cl.getClAlamat(), cl.getClKeperluan(),
-                "……/JT/VI/3/014/……/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina",
-                clType, cl.getClTglPengajuan(), cl.isApproved());
+        CoveringLetter coveringLetter = new CoveringLetter(cl.getClId(), cl.getClLampiran(),
+                cl.getClNomorHeader(), cl.getClNama(), cl.getClJenisKelamin(), cl.getClTempatTanggalLahir(),
+                cl.getClPekerjaan(), String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(),
+                cl.getClAgama(), cl.getClAlamat(), cl.getClKeperluan(), cl.getClNomorFooter(), "05/02/2022",
+                "Bpk. Rudi", "05/02/2022", "Bpk. Sukina", clType, cl.getClTglPengajuan(), cl.isApproved());
         VSPreference.getInstance(context).setCoveringLetter(ConstantVariable.KEY_COVERING_LETTER, coveringLetter);
     }
 

@@ -203,12 +203,12 @@ public class NotificationsFragment extends Fragment implements NotificationsAdap
     }
 
     private void appliedCoveringLetter(CoveringLetter cl) {
-        CoveringLetter coveringLetter = new CoveringLetter(cl.getClId(), "LAMPIRAN XIII: MODEL AA.05",
-                "Nomor: " + "……/JT/VI/3/007/014/……/2022",
-                cl.getClNama(), cl.getClJenisKelamin(), cl.getClTempatTanggalLahir(), cl.getClPekerjaan(),
-                String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(), cl.getClAgama(), cl.getClAlamat(), cl.getClKeperluan(),
-                "……/JT/VI/3/014/……/2022", "05/02/2022", "Bpk. Rudi", "05/02/2022", "Bpk. Sukina",
-                cl.getClType(), cl.getClTglPengajuan(), cl.isApproved());
+        Log.d("XXXLOG", "appliedCoveringLetter - header: " + cl.getClNomorHeader());
+        CoveringLetter coveringLetter = new CoveringLetter(cl.getClId(), cl.getClLampiran(),
+                cl.getClNomorHeader(), cl.getClNama(), cl.getClJenisKelamin(), cl.getClTempatTanggalLahir(),
+                cl.getClPekerjaan(), String.valueOf(cl.getClKtp()), cl.getClKewarganegaraan(), cl.getClPendidikan(),
+                cl.getClAgama(), cl.getClAlamat(), cl.getClKeperluan(), cl.getClNomorFooter(), "05/02/2022",
+                "Bpk. Rudi", "05/02/2022", "Bpk. Sukina", cl.getClType(), cl.getClTglPengajuan(), cl.isApproved());
         VSPreference.getInstance(context).setCoveringLetter(ConstantVariable.KEY_COVERING_LETTER, coveringLetter);
     }
 

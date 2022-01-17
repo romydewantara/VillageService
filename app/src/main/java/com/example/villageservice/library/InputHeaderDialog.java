@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
@@ -21,13 +22,23 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.villageservice.R;
 import com.example.villageservice.listener.InputHeaderDialogListener;
+import com.example.villageservice.model.CoveringLetter;
+import com.example.villageservice.utility.ConstantVariable;
+import com.example.villageservice.utility.VSPreference;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class InputHeaderDialog extends DialogFragment {
 
     private TextView titleAlert;
-    private TextView messageAlert;
+    private EditText etSequentialNumb;
+    private EditText etCurrentMonth;
+    private AppCompatTextView tvDefaultNumb;
+    private AppCompatTextView tvCurrentYear;
     private TextView positiveButton;
-    private EditText etHeaderCode;
     private boolean shown = false;
 
     private CharSequence buttonText = "";
@@ -77,9 +88,11 @@ public class InputHeaderDialog extends DialogFragment {
         }
 
         titleAlert = view.findViewById(R.id.titleAlert);
-        messageAlert = view.findViewById(R.id.messageAlert);
+        etSequentialNumb = view.findViewById(R.id.etSequentialNumb);
+        etCurrentMonth = view.findViewById(R.id.etCurrentMonth);
+        tvDefaultNumb = view.findViewById(R.id.tvDefaultNumb);
+        tvCurrentYear = view.findViewById(R.id.tvCurrentYear);
         positiveButton = view.findViewById(R.id.submitButton);
-        etHeaderCode = view.findViewById(R.id.etHeaderCode);
         setCosmetic();
         initListener();
     }
@@ -119,6 +132,24 @@ public class InputHeaderDialog extends DialogFragment {
         }
 
         titleAlert.setText(textTitle);
+
+        String currentDate = new SimpleDateFormat("MM", Locale.getDefault()).format(new Date());
+        List<Object> coveringLetter = VSPreference.getInstance(mContext).getCoveringLetterGroupList(ConstantVariable.KEY_COVERING_LETTERS_LIST);
+        int sum = 0;
+        for (int i = 0; i < coveringLetter.size(); i++) {
+            CoveringLetter cl = (CoveringLetter) coveringLetter.get(i);
+            if (cl.isApproved()) {
+                sum+=1;
+            }
+        }
+        String number = "00" + sum;
+        if (sum > 9) {
+            number = "0" + sum;
+        } else if (sum > 99) {
+            number = "" + sum;
+        }
+        etSequentialNumb.setText(number);
+        etCurrentMonth.setText(currentDate);
         setButton();
     }
 
@@ -126,8 +157,10 @@ public class InputHeaderDialog extends DialogFragment {
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!etHeaderCode.getText().toString().isEmpty()) {
-                    inputHeaderDialogListener.onButtonSubmit(etHeaderCode.getText().toString());
+                if (!etSequentialNumb.getText().toString().isEmpty() && !etCurrentMonth.getText().toString().isEmpty()) {
+                    String header = etSequentialNumb.getText().toString() + tvDefaultNumb.getText().toString() +
+                            etCurrentMonth.getText().toString() + tvCurrentYear.getText().toString();
+                    inputHeaderDialogListener.onButtonSubmit(header);
                     dismiss();
                 }
             }

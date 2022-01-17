@@ -21,52 +21,65 @@
             android:visibility="visible" />
 
         <LinearLayout
-            android:id="@+id/linearContainer"
+            android:id="@+id/linearContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/titleAlert"
-            android:orientation="vertical"
-            android:padding="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/MulishBoldGreenStyle1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:background="@drawable/bg_stamp"
-                android:text="……/JT/VI/3/007/014/……/2022"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
             <EditText
-                android:id="@+id/etHeaderCode"
-                style="@style/MulishBlackMediumStyle1"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:id="@+id/etSequentialNumb"
+                style="@style/MulishBlueBoldStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
                 android:background="@drawable/bg_edit_text_white_rounded"
-                android:layout_marginTop="10dp"
-                android:hint="No. Surat Pengantar"
+                android:hint="………"
+                android:maxLength="3"
                 android:inputType="number"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvError1"
-                style="@style/MulishRegularRedStyleTiny"
-                android:layout_width="match_parent"
+                android:id="@+id/tvDefaultNumb"
+                style="@style/MulishBlueBoldStyle2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:text="Nomor Surat Pengantar sudah pernah digunakan…*"
-                android:visibility="invisible" />
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="/JT/VI/3/007/014/" />
+
+            <EditText
+                android:id="@+id/etCurrentMonth"
+                style="@style/MulishBlueBoldStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/bg_edit_text_grey_rounded"
+                android:enabled="false"
+                android:hint="……"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColorHint="@color/blue" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCurrentYear"
+                style="@style/MulishBlueBoldStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="/2022" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/linearContainer"
+            android:layout_below="@id/linearContent"
             android:orientation="horizontal"
             android:visibility="visible"
             app:layout_constraintLeft_toLeftOf="parent"
