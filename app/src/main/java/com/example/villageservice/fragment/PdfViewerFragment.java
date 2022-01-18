@@ -32,6 +32,7 @@ import com.example.villageservice.library.ZoomableRelativeLayout;
 import com.example.villageservice.listener.FragmentListener;
 import com.example.villageservice.listener.InputHeaderDialogListener;
 import com.example.villageservice.model.CoveringLetter;
+import com.example.villageservice.model.KartuKeluarga;
 import com.example.villageservice.model.PortableDocumentFormat;
 import com.example.villageservice.utility.ConstantVariable;
 import com.example.villageservice.utility.VSPreference;
@@ -92,6 +93,7 @@ public class PdfViewerFragment extends Fragment {
     private ArrayList<Object> coveringLettersList;
 
     private String previousFragment = "";
+    private String idKtp = "";
     private String clType;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -341,6 +343,7 @@ public class PdfViewerFragment extends Fragment {
                 imageSignature.startAnimation(fadeIn);
 
                 saveChanges();
+                turnOnNotification();
             }
             @Override
             public void onAnimationCancel(Animator animation) {}
@@ -372,6 +375,20 @@ public class PdfViewerFragment extends Fragment {
             }
         }
         VSPreference.getInstance(context).setCoveringLetterGroupList(ConstantVariable.KEY_COVERING_LETTERS_LIST, notificationCLList);
+    }
+
+    private void turnOnNotification() {
+        ArrayList<Object> objectArrayList = VSPreference.getInstance(context).getKKList();
+        for (int i = 0; i < objectArrayList.size(); i++) {
+            KartuKeluarga kartuKeluarga = (KartuKeluarga) objectArrayList.get(i);
+            for (int j = 0; j < kartuKeluarga.getKeluargaList().size(); j++) {
+                if (kartuKeluarga.getKeluargaList().get(j).getIdKtp().equalsIgnoreCase(idKtp)) {
+                    kartuKeluarga.setNotificationOn(true);
+                    break;
+                }
+            }
+        }
+        Log.d("XXXLOG", "turnOnNotification: ");
     }
 
     private class OnPinchListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {

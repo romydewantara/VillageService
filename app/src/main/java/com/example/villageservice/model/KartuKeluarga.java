@@ -49,6 +49,9 @@ public class KartuKeluarga {
     @SerializedName("password")
     private String password = "";
 
+    @SerializedName("is_notification")
+    private boolean isNotificationOn;
+
     public String getIdKartuKeluarga() {
         return idKartuKeluarga;
     }
@@ -159,5 +162,13 @@ public class KartuKeluarga {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isNotificationOn() {
+        return isNotificationOn;
+    }
+
+    public void setNotificationOn(boolean notificationOn) {
+        isNotificationOn = notificationOn;
     }
 }
