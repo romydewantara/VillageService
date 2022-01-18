@@ -130,27 +130,31 @@ public class InputHeaderDialog extends DialogFragment {
         if (!textTitle.equals("")) {
             titleAlert.setVisibility(View.VISIBLE);
         }
-
         titleAlert.setText(textTitle);
-
         String currentDate = new SimpleDateFormat("MM", Locale.getDefault()).format(new Date());
+        etSequentialNumb.setText(getSequentialNumb());
+        etCurrentMonth.setText(currentDate);
+        setButton();
+    }
+
+    private String getSequentialNumb() {
         List<Object> coveringLetter = VSPreference.getInstance(mContext).getCoveringLetterGroupList(ConstantVariable.KEY_COVERING_LETTERS_LIST);
-        int sum = 0;
+        int sum = 1;
         for (int i = 0; i < coveringLetter.size(); i++) {
             CoveringLetter cl = (CoveringLetter) coveringLetter.get(i);
             if (cl.isApproved()) {
-                sum+=1;
+                sum += 1;
             }
         }
         String number = "00" + sum;
-        if (sum > 9) {
+        if (sum > 9 && sum < 99) {
             number = "0" + sum;
-        } else if (sum > 99) {
+        } else if (sum > 99 && sum < 999) {
             number = "" + sum;
+        } else if (sum > 999) {
+            number = "♾️";
         }
-        etSequentialNumb.setText(number);
-        etCurrentMonth.setText(currentDate);
-        setButton();
+        return number;
     }
 
     private void initListener() {
