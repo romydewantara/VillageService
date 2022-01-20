@@ -150,7 +150,7 @@ public class SignInActivity extends AppCompatActivity implements EasyPermissions
             @Override
             public void afterTextChanged(Editable s) {
                 Log.d("EMAIL", "afterTextChanged - s: " + s);
-                if (s.toString().length() >= 6 || s.toString().equalsIgnoreCase(ConstantVariable.ADMIN_USERNAME))
+                if (s.toString().length() >= 4 || s.toString().equalsIgnoreCase(ConstantVariable.ADMIN_USERNAME))
                     isMailFilled = true;
                 else
                     isMailFilled = false;

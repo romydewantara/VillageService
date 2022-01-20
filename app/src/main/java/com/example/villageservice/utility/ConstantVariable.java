@@ -41,7 +41,7 @@ public class ConstantVariable {
     public static String[] SPINNER_GENDER = {"-- Jenis Kelamin --", "Laki-laki", "Perempuan"};
     public static String[] SPINNER_AGAMA = {"-- Agama --", "Islam", "Kristen", "Katolik", "Hindu", "Buddha", "Konghucu"};
     public static String[] SPINNER_PENDIDIKAN = {"-- Pendidikan --", "Tidak/Belum Sekolah", "Belum Tamat SD/Sederajat", "Tamat SD/Sederajat", "SLTP/Sederajat", "SLTA/Sederajat", "Diploma IV/Strata I", "Diploma I/II", "Akademi/Diploma III/S. Muda", "Strata II", "Strata III"};
-    public static String[] SPINNER_PEKERJAAN = {"-- Pekerjaan --", "Belum/Tidak Bekerja", "Ibu Rumah Tangga", "Pelajar/Mahasiswa", "Karyawan Swasta", "Buruh", "BHL", "TNI", "Pedagang", "Petani", "Nelayan", "Lainnya"};
+    public static String[] SPINNER_PEKERJAAN = {"-- Pekerjaan --", "Belum/Tidak Bekerja", "Ibu Rumah Tangga", "Pelajar/Mahasiswa", "Karyawan Swasta", "Wiraswasta", "Buruh", "BHL", "TNI", "Pedagang", "Petani", "Nelayan", "Lainnya"};
     public static String[] SPINNER_MARITAL_STATUS = {"-- Status Perkawinan --", "Kawin", "Belum Kawin"};
     public static String[] SPINNER_CITIZEN_STATE = {"-- Kewarganegaraan --", "WNI", "Non WNI"};
     public static String[] SPINNER_MONTH = {"-- Bulan --", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"};

@@ -3794,6 +3794,73 @@
         }
       ],
       "password": "password"
+    },
+    {
+      "id_kartu_keluarga": "1111",
+      "nama_kepala_keluarga": "ATTA HALILINTAR",
+      "alamat_lengkap": "Jl Penggilingan Raya RT. 007, RW 014 Kel. Penggilingan, Kec. Cakung. Jakarta Timur - DKI Jakarta",
+      "alamat_rumah": "Jl Penggilingan Raya",
+      "nomor_rt": "007",
+      "nomor_rw": "014",
+      "kelurahan": "Penggilingan",
+      "kecamatan": "Cakung",
+      "kota": "Jakarta Timur",
+      "kode_pos": "13490",
+      "provinsi": "DKI Jakarta",
+      "status": "tetap",
+      "anggota_keluarga": [
+        {
+          "id_ktp": "3175111111",
+          "id_kartu_keluarga": "1111",
+          "nama_lengkap": "ATTA HALILINTAR",
+          "jenis_kelamin": "Laki-laki",
+          "tempat_lahir": "Jakarta",
+          "tanggal_lahir": {
+            "tanggal": "01",
+            "bulan": "Januari",
+            "tahun": "1991"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Wiraswasta",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        },
+        {
+          "id_ktp": "3175111112",
+          "id_kartu_keluarga": "1111",
+          "nama_lengkap": "Aurel Hermansyah",
+          "jenis_kelamin": "Perempuan",
+          "tempat_lahir": "Bandung",
+          "tanggal_lahir": {
+            "tanggal": "25",
+            "bulan": "November",
+            "tahun": "1998"
+          },
+          "tanggal_bergabung": {
+            "tanggal": "00",
+            "bulan": "00",
+            "tahun": "0000"
+          },
+          "agama": "Islam",
+          "pendidikan": "",
+          "jenis_pekerjaan": "Ibu Rumah Tangga",
+          "status_pernikahan": "Kawin",
+          "status_hubungan_dalam_keluarga": "",
+          "kewarganegaraan": "WNI",
+          "nama_ayah": "",
+          "nama_ibu": ""
+        }
+      ],
+      "password": "password"
     }
   ]
 }

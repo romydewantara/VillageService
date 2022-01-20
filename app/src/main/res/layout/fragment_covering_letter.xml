@@ -363,7 +363,7 @@
 
             <EditText
                 android:id="@+id/etRT"
-                style="@style/MulishBoldBlackStyle1"
+                style="@style/MulishBlackMediumStyle1"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="3dp"

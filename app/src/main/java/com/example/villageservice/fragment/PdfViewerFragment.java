@@ -248,7 +248,6 @@ public class PdfViewerFragment extends Fragment {
         tvNameR10.setText(coveringLetter.getClKeperluan());
 
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvNumberFooterR, 1, 10, 1, TypedValue.COMPLEX_UNIT_SP);
-
         /** STAMP */
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv1, 1, 16, 1, TypedValue.COMPLEX_UNIT_SP);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv2a, 1, 8, 1, TypedValue.COMPLEX_UNIT_SP);
