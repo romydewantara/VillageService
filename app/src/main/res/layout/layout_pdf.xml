@@ -131,7 +131,7 @@
                         style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Nomor"
+                        android:text="Nomor:"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth_percent="0.3" />
@@ -154,7 +154,7 @@
                         style="@style/NotoSansBlackRegularStyle1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Tanggal"
+                        android:text="Tanggal:"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvNumberFooterR"
                         app:layout_constraintWidth_percent="0.3" />

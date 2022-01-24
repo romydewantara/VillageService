@@ -17,6 +17,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,6 +52,7 @@ public class PdfViewerFragment extends Fragment {
     private PortableDocumentFormat portableDocumentFormat;
     private CoveringLetter coveringLetter;
     private LottieAnimationView lottieStampLoading;
+    private LottieAnimationView lottieDownload;
 
     private View view;
     private RelativeLayout relativeStamp;
@@ -215,6 +217,7 @@ public class PdfViewerFragment extends Fragment {
         tvNameR19 = view.findViewById(R.id.tvNameR9);
         tvNameR10 = view.findViewById(R.id.tvNameR10);
         lottieStampLoading = view.findViewById(R.id.lottieStampLoading);
+        lottieDownload = view.findViewById(R.id.lottieDownload);
 
         tv1 = view.findViewById(R.id.tv1);
         tv2a = view.findViewById(R.id.tv2a);
@@ -230,7 +233,7 @@ public class PdfViewerFragment extends Fragment {
         coveringLetter = VSPreference.getInstance(context).getCoveringLetter(ConstantVariable.KEY_COVERING_LETTER);
         Log.d("XXXCL", "loadData - data: " + new Gson().toJson(coveringLetter));
         tvLampiran.setText(coveringLetter.getClLampiran());
-        tvNumber.setText(coveringLetter.getClNomorHeader());
+        tvNumber.setText("Nomor: " + coveringLetter.getClNomorHeader());
         tvNumberFooterR.setText(coveringLetter.getClNomorFooter());
         tvTanggalFooterR.setText(coveringLetter.getClTanggalFooterRw());
         tvRWName.setText(coveringLetter.getClNamaRw());
@@ -297,6 +300,23 @@ public class PdfViewerFragment extends Fragment {
                         relativeStamp.setVisibility(View.VISIBLE);
                         imageSignature.setVisibility(View.VISIBLE);
                         portableDocumentFormat.generatePdf(relativePdf, coveringLetter.getClNama().trim() + "_" + coveringLetter.getClKeperluan().trim());
+                        lottieDownload.setVisibility(View.VISIBLE);
+                        lottieDownload.addAnimatorListener(new Animator.AnimatorListener() {
+                            @Override
+                            public void onAnimationStart(Animator animation) {
+                            }
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                lottieDownload.setVisibility(View.GONE);
+                                Toast.makeText(context, "File PDF Berhasil diunduh!", Toast.LENGTH_LONG).show();
+                            }
+                            @Override
+                            public void onAnimationCancel(Animator animation) {
+                            }
+                            @Override
+                            public void onAnimationRepeat(Animator animation) {
+                            }
+                        });
                     }
                 }
                 disableButton();

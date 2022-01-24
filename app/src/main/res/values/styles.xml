@@ -357,6 +357,17 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
+    <!-- WHITE -->
+    <style name="MulishRegularWhiteStyleTiny">
+        <item name="android:fontFamily">@font/mulish_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="MulishRegularWhiteStyle1">
+        <item name="android:fontFamily">@font/mulish_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
     <!-- BLACK -->
     <style name="MulishRegularGreyStyleTiny">
         <item name="android:fontFamily">@font/mulish_regular</item>

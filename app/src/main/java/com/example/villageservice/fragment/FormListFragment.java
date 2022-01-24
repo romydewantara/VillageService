@@ -219,7 +219,7 @@ public class FormListFragment extends Fragment implements FormUserRequestedListe
                 coveringLetter.setClId(coveringLetters.get(i).getClId());
                 coveringLetter.setClLampiran(coveringLetters.get(i).getClLampiran());
                 coveringLetter.setClNomorHeader(coveringLetters.get(i).getClNomorHeader());
-                coveringLetter.setClNomorFooter(coveringLetters.get(i).getClNomorHeader());
+                coveringLetter.setClNomorFooter(coveringLetters.get(i).getClNomorFooter());
                 coveringLetter.setClNama(coveringLetters.get(i).getClNama());
                 coveringLetter.setClKtp(coveringLetters.get(i).getClKtp());
                 coveringLetter.setClJenisKelamin(coveringLetters.get(i).getClJenisKelamin());

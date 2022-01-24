@@ -57,7 +57,6 @@ public class PortableDocumentFormat {
         File filePath = new File(targetPdf);
         try {
             document.writeTo(new FileOutputStream(filePath));
-            Toast.makeText(context, "File downloaded successfully", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             Log.e("main", "error " + e.toString());
             Toast.makeText(context, "Something wrong: " + e.toString(), Toast.LENGTH_LONG).show();

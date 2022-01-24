@@ -53,7 +53,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopNum1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -64,7 +64,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopReq1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -75,7 +75,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopNum2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -86,7 +86,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopReq2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -97,7 +97,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopNum3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -108,7 +108,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopReq3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -119,7 +119,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopNum4"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -130,7 +130,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopReq4"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -141,7 +141,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopNum5"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -152,7 +152,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopReq5"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -163,7 +163,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopNum6"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -174,7 +174,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopReq6"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -185,7 +185,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopNum7"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -196,7 +196,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopReq7"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -207,7 +207,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopNum8"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -218,7 +218,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopReq8"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -229,7 +229,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopNum9"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -240,7 +240,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopReq9"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -260,7 +260,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotNum1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -271,7 +271,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotReq1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -282,7 +282,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotNum2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -293,7 +293,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotReq2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -304,7 +304,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotNum3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -315,7 +315,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotReq3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -326,7 +326,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotNum4"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -337,7 +337,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotReq4"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -348,7 +348,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotNum5"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -359,7 +359,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotReq5"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -370,7 +370,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotNum6"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -381,7 +381,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBotReq6"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -419,7 +419,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvUmkmNum1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -431,7 +431,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvUmkmReq1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -443,7 +443,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvUmkmNum2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -454,7 +454,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvUmkmReq2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -465,7 +465,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvUmkmNum3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -476,7 +476,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvUmkmReq3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -514,7 +514,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvKtpNum1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -526,7 +526,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvKtpReq1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -538,7 +538,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvKtpNum2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -549,7 +549,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvKtpReq2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -560,7 +560,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvKtpNum3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -571,7 +571,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvKtpReq3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -582,7 +582,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvKtpNum4"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -593,7 +593,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvKtpReq4"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -630,7 +630,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALNum1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -642,7 +642,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALReq1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -654,7 +654,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALNum2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -665,7 +665,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALReq2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -676,7 +676,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALNum3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -687,7 +687,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALReq3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -698,7 +698,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALNum4"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -709,7 +709,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALReq4"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -720,7 +720,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALNum5"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -731,7 +731,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALReq5"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -742,7 +742,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALNum6"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -753,7 +753,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALReq6"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -764,7 +764,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALNum7"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -775,7 +775,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvALReq7"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -812,7 +812,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAMNum1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -824,7 +824,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAMReq1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -836,7 +836,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAMNum2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -847,7 +847,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAMReq2"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -858,7 +858,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAMNum3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -869,7 +869,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAMReq3"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -880,7 +880,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAMNum4"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -891,7 +891,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAMReq4"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -928,7 +928,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvKKNum1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -940,7 +940,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvKKReq1"
-        style="@style/MulishWhiteBoldStyle1"
+        style="@style/MulishRegularWhiteStyle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"

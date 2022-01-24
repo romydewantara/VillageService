@@ -305,7 +305,7 @@ public class CoveringLetterFragment extends Fragment {
                         monthChooser.getSelectedItem() + " " +
                         etTahun.getText().toString();
 
-                CoveringLetter coveringLetter = new CoveringLetter(id, "LAMPIRAN XIII: MODEL AA.05", "Nomor: ……/JT/VI/3/014/……/2022",
+                CoveringLetter coveringLetter = new CoveringLetter(id, "LAMPIRAN XIII: MODEL AA.05", "……/JT/VI/3/014/……/2022",
                         etIdNama.getText().toString(), String.valueOf(genderChooser.getSelectedItem()), tempatTanggalLahir,
                         etPekerjaan.getText().toString(), String.valueOf(ktpChooser.getSelectedItem()), String.valueOf(kewarganegaraanChooser.getSelectedItem()),
                         etPendidikan.getText().toString(), etAgama.getText().toString(), alamatLengkap, etMaksud.getText().toString(),

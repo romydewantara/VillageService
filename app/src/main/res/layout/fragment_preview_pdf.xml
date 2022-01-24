@@ -56,4 +56,14 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieDownload"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/white_50"
+        android:scaleType="fitCenter"
+        app:lottie_fileName="lottie/progress_loading.json"
+        app:lottie_autoPlay="true"/>
+
 </RelativeLayout>

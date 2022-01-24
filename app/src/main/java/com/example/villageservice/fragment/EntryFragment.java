@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
+import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.villageservice.R;
@@ -48,11 +51,12 @@ public class EntryFragment extends Fragment {
 
     private View view;
     private WebView webView;
+    private AppCompatTextView tvTitlePengantar;
     private ImageView backButton;
     private CardView cvMenuLeft;
     private CardView cvMenuRight;
     private String clType;
-    private String menuSelected;
+    private String title;
     private String previousFragment = "";
 
     // TODO: Rename parameter arguments, choose names that match
@@ -99,6 +103,32 @@ public class EntryFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
             clType = getArguments().getString(ConstantVariable.KEY_CL_BUNDLE);
         }
+        switch (getArguments().getString(ConstantVariable.KEY_CL_BUNDLE)) {
+            case ConstantVariable.KEY_CL_NIKAH:
+                clType = ConstantVariable.KEY_CL_NIKAH;
+                title = "Surat Pengantar Layak Nikah";
+                break;
+            case ConstantVariable.KEY_CL_UMKM:
+                clType = ConstantVariable.KEY_CL_UMKM;
+                title = "Surat Keterangan Usaha (UMKM)";
+                break;
+            case ConstantVariable.KEY_CL_DOMISILI_KTP:
+                clType = ConstantVariable.KEY_CL_DOMISILI_KTP;
+                title = "Surat Pindah Domisili KTP";
+                break;
+            case ConstantVariable.KEY_CL_KK_BARU:
+                clType = ConstantVariable.KEY_CL_KK_BARU;
+                title = "Surat Pengantar Pembuatan KK Baru";
+                break;
+            case ConstantVariable.KEY_CL_AKTA_LAHIR:
+                clType = ConstantVariable.KEY_CL_AKTA_LAHIR;
+                title = "Surat Pengantar Akta Kelahiran";
+                break;
+            case ConstantVariable.KEY_CL_AKTA_KEMATIAN:
+                clType = ConstantVariable.KEY_CL_AKTA_KEMATIAN;
+                title = "Surat Pengantar Akta Kematian";
+                break;
+        }
         fragmentListener.onFragmentCreated(EntryFragment.this, previousFragment);
         URL = "https://kependudukancapil.jakarta.go.id/kartu-keluarga/";
     }
@@ -108,6 +138,7 @@ public class EntryFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_entry, container, false);
         backButton = view.findViewById(R.id.backButton);
+        tvTitlePengantar = view.findViewById(R.id.tvTitlePengantar);
         cvMenuLeft = view.findViewById(R.id.cvMenuLeft);
         cvMenuRight = view.findViewById(R.id.cvMenuRight);
         webView = view.findViewById(R.id.webView);
@@ -120,6 +151,8 @@ public class EntryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        tvTitlePengantar.setText(title);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvTitlePengantar, 1, 24, 1, TypedValue.COMPLEX_UNIT_SP);
         /** CLICK LISTENER */
         cvMenuLeft.setOnClickListener(new View.OnClickListener() {
             @Override
