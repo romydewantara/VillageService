@@ -1,27 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitle"
-        style="@style/MulishWhiteBoldStyle4"
+        style="@style/MulishMediumRedStyle4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_term"
         android:gravity="center"
-        android:text="Persyaratan Nikah"
+        android:padding="10dp"
+        android:text="Persiapan Dokumen\nSebelum Mengajukan Surat Pengantar"
         android:textAllCaps="true"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvPemohon"
+        android:id="@+id/tvTitleNikahNum"
         style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="1."
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvTitleNikah"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintWidth_percent=".1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleNikah"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Persyaratan Pengantar Nikah*"
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toRightOf="@id/tvTitleNikahNum"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintWidth_percent=".9" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPemohon"
+        style="@style/MulishWhiteBoldStyle2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Pemohon:"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@id/tvTitleNikah" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTopNum1"
@@ -29,7 +57,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="1"
+        android:text="1.1A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvPemohon"
         app:layout_constraintWidth_percent=".15" />
@@ -51,7 +79,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="2"
+        android:text="1.2A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq1"
         app:layout_constraintWidth_percent=".15" />
@@ -73,7 +101,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="3"
+        android:text="1.3A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq2"
         app:layout_constraintWidth_percent=".15" />
@@ -84,7 +112,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy KTP"
+        android:text="Kartu Tanda Penduduk (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvTopNum3"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq2"
         app:layout_constraintWidth_percent=".85" />
@@ -95,7 +123,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="4"
+        android:text="1.4A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq3"
         app:layout_constraintWidth_percent=".15" />
@@ -106,7 +134,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy Kartu Keluarga"
+        android:text="Kartu Keluarga (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvTopNum4"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq3"
         app:layout_constraintWidth_percent=".85" />
@@ -117,7 +145,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="5"
+        android:text="1.5A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq4"
         app:layout_constraintWidth_percent=".15" />
@@ -128,7 +156,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy Akte lahir (Ijazah Jika tidak ada Akte Kelahiran)"
+        android:text="Akte lahir Atau Ijazah Jika tidak ada Akte Kelahiran (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvTopNum5"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq4"
         app:layout_constraintWidth_percent=".85" />
@@ -139,7 +167,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="6"
+        android:text="1.6A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq5"
         app:layout_constraintWidth_percent=".15" />
@@ -150,7 +178,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy KTP Ke - 2 Orang Tua (Akte Kematian Jika Sudah Meninggal)"
+        android:text="Kartu Tanda Penduduk Kedua Orang Tua (Foto Copy) Atau Akte Kematian Jika Sudah Meninggal"
         app:layout_constraintLeft_toRightOf="@id/tvTopNum6"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq5"
         app:layout_constraintWidth_percent=".85" />
@@ -161,7 +189,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="7"
+        android:text="1.7A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq6"
         app:layout_constraintWidth_percent=".15" />
@@ -172,7 +200,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy Sertifikat Layak Kawin dari Puskesmas"
+        android:text="Sertifikat Layak Kawin dari Puskesmas (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvTopNum7"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq6"
         app:layout_constraintWidth_percent=".85" />
@@ -183,7 +211,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="8"
+        android:text="1.8A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq7"
         app:layout_constraintWidth_percent=".15" />
@@ -194,7 +222,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy Surat Cerai (Jika Sudah Pernah Menikah)"
+        android:text="Surat Cerai Jika Sudah Pernah Menikah (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvTopNum8"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq7"
         app:layout_constraintWidth_percent=".85" />
@@ -205,7 +233,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="9"
+        android:text="1.9A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq8"
         app:layout_constraintWidth_percent=".15" />
@@ -216,18 +244,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy Surat Kematian Suami/Istri (Jika Cerai Mati), Fotokopi Surat Nikah"
+        android:text="Surat Kematian Suami/Istri Jika Cerai Mati (Foto Copy) Dan Surat Nikah (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvTopNum9"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq8"
         app:layout_constraintWidth_percent=".85" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCalonPemohon"
-        style="@style/MulishWhiteBoldStyle3"
+        style="@style/MulishWhiteBoldStyle2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Calon Pemohon:"
+        android:text="Calon (Suami/Istri) Pemohon:"
         app:layout_constraintTop_toBottomOf="@id/tvTopReq9" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -236,7 +264,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="1"
+        android:text="1.1B"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCalonPemohon"
         app:layout_constraintWidth_percent=".15" />
@@ -247,7 +275,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy KTP"
+        android:text="Kartu Tanda Penduduk (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvBotNum1"
         app:layout_constraintTop_toBottomOf="@id/tvCalonPemohon"
         app:layout_constraintWidth_percent=".85" />
@@ -258,7 +286,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="2"
+        android:text="1.2B"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvBotReq1"
         app:layout_constraintWidth_percent=".15" />
@@ -269,7 +297,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy Kartu Keluarga"
+        android:text="Kartu Keluarga (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvBotNum2"
         app:layout_constraintTop_toBottomOf="@id/tvBotReq1"
         app:layout_constraintWidth_percent=".85" />
@@ -280,7 +308,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="3"
+        android:text="1.3B"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvBotReq2"
         app:layout_constraintWidth_percent=".15" />
@@ -291,7 +319,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy Akte lahir (Ijazah Jika tidak ada Akte Kelahiran)"
+        android:text="Akte lahir Atau Ijazah (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvBotNum3"
         app:layout_constraintTop_toBottomOf="@id/tvBotReq2"
         app:layout_constraintWidth_percent=".85" />
@@ -302,7 +330,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="4"
+        android:text="1.4B"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvBotReq3"
         app:layout_constraintWidth_percent=".15" />
@@ -313,7 +341,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy Sertifikat Layak Kawin dari Puskesmas"
+        android:text="Sertifikat Layak Kawin dari Puskesmas (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvBotNum4"
         app:layout_constraintTop_toBottomOf="@id/tvBotReq3"
         app:layout_constraintWidth_percent=".85" />
@@ -324,7 +352,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="5"
+        android:text="1.5B"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvBotReq4"
         app:layout_constraintWidth_percent=".15" />
@@ -335,7 +363,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy Surat Cerai (Jika Sudah Pernah Menikah)"
+        android:text="Surat Cerai Jika Sudah Pernah Menikah (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvBotNum5"
         app:layout_constraintTop_toBottomOf="@id/tvBotReq4"
         app:layout_constraintWidth_percent=".85" />
@@ -346,7 +374,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="6"
+        android:text="1.6B"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvBotReq5"
         app:layout_constraintWidth_percent=".15" />
@@ -357,9 +385,569 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Foto Copy Surat Kematian Suami/Istri (Jika Cerai Mati), Fotokopi Surat Nikah"
+        android:text="Surat Kematian Suami/Istri Jika Cerai Mati (Foto Copy) Dan Surat Nikah (Foto Copy)"
         app:layout_constraintLeft_toRightOf="@id/tvBotNum6"
         app:layout_constraintTop_toBottomOf="@id/tvBotReq5"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleUMKMNum"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="2."
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvTitleNikah"
+        app:layout_constraintTop_toBottomOf="@id/tvBotReq6"
+        app:layout_constraintWidth_percent=".1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleUMKM"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Persyaratan Pengantar UMKM*"
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toRightOf="@id/tvTitleUMKMNum"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvBotReq6"
+        app:layout_constraintWidth_percent=".9" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvUmkmNum1"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="2.1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleUMKM"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvUmkmReq1"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:text="Kartu Tanda Penduduk (KTP) yang masih berlaku (Asli dan Foto Copy)"
+        app:layout_constraintLeft_toRightOf="@id/tvUmkmNum1"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleUMKM"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvUmkmNum2"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="2.2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUmkmReq1"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvUmkmReq2"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Foto Copy Kartu Keluarga (KK)"
+        app:layout_constraintLeft_toRightOf="@id/tvUmkmNum2"
+        app:layout_constraintTop_toBottomOf="@id/tvUmkmReq1"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvUmkmNum3"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="2.3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUmkmReq2"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvUmkmReq3"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Foto Copy Kartu Nomor Pokok Wajib Pajak (NPWP)"
+        app:layout_constraintLeft_toRightOf="@id/tvUmkmNum3"
+        app:layout_constraintTop_toBottomOf="@id/tvUmkmReq2"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleKTPNum"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="3."
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvTitleKTP"
+        app:layout_constraintTop_toBottomOf="@id/tvUmkmReq3"
+        app:layout_constraintWidth_percent=".1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleKTP"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Persyaratan Pengantar Domisili KTP*"
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toRightOf="@id/tvTitleKTPNum"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUmkmReq3"
+        app:layout_constraintWidth_percent=".9" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKtpNum1"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="3.1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleKTP"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKtpReq1"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:text="Kartu Tanda Penduduk (Asli dan Foto Copy)"
+        app:layout_constraintLeft_toRightOf="@id/tvKtpNum1"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleKTP"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKtpNum2"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="3.2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvKtpReq1"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKtpReq2"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Kartu Keluarga (Asli dan Foto Copy)"
+        app:layout_constraintLeft_toRightOf="@id/tvKtpNum2"
+        app:layout_constraintTop_toBottomOf="@id/tvKtpReq1"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKtpNum3"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="3.3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvKtpReq2"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKtpReq3"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Tiga Lembar Pas Foto Ukuran 3×4"
+        app:layout_constraintLeft_toRightOf="@id/tvKtpNum3"
+        app:layout_constraintTop_toBottomOf="@id/tvKtpReq2"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKtpNum4"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="3.4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvKtpReq3"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKtpReq4"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Surat Keterangan Pindah (SKP)"
+        app:layout_constraintLeft_toRightOf="@id/tvKtpNum4"
+        app:layout_constraintTop_toBottomOf="@id/tvKtpReq3"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleAktaLahirNum"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="4."
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvTitleAktaLahir"
+        app:layout_constraintTop_toBottomOf="@id/tvKtpReq4"
+        app:layout_constraintWidth_percent=".1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleAktaLahir"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Persyaratan Pengantar Akta Lahir*"
+        android:textAllCaps="true"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvKtpReq4"
+        app:layout_constraintWidth_percent=".9" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALNum1"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="4.1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleAktaLahir"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALReq1"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:text="Surat Kelahiran Dari Dokter, Bidan atau Penolong"
+        app:layout_constraintLeft_toRightOf="@id/tvALNum1"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleAktaLahir"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALNum2"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="4.2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq1"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALReq2"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Nama Dan Identitas Saksi Kelahiran"
+        app:layout_constraintLeft_toRightOf="@id/tvALNum2"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq1"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALNum3"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="4.3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq2"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALReq3"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Kartu Keluarga Asli (Orang Tua)"
+        app:layout_constraintLeft_toRightOf="@id/tvALNum3"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq2"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALNum4"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="4.4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq3"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALReq4"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Kartu Tanda Penduduk (Kedua Orang Tua)"
+        app:layout_constraintLeft_toRightOf="@id/tvALNum4"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq3"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALNum5"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="4.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq4"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALReq5"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Kutipan Akta Nikah Atau Akta Perkawinan Orang Tua"
+        app:layout_constraintLeft_toRightOf="@id/tvALNum5"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq4"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALNum6"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="4.6"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq5"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALReq6"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="SPTJM Kebenaran Data Kelahiran (Bagi Yang Tidak Memiliki Surat Keterangan Kelahiran Dari Dokter, Bidan atau Penolong)"
+        app:layout_constraintLeft_toRightOf="@id/tvALNum6"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq5"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALNum7"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="4.7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq6"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvALReq7"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="SPTJM Kebenaran Sebagai Suami-Istri (Bagi Yang Tidak Memiliki Akta Perkawinan, Sudah Berstatus Kawin Di Dalam Kartu keluarga dan sudah terstruktur Suami-Istri-Anak Di Dalam Kartu Keluarga; Permendagri 9 Tahun 2016)"
+        app:layout_constraintLeft_toRightOf="@id/tvALNum7"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq6"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleAktaMatiNum"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="5."
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvTitleAktaMati"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq7"
+        app:layout_constraintWidth_percent=".1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleAktaMati"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Persyaratan Pengantar Akta Kematian*"
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toRightOf="@id/tvTitleAktaMatiNum"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvALReq7" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAMNum1"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="5.1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleAktaMati"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAMReq1"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:text="Surat Keterangan Kematian Dari Dokter Atau Paramedis"
+        app:layout_constraintLeft_toRightOf="@id/tvAMNum1"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleAktaMati"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAMNum2"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="5.2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAMReq1"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAMReq2"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Kartu Keluarga (Asli)"
+        app:layout_constraintLeft_toRightOf="@id/tvAMNum2"
+        app:layout_constraintTop_toBottomOf="@id/tvAMReq1"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAMNum3"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="5.3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAMReq2"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAMReq3"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Kartu Tanda Penduduk Yang Meninggal Dunia"
+        app:layout_constraintLeft_toRightOf="@id/tvAMNum3"
+        app:layout_constraintTop_toBottomOf="@id/tvAMReq2"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAMNum4"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="5.4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAMReq3"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAMReq4"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Kartu Tanda Penduduk Dua Orang Saksi (Foto Copy)"
+        app:layout_constraintLeft_toRightOf="@id/tvAMNum4"
+        app:layout_constraintTop_toBottomOf="@id/tvAMReq3"
+        app:layout_constraintWidth_percent=".85" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleKKNum"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="6."
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvTitleAktaMati"
+        app:layout_constraintTop_toBottomOf="@id/tvAMReq4"
+        app:layout_constraintWidth_percent=".1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleKK"
+        style="@style/MulishWhiteBoldStyle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Persyaratan Pengantar Cetak Kartu Keluarga*"
+        android:textAllCaps="true"
+        app:layout_constraintLeft_toRightOf="@id/tvTitleAktaMatiNum"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAMReq4" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKKNum1"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="6.1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleKK"
+        app:layout_constraintWidth_percent=".15" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKKReq1"
+        style="@style/MulishWhiteBoldStyle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:layout_marginTop="10dp"
+        android:text="Kartu Keluarga (Asli)"
+        app:layout_constraintLeft_toRightOf="@id/tvKKNum1"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleKK"
         app:layout_constraintWidth_percent=".85" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

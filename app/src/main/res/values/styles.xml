@@ -317,6 +317,17 @@
         <item name="android:textColor">@color/dark_grey</item>
         <item name="android:textSize">20sp</item>
     </style>
+    <!-- RED -->
+    <style name="MulishMediumRedStyleTiny">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/soft_red</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="MulishMediumRedStyle4">
+        <item name="android:fontFamily">@font/mulish_medium</item>
+        <item name="android:textColor">@color/soft_red</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 
 
 
