@@ -405,7 +405,7 @@ public class InputNewUsersFragment extends Fragment implements MembersAdapter.It
             etPassword.setText(kartuKeluarga.getPassword());
             fetchMembers(kartuKeluarga.getKeluargaList().size());
         } else {
-            etAddress.setText("Jl. Raya Penggilingan");
+            etAddress.setText("Jl. Kampung Jembatan");
             etRT.setText("007");
             etRW.setText("014");
             etKel.setText("Penggilingan");
